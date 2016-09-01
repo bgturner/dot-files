@@ -1,0 +1,16 @@
+.directory
+*~
+*.class
+*.ctxt
+.zim
+.vagrant
+*.sublime-project
+*.sublime-workspace
+.tags*
+tags
+*sass-cache
+node_modules
+bower_components
+*.sql
+.s??
+npm-debug.log

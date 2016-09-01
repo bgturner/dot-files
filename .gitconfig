@@ -1,0 +1,15 @@
+[alias]
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+[color]
+	ui = auto
+[user]
+	name = Benjamin Turner
+	email = benjamin@passionsplay.com
+[core]
+	excludesfile = /home/benjamin/.gitignore
+	editor = vim
+[push]
+	default = simple
+[merge]
+	tool = meld

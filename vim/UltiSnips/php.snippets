@@ -1,0 +1,72 @@
+snippet php
+<?php
+
+$0
+endsnippet
+
+snippet $
+$this->${0}
+endsnippet
+
+snippet spr
+return sprintf(
+	'$1',
+	$0
+);
+endsnippet
+
+snippet class
+class $1 ${2:extends ${3:parentClass} }{
+	$0
+}
+
+endsnippet
+
+snippet construct
+${1:public} function __construct() {
+	$0
+}
+endsnippet
+
+snippet met
+${1:public} function $2(${3}) {
+	$0
+}
+endsnippet
+
+snippet prop
+${1:public} $${2:var}${0};
+endsnippet
+
+snippet btaction
+function $2() {
+	$0
+}
+add_action('$1', '$2');
+endsnippet
+
+snippet btfilter
+function $2($$3) {
+	$0
+	return $$3;
+}
+add_filter('$1', '$2');
+endsnippet
+
+
+snippet btshortcode
+function $2( $atts ) {
+	$atts = shortcode_atts( array(
+		$0
+	), $atts, '$1');
+	return ;
+}
+add_shortcode('$1', '$2');
+endsnippet
+
+snippet btsprintf
+$1 sprintf(
+	$2
+);
+endsnippet
+

@@ -445,6 +445,8 @@ set hlsearch
 set incsearch
 nmap <Leader><Leader> :nohlsearch<CR>
 
+filetype plugin on
+
 "
 " Notes
 "

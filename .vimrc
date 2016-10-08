@@ -50,6 +50,7 @@ call dein#add('tpope/vim-commentary')
 call dein#add('junegunn/vim-easy-align')
 call dein#add('airblade/vim-gitgutter')
 call dein#add('Raimondi/delimitMate')
+call dein#add('Konfekt/FastFold')
 
 " Markdown and non-code writing
 call dein#add('junegunn/goyo.vim')
@@ -58,6 +59,8 @@ call dein#add('tpope/vim-markdown')
 call dein#add('reedes/vim-wordy')
 call dein#add('reedes/vim-pencil')
 call dein#add('reedes/vim-colors-pencil')
+call dein#add('suan/vim-instant-markdown')
+call dein#add('nelstrom/vim-markdown-folding')
 
 " Theme things
 call dein#add('vim-airline/vim-airline')

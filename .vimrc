@@ -428,6 +428,9 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 nmap <Leader>w :Goyo<bar>Pencil<CR>
 nmap <Leader>W :Goyo!<bar>PencilOff<CR>
 
+" Spelling
+nmap <Leader>ss :setlocal spell! spelllanguage=en_us<cr>
+
 " Set wordy dictionaries
 let g:wordy#ring = [
   \ 'weak',

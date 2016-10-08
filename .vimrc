@@ -155,7 +155,7 @@ nnoremap <Leader>us :<C-u>Unite -ignorecase -start-insert source<CR>
 nnoremap <Leader>u/ :<C-u>Unite -ignorecase -start-insert line<CR>
 nnoremap <leader>ub :<C-u>Unite -ignorecase -buffer-name=buffers buffer<CR>
 nnoremap <Leader>u? :<C-u>Unite -ignorecase -buffer-name=ag -no-split -silent grep:.<CR>
-nnoremap <leader>uf :<C-u>Unite -ignorecase -buffer-name=files -no-split -start-insert file file_rec<cr>
+nnoremap <leader>uf :<C-u>Unite -ignorecase -buffer-name=files -no-split-start-insert file_rec/async<cr>
 nnoremap <leader>ut :<C-u>Unite -ignorecase -buffer-name=files -no-split -start-insert tag<cr>
 nnoremap <leader>uo :<C-u>Unite -ignorecase -buffer-name=outline -silent -start-insert outline<cr>
 nnoremap <leader>ur :<C-u>UniteResume<cr>

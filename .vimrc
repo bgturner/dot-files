@@ -95,6 +95,7 @@ set scrolloff=5
 set backspace=indent,eol,start
 set wildignore=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,*.pdf,*.bak,*.beam,*.pyc
 set autoindent
+set cindent
 
 " Fix certain issues with vim saving and file watchers. See:
 " https://github.com/webpack/webpack/issues/781
@@ -398,10 +399,6 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " Trim whitespace on save
 autocmd FileType php,scss,sass,css,javascript,markdown autocmd BufWritePre <buffer> :%s/\s\+$//e
 
-" Trim whitespace on save
-autocmd FileType php,scss,sass,css,javascript,markdown autocmd BufWritePre <buffer> :%s/\s\+$//e
-
-
 "
 " Quick file access
 "
@@ -452,6 +449,7 @@ set incsearch
 nmap <Leader><Leader> :nohlsearch<CR>
 
 filetype plugin on
+filetype indent on
 
 "
 " Notes

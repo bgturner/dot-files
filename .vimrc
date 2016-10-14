@@ -56,6 +56,7 @@ call dein#add('Konfekt/FastFold')
 call dein#add('junegunn/goyo.vim')
 call dein#add('junegunn/limelight.vim')
 call dein#add('tpope/vim-markdown')
+call dein#add('tpope/vim-fugitive')
 call dein#add('reedes/vim-wordy')
 call dein#add('reedes/vim-pencil')
 call dein#add('reedes/vim-colors-pencil')
@@ -287,6 +288,15 @@ imap <expr><TAB> <SID>neosnippet_complete()
 let g:surround_{char2nr('b')} = "**\r**"
 let g:surround_{char2nr('i')} = "_\r_"
 let g:surround_{char2nr('s')} = "~~\r~~"
+
+"
+" Fugitive settings
+"
+nmap <Leader>gs :Gstatus<cr>
+nmap <Leader>gw :Gwrite<cr>
+nmap <Leader>gc :Gcommit<cr>
+nmap <Leader>gb :Gblame<cr>
+nmap <Leader>gl :Git! lola<cr>
 
 
 "

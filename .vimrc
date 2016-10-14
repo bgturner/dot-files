@@ -431,6 +431,9 @@ nmap <Leader>es :UltiSnipsEdit<CR>
 " interpret .md files as markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
+" Disable neocomplete for markdown files. Improves perfomance.
+autocmd FileType markdown NeoCompleteLock
+
 " Easily switch to writing mode
 nmap <Leader>w :Goyo<bar>Pencil<CR>
 nmap <Leader>W :Goyo!<bar>PencilOff<CR>

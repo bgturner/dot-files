@@ -41,6 +41,9 @@ fi
 echo "Setting Zsh as default shell."
 chsh -s /bin/zsh
 
+# Ensure the .vim directory exists.
+mkdir -p $HOME/.vim
+
 echo "Setting up UltiSnips snippets for Vim."
 mv ~/.vim/UltiSnips $backupdir/UltiSnips-$date
 ln -s $dotfiles_dir/vim/UltiSnips $HOME/.vim/UltiSnips

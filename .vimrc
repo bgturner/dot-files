@@ -354,6 +354,38 @@ nmap <Leader>tf :!clear && phpunit %<CR>
 nmap <Leader>tt ?function:set nohlsearch<cr>f wyiw:!clear && phpunit --filter "<cr>
 
 "
+" Quicker reference of php
+"
+" Open php docs for word under cursor.
+" Note: Requires lynx editor.
+"
+" Opens web version of php docs.
+function! OpenPHPManual(keyword)
+  let web = 'lynx -accept_all_cookies --cookie_file=/home/benjamin/.lynx_cookies --cookie_save_file=/home/benjamin/.lynx_cookies --cookies'
+  let url = 'http://jp2.php.net/' . a:keyword
+  exec '!' . web . ' "' . url . '"'
+endfunction
+
+"
+" For local reference download the php docs and save to the
+" folder referenced below:
+"
+" http://php.net/download-docs.php
+"
+function! OpenPHPManualLocal(keyword)
+  let web = 'lynx'
+  let url = $HOME . '/.documentation/php-chunked-xhtml/function.' . a:keyword . '.html'
+  exec '!' . web . ' "' . url . '"'
+endfunction
+
+noremap <Leader>dl :call OpenPHPManualLocal(expand('<cword>'))<CR>
+noremap <Leader>dm :call OpenPHPManual(expand('<cword>'))<CR>
+
+"
+" End php documentation
+"
+
+"
 " end PHP
 "
 

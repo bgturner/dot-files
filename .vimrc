@@ -396,9 +396,6 @@ augroup END
 " Make emmet work with Sass
 autocmd FileType html,css,scss,sass EmmetInstall
 
-" Interpret .md files as markdown
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags

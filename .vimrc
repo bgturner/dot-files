@@ -425,6 +425,14 @@ nmap <Leader>es :UltiSnipsEdit<CR>
 " Markdown
 " **************************
 
+" Disable instant markdown when opening markdown file.
+" Note: the instant markdown plugin requires a node daemon:
+"
+" npm -g install instant-markdown-d
+"
+let g:instant_markdown_autostart = 0
+nmap <Leader>mp :InstantMarkdownPreview<cr>
+
 " interpret .md files as markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 

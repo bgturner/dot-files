@@ -315,7 +315,7 @@ let g:vim_php_refactoring_default_method_visibility = 'public'
 let @a = "mmyiw/}O	$this->\" = $\";O?__constructOprotected $\";`m:nohlsearch"
 
 " Configure phpdocumentor
-let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
+let g:pdv_template_dir = $HOME ."/.vim/dein/repos/github.com/tobyS/pdv/templates_snip"
 nmap gk :call pdv#DocumentWithSnip()<CR>
 
 " Setup phpcs rules for WP

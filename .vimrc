@@ -35,6 +35,8 @@ call dein#add('dsawardekar/wordpress.vim')
 call dein#add('arnaud-lb/vim-php-namespace')
 call dein#add('tobyS/vmustache')
 call dein#add('tobyS/pdv')
+call dein#add('jwalton512/vim-blade')
+
 
 " misc
 call dein#add('Valloric/YouCompleteMe')

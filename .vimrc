@@ -232,9 +232,32 @@ let g:unite_source_menu_menus.workflow.command_candidates = [
 nnoremap <Leader>umw :<C-U>Unite menu:workflow -start-insert -ignorecase<CR>
 
 "
+" Laravel Menu
+"
+" Define menu.
+let g:unite_source_menu_menus.laravel = {
+	\ 'description': "Laravel"
+	\ }
+" Create a function to map 'Laravel' command labels to the commands that they execute.
+function! g:unite_source_menu_menus.laravel.map(key, value)
+	return {
+		\ 'word': a:key,
+		\ 'kind': 'command',
+		\ 'action__command': a:value
+		\ }
+endfunction
+" The labels to map for the laravel menu.
+let g:unite_source_menu_menus.laravel.command_candidates = [
+	\ ['Routes', 'Unite -ignorecase -start-insert -buffer-name=laravelRoutes grep:.::^Route\:\:'],
+	\ ['Migrations', 'Unite -ignorecase -start-insert -buffer-name=laravelMigrations grep:.::^class.*Migration'],
+	\ ['Controllers', 'Unite -ignorecase -start-insert -buffer-name=laravelControllers grep:.::^class.*Controller'],
+	\ ['Models', 'Unite -ignorecase -start-insert -buffer-name=laravelModels grep:.::^class.*Model']
+	\ ]
+nnoremap <Leader>uml :<C-U>Unite menu:laravel -start-insert -ignorecase<CR>
+
+"
 " end Unite Custom Menus
 "
-
 
 
 " Surround settings

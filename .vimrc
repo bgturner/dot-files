@@ -20,9 +20,6 @@ call dein#add('Shougo/vimfiler.vim')
 call dein#add('Shougo/neomru.vim')
 call dein#add('Shougo/vimshell.vim')
 call dein#add('Shougo/unite-outline')
-call dein#add('Shougo/neocomplete.vim')
-call dein#add('Shougo/neosnippet.vim')
-call dein#add('Shougo/neosnippet-snippets')
 call dein#add('Shougo/context_filetype.vim')
 call dein#add('Shougo/neoinclude.vim')
 call dein#add('Shougo/neco-syntax')
@@ -40,6 +37,7 @@ call dein#add('tobyS/vmustache')
 call dein#add('tobyS/pdv')
 
 " misc
+call dein#add('Valloric/YouCompleteMe')
 call dein#add('skwp/greplace.vim')
 call dein#add('terryma/vim-multiple-cursors')
 call dein#add('mattn/emmet-vim')
@@ -236,53 +234,6 @@ nnoremap <Leader>umw :<C-U>Unite menu:workflow -start-insert -ignorecase<CR>
 "
 
 
-" neocomplete
-
-"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-" Define when completion is started.
-let g:neocomplete#force_omni_input_patterns = {}
-let g:neocomplete#force_omni_input_patterns.php =
-	\ '\h\w*\|[^- \t]->\w*'
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Define neosnippet configuration.
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_or_jump)
-function! s:neosnippet_complete()
-	if pumvisible()
-		return "\<c-n>"
-	else
-		if neosnippet#expandable_or_jumpable()
-			return "\<Plug>(neosnippet_epand_or_jump)"
-		endif
-		return "\<tab>"
-	endif
-endfunction
-imap <expr><TAB> <SID>neosnippet_complete()
-" End neocomplete
 
 " Surround settings
 let g:surround_{char2nr('b')} = "**\r**"

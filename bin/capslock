@@ -1,0 +1,17 @@
+#! /bin/bash
+
+case "$1" in 
+	"-s")
+		echo "Swapping Caps-lock and escape keys..."
+		dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:escape']"
+		;;
+	"-d")
+		echo "Resetting Caps-lock and escape keys to defaults..."
+		dconf write /org/gnome/desktop/input-sources/xkb-options "['']"
+		;;
+	*)
+		echo "Available options:"
+		echo "  -s  Swap escape and capslock keys"
+		echo "  -d  Reset capslock to default"
+esac
+

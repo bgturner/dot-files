@@ -1,10 +1,14 @@
+#
+# Default PHP Snippets
+#
+
 snippet php
 <?php
 
 $0
 endsnippet
 
-snippet $
+snippet t
 $this->${0}
 endsnippet
 
@@ -28,7 +32,7 @@ ${1:public} function __construct() {
 }
 endsnippet
 
-snippet met
+snippet met "Class Method"
 ${1:public} function $2(${3}) {
 	$0
 }
@@ -38,6 +42,10 @@ snippet prop
 ${1:public} $${2:var}${0};
 endsnippet
 
+
+#
+# WordPress
+#
 snippet btaction
 function $2() {
 	$0

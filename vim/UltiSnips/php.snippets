@@ -103,3 +103,36 @@ $${3:a} = shortcode_atts( array(
 ${0}
 endsnippet
 
+snippet pluginheading "Plugin File Heading"
+<?php
+/**
+ * The ${1:Plugin Name} plugin bootstrap file
+ *
+ * This file is read by WordPress to generate the plugin information in the plugin
+ * admin area. This file also includes all of the dependencies used by the plugin,
+ * registers the activation and deactivation functions, and defines a function
+ * that starts the plugin.
+ *
+ * @link              ${4:http://passionsplay.com}
+ * @since             ${8:0.0.1}
+ * @package           ${7:Package_Name}
+ *
+ * @wordpress-plugin
+ * Plugin Name:       $1
+ * Description:       ${2:Description}
+ * Version:           $8
+ * Author:            ${3:Benjamin Turner}
+ * Author URI:        $4
+ * Plugin URI:        ${5:http://passionsplay.com/plugins}
+ * Text Domain:       ${6:text-domain}
+ * Domain Path:       /languages
+ */
+
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+		die;
+}
+
+${0}
+endsnippet
+

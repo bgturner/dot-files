@@ -136,3 +136,40 @@ if ( ! defined( 'WPINC' ) ) {
 ${0}
 endsnippet
 
+snippet posttype "Register a Custom Post Type"
+// Custom Post Type: ${1:name}
+$labels = array(
+	'name'                => __( '${2:$1 CPT Name}', '${4:text_domain}' ),
+	'singular_name'       => __( '${3:Singular Name}', '$4' ),
+	'menu_name'           => __( '$2', '$4' ),
+	'parent_item_colon'   => __( 'Parent $3:', '$4' ),
+	'all_items'           => __( 'All $2', '$4' ),
+	'view_item'           => __( 'View $3', '$4' ),
+	'add_new_item'        => __( 'Add New $3', '$4' ),
+	'add_new'             => __( 'Add New', '$4' ),
+	'edit_item'           => __( 'Edit $3', '$4' ),
+	'update_item'         => __( 'Update $3', '$4' ),
+	'search_items'        => __( 'Search $3', '$4' ),
+	'not_found'           => __( 'Not found', '$4' ),
+	'not_found_in_trash'  => __( 'Not found in Trash', '$4' ),
+);
+$args = array(
+	'label'                 => $labels,
+	'description'           => __( '${5:$1 description}', '$4' ),
+	'labels'                => $labels,
+	'supports'              => array( ${6:'title', 'editor',} ),
+	'public'                => true,
+	'show_ui'               => true,
+	'show_in_menu'          => true,
+	'show_in_nav_menus'     => true,
+	'show_in_admin_bar'     => true,
+	'can_export'            => true,
+	'publicly_queryable'    => true,
+	'show_in_rest'          => true,
+	'rest_base'             => '$1',
+	'rest_controller_class' => 'WP_REST_Posts_Controller',
+);
+register_post_type( '$1', $args );
+${0}
+endsnippet
+

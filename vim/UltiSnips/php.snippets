@@ -8,6 +8,13 @@ snippet php
 $0
 endsnippet
 
+snippet if "PHP IF Control Structure"
+if (${1:condition}) {
+	${0}
+}
+
+endsnippet
+
 snippet t
 $this->${0}
 endsnippet
@@ -42,6 +49,17 @@ snippet prop
 ${1:public} $${2:var}${0};
 endsnippet
 
+#
+# Testing Snippets
+#
+# PHPSpec
+#
+snippet it "PHPSpec Method"
+function it_${1:description}()
+{
+	${0}
+}
+endsnippet
 
 #
 # WordPress
@@ -76,5 +94,12 @@ snippet btsprintf
 $1 sprintf(
 	$2
 );
+endsnippet
+
+snippet shortcodeatts
+$${3:a} = shortcode_atts( array(
+	'${1:attribute_slug}' => '${2:Default Value}',
+), $atts );
+${0}
 endsnippet
 

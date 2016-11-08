@@ -181,3 +181,38 @@ snippet metabox
 add_meta_box( '${1:id}', '${2:Title}', '${3:Render Callback}', '${4:screen, ie post_type}', '${5:context - normal|side|advanced }', '${6:priority - default|low|high}'${7:, callback_args});
 endsnippet
 
+snippet cmb2metabox "Create a new CMB2 metabox"
+$prefix = '${1:_custom_field_prefix_}';
+
+// Intiate the metabox.
+$cmb = new_cmb2_box( array(
+	'id'            => '${2:metabox_id}',
+	'title'         => __( '${3:Metabox Title}', '${4:text-domain}' ),
+	'object_types'  => array( ${5:'post_type',} ),
+	'context'       => '${6:normal}',
+	'priority'      => '${7:high}',
+	'show_names'    => ${8:true}, // Show field names on the left
+));
+endsnippet
+
+snippet cmb2field "CMB2 Field"
+$cmb->add_field( array(
+	'name'       => __( '${1:Field Name}', '${2:text-domain}' ),
+	${3:'desc'       => __( '${4:Description}', '${2:text-domain}' ),}
+	'id'         => $prefix . '${5:field_id}',
+	'type'       => '${6:text}',
+	${7:// Field Types:
+	// text text_small text_medium text_email text_url text_money
+	// textarea textarea_small textarea_code
+	// text_time select_timezone text_date text_date_timestamp
+	// text_datetime_timestamp text_datetime_timestamp_timezone
+	// hidden colorpicker wysiwyg file file_list oembed}
+	${8:${9:'show_on_cb' => '${10:callback_signature returns boolean}',}
+	${11:'sanitization_cb' => '${12:custom_sanitization_callback}',}
+	${13:'escape_cb'       => '${14:custom_escaping_callback}',}
+	${15:'on_front'        => false,}
+	${16:'repeatable'      => true,}
+	${17:'column'          => true,}}
+));
+endsnippet
+

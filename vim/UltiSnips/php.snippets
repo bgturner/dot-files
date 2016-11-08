@@ -173,3 +173,11 @@ register_post_type( '$1', $args );
 ${0}
 endsnippet
 
+snippet metaboxaction
+add_action('add_meta_boxes_${1:post_type}', ${2:array($this, '${3:method_name}')});
+endsnippet
+
+snippet metabox
+add_meta_box( '${1:id}', '${2:Title}', '${3:Render Callback}', '${4:screen, ie post_type}', '${5:context - normal|side|advanced }', '${6:priority - default|low|high}'${7:, callback_args});
+endsnippet
+

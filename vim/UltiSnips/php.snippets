@@ -101,6 +101,17 @@ endsnippet
 #
 # WordPress
 #
+snippet registerwidgetarea
+register_sidebar( array(
+		'name'          => '${1:Widget Area Name}',
+		'id'            => '${2:widget_id}',
+		'before_widget' => '${3:<div>}',
+		'after_widget'  => '${4:</div>}',
+		'before_title'  => '${5:<h2 class="${6:rounded}">}',
+		'after_title'   => '${6:</h2>}',
+	));
+endsnippet
+
 snippet btaction
 function $2() {
 	$0

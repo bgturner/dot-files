@@ -82,6 +82,15 @@ endsnippet
 #
 # PHPUnit
 #
+snippet phpunittestclass "Class to extend WP_UnitTestCase"
+class ${1:ClassName}Test extends PHPUnit_Framework_TestCase {
+
+	${0}
+
+}
+
+endsnippet
+
 snippet test "PHPUnit test method"
 function test_${1:description}() {
 	${0}
@@ -89,6 +98,19 @@ function test_${1:description}() {
 
 endsnippet
 
+#
+# WordPress Testing
+#
+snippet wptestclass "Class to extend WP_UnitTestCase"
+class ${1:ClassName}Test extends WP_UnitTestCase {
+
+	${0}
+
+}
+
+endsnippet
+
+#
 # PHPSpec
 #
 snippet it "PHPSpec Method"

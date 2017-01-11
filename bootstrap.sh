@@ -18,6 +18,7 @@ mkdir -p $backupdir
 
 echo "Backing up current dotfiles to: $backupdir"
 mv ~/.zshrc $backupdir/
+mv ~/.bash_aliases $backupdir/
 mv ~/.vimrc $backupdir/
 mv ~/.tmux.conf $backupdir/
 mv ~/.gitconfig $backupdir/
@@ -25,6 +26,7 @@ mv ~/.gitignore $backupdir/
 
 echo "Creating symlinks."
 ln -s $dotfiles_dir/.zshrc ~/.zshrc
+ln -s $dotfiles_dir/.bash_aliases ~/.bash_aliases
 ln -s $dotfiles_dir/.vimrc ~/.vimrc
 ln -s $dotfiles_dir/.tmux.conf ~/.tmux.conf
 ln -s $dotfiles_dir/.gitconfig ~/.gitconfig

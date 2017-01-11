@@ -24,3 +24,5 @@ export EDITOR='vim'
 
 export TERM='xterm-256color'
 
+source $HOME/.bash_aliases
+

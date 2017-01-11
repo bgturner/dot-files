@@ -51,6 +51,7 @@ call dein#add('junegunn/vim-easy-align')
 call dein#add('airblade/vim-gitgutter')
 call dein#add('Raimondi/delimitMate')
 call dein#add('Konfekt/FastFold')
+call dein#add('osyo-manga/unite-quickfix')
 
 " Markdown and non-code writing
 call dein#add('junegunn/goyo.vim')

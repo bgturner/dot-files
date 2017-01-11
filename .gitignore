@@ -14,3 +14,4 @@ bower_components
 *.sql
 .s??
 npm-debug.log
+vendor

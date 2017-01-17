@@ -332,11 +332,11 @@ autocmd FileType php noremap <Leader>pne :call PhpExpandClass()<CR>
 " testing php
 "
 " [t]est [a]ll -- Run all tests defined for this project.
-nmap <Leader>ta :!clear && phpunit<CR>
+nmap <Leader>tea :!clear && phpunit<CR>
 " [t]est [f]ile -- Only test the tests in the current buffer.
-nmap <Leader>tf :!clear && phpunit %<CR>
+nmap <Leader>tef :!clear && phpunit %<CR>
 " [t]est [t]est -- Run the test directly under the cursor.
-nmap <Leader>tt ?function:set nohlsearch<cr>f wyiw:!clear && phpunit --filter "<cr>
+nmap <Leader>tet ?function:set nohlsearch<cr>f wyiw:!clear && phpunit --filter "<cr>
 
 "
 " Quicker reference of php

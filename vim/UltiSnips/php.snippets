@@ -123,15 +123,24 @@ endsnippet
 #
 # WordPress
 #
+snippet widgetsinit
+function $1() {
+
+	${0}
+
+}
+add_action( 'widgets_init', '${1:register_widget_areas}' );
+endsnippet
+
 snippet registerwidgetarea
 register_sidebar( array(
-		'name'          => '${1:Widget Area Name}',
-		'id'            => '${2:widget_id}',
-		'before_widget' => '${3:<div>}',
-		'after_widget'  => '${4:</div>}',
-		'before_title'  => '${5:<h2 class="${6:rounded}">}',
-		'after_title'   => '${6:</h2>}',
-	));
+	'name'          => '${1:Widget Area Name}',
+	'id'            => '${2:widget_id}',
+	'before_widget' => '${3:<div>}',
+	'after_widget'  => '${4:</div>}',
+	'before_title'  => '${5:<h2 class="${6:class_name}">}',
+	'after_title'   => '${6:</h2>}',
+));
 endsnippet
 
 snippet btaction

@@ -310,3 +310,18 @@ vc_map( array(
 ));
 endsnippet
 
+snippet wpvc_param
+array(
+	"type" => "${1:textarea_html|textfield|textarea|dropdown|
+							attach_image|attach_images|posttypes|colorpicker
+							exploded_textarea|widgetised_sidebars|textarea_raw_html
+							vc_link|checkbox|loop|css}",
+	"heading" => __("${2:Human Readable Title}", "text-domain"),
+	"param_name" => "${3:shortcode_parameter}",
+	"description" => __("${4:Description}", "text-domain"),
+	"value" => ${5:array(${6:values})},
+	${7:"admin_label" => true,}
+),
+${0}
+endsnippet
+

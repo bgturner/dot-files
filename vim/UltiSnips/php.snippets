@@ -295,3 +295,18 @@ $cmb->add_field( array(
 ));
 endsnippet
 
+#
+# WordPress -- Visual Composer
+#
+snippet wpvc_map
+vc_map( array(
+	"name" => __( "${1:VC Element Name}", "text-domain"),
+	"base" => "${2:shortcode_name}",
+	"description" => __( "${3:Short descriptions}", "text-domain"),
+	"category" => __("${4:Content|Social|Structure|CustomCategory}", "text-domain"),
+	"params" => array(
+		${0}
+	),
+));
+endsnippet
+

@@ -39,7 +39,6 @@ call dein#add('jwalton512/vim-blade')
 
 
 " misc
-call dein#add('Valloric/YouCompleteMe')
 call dein#add('skwp/greplace.vim')
 call dein#add('terryma/vim-multiple-cursors')
 call dein#add('mattn/emmet-vim')

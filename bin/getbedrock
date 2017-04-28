@@ -1,0 +1,23 @@
+#!/bin/bash
+#
+# A script to clone the Roots.io Bedrock repo 
+#
+
+dir="site"
+
+if [ -d "$dir" ]; then
+	echo 'Error: Folder "'$dir'" already exists.'
+	exit 1
+fi
+
+echo "Cloning Bedrock to aid in site configuration"
+git clone --depth=1 git@github.com:roots/bedrock.git "$dir" 
+
+cd "$dir" && bedrock_forked_commit=$(git rev-parse HEAD)
+
+rm -rf .git
+git init
+
+git add .
+git commit -m "Add base Bedrock files from commit : ${bedrock_forked_commit}"
+

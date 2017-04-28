@@ -19,7 +19,22 @@ fi
 
 url=$1
 
-git clone --depth=1 git@github.com:roots/trellis.git && rm -rf trellis/.git
+
+# Strips the top level domain. 
+folder="$(echo $url | sed -re 's,\.(com|edu|org|net)*$,,g')"
+
+git clone --depth=1 git@github.com:roots/trellis.git 
+
+# Save the commit we are forking from for this initial commit
+cd trellis && trellis_forked_commit=$(git rev-parse HEAD) && cd ..
+
+# Re-initialize git
+rm -rf trellis/.git
+cd trellis && git init
+
+# Compose our first commit
+git add .
+git commit -m "Add base Trellis files from commit : ${trellis_forked_commit}"
 
 cd trellis
  
@@ -28,6 +43,9 @@ echo "Updating Trellis development url:"
 echo ''
 echo "  example.com => ${url}"
 echo ''
-sed -i -E "s/example.(com|dev)/${url}/g" group_vars/development/wordpress_sites.yml
-sed -i -E "s/example.(com|dev)/${url}/g" group_vars/development/vault.yml
+sed -i -E "s/example/${folder}/g" group_vars/development/wordpress_sites.yml
+sed -i -E "s/example/${folder}/g" group_vars/development/vault.yml
+
+git add .
+git commit -m "Update example url to ${url}"
 

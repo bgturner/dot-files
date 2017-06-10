@@ -40,6 +40,11 @@ augroup AutoCommands
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
 
+" Allow folding of vim comments
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
 " end Autocommand }}}
 " Vimfiler Settings {{{
 

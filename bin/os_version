@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+# Checks what 'version' of linux is installed. See:
+# http://superuser.com/questions/11008/how-do-i-find-out-what-version-of-linux-im-running
+#
+echo 'Kernel:'
+echo $(uname -or)
+echo ''
+echo 'OS info:'
+cat /etc/*{release,version}
+

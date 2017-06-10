@@ -19,7 +19,6 @@ set hidden
 call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
-Plug 'Shougo/vimfiler.vim'
 Plug 'w0ng/vim-hybrid'
 
 call plug#end()
@@ -63,17 +62,4 @@ nnoremap <Leader>ff :find
 nmap <Leader>ev :edit $MYVIMRC<CR>
 
 " end Quick file access }}}
-" Vimfiler Settings {{{
-
-" Vimfiler keyboard shortcuts - mnemonic *f*ile *e*ditor
-nnoremap <Leader>fef :VimFiler<cr>
-nnoremap <Leader>fed :VimFilerDouble<cr>
-nnoremap <Leader>fee :VimFilerExplorer<cr>
-nnoremap <Leader>fes :VimFilerSimple<cr>
-
-" Set Vimfiler as default file explorer
-let g:loaded_netrwPlugin = 1 " Disable netrw.vim
-let g:vimfiler_as_default_explorer = 1 " Vimfiler as default
-
-" end Vimfiler Settings }}}
 

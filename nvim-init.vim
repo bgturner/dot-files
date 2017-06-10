@@ -18,6 +18,7 @@ set hidden
 " Plugins : Managed by vim-plug {{{
 call plug#begin('~/.vim/plugged')
 
+Plug 'airblade/vim-gitgutter'
 Plug 'Shougo/vimfiler.vim'
 Plug 'w0ng/vim-hybrid'
 

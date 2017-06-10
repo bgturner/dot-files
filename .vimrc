@@ -42,6 +42,7 @@ call dein#add('posva/vim-vue')
 
 
 " misc
+call dein#add('vim-syntastic/syntastic')
 call dein#add('skwp/greplace.vim')
 call dein#add('terryma/vim-multiple-cursors')
 call dein#add('mattn/emmet-vim')
@@ -390,6 +391,50 @@ autocmd FileType php set keywordprg=pman
 
 "
 " end PHP
+"
+
+"
+" Syntastic
+"
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_loc_list_height = 5
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_error_symbol = '❌'
+let g:syntastic_style_error_symbol = '⁉️'
+let g:syntastic_warning_symbol = '⚠️'
+let g:syntastic_style_warning_symbol = '💩'
+highlight link SyntasticErrorSign SignColumn
+highlight link SyntasticWarningSign SignColumn
+highlight link SyntasticStyleErrorSign SignColumn
+highlight link SyntasticStyleWarningSign SignColumn
+
+let g:syntastic_mode_map = {
+	\ "mode": "active",
+	\ "active_filetypes": [],
+	\ "passive_filetypes": ["php"] }
+
+" Syntastic settings for phpcs and WordPress coding standards
+"
+" Run base PHP checker first, then run phpcs with WordPress standard
+" If phpcs does not exist or the WordPress standard does not exist,
+" Syntastic skips them (failing gracefully)
+let g:syntastic_php_checkers = ['php','phpcs']
+let g:syntastic_php_phpcs_args = '--standard=WordPress-VIP'
+
+" If phpcs.xml is found, it supercedes the standard set above
+let g:syntastic_php_phpcs_standard_file = "phpcs.xml"
+
+nnoremap <Leader>sc :SyntasticCheck<cr>
+nnoremap <Leader>sr :SyntasticReset<cr>
+
+"
+" end Syntastic
 "
 
 "UltiSnips

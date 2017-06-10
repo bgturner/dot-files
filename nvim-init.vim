@@ -14,6 +14,14 @@ set showcmd
 " Allow buffers with unsaved changes to lose focus
 set hidden
 
+" Split management.
+set splitbelow
+set splitright
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 " end Base Settings }}}
 " Plugins : Managed by vim-plug {{{
 call plug#begin('~/.vim/plugged')

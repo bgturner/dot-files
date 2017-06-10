@@ -100,6 +100,12 @@ set wildignore=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.
 set autoindent
 set cindent
 
+" Add subfolders recursively to path
+set path+=**
+
+" Add menu for tab completion
+set wildmenu
+
 " Fix certain issues with vim saving and file watchers. See:
 " https://github.com/webpack/webpack/issues/781
 set backupcopy:yes

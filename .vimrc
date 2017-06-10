@@ -450,6 +450,9 @@ let g:UltiSnipsEditSplit           = "vertical"
 " Enable better matching of % with matchit plugin
 runtime macros/matchit.vim
 
+" Let Vim open Man pages
+runtime ftplugin/man.vim
+
 
 
 " Rebuild ctags

@@ -26,6 +26,7 @@ call dein#add('Shougo/neoinclude.vim')
 call dein#add('Shougo/neco-syntax')
 call dein#add('Shougo/neopairs.vim')
 call dein#add('tsukkee/unite-tag')
+call dein#add('ujihisa/unite-colorscheme')
 
 " Language specific things.
 call dein#add('adoy/vim-php-refactoring-toolbox')

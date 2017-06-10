@@ -159,7 +159,7 @@ let g:unite_source_history_yank_enable=1
 
 nnoremap <Leader>us :<C-u>Unite -ignorecase -start-insert source<CR>
 nnoremap <Leader>u/ :<C-u>Unite -ignorecase -start-insert line<CR>
-nnoremap <leader>ub :<C-u>Unite -ignorecase -buffer-name=buffers buffer<CR>
+nnoremap <leader>ub :<C-u>Unite -ignorecase -start-insert -buffer-name=buffers buffer<CR>
 nnoremap <Leader>u? :<C-u>Unite -ignorecase -buffer-name=ag -no-split -silent grep:.<CR>
 nnoremap <leader>uf :<C-u>Unite -ignorecase -buffer-name=files -no-split -force-redraw -start-insert file_rec/async<cr>
 nnoremap <leader>ut :<C-u>Unite -ignorecase -buffer-name=tags -no-split -start-insert tag<cr>

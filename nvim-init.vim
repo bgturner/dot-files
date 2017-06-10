@@ -32,6 +32,15 @@ set background=dark
 silent! colorscheme hybrid
 
 " end Theme }}}
+" Autocommand {{{
+
+" Automatically source Vimrc file on save.
+augroup AutoCommands
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END
+
+" end Autocommand }}}
 " Vimfiler Settings {{{
 
 " Vimfiler keyboard shortcuts - mnemonic *f*ile *e*ditor

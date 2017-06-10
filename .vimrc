@@ -456,7 +456,7 @@ runtime ftplugin/man.vim
 
 
 " Rebuild ctags
-nmap <leader>T :!ctags -R --exclude=node_modules --exclude=bower_components<CR>
+nmap <leader>T :!ctags -R --exclude=node_modules --exclude=bower_components --exclude="*.min.js" --exclude="*jquery*.js" --exclude="*bootstrap*.js"<CR>
 
 " Make emmet work for sass files
 autocmd FileType html,css,scss,sass EmmetInstall

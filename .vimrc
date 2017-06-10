@@ -44,6 +44,7 @@ call dein#add('posva/vim-vue')
 " misc
 call dein#add('vim-syntastic/syntastic')
 call dein#add('captbaritone/better-indent-support-for-php-with-html')
+call dein#add('editorconfig/editorconfig-vim')
 call dein#add('skwp/greplace.vim')
 call dein#add('terryma/vim-multiple-cursors')
 call dein#add('mattn/emmet-vim')

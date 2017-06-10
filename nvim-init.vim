@@ -18,6 +18,7 @@ set hidden
 " Plugins : Managed by vim-plug {{{
 call plug#begin('~/.vim/plugged')
 
+Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'w0ng/vim-hybrid'
 
@@ -62,4 +63,18 @@ nnoremap <Leader>ff :find
 nmap <Leader>ev :edit $MYVIMRC<CR>
 
 " end Quick file access }}}
+" Fugitive Settings {{{
+
+" Fugitive key mappings
+nnoremap <Leader>gs :Gstatus<cr>
+nnoremap <Leader>gw :Gwrite<cr>
+nnoremap <Leader>gc :Gcommit<cr>
+nnoremap <Leader>gca :Gcommit --amend<cr>
+nnoremap <Leader>gb :Gblame<cr>
+nnoremap <Leader>gdd :Gdiff<cr>
+nnoremap <Leader>gdc :Git diff --cached<cr>
+nnoremap <Leader>gbn :Git checkout -b 
+nnoremap <Leader>gl :Git log --oneline --graph --decorate --all<cr>
+
+" }}}
 

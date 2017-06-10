@@ -55,8 +55,6 @@ call dein#add('Konfekt/FastFold')
 call dein#add('osyo-manga/unite-quickfix')
 
 " Markdown and non-code writing
-call dein#add('junegunn/goyo.vim')
-call dein#add('junegunn/limelight.vim')
 call dein#add('tpope/vim-markdown')
 call dein#add('tpope/vim-fugitive')
 call dein#add('reedes/vim-wordy')
@@ -471,10 +469,6 @@ nmap <Leader>mp :InstantMarkdownPreview<cr>
 
 " interpret .md files as markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
-" Easily switch to writing mode
-nmap <Leader>w :Goyo<bar>Pencil<CR>
-nmap <Leader>W :Goyo!<bar>PencilOff<CR>
 
 " Spelling
 nmap <Leader>ss :setlocal spell! spelllanguage=en_us<cr>

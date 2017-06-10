@@ -28,6 +28,8 @@ call plug#begin('~/.vim/plugged')
 
 " Misc
 Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/fzf', { 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -77,6 +79,20 @@ nnoremap <Leader>ff :find
 nmap <Leader>ev :edit $MYVIMRC<CR>
 
 " end Quick file access }}}
+" FZF Settings {{{
+
+" FZF Mappings
+" So many possibilties:
+"
+"     https://github.com/junegunn/fzf.vim#commands
+"
+nnoremap <Leader>fzf :FZF<cr>
+nnoremap <Leader>fzg :GFiles<cr>
+nnoremap <Leader>fza :Ag<cr>
+nnoremap <Leader>fzt :Tags<cr>
+nnoremap <Leader>fzb :Buffers<cr>
+
+" }}}
 " Fugitive Settings {{{
 
 " Fugitive key mappings

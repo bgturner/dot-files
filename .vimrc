@@ -104,9 +104,6 @@ set cindent
 " https://github.com/webpack/webpack/issues/781
 set backupcopy:yes
 
-" Set better tabs
-set tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
-
 " greplace.vim
 set grepprg=ag
 let g:grep_cmd_opts = '--line-numbers --noheading'
@@ -493,6 +490,12 @@ nnoremap <leader>sw K :NextWordy<cr>
 set hlsearch
 set incsearch
 nmap <Leader><Leader> :nohlsearch<CR>
+
+" Set better tabs
+set tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
+" set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+" set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+" set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 filetype plugin on
 filetype indent on

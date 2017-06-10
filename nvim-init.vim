@@ -33,6 +33,10 @@ set background=dark
 silent! colorscheme hybrid
 
 " end Theme }}}
+" Autocompletion {{{
+inoremap ^] ^X^]
+inoremap ^F ^X^F
+" end Autocompletion }}}
 " Autocommand {{{
 
 " Automatically source Vimrc file on save.

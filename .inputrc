@@ -1,3 +1,6 @@
+# Ensure the default bindings are used as well
+$include /etc/inputrc
+
 # Ignore case for completion
 set completion-ignore-case on
 

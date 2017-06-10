@@ -47,6 +47,18 @@ augroup filetype_vim
     autocmd FileType vim setlocal foldmethod=marker
 augroup END
 " end Autocommand }}}
+" Quick file access {{{
+
+" Add project subdirectories to path
+set path+=**
+
+" Find a file in the path
+nnoremap <Leader>ff :find 
+
+" Easy editing of vimrc file.
+nmap <Leader>ev :edit $MYVIMRC<CR>
+
+" end Quick file access }}}
 " Vimfiler Settings {{{
 
 " Vimfiler keyboard shortcuts - mnemonic *f*ile *e*ditor

@@ -1,0 +1,6 @@
+# Ignore case for completion
+set completion-ignore-case on
+
+# Treats hyphens and underscores as equivalent when performing case-insensitive filename matching and completion
+set completion-map-case
+

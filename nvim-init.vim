@@ -1,3 +1,4 @@
+
 " Base Settings {{{
 set number
 
@@ -14,7 +15,19 @@ set showcmd
 set hidden
 
 " end Base Settings }}}
-" Autocompletion {{{
-inoremap ^] ^X^]
-inoremap ^F ^X^F
-" end Autocompletion }}}
+" Plugins : Managed by vim-plug {{{
+call plug#begin('~/.vim/plugged')
+
+Plug 'w0ng/vim-hybrid'
+
+call plug#end()
+
+" end Plugins }}}
+" Theme {{{
+
+" Set colorscheme
+syntax on
+set background=dark
+silent! colorscheme hybrid
+
+" end Theme }}}

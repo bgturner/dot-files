@@ -77,4 +77,8 @@ nnoremap <Leader>gbn :Git checkout -b
 nnoremap <Leader>gl :Git log --oneline --graph --decorate --all<cr>
 
 " }}}
+" General Mappings {{{
+noremap <Leader><Leader> :nohlsearch<CR>
+
+" }}}
 

@@ -26,8 +26,14 @@ nnoremap <C-H> <C-W><C-H>
 " Plugins : Managed by vim-plug {{{
 call plug#begin('~/.vim/plugged')
 
+" Misc
+Plug 'junegunn/vim-easy-align'
+
+" Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+
+" Styling
 Plug 'w0ng/vim-hybrid'
 
 call plug#end()
@@ -83,6 +89,14 @@ nnoremap <Leader>gdd :Gdiff<cr>
 nnoremap <Leader>gdc :Git diff --cached<cr>
 nnoremap <Leader>gbn :Git checkout -b 
 nnoremap <Leader>gl :Git log --oneline --graph --decorate --all<cr>
+
+" }}}
+" Easy Align Settings {{{
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " }}}
 " General Mappings {{{

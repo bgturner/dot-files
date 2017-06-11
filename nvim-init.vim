@@ -35,6 +35,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'adoy/vim-php-refactoring-toolbox'
 Plug 'StanAngeloff/php.vim'
 Plug 'shawncplus/phpcomplete.vim'
+Plug 'arnaud-lb/vim-php-namespace'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -136,6 +137,25 @@ nmap ga <Plug>(EasyAlign)
 " nnoremap <unique> <Leader>sg :call PhpCreateSettersAndGetters()<CR>
 " nnoremap <unique> <Leader>cog :call PhpCreateGetters()<CR>
 " nnoremap <unique> <Leader>da :call PhpDocAll()<CR>
+
+" }}}
+" PHP Namespace Plugin Settings {{{
+"
+" vim-php-namespace config.
+"
+" Automatically adds corresponding use statement for the class under the cursor.
+function! IPhpInsertUse()
+    call PhpInsertUse()
+    call feedkeys('a', 'n')
+endfunction
+autocmd FileType php noremap <Leader>pnu :call PhpInsertUse()<CR>
+"
+" Expands the class name under the cursor to its fully qualified name.
+function! IPhpExpandClass()
+    call PhpExpandClass()
+    call feedkeys('a', 'n')
+endfunction
+autocmd FileType php noremap <Leader>pne :call PhpExpandClass()<CR>
 
 " }}}
 " General Mappings {{{

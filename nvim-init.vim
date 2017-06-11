@@ -36,6 +36,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'Raimondi/delimitMate'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'skwp/greplace.vim'
 Plug 'editorconfig/editorconfig-vim'
 
 " PHP
@@ -106,6 +107,18 @@ nnoremap <Leader>fzg :GFiles<cr>
 nnoremap <Leader>fza :Ag<cr>
 nnoremap <Leader>fzt :Tags<cr>
 nnoremap <Leader>fzb :Buffers<cr>
+
+" }}}
+" Greplace Settings {{{
+
+" Use 'ag' to search if it exists
+if executable('ag')
+  set grepprg=ag
+  let g:grep_cmd_opts = '--line-numbers --noheading'
+endif
+
+nmap <Leader>grs :Gsearch<CR>
+nmap <Leader>grr :Greplace<CR>
 
 " }}}
 " Surround Settings {{{

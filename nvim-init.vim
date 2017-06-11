@@ -36,6 +36,7 @@ Plug 'adoy/vim-php-refactoring-toolbox'
 Plug 'StanAngeloff/php.vim'
 Plug 'shawncplus/phpcomplete.vim'
 Plug 'arnaud-lb/vim-php-namespace'
+Plug 'joseluis/wordpress.vim'
 
 " Git
 Plug 'tpope/vim-fugitive'

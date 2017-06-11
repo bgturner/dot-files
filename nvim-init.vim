@@ -33,6 +33,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'Raimondi/delimitMate'
+Plug 'terryma/vim-multiple-cursors'
 
 " PHP
 Plug 'adoy/vim-php-refactoring-toolbox'

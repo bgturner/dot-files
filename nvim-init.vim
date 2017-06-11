@@ -229,6 +229,22 @@ endfunction
 autocmd FileType php noremap <Leader>pne :call PhpExpandClass()<CR>
 
 " }}}
+" PHP Documentation {{{
+"
+" Use pman for local documentation.
+"
+" This makes use of Vim's keyword lookup program. Ensure that the php manual
+" is installed locally. See: https://secure.php.net/download-docs.php
+"
+" Basically using PEAR you can install the documentation locally:
+"
+"		pear install doc.php.net/pman
+"
+" On the Vim side, we are replacing the keyword lookup for PHP files to use
+" `pman`. For more info see `:help K`
+autocmd FileType php set keywordprg=pman
+
+" }}}
 " General Mappings {{{
 noremap <Leader><Leader> :nohlsearch<CR>
 

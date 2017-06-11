@@ -33,6 +33,7 @@ Plug 'junegunn/fzf.vim'
 
 " PHP
 Plug 'adoy/vim-php-refactoring-toolbox'
+Plug 'StanAngeloff/php.vim'
 Plug 'shawncplus/phpcomplete.vim'
 
 " Git

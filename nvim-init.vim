@@ -38,6 +38,7 @@ Plug 'StanAngeloff/php.vim'
 Plug 'shawncplus/phpcomplete.vim'
 Plug 'arnaud-lb/vim-php-namespace'
 Plug 'joseluis/wordpress.vim'
+Plug 'captbaritone/better-indent-support-for-php-with-html'
 
 " Git
 Plug 'tpope/vim-fugitive'

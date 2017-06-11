@@ -31,6 +31,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-commentary'
 
 " PHP
 Plug 'adoy/vim-php-refactoring-toolbox'

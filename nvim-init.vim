@@ -53,6 +53,8 @@ Plug 'airblade/vim-gitgutter'
 
 " Styling
 Plug 'w0ng/vim-hybrid'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
@@ -63,6 +65,7 @@ call plug#end()
 syntax on
 set background=dark
 silent! colorscheme hybrid
+let g:airline_theme='hybrid'
 
 " end Theme }}}
 " Autocompletion {{{

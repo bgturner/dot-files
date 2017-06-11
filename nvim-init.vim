@@ -32,6 +32,7 @@ Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 
 " PHP
 Plug 'adoy/vim-php-refactoring-toolbox'
@@ -101,6 +102,12 @@ nnoremap <Leader>fzg :GFiles<cr>
 nnoremap <Leader>fza :Ag<cr>
 nnoremap <Leader>fzt :Tags<cr>
 nnoremap <Leader>fzb :Buffers<cr>
+
+" }}}
+" Surround Settings {{{
+let g:surround_{char2nr('b')} = "**\r**"
+let g:surround_{char2nr('i')} = "_\r_"
+let g:surround_{char2nr('s')} = "~~\r~~"
 
 " }}}
 " Fugitive Settings {{{

@@ -30,6 +30,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'mattn/emmet-vim'
 
 " PHP
 Plug 'adoy/vim-php-refactoring-toolbox'

@@ -42,6 +42,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'neomake/neomake'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " PHP
 Plug 'adoy/vim-php-refactoring-toolbox'
@@ -191,6 +192,11 @@ let g:neosnippet#snippets_directory=$HOME.'/.vim/NeoSnippet/'
 imap <C-j> <Plug>(neosnippet_expand_or_jump)
 smap <C-j> <Plug>(neosnippet_expand_or_jump)
 xmap <C-j> <Plug>(neosnippet_expand_target)
+
+" }}}
+" Deoplete Settings {{{
+
+let g:deoplete#enable_at_startup = 1
 
 " }}}
 " Fugitive Settings {{{

@@ -40,6 +40,8 @@ Plug 'skwp/greplace.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'neomake/neomake'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 
 " PHP
 Plug 'adoy/vim-php-refactoring-toolbox'
@@ -181,6 +183,14 @@ let g:neomake_php_phpcs_maker = {
 		\ '%-GFile\,Line\,Column\,Type\,Message\,Source\,Severity%.%#,'.
 		\ '"%f"\,%l\,%c\,%t%*[a-zA-Z]\,"%m"\,%*[a-zA-Z0-9_.-]\,%*[0-9]%.%#'
 	\ }
+
+" }}}
+" NeoSnippet Settings {{{
+let g:neosnippet#snippets_directory=$HOME.'/.vim/NeoSnippet/'
+
+imap <C-j> <Plug>(neosnippet_expand_or_jump)
+smap <C-j> <Plug>(neosnippet_expand_or_jump)
+xmap <C-j> <Plug>(neosnippet_expand_target)
 
 " }}}
 " Fugitive Settings {{{

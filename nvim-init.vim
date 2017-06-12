@@ -45,6 +45,7 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " PHP
+Plug 'lvht/phpcd.vim', { 'for': 'php', 'do': 'composer install' }
 Plug 'adoy/vim-php-refactoring-toolbox'
 Plug 'StanAngeloff/php.vim'
 Plug 'shawncplus/phpcomplete.vim'
@@ -272,6 +273,12 @@ autocmd FileType php noremap <Leader>pne :call PhpExpandClass()<CR>
 " On the Vim side, we are replacing the keyword lookup for PHP files to use
 " `pman`. For more info see `:help K`
 autocmd FileType php set keywordprg=pman
+
+" }}}
+" Phpcd Settings {{{
+
+let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
+let g:deoplete#ignore_sources.php = ['omni']
 
 " }}}
 " General Mappings {{{

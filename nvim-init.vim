@@ -39,6 +39,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'skwp/greplace.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'vim-syntastic/syntastic'
+Plug 'neomake/neomake'
 
 " PHP
 Plug 'adoy/vim-php-refactoring-toolbox'
@@ -168,6 +169,18 @@ nmap <Leader>grr :Greplace<CR>
 let g:surround_{char2nr('b')} = "**\r**"
 let g:surround_{char2nr('i')} = "_\r_"
 let g:surround_{char2nr('s')} = "~~\r~~"
+
+" }}}
+" Neomake Settings {{{
+let g:neomake_php_phpcs_maker = {
+	\ 'args': [
+		\ '--report=csv',
+		\ '--standard=WordPress-VIP',
+	\ ],
+	\ 'errorformat': 
+		\ '%-GFile\,Line\,Column\,Type\,Message\,Source\,Severity%.%#,'.
+		\ '"%f"\,%l\,%c\,%t%*[a-zA-Z]\,"%m"\,%*[a-zA-Z0-9_.-]\,%*[0-9]%.%#'
+	\ }
 
 " }}}
 " Fugitive Settings {{{

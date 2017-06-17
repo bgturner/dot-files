@@ -43,8 +43,10 @@ Plug 'neomake/neomake'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'tobyS/vmustache'
 
 " PHP
+Plug 'tobyS/pdv'
 Plug 'lvht/phpcd.vim', { 'for': 'php', 'do': 'composer install' }
 Plug 'adoy/vim-php-refactoring-toolbox'
 Plug 'StanAngeloff/php.vim'
@@ -275,6 +277,11 @@ autocmd FileType php noremap <Leader>pne :call PhpExpandClass()<CR>
 autocmd FileType php set keywordprg=pman
 
 " }}}
+" PDV Settings {{{
+let g:pdv_template_dir = $HOME ."/.vim/plugged/pdv/templates"
+nnoremap <Leader>pd :call pdv#DocumentCurrentLine()<CR>
+
+"}}}
 " Phpcd Settings {{{
 
 let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})

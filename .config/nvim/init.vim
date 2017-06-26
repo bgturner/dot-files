@@ -27,6 +27,7 @@ nnoremap <C-H> <C-W><C-H>
 call plug#begin('~/.vim/plugged')
 
 " Misc
+Plug 'scrooloose/nerdtree'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -118,6 +119,13 @@ nnoremap <Leader>fzg :GFiles<cr>
 nnoremap <Leader>fza :Ag<cr>
 nnoremap <Leader>fzt :Tags<cr>
 nnoremap <Leader>fzb :Buffers<cr>
+
+" }}}
+" NERDTree Settings {{{
+let g:NERDTreeWinSize = 40
+nnoremap <Leader>nts :NERDTree 
+nnoremap <Leader>ntt :NERDTreeToggle<cr>
+nnoremap <Leader>ntf :NERDTreeFocus<cr>
 
 " }}}
 " Syntastic Settings {{{

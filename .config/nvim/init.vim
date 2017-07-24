@@ -47,6 +47,7 @@ Plug 'neomake/neomake'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/denite.nvim'
 Plug 'tobyS/vmustache'
 
 " PHP
@@ -212,6 +213,56 @@ let g:neosnippet#snippets_directory=$HOME.'/.vim/NeoSnippet/'
 imap <C-j> <Plug>(neosnippet_expand_or_jump)
 smap <C-j> <Plug>(neosnippet_expand_or_jump)
 xmap <C-j> <Plug>(neosnippet_expand_target)
+
+" }}}
+" Denite Settings {{{
+nnoremap <Leader>ul :<C-u>Denite line<CR>
+nnoremap <leader>ub :<C-u>Denite -buffer-name=buffers buffer<CR>
+nnoremap <Leader>u? :<C-u>Denite -buffer-name=ag grep:.<CR>
+nnoremap <leader>uf :<C-u>Denite -buffer-name=files file_rec<cr>
+nnoremap <leader>ut :<C-u>Denite -buffer-name=tags tag<cr>
+nnoremap <leader>uo :<C-u>Denite -buffer-name=outline outline<cr>
+nnoremap <leader>urr :<C-u>Denite -resume<cr>
+nnoremap <leader>ura :<C-u>Denite -buffer-name=ag -resume<cr>
+
+" Change mappings.
+call denite#custom#map(
+      \ 'insert',
+      \ '<C-j>',
+      \ '<denite:move_to_next_line>',
+      \ 'noremap'
+      \)
+call denite#custom#map(
+      \ 'insert',
+      \ '<C-k>',
+      \ '<denite:move_to_previous_line>',
+      \ 'noremap'
+      \)
+
+"
+" Use ag for searching for files. Helpful for ignoring files that are ignored
+" in .gitignore
+"
+call denite#custom#var('file_rec', 'command',
+	\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+
+" Ag command on grep source
+call denite#custom#var('grep', 'command', ['ag'])
+call denite#custom#var('grep', 'default_opts',
+		\ ['-i', '--vimgrep'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', [])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
+
+
+" Change ignore_globs
+call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
+      \ [ '.git/', '.ropeproject/', '__pycache__/',
+      \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/',
+      \   'vendor'])
+
+nnoremap <Leader>umw :<C-U>Denite menu:workflow<CR>
 
 " }}}
 " Deoplete Settings {{{

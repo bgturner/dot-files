@@ -124,6 +124,11 @@ nnoremap <Leader>fzt :Tags<cr>
 nnoremap <Leader>fzb :Buffers<cr>
 
 " }}}
+" Netrw Settings {{{
+let g:netrw_banner = 0
+nnoremap <leader>fe :edit .<cr>
+
+" }}}
 " NERDTree Settings {{{
 let g:NERDTreeWinSize = 40
 nnoremap <Leader>nts :NERDTree 

@@ -60,6 +60,9 @@ Plug 'arnaud-lb/vim-php-namespace'
 Plug 'joseluis/wordpress.vim'
 Plug 'captbaritone/better-indent-support-for-php-with-html'
 
+" Python
+Plug 'fs111/pydoc.vim'
+
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'

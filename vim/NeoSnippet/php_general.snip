@@ -1,0 +1,15 @@
+#
+# General snippets for PHP
+#
+
+snippet obclean
+options indent
+	ob_start();
+	${0}
+	\$${1:variable_name} = ob_get_clean();
+
+snippet dump_and_die
+abbr dd
+	var_dump(\$${1:variable});${0}
+	die();
+

@@ -52,7 +52,6 @@ Plug 'tobyS/vmustache'
 
 " PHP
 Plug 'tobyS/pdv'
-Plug 'lvht/phpcd.vim', { 'for': 'php', 'do': 'composer install' }
 Plug 'adoy/vim-php-refactoring-toolbox'
 Plug 'StanAngeloff/php.vim'
 Plug 'shawncplus/phpcomplete.vim'

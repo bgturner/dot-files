@@ -41,7 +41,6 @@ Plug 'Raimondi/delimitMate'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'skwp/greplace.vim'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'vim-syntastic/syntastic'
 Plug 'neomake/neomake'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
@@ -135,45 +134,6 @@ nnoremap <Leader>fzb :Buffers<cr>
 " Netrw Settings {{{
 let g:netrw_banner = 0
 nnoremap <leader>fe :edit .<cr>
-
-" }}}
-" Syntastic Settings {{{
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_loc_list_height = 5
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_error_symbol = '❌'
-let g:syntastic_style_error_symbol = '⁉️'
-let g:syntastic_warning_symbol = '⚠️'
-let g:syntastic_style_warning_symbol = '💩'
-highlight link SyntasticErrorSign SignColumn
-highlight link SyntasticWarningSign SignColumn
-highlight link SyntasticStyleErrorSign SignColumn
-highlight link SyntasticStyleWarningSign SignColumn
-
-let g:syntastic_mode_map = {
-	\ "mode": "active",
-	\ "active_filetypes": [],
-	\ "passive_filetypes": ["php"] }
-
-" Syntastic settings for phpcs and WordPress coding standards
-"
-" Run base PHP checker first, then run phpcs with WordPress standard
-" If phpcs does not exist or the WordPress standard does not exist,
-" Syntastic skips them (failing gracefully)
-let g:syntastic_php_checkers = ['php','phpcs']
-let g:syntastic_php_phpcs_args = '--standard=WordPress-VIP'
-
-" If phpcs.xml is found, it supercedes the standard set above
-let g:syntastic_php_phpcs_standard_file = "phpcs.xml"
-
-nnoremap <Leader>sc :SyntasticCheck<cr>
-nnoremap <Leader>sr :SyntasticReset<cr>
 
 " }}}
 " Greplace Settings {{{

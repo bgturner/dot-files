@@ -158,7 +158,6 @@ let g:surround_{char2nr('s')} = "~~\r~~"
 let g:neomake_php_phpcs_maker = {
 	\ 'args': [
 		\ '--report=csv',
-		\ '--standard=WordPress-VIP',
 	\ ],
 	\ 'errorformat': 
 		\ '%-GFile\,Line\,Column\,Type\,Message\,Source\,Severity%.%#,'.

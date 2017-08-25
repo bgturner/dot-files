@@ -155,6 +155,8 @@ let g:surround_{char2nr('s')} = "~~\r~~"
 
 " }}}
 " Neomake Settings {{{
+nnoremap <Leader>nm :Neomake<cr>
+
 let g:neomake_php_phpcs_maker = {
 	\ 'args': [
 		\ '--report=csv',

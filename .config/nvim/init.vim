@@ -108,6 +108,12 @@ nnoremap <Leader>ff :find
 " Easy editing of vimrc file.
 nmap <Leader>ev :edit $MYVIMRC<CR>
 
+" Quick editing of pp notes
+nmap <Leader>epp :edit ~/Documents/Notes/pp-notes.md<CR>
+
+" Quick editing of pm notes
+nmap <Leader>epm :edit ~/Documents/Notes/pm-notes.md<CR>
+
 " end Quick file access }}}
 " FZF Settings {{{
 

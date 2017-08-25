@@ -108,6 +108,9 @@ nnoremap <Leader>ff :find
 " Easy editing of vimrc file.
 nmap <Leader>ev :edit $MYVIMRC<CR>
 
+" Open a new buffer using the current buffer's working directory
+nmap <Leader>enb :edit %:p:h/
+
 " Quick editing of pp notes
 nmap <Leader>epp :edit ~/Documents/Notes/pp-notes.md<CR>
 

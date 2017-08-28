@@ -84,6 +84,9 @@ inoremap ^F ^X^F
 " end Autocompletion }}}
 " Autocommand {{{
 
+" Whitespace adjustments per filetype
+autocmd Filetype markdown setlocal shiftwidth=2 tabstop=2
+
 " Automatically source Vimrc file on save.
 augroup AutoCommands
     autocmd!

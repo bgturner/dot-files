@@ -254,6 +254,7 @@ nnoremap <Leader>gs :Gstatus<cr>
 nnoremap <Leader>gw :Gwrite<cr>
 nnoremap <Leader>gc :Gcommit<cr>
 nnoremap <Leader>gca :Gcommit --amend<cr>
+nnoremap <Leader>gp :Gpush<cr>
 nnoremap <Leader>gb :Gblame<cr>
 nnoremap <Leader>gdd :Gdiff<cr>
 nnoremap <Leader>gdc :Git diff --cached<cr>
@@ -331,6 +332,9 @@ nnoremap <Leader>pd :call pdv#DocumentCurrentLine()<CR>
 
 let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
 let g:deoplete#ignore_sources.php = ['omni']
+
+" }}}
+" Markdown Settings {{{
 
 " }}}
 " General Mappings {{{

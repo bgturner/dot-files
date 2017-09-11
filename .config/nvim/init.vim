@@ -136,7 +136,12 @@ nnoremap <Leader>fzb :Buffers<cr>
 " }}}
 " Netrw Settings {{{
 let g:netrw_banner = 0
-nnoremap <leader>fe :edit .<cr>
+
+" Open Netrw in the project root
+nnoremap <leader>ne :edit .<cr>
+
+" Open Netrw in the path of the current buffer
+nnoremap <leader>n. :edit %:p:h<cr>
 
 " }}}
 " Greplace Settings {{{

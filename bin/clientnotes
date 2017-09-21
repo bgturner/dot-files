@@ -1,0 +1,101 @@
+#!/usr/bin/env php
+<?php
+// *************************************************************
+// Initializes a new folder for client notes which is compatible
+// with gitbook: 
+//     https://github.com/GitbookIO/gitbook
+//
+// Gitbook is a command line tool and Node.js library.
+//
+// To get started, install gitbook, create the repo using this
+// script and start serving the book:
+//
+//     $ npm install gitbook-cli -g
+//     $ clientnotes clientcode
+//     $ cd client-notes-clientcode
+//     $ gitbook serve
+//
+// *************************************************************
+
+
+
+// *************************************************************
+// Ensure a client code was passed
+// *************************************************************
+if ( $argc == 1 || empty($argv[1]) ) {
+	echo sprintf(
+'Client code required. 
+
+	For example: 
+	$ clientcode foo
+
+	Will initialize a repo in a path call "client-code-foo"
+'
+);
+	exit(1);
+} else {
+	$client_code = $argv[1];
+}
+
+$notes_path = 'client-code-' . $client_code;
+
+// *************************************************************
+// Check if folder already exists
+// *************************************************************
+if ( file_exists($notes_path) ) {
+	echo sprintf(
+		"Path exists, not creating: \n%s\n",
+		$notes_path
+	);
+	exit(1);
+}
+
+echo sprintf(
+	"Creating: \n%s\n",
+	$notes_path
+);
+
+$path_created = mkdir($notes_path, 0755);
+
+if (!$path_created) {
+	echo sprintf(
+		"Could not create path: \n%s\n",
+		$notes_path
+	);
+	exit(1);
+}
+
+// *************************************************************
+// Write readme.md and summary.md files
+// *************************************************************
+$readme_content = sprintf(
+'# Client Notes for %s
+	
+',
+strtoupper($client_code)
+);
+
+$summary_content = sprintf(
+'# Notes index for %s
+
+* [Overview](README.md)
+
+',
+strtoupper($client_code)
+);
+
+file_put_contents($notes_path . DIRECTORY_SEPARATOR . 'README.md', $readme_content);
+file_put_contents($notes_path . DIRECTORY_SEPARATOR . 'SUMMARY.md', $summary_content);
+
+//
+// *************************************************************
+// Initialize Git repo
+// *************************************************************
+echo shell_exec("
+cd ${notes_path} && \
+git init && \
+git add . && \
+git commit -m 'Initialize notes repo'
+");
+exit(0);
+

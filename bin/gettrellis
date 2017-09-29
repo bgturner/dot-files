@@ -29,14 +29,16 @@ git clone --depth=1 git@github.com:roots/trellis.git
 cd trellis && trellis_forked_commit=$(git rev-parse HEAD) && cd ..
 
 # Re-initialize git
-rm -rf trellis/.git
-cd trellis && git init
+# rm -rf trellis/.git
+# cd trellis && git init
+cd trellis
+git checkout -b ${url}
 
 # Compose our first commit
-git add .
-git commit -m "Add base Trellis files from commit : ${trellis_forked_commit}"
+# git add .
+# git commit -m "Add base Trellis files from commit : ${trellis_forked_commit}"
 
-cd trellis
+# cd trellis
  
 echo ''
 echo "Updating Trellis development url:"

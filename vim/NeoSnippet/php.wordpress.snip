@@ -40,3 +40,20 @@ snippet wp_action
 	}
 	add_action('${1:action_name}', '$2');
 
+snippet wp_filter
+	function ${2:function_name}( $${3:variable} ) {
+		${0}
+                return $$3;
+	}
+	add_filter('${1:filter_name}', '$2');
+        
+snippet shortcode_add
+        function ${2:shortcode_handler}( $atts${3:#:, $content = null} ) {
+                $a = shortcode_atts( array(
+                        ${0}
+                ), $atts );
+
+                return $content;
+        }
+        add_shortcode( '${1:shortcode-name}', '${2:shortcode_handler}' );
+

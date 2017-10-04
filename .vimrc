@@ -17,6 +17,7 @@ Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/denite.nvim'
 Plug 'tobyS/vmustache'
+Plug 'reedes/vim-wordy'
 
 " PHP
 Plug 'tobyS/pdv'

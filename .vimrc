@@ -411,13 +411,21 @@ let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 
 
-"
-" Autocomand
-"
+" Autocommand {{{
+
+" Whitespace adjustments per filetype
+autocmd Filetype markdown setlocal shiftwidth=2 tabstop=2
+
 " Automatically source Vimrc file on save.
-augroup autosourcing
-	autocmd!
-	autocmd BufWritePost .vimrc source %
+augroup AutoCommands
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END
+
+" Allow folding of vim comments
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
 " Make emmet work with Sass
@@ -432,6 +440,8 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Trim whitespace on save
 autocmd FileType php,scss,sass,css,javascript,markdown autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+" end Autocommand }}}
 
 "
 " Quick file access

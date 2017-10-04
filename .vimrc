@@ -442,21 +442,27 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php,scss,sass,css,javascript,markdown autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " end Autocommand }}}
+" Quick file access {{{
 
-"
-" Quick file access
-"
+" Add project subdirectories to path
+set path+=**
+
+" Find a file in the path
+nnoremap <Leader>ff :find 
 
 " Easy editing of vimrc file.
-nmap <Leader>ev :e $MYVIMRC<CR>
+nmap <Leader>ev :edit $MYVIMRC<CR>
 
-" Easy editing of snippets.
-nmap <Leader>es :UltiSnipsEdit<CR>
+" Open a new buffer using the current buffer's working directory
+nmap <Leader>enb :edit %:p:h/
 
-"
-" end Quick file access
-"
+" Quick editing of pp notes
+nmap <Leader>epp :edit ~/Documents/Notes/pp-notes.md<CR>
 
+" Quick editing of pm notes
+nmap <Leader>epm :edit ~/Documents/Notes/pm-notes.md<CR>
+
+" end Quick file access }}}
 
 " **************************
 " Markdown

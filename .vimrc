@@ -122,118 +122,54 @@ let g:vimfiler_as_default_explorer = 1 " Replace netrw with vimfiler
 nmap <leader>ff :<C-u>VimFiler<CR>
 nmap <leader>fe :<C-u>VimFilerExplorer<CR>
 
-" Unite settings
-let g:unite_split_rule="botright"
-let g:unite_source_file_mru_limit=300
-let g:unite_source_history_yank_enable=1
+" Denite Settings {{{
+nnoremap <Leader>ul :<C-u>Denite line<CR>
+nnoremap <leader>ub :<C-u>Denite -buffer-name=buffers buffer<CR>
+nnoremap <Leader>u? :<C-u>Denite -buffer-name=ag grep:.<CR>
+nnoremap <leader>uf :<C-u>Denite -buffer-name=files file_rec<cr>
+nnoremap <leader>ut :<C-u>Denite -buffer-name=tags tag<cr>
+nnoremap <leader>uo :<C-u>Denite -buffer-name=outline outline<cr>
+nnoremap <leader>urr :<C-u>Denite -resume<cr>
+nnoremap <leader>ura :<C-u>Denite -buffer-name=ag -resume<cr>
 
-nnoremap <Leader>us :<C-u>Unite -ignorecase -start-insert source<CR>
-nnoremap <Leader>u/ :<C-u>Unite -ignorecase -start-insert line<CR>
-nnoremap <leader>ub :<C-u>Unite -ignorecase -start-insert -buffer-name=buffers buffer<CR>
-nnoremap <Leader>u? :<C-u>Unite -ignorecase -buffer-name=ag -no-split -silent grep:.<CR>
-nnoremap <leader>uf :<C-u>Unite -ignorecase -buffer-name=files -no-split -force-redraw -start-insert file_rec/async<cr>
-nnoremap <leader>ut :<C-u>Unite -ignorecase -buffer-name=tags -no-split -start-insert tag<cr>
-nnoremap <leader>uo :<C-u>Unite -ignorecase -buffer-name=outline -silent -start-insert outline<cr>
-nnoremap <leader>ur :<C-u>UniteResume<cr>
-nnoremap <leader>un :<C-u>UniteNext<cr>
-nnoremap <leader>up :<C-u>UnitePrevious<cr>
-
-
-" Replace unite's grep with ag
-" Note: must install ag -- sudo apt-get install silversearcher-ag
-if executable('ag')
-	let g:unite_source_grep_command = 'ag'
-	let g:unite_source_grep_default_opts =
-		\ '--nocolor --nogroup --smart-case --hidden' .
-		\ ' --ignore .hg' .
-		\ ' --ignore .svn' .
-		\ ' --ignore .git' .
-		\ ' --ignore .bzr' .
-		\ ' --ignore node_modules' .
-		\ ' --ignore bower_components'
-	let g:unite_source_rec_async_command =
-				\ ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '',
-				\  '--ignore', 'bower_components',
-				\  '--ignore', 'node_modules']
-	" Replace vim's grep with ag
-	set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
-	set grepformat=%f:%l:%c:%m
-endif " end ag customization
-
-" Specific functionality only in the unite buffer
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-	" Play nice with supertab
-	let b:SuperTabDisabled=1
-	" Enable navigation with control-j and control-k in insert mode
-	imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-	imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-endfunction
+" Change mappings.
+call denite#custom#map(
+      \ 'insert',
+      \ '<C-j>',
+      \ '<denite:move_to_next_line>',
+      \ 'noremap'
+      \)
+call denite#custom#map(
+      \ 'insert',
+      \ '<C-k>',
+      \ '<denite:move_to_previous_line>',
+      \ 'noremap'
+      \)
 
 "
-" Unite Custom Menus
+" Use ag for searching for files. Helpful for ignoring files that are ignored
+" in .gitignore
 "
-" Initialize Unite's global list of menus.
-if !exists('g:unite_source_menu_menus')
-	let g:unite_source_menu_menus = {}
-endif
-" Enable quick access to all unite menus.
-nnoremap <Leader>umm :<C-U>Unite menu -start-insert -ignorecase<CR>
+call denite#custom#var('file_rec', 'command',
+	\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 
-"
-" Workflow Menu
-"
-" Define menu.
-let g:unite_source_menu_menus.workflow = {
-	\ 'description': "Workflow"
-	\ }
-" Create a function to map 'Workflow' command labels to the commands that they execute.
-function! g:unite_source_menu_menus.workflow.map(key, value)
-	return {
-		\ 'word': a:key,
-		\ 'kind': 'command',
-		\ 'action__command': a:value
-		\ }
-endfunction
-" The labels to command map for the workflow menu.
-" Note: the grep pattern with the colons follows -
-" grep:<search_file_or_directory>:<grep_options>:<input_pattern>
-let g:unite_source_menu_menus.workflow.command_candidates = [
-	\ ['TODOs Project', 'Unite -start-insert -buffer-name=todos grep:.::TODO|todo'],
-	\ ['TODOs Global', 'edit ~/Documents/todos/todos.md'],
-	\ ['Notes Personal', 'edit ~/Documents/Notes/braindump.md'],
-	\ ['Notes PeacefulMedia', 'edit ~/Projects/PeacefulMedia/notes/braindump.md']
-	\ ]
-nnoremap <Leader>umw :<C-U>Unite menu:workflow -start-insert -ignorecase<CR>
+" Ag command on grep source
+call denite#custom#var('grep', 'command', ['ag'])
+call denite#custom#var('grep', 'default_opts',
+		\ ['-i', '--vimgrep'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', [])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
 
-"
-" Laravel Menu
-"
-" Define menu.
-let g:unite_source_menu_menus.laravel = {
-	\ 'description': "Laravel"
-	\ }
-" Create a function to map 'Laravel' command labels to the commands that they execute.
-function! g:unite_source_menu_menus.laravel.map(key, value)
-	return {
-		\ 'word': a:key,
-		\ 'kind': 'command',
-		\ 'action__command': a:value
-		\ }
-endfunction
-" The labels to map for the laravel menu.
-let g:unite_source_menu_menus.laravel.command_candidates = [
-	\ ['Routes', 'Unite -ignorecase -start-insert -buffer-name=laravelRoutes grep:.::^Route\:\:'],
-	\ ['Migrations', 'Unite -ignorecase -start-insert -buffer-name=laravelMigrations grep:.::^class.*Migration'],
-	\ ['Controllers', 'Unite -ignorecase -start-insert -buffer-name=laravelControllers grep:.::^class.*Controller'],
-	\ ['Models', 'Unite -ignorecase -start-insert -buffer-name=laravelModels grep:.::^class.*Model']
-	\ ]
-nnoremap <Leader>uml :<C-U>Unite menu:laravel -start-insert -ignorecase<CR>
 
-"
-" end Unite Custom Menus
-"
+" Change ignore_globs
+call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
+      \ [ '.git/', '.ropeproject/', '__pycache__/',
+      \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/',
+      \   'vendor'])
 
+" }}}
 
 " Surround settings
 let g:surround_{char2nr('b')} = "**\r**"

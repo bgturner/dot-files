@@ -17,7 +17,6 @@ Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/denite.nvim'
 Plug 'tobyS/vmustache'
-Plug 'vim-syntastic/syntastic'
 
 " PHP
 Plug 'tobyS/pdv'
@@ -174,6 +173,20 @@ call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
       \   'vendor'])
 
 " }}}
+" Neomake Settings {{{
+nnoremap <Leader>nm :Neomake<cr>
+
+let g:neomake_php_phpcs_maker = {
+	\ 'args': [
+		\ '--report=csv',
+	\ ],
+	\ 'errorformat': 
+		\ '%-GFile\,Line\,Column\,Type\,Message\,Source\,Severity%.%#,'.
+		\ '"%f"\,%l\,%c\,%t%*[a-zA-Z]\,"%m"\,%*[a-zA-Z0-9_.-]\,%*[0-9]%.%#'
+	\ }
+
+" }}}
+
 
 " Surround settings
 let g:surround_{char2nr('b')} = "**\r**"
@@ -294,50 +307,6 @@ autocmd FileType php set keywordprg=pman
 
 "
 " end PHP
-"
-
-"
-" Syntastic
-"
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_loc_list_height = 5
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_error_symbol = '❌'
-let g:syntastic_style_error_symbol = '⁉️'
-let g:syntastic_warning_symbol = '⚠️'
-let g:syntastic_style_warning_symbol = '💩'
-highlight link SyntasticErrorSign SignColumn
-highlight link SyntasticWarningSign SignColumn
-highlight link SyntasticStyleErrorSign SignColumn
-highlight link SyntasticStyleWarningSign SignColumn
-
-let g:syntastic_mode_map = {
-	\ "mode": "active",
-	\ "active_filetypes": [],
-	\ "passive_filetypes": ["php"] }
-
-" Syntastic settings for phpcs and WordPress coding standards
-"
-" Run base PHP checker first, then run phpcs with WordPress standard
-" If phpcs does not exist or the WordPress standard does not exist,
-" Syntastic skips them (failing gracefully)
-let g:syntastic_php_checkers = ['php','phpcs']
-let g:syntastic_php_phpcs_args = '--standard=WordPress-VIP'
-
-" If phpcs.xml is found, it supercedes the standard set above
-let g:syntastic_php_phpcs_standard_file = "phpcs.xml"
-
-nnoremap <Leader>sc :SyntasticCheck<cr>
-nnoremap <Leader>sr :SyntasticReset<cr>
-
-"
-" end Syntastic
 "
 
 "UltiSnips

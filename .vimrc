@@ -1,84 +1,45 @@
 set nocompatible
 
- " Install dein for package management if not installed.
- if !isdirectory($HOME.'/.vim/dein/repos/github.com/Shougo/dein.vim')
-	 if executable('git')
-		 call mkdir($HOME.'/.vim/dein/repos/github.com/Shougo/dein.vim', 'p')
-		 !git clone https://github.com/Shougo/dein.vim $HOME/.vim/dein/repos/github.com/Shougo/dein.vim
-	 endif
- endif
+call plug#begin('~/.vim/plugged')
 
-set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim " path to dein.vim
+" Misc
+Plug 'junegunn/vim-easy-align'
+Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'Raimondi/delimitMate'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'skwp/greplace.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'neomake/neomake'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'Shougo/denite.nvim'
+Plug 'tobyS/vmustache'
+Plug 'vim-syntastic/syntastic'
 
-call dein#begin(expand('~/.vim/dein')) " plugins' root path
+" PHP
+Plug 'tobyS/pdv'
+Plug 'adoy/vim-php-refactoring-toolbox'
+Plug 'StanAngeloff/php.vim'
+Plug 'shawncplus/phpcomplete.vim'
+Plug 'arnaud-lb/vim-php-namespace'
+Plug 'joseluis/wordpress.vim'
+Plug 'captbaritone/better-indent-support-for-php-with-html'
 
-" The Shougo Way.
-call dein#add('Shougo/dein.vim')
-call dein#add('Shougo/vimproc.vim', {'build': 'make'})
-call dein#add('Shougo/unite.vim')
-call dein#add('Shougo/vimfiler.vim')
-call dein#add('Shougo/neomru.vim')
-call dein#add('Shougo/vimshell.vim')
-call dein#add('Shougo/neocomplete.vim')
-call dein#add('Shougo/unite-outline')
-call dein#add('Shougo/context_filetype.vim')
-call dein#add('Shougo/neoinclude.vim')
-call dein#add('Shougo/neco-syntax')
-call dein#add('Shougo/neopairs.vim')
-call dein#add('tsukkee/unite-tag')
-call dein#add('ujihisa/unite-colorscheme')
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
-" Language specific things.
-call dein#add('adoy/vim-php-refactoring-toolbox')
-call dein#add('StanAngeloff/php.vim')
-call dein#add('shawncplus/phpcomplete.vim')
-call dein#add('phpcs.vim')
-call dein#add('dsawardekar/wordpress.vim')
-call dein#add('arnaud-lb/vim-php-namespace')
-call dein#add('tobyS/vmustache')
-call dein#add('tobyS/pdv')
-call dein#add('jwalton512/vim-blade')
-call dein#add('posva/vim-vue')
+" Styling
+Plug 'w0ng/vim-hybrid'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 
-" misc
-call dein#add('vim-syntastic/syntastic')
-call dein#add('captbaritone/better-indent-support-for-php-with-html')
-call dein#add('editorconfig/editorconfig-vim')
-call dein#add('skwp/greplace.vim')
-call dein#add('terryma/vim-multiple-cursors')
-call dein#add('mattn/emmet-vim')
-call dein#add('SirVer/ultisnips')
-call dein#add('JazzCore/neocomplcache-ultisnips')
-call dein#add('tpope/vim-repeat')
-call dein#add('tpope/vim-surround')
-call dein#add('tpope/vim-commentary')
-call dein#add('junegunn/vim-easy-align')
-call dein#add('airblade/vim-gitgutter')
-call dein#add('Raimondi/delimitMate')
-call dein#add('Konfekt/FastFold')
-call dein#add('osyo-manga/unite-quickfix')
-
-" Markdown and non-code writing
-call dein#add('tpope/vim-markdown')
-call dein#add('tpope/vim-fugitive')
-call dein#add('reedes/vim-wordy')
-call dein#add('reedes/vim-pencil')
-call dein#add('reedes/vim-colors-pencil')
-call dein#add('suan/vim-instant-markdown')
-call dein#add('nelstrom/vim-markdown-folding')
-
-" Theme things
-call dein#add('vim-airline/vim-airline')
-call dein#add('vim-airline/vim-airline-themes')
-call dein#add('w0ng/vim-hybrid')
-
-call dein#end()
-
-" Automatically install plugins on startup.
-if dein#check_install()
-	call dein#install()
-endif
+" Initialize plugin system
+call plug#end()
 
 " defaults
 set showcmd

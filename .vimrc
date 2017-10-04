@@ -110,18 +110,16 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" VimShell settings
-let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-let g:vimshell_right_prompt = 'strftime("%T")'
-let g:vimshell_prompt = '$ '
-nmap <leader>vs :VimShell<CR>
+" Netrw Settings {{{
+let g:netrw_banner = 0
 
-" Vimfiler settings
-let g:loaded_netrwPlugin = 1 " Disable netrw.vim
-let g:vimfiler_as_default_explorer = 1 " Replace netrw with vimfiler
-nmap <leader>ff :<C-u>VimFiler<CR>
-nmap <leader>fe :<C-u>VimFilerExplorer<CR>
+" Open Netrw in the project root
+nnoremap <leader>ne :edit .<cr>
 
+" Open Netrw in the path of the current buffer
+nnoremap <leader>n. :edit %:p:h<cr>
+
+" }}}
 " Denite Settings {{{
 nnoremap <Leader>ul :<C-u>Denite line<CR>
 nnoremap <leader>ub :<C-u>Denite -buffer-name=buffers buffer<CR>

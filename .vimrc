@@ -74,12 +74,6 @@ set wildmenu
 " https://github.com/webpack/webpack/issues/781
 set backupcopy:yes
 
-" greplace.vim
-set grepprg=ag
-let g:grep_cmd_opts = '--line-numbers --noheading'
-nmap <Leader>gs :Gsearch<CR>
-nmap <Leader>gr :Greplace<CR>
-
 " Set colorscheme
 syntax on
 set background=dark
@@ -110,6 +104,18 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Greplace Settings {{{
+
+" Use 'ag' to search if it exists
+if executable('ag')
+  set grepprg=ag
+  let g:grep_cmd_opts = '--line-numbers --noheading'
+endif
+
+nmap <Leader>grs :Gsearch<CR>
+nmap <Leader>grr :Greplace<CR>
+
+" }}}
 " Netrw Settings {{{
 let g:netrw_banner = 0
 

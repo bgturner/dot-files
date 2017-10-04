@@ -382,10 +382,6 @@ augroup encrypted
   autocmd BufWritePost,FileWritePost *.gpg u
 augroup END
 
-" EasyAlign settings.
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-
 "
 " Autocomplete
 "
@@ -399,6 +395,14 @@ let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 
 
+" Easy Align Settings {{{
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+" }}}
 " Autocommand {{{
 
 " Whitespace adjustments per filetype

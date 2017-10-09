@@ -432,6 +432,15 @@ augroup encrypted
 augroup END
 
 " end Autocommand }}}
+" NeoSnippet Settings {{{
+nnoremap <leader>es :NeoSnippetEdit -vertical<cr>
+let g:neosnippet#snippets_directory=$HOME.'/.vim/NeoSnippet/'
+
+imap <C-j> <Plug>(neosnippet_expand_or_jump)
+smap <C-j> <Plug>(neosnippet_expand_or_jump)
+xmap <C-j> <Plug>(neosnippet_expand_target)
+
+" }}}
 " Quick file access {{{
 
 " Add project subdirectories to path

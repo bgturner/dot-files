@@ -234,16 +234,16 @@ let g:vim_php_refactoring_default_property_visibility = 'public'
 let g:vim_php_refactoring_default_method_visibility = 'public'
 
 " }}}
+" PDV Settings {{{
+let g:pdv_template_dir = $HOME ."/.vim/plugged/pdv/templates"
+nnoremap <Leader>pd :call pdv#DocumentCurrentLine()<CR>
 
+"}}}
 " php macros
 "
 " Creates class property and assigns argument from function signature within
 " function block.
 let @a = "mmyiw/}O	$this->\" = $\";O?__constructOprotected $\";`m:nohlsearch"
-
-" Configure phpdocumentor
-let g:pdv_template_dir = $HOME ."/.vim/dein/repos/github.com/tobyS/pdv/templates_snip"
-nmap gk :call pdv#DocumentWithSnip()<CR>
 
 " Setup phpcs rules for WP
 let g:phpcs_std_list="WordPress-Docs, WordPress-VIP"

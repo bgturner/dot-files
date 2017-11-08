@@ -6,7 +6,7 @@ DISABLE_AUTO_TITLE="true"
 
 # Plugins.
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git tmux nvm cp rsync composer vi-mode)
+plugins=(git nvm cp rsync composer vi-mode)
 
 # User configuration
 

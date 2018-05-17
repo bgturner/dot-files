@@ -79,8 +79,13 @@ augroup filetype_vim
     autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
-" }}}
+" Automatically source Vimrc file on save.
+augroup AutoCommands
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END
 
+" }}}
 filetype plugin on
 filetype indent on
 

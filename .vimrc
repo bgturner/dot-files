@@ -3,6 +3,10 @@ set nocompatible
 " Plugins {{{
 call plug#begin('~/.vim/plugged')
 
+" Misc
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -95,6 +99,48 @@ augroup AutoCommands
     autocmd!
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
+
+" }}}
+" FZF Settings {{{
+" This is the default extra key bindings
+" let g:fzf_action = {
+"   \ 'ctrl-t': 'tab split',
+"   \ 'ctrl-x': 'split',
+"   \ 'ctrl-v': 'vsplit' }
+
+" fzf layout
+" - down / up / left / right
+let g:fzf_layout = { 'down': '~50%' }
+
+" Select multiple items with tab
+nmap <Leader><tab> <plug>(fzf-maps-n)
+xmap <Leader><tab> <plug>(fzf-maps-x)
+omap <Leader><tab> <plug>(fzf-maps-o)
+
+nnoremap <Leader>fe :Files<CR>
+nnoremap <Leader>ft :Tags<CR>
+nnoremap <Leader>fl :Lines<CR>
+nnoremap <Leader>fb :Buffers<CR>
+nnoremap <Leader>ff :Find 
+nnoremap <Leader>f* :Find <C-R><C-W><CR>
+nnoremap <silent> <Leader>fc :call fzf#run({
+\   'source':
+\     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
+\         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
+\   'sink':    'colo',
+\   'options': '+m',
+\   'left':    30
+\ })<CR>
+
+" Use Ripgrep if it's available
+if executable('rg')
+	" Replace the Files FZF command
+	let $FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+	" Replace Grep
+	command! -bang -nargs=* Find call fzf#vim#grep(
+		\ 'rg --column --line-number --no-heading --follow --color=always --hidden '.<q-args>, 1,
+		\ <bang>0 ? fzf#vim#with_preview('up:60%') : fzf#vim#with_preview('right:50%:hidden', '?'), <bang>0)
+endif
 
 " }}}
 " Fugitive settings {{{

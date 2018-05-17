@@ -1,5 +1,16 @@
 set nocompatible
 
+" Plugins {{{
+call plug#begin('~/.vim/plugged')
+
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+" Initialize plugin system
+call plug#end()
+
+" }}}
 " Defaults {{{
 set showcmd
 set hidden
@@ -84,6 +95,18 @@ augroup AutoCommands
     autocmd!
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
+
+" }}}
+" Fugitive settings {{{
+nmap <Leader>gs :Gstatus<cr>
+nmap <Leader>gw :Gwrite<cr>
+nmap <Leader>gc :Gcommit<cr>
+nmap <Leader>gca :Gcommit --amend<cr>
+nmap <Leader>gdd :Gdiff<cr>
+nmap <Leader>gdc :Git diff --cached<cr>
+nmap <Leader>gnb :Git checkout -b 
+nmap <Leader>gb :Gblame<cr>
+nmap <Leader>gl :Git! lola<cr>
 
 " }}}
 filetype plugin on

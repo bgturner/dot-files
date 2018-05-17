@@ -109,6 +109,18 @@ nmap <Leader>gb :Gblame<cr>
 nmap <Leader>gl :Git! lola<cr>
 
 " }}}
+" Quick file access {{{
+
+" Add project subdirectories to path
+set path+=**
+
+" Easy editing of vimrc file.
+nmap <Leader>ev :edit $MYVIMRC<CR>
+
+" Open a new buffer using the current buffer's working directory
+nmap <Leader>enb :edit %:p:h/
+
+" end Quick file access }}}
 filetype plugin on
 filetype indent on
 

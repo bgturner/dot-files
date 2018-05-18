@@ -4,6 +4,8 @@ set nocompatible
 call plug#begin('~/.vim/plugged')
 
 " Misc
+Plug 'junegunn/vim-easy-align'
+Plug 'mattn/emmet-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
@@ -99,6 +101,9 @@ augroup AutoCommands
     autocmd!
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
+
+" Make emmet work with Sass
+autocmd FileType html,css,scss,sass EmmetInstall
 
 " }}}
 " FZF Settings {{{

@@ -160,6 +160,7 @@ nnoremap <Leader>fe :Files<CR>
 nnoremap <Leader>ft :Tags<CR>
 nnoremap <Leader>fl :Lines<CR>
 nnoremap <Leader>fb :Buffers<CR>
+nnoremap <Leader>fh :Helptags<CR>
 nnoremap <Leader>ff :Find 
 nnoremap <Leader>f* :Find <C-R><C-W><CR>
 nnoremap <silent> <Leader>fc :call fzf#run({

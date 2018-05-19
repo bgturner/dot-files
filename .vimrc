@@ -126,6 +126,9 @@ augroup END
 " Make emmet work with Sass
 autocmd FileType html,css,scss,sass EmmetInstall
 
+" Trim whitespace on save
+autocmd FileType php,scss,sass,css,javascript,markdown autocmd BufWritePre <buffer> :%s/\s\+$//e
+
 " }}}
 " Netrw Settings {{{
 let g:netrw_banner = 0

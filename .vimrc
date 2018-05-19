@@ -8,6 +8,8 @@ Plug 'junegunn/vim-easy-align'
 Plug 'mattn/emmet-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -172,6 +174,16 @@ nmap <Leader>gdc :Git diff --cached<cr>
 nmap <Leader>gnb :Git checkout -b 
 nmap <Leader>gb :Gblame<cr>
 nmap <Leader>gl :Git! lola<cr>
+
+" }}}
+" UltiSnips {{{
+let g:UltiSnipsSnippetsDir         = $HOME.'/.vim/UltiSnips/'
+let g:UltiSnipsSnippetDirectories  = ["UltiSnips"]
+let g:UltiSnipsExpandTrigger       = "<c-j>"
+let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+let g:UltiSnipsListSnippets        = "<c-h>"
+let g:UltiSnipsEditSplit           = "vertical"
 
 " }}}
 " Quick file access {{{

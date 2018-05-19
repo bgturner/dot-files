@@ -122,6 +122,16 @@ augroup END
 autocmd FileType html,css,scss,sass EmmetInstall
 
 " }}}
+" Netrw Settings {{{
+let g:netrw_banner = 0
+
+" Open Netrw in the project root
+nnoremap <leader>ne :edit .<cr>
+
+" Open Netrw in the path of the current buffer
+nnoremap <leader>n. :edit %:p:h<cr>
+
+" }}}
 " FZF Settings {{{
 " This is the default extra key bindings
 " let g:fzf_action = {

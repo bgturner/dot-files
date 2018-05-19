@@ -99,6 +99,11 @@ set splitbelow
 set splitright
 
 " }}}
+" Ctags {{{
+" Rebuild ctags
+nmap <leader>T :!ctags -R --exclude=node_modules --exclude=bower_components --exclude="*.min.js" --exclude="*jquery*.js" --exclude="*bootstrap*.js"<CR>
+
+" }}}
 " Search Settings {{{
 set hlsearch
 set incsearch

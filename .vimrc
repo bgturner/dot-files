@@ -182,6 +182,12 @@ nnoremap <silent> <Leader>fc :call fzf#run({
 \   'left':    30
 \ })<CR>
 
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
 " Use Ripgrep if it's available
 if executable('rg')
 	" Replace the Files FZF command

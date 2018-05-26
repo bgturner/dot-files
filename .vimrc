@@ -35,6 +35,12 @@ Plug 'AlessandroYorba/Despacio'
 Plug 'cocopon/iceberg.vim'
 Plug 'w0ng/vim-hybrid'
 
+" PHP
+Plug 'StanAngeloff/php.vim'
+Plug 'captbaritone/better-indent-support-for-php-with-html'
+Plug 'adoy/vim-php-refactoring-toolbox'
+Plug 'joseluis/wordpress.vim'
+
 " Initialize plugin system
 call plug#end()
 
@@ -148,6 +154,28 @@ nnoremap <leader>n. :edit %:p:h<cr>
 " }}}
 " Neomake {{{
 nnoremap <leader>nm :Neomake<cr>
+
+" }}}
+" PHP Refactoring Settings {{{
+" php refactoring default keymap:
+"
+" nnoremap <unique> <Leader>rlv :call PhpRenameLocalVariable()<CR>
+" nnoremap <unique> <Leader>rcv :call PhpRenameClassVariable()<CR>
+" nnoremap <unique> <Leader>rm :call PhpRenameMethod()<CR>
+" nnoremap <unique> <Leader>eu :call PhpExtractUse()<CR>
+" vnoremap <unique> <Leader>ec :call PhpExtractConst()<CR>
+" nnoremap <unique> <Leader>ep :call PhpExtractClassProperty()<CR>
+" vnoremap <unique> <Leader>em :call PhpExtractMethod()<CR>
+" nnoremap <unique> <Leader>np :call PhpCreateProperty()<CR>
+" nnoremap <unique> <Leader>du :call PhpDetectUnusedUseStatements()<CR>
+" vnoremap <unique> <Leader>== :call PhpAlignAssigns()<CR>
+" nnoremap <unique> <Leader>sg :call PhpCreateSettersAndGetters()<CR>
+" nnoremap <unique> <Leader>cog :call PhpCreateGetters()<CR>
+" nnoremap <unique> <Leader>da :call PhpDocAll()<CR>
+
+let g:vim_php_refactoring_auto_validate_visibility = 1
+let g:vim_php_refactoring_default_property_visibility = 'public'
+let g:vim_php_refactoring_default_method_visibility = 'public'
 
 " }}}
 " FZF Settings {{{

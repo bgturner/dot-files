@@ -15,6 +15,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'neomake/neomake'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -143,6 +144,10 @@ nnoremap <leader>ne :edit .<cr>
 
 " Open Netrw in the path of the current buffer
 nnoremap <leader>n. :edit %:p:h<cr>
+
+" }}}
+" Neomake {{{
+nnoremap <leader>nm :Neomake<cr>
 
 " }}}
 " FZF Settings {{{

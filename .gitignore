@@ -16,3 +16,4 @@ bower_components
 npm-debug.log
 vendor
 .DS_Store
+bin

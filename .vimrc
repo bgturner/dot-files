@@ -16,6 +16,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'neomake/neomake'
+Plug 'adelarsq/vim-matchit'
 
 " Git
 Plug 'tpope/vim-fugitive'

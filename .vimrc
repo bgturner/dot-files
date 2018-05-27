@@ -1,86 +1,51 @@
 set nocompatible
 
- " Install dein for package management if not installed.
- if !isdirectory($HOME.'/.vim/dein/repos/github.com/Shougo/dein.vim')
-	 if executable('git')
-		 call mkdir($HOME.'/.vim/dein/repos/github.com/Shougo/dein.vim', 'p')
-		 !git clone https://github.com/Shougo/dein.vim $HOME/.vim/dein/repos/github.com/Shougo/dein.vim
-	 endif
- endif
+" Plugins {{{
+call plug#begin('~/.vim/plugged')
 
-set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim " path to dein.vim
+" Misc
+Plug 'junegunn/vim-easy-align'
+Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'neomake/neomake'
 
-call dein#begin(expand('~/.vim/dein')) " plugins' root path
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
-" The Shougo Way.
-call dein#add('Shougo/dein.vim')
-call dein#add('Shougo/vimproc.vim', {'build': 'make'})
-call dein#add('Shougo/unite.vim')
-call dein#add('Shougo/vimfiler.vim')
-call dein#add('Shougo/neomru.vim')
-call dein#add('Shougo/vimshell.vim')
-call dein#add('Shougo/neocomplete.vim')
-call dein#add('Shougo/unite-outline')
-call dein#add('Shougo/context_filetype.vim')
-call dein#add('Shougo/neoinclude.vim')
-call dein#add('Shougo/neco-syntax')
-call dein#add('Shougo/neopairs.vim')
-call dein#add('tsukkee/unite-tag')
-call dein#add('ujihisa/unite-colorscheme')
+" Styling
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
-" Language specific things.
-call dein#add('adoy/vim-php-refactoring-toolbox')
-call dein#add('StanAngeloff/php.vim')
-call dein#add('shawncplus/phpcomplete.vim')
-call dein#add('phpcs.vim')
-call dein#add('dsawardekar/wordpress.vim')
-call dein#add('arnaud-lb/vim-php-namespace')
-call dein#add('tobyS/vmustache')
-call dein#add('tobyS/pdv')
-call dein#add('jwalton512/vim-blade')
-call dein#add('posva/vim-vue')
+" Color
+Plug 'tomasr/molokai'
+Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'morhetz/gruvbox'
+Plug 'yuttie/hydrangea-vim'
+Plug 'tyrannicaltoucan/vim-deep-space'
+Plug 'AlessandroYorba/Despacio'
+Plug 'cocopon/iceberg.vim'
+Plug 'w0ng/vim-hybrid'
 
+" PHP
+Plug 'StanAngeloff/php.vim'
+Plug 'captbaritone/better-indent-support-for-php-with-html'
+Plug 'adoy/vim-php-refactoring-toolbox'
+Plug 'joseluis/wordpress.vim'
 
-" misc
-call dein#add('vim-syntastic/syntastic')
-call dein#add('captbaritone/better-indent-support-for-php-with-html')
-call dein#add('editorconfig/editorconfig-vim')
-call dein#add('skwp/greplace.vim')
-call dein#add('terryma/vim-multiple-cursors')
-call dein#add('mattn/emmet-vim')
-call dein#add('SirVer/ultisnips')
-call dein#add('JazzCore/neocomplcache-ultisnips')
-call dein#add('tpope/vim-repeat')
-call dein#add('tpope/vim-surround')
-call dein#add('tpope/vim-commentary')
-call dein#add('junegunn/vim-easy-align')
-call dein#add('airblade/vim-gitgutter')
-call dein#add('Raimondi/delimitMate')
-call dein#add('Konfekt/FastFold')
-call dein#add('osyo-manga/unite-quickfix')
+" Initialize plugin system
+call plug#end()
 
-" Markdown and non-code writing
-call dein#add('tpope/vim-markdown')
-call dein#add('tpope/vim-fugitive')
-call dein#add('reedes/vim-wordy')
-call dein#add('reedes/vim-pencil')
-call dein#add('reedes/vim-colors-pencil')
-call dein#add('suan/vim-instant-markdown')
-call dein#add('nelstrom/vim-markdown-folding')
-
-" Theme things
-call dein#add('vim-airline/vim-airline')
-call dein#add('vim-airline/vim-airline-themes')
-call dein#add('w0ng/vim-hybrid')
-
-call dein#end()
-
-" Automatically install plugins on startup.
-if dein#check_install()
-	call dein#install()
-endif
-
-" defaults
+" }}}
+" Defaults {{{
 set showcmd
 set hidden
 set number
@@ -113,20 +78,17 @@ set wildmenu
 " https://github.com/webpack/webpack/issues/781
 set backupcopy:yes
 
-" greplace.vim
-set grepprg=ag
-let g:grep_cmd_opts = '--line-numbers --noheading'
-nmap <Leader>gs :Gsearch<CR>
-nmap <Leader>gr :Greplace<CR>
-
 " Set colorscheme
 syntax on
+colorscheme gruvbox
 set background=dark
-colorscheme hybrid
-let g:airline_theme='hybrid'
 
 " Use x system clipboard by default
-set clipboard=unnamedplus
+if system('uname -s') == "Darwin\n"
+  set clipboard=unnamed "OSX
+else
+  set clipboard=unnamedplus "Linux
+endif
 
 " Better pasting from system clipboard
 set pastetoggle=<F2>
@@ -141,463 +103,108 @@ set undodir=~/.vim/.undo
 " Set leader to space
 let mapleader=" "
 
+" Work having to use esc
+inoremap jk <Esc>
+
 " Split management.
 set splitbelow
 set splitright
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
 
-" VimShell settings
-let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-let g:vimshell_right_prompt = 'strftime("%T")'
-let g:vimshell_prompt = '$ '
-nmap <leader>vs :VimShell<CR>
+" }}}
+" General Remaps {{{
 
-" Vimfiler settings
-let g:loaded_netrwPlugin = 1 " Disable netrw.vim
-let g:vimfiler_as_default_explorer = 1 " Replace netrw with vimfiler
-nmap <leader>ff :<C-u>VimFiler<CR>
-nmap <leader>fe :<C-u>VimFilerExplorer<CR>
+" Open new line below and above current line
+nnoremap <leader>o o<esc>
+nnoremap <leader>O O<esc>
 
-" Unite settings
-let g:unite_split_rule="botright"
-let g:unite_source_file_mru_limit=300
-let g:unite_source_history_yank_enable=1
+" ----------------------------------------------------------------------------
+" Quickfix
+" ----------------------------------------------------------------------------
+nnoremap ]q :cnext<cr>zz
+nnoremap [q :cprev<cr>zz
+nnoremap ]l :lnext<cr>zz
+nnoremap [l :lprev<cr>zz
 
-nnoremap <Leader>us :<C-u>Unite -ignorecase -start-insert source<CR>
-nnoremap <Leader>u/ :<C-u>Unite -ignorecase -start-insert line<CR>
-nnoremap <leader>ub :<C-u>Unite -ignorecase -start-insert -buffer-name=buffers buffer<CR>
-nnoremap <Leader>u? :<C-u>Unite -ignorecase -buffer-name=ag -no-split -silent grep:.<CR>
-nnoremap <leader>uf :<C-u>Unite -ignorecase -buffer-name=files -no-split -force-redraw -start-insert file_rec/async<cr>
-nnoremap <leader>ut :<C-u>Unite -ignorecase -buffer-name=tags -no-split -start-insert tag<cr>
-nnoremap <leader>uo :<C-u>Unite -ignorecase -buffer-name=outline -silent -start-insert outline<cr>
-nnoremap <leader>ur :<C-u>UniteResume<cr>
-nnoremap <leader>un :<C-u>UniteNext<cr>
-nnoremap <leader>up :<C-u>UnitePrevious<cr>
+" ----------------------------------------------------------------------------
+" Buffers
+" ----------------------------------------------------------------------------
+nnoremap ]b :bnext<cr>
+nnoremap [b :bprev<cr>
 
+" ----------------------------------------------------------------------------
+" Tabs
+" ----------------------------------------------------------------------------
+nnoremap ]t :tabn<cr>
+nnoremap [t :tabp<cr>
 
-" Replace unite's grep with ag
-" Note: must install ag -- sudo apt-get install silversearcher-ag
-if executable('ag')
-	let g:unite_source_grep_command = 'ag'
-	let g:unite_source_grep_default_opts =
-		\ '--nocolor --nogroup --smart-case --hidden' .
-		\ ' --ignore .hg' .
-		\ ' --ignore .svn' .
-		\ ' --ignore .git' .
-		\ ' --ignore .bzr' .
-		\ ' --ignore node_modules' .
-		\ ' --ignore bower_components'
-	let g:unite_source_rec_async_command =
-				\ ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '',
-				\  '--ignore', 'bower_components',
-				\  '--ignore', 'node_modules']
-	" Replace vim's grep with ag
-	set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
-	set grepformat=%f:%l:%c:%m
-endif " end ag customization
+" ----------------------------------------------------------------------------
+" Moving lines
+" ----------------------------------------------------------------------------
+nnoremap <silent> <C-k> :move-2<cr>
+nnoremap <silent> <C-j> :move+<cr>
+nnoremap <silent> <C-h> <<
+nnoremap <silent> <C-l> >>
+xnoremap <silent> <C-k> :move-2<cr>gv
+xnoremap <silent> <C-j> :move'>+<cr>gv
+xnoremap <silent> <C-h> <gv
+xnoremap <silent> <C-l> >gv
+xnoremap < <gv
+xnoremap > >gv
 
-" Specific functionality only in the unite buffer
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-	" Play nice with supertab
-	let b:SuperTabDisabled=1
-	" Enable navigation with control-j and control-k in insert mode
-	imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-	imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-endfunction
+" ----------------------------------------------------------------------------
+" <Leader>c Close quickfix/location window
+" ----------------------------------------------------------------------------
+nnoremap <leader>c :cclose<bar>lclose<cr>
 
-"
-" Unite Custom Menus
-"
-" Initialize Unite's global list of menus.
-if !exists('g:unite_source_menu_menus')
-	let g:unite_source_menu_menus = {}
-endif
-" Enable quick access to all unite menus.
-nnoremap <Leader>umm :<C-U>Unite menu -start-insert -ignorecase<CR>
-
-"
-" Workflow Menu
-"
-" Define menu.
-let g:unite_source_menu_menus.workflow = {
-	\ 'description': "Workflow"
-	\ }
-" Create a function to map 'Workflow' command labels to the commands that they execute.
-function! g:unite_source_menu_menus.workflow.map(key, value)
-	return {
-		\ 'word': a:key,
-		\ 'kind': 'command',
-		\ 'action__command': a:value
-		\ }
-endfunction
-" The labels to command map for the workflow menu.
-" Note: the grep pattern with the colons follows -
-" grep:<search_file_or_directory>:<grep_options>:<input_pattern>
-let g:unite_source_menu_menus.workflow.command_candidates = [
-	\ ['TODOs Project', 'Unite -start-insert -buffer-name=todos grep:.::TODO|todo'],
-	\ ['TODOs Global', 'edit ~/Documents/todos/todos.md'],
-	\ ['Notes Personal', 'edit ~/Documents/Notes/braindump.md'],
-	\ ['Notes PeacefulMedia', 'edit ~/Projects/PeacefulMedia/notes/braindump.md']
-	\ ]
-nnoremap <Leader>umw :<C-U>Unite menu:workflow -start-insert -ignorecase<CR>
-
-"
-" Laravel Menu
-"
-" Define menu.
-let g:unite_source_menu_menus.laravel = {
-	\ 'description': "Laravel"
-	\ }
-" Create a function to map 'Laravel' command labels to the commands that they execute.
-function! g:unite_source_menu_menus.laravel.map(key, value)
-	return {
-		\ 'word': a:key,
-		\ 'kind': 'command',
-		\ 'action__command': a:value
-		\ }
-endfunction
-" The labels to map for the laravel menu.
-let g:unite_source_menu_menus.laravel.command_candidates = [
-	\ ['Routes', 'Unite -ignorecase -start-insert -buffer-name=laravelRoutes grep:.::^Route\:\:'],
-	\ ['Migrations', 'Unite -ignorecase -start-insert -buffer-name=laravelMigrations grep:.::^class.*Migration'],
-	\ ['Controllers', 'Unite -ignorecase -start-insert -buffer-name=laravelControllers grep:.::^class.*Controller'],
-	\ ['Models', 'Unite -ignorecase -start-insert -buffer-name=laravelModels grep:.::^class.*Model']
-	\ ]
-nnoremap <Leader>uml :<C-U>Unite menu:laravel -start-insert -ignorecase<CR>
-
-"
-" end Unite Custom Menus
-"
-
-
-" Surround settings
-let g:surround_{char2nr('b')} = "**\r**"
-let g:surround_{char2nr('i')} = "_\r_"
-let g:surround_{char2nr('s')} = "~~\r~~"
-
-"
-" Fugitive settings
-"
-nmap <Leader>gs :Gstatus<cr>
-nmap <Leader>gw :Gwrite<cr>
-nmap <Leader>gc :Gcommit<cr>
-nmap <Leader>gca :Gcommit --amend<cr>
-nmap <Leader>gdd :Gdiff<cr>
-nmap <Leader>gdc :Git diff --cached<cr>
-nmap <Leader>gnb :Git checkout -b 
-nmap <Leader>gb :Gblame<cr>
-nmap <Leader>gl :Git! lola<cr>
-
-
-"
-" PHP settings
-"
-
-" PHP refactoring settings
-let g:vim_php_refactoring_auto_validate_visibility = 1
-let g:vim_php_refactoring_default_property_visibility = 'public'
-let g:vim_php_refactoring_default_method_visibility = 'public'
-
-" php macros
-"
-" Creates class property and assigns argument from function signature within
-" function block.
-let @a = "mmyiw/}O	$this->\" = $\";O?__constructOprotected $\";`m:nohlsearch"
-
-" Configure phpdocumentor
-let g:pdv_template_dir = $HOME ."/.vim/dein/repos/github.com/tobyS/pdv/templates_snip"
-nmap gk :call pdv#DocumentWithSnip()<CR>
-
-" Setup phpcs rules for WP
-let g:phpcs_std_list="WordPress-Docs, WordPress-VIP"
-let g:phpcs_max_output = 2000 " Output limited to 2000 line
-noremap <F5> <ESC>:Phpcs<CR>
-noremap <F7> <ESC>:cprev<CR>
-noremap <F8> <ESC>:cnext<CR>
-
-"
-" vim-php-namespace config.
-"
-" Automatically adds corresponding use statement for the class under the cursor.
-function! IPhpInsertUse()
-    call PhpInsertUse()
-    call feedkeys('a',  'n')
-endfunction
-autocmd FileType php noremap <Leader>pnu :call PhpInsertUse()<CR>
-"
-" Expands the class name under the cursor to its fully qualified name.
-function! IPhpExpandClass()
-    call PhpExpandClass()
-    call feedkeys('a', 'n')
-endfunction
-autocmd FileType php noremap <Leader>pne :call PhpExpandClass()<CR>
-"
-" end vim-php-namespace
-
-" testing php
-"
-" [t]est [a]ll -- Run all tests defined for this project.
-nmap <Leader>tea :!clear && phpunit<CR>
-" [t]est [f]ile -- Only test the tests in the current buffer.
-nmap <Leader>tef :!clear && phpunit %<CR>
-" [t]est [t]est -- Run the test directly under the cursor.
-nmap <Leader>tet ?function:set nohlsearch<cr>f wyiw:!clear && phpunit --filter "<cr>
-
-"
-" Quicker reference of php
-"
-" Open php docs for word under cursor.
-" Note: Requires lynx editor.
-"
-" Opens web version of php docs.
-function! OpenPHPManual(keyword)
-  let web = 'lynx -accept_all_cookies --cookie_file=/home/benjamin/.lynx_cookies --cookie_save_file=/home/benjamin/.lynx_cookies --cookies'
-  let url = 'http://jp2.php.net/' . a:keyword
-  exec '!' . web . ' "' . url . '"'
-endfunction
-
-"
-" For local reference download the php docs and save to the
-" folder referenced below:
-"
-" http://php.net/download-docs.php
-"
-function! OpenPHPManualLocal(keyword)
-  let web = 'lynx'
-  let url = $HOME . '/.documentation/php-chunked-xhtml/function.' . a:keyword . '.html'
-  exec '!' . web . ' "' . url . '"'
-endfunction
-
-noremap <Leader>dl :call OpenPHPManualLocal(expand('<cword>'))<CR>
-noremap <Leader>dm :call OpenPHPManual(expand('<cword>'))<CR>
-
-" Use pman for local documentation.
-" This makes use of Vim's keyword lookup program. Ensure that the php manual
-" is installed locally. See: https://secure.php.net/download-docs.php
-"
-" Basically using PEAR you can install the documentation locally:
-"
-"		pear install doc.php.net/pman
-"
-" On the Vim side, we are replacing the keyword lookup for PHP files to use
-" `pman`. For more info see `:help K`
-autocmd FileType php set keywordprg=pman
-
-"
-" End php documentation
-"
-
-"
-" end PHP
-"
-
-"
-" Syntastic
-"
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_loc_list_height = 5
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_error_symbol = '❌'
-let g:syntastic_style_error_symbol = '⁉️'
-let g:syntastic_warning_symbol = '⚠️'
-let g:syntastic_style_warning_symbol = '💩'
-highlight link SyntasticErrorSign SignColumn
-highlight link SyntasticWarningSign SignColumn
-highlight link SyntasticStyleErrorSign SignColumn
-highlight link SyntasticStyleWarningSign SignColumn
-
-let g:syntastic_mode_map = {
-	\ "mode": "active",
-	\ "active_filetypes": [],
-	\ "passive_filetypes": ["php"] }
-
-" Syntastic settings for phpcs and WordPress coding standards
-"
-" Run base PHP checker first, then run phpcs with WordPress standard
-" If phpcs does not exist or the WordPress standard does not exist,
-" Syntastic skips them (failing gracefully)
-let g:syntastic_php_checkers = ['php','phpcs']
-let g:syntastic_php_phpcs_args = '--standard=WordPress-VIP'
-
-" If phpcs.xml is found, it supercedes the standard set above
-let g:syntastic_php_phpcs_standard_file = "phpcs.xml"
-
-nnoremap <Leader>sc :SyntasticCheck<cr>
-nnoremap <Leader>sr :SyntasticReset<cr>
-
-"
-" end Syntastic
-"
-
-"UltiSnips
-let g:UltiSnipsSnippetsDir         = $HOME.'/.vim/UltiSnips/'
-let g:UltiSnipsSnippetDirectories  = ["UltiSnips"]
-let g:UltiSnipsExpandTrigger       = "<c-j>"
-let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
-let g:UltiSnipsListSnippets        = "<c-h>"
-let g:UltiSnipsEditSplit           = "vertical"
-
-
-" Enable better matching of % with matchit plugin
-runtime macros/matchit.vim
-
-" Let Vim open Man pages
-runtime ftplugin/man.vim
-
-
-
+" }}}
+" Ctags {{{
 " Rebuild ctags
 nmap <leader>T :!ctags -R --exclude=node_modules --exclude=bower_components --exclude="*.min.js" --exclude="*jquery*.js" --exclude="*bootstrap*.js"<CR>
 
-" Make emmet work for sass files
-autocmd FileType html,css,scss,sass EmmetInstall
+" }}}
+" Search Settings {{{
+set hlsearch
+set incsearch
+nmap <Leader><Leader> :nohlsearch<CR>
 
-" Transparent editing of gpg encrypted files.
-" By Wouter Hanegraaff
-augroup encrypted
-  au!
-
-  " First make sure nothing is written to ~/.viminfo while editing
-  " an encrypted file.
-  autocmd BufReadPre,FileReadPre *.gpg set viminfo=
-  " We don't want a swap file, as it writes unencrypted data to disk
-  autocmd BufReadPre,FileReadPre *.gpg set noswapfile
-
-  " Switch to binary mode to read the encrypted file
-  autocmd BufReadPre,FileReadPre *.gpg set bin
-  autocmd BufReadPre,FileReadPre *.gpg let ch_save = &ch|set ch=2
-  " (If you use tcsh, you may need to alter this line.)
-  autocmd BufReadPost,FileReadPost *.gpg '[,']!gpg --decrypt 2> /dev/null
-
-  " Switch to normal mode for editing
-  autocmd BufReadPost,FileReadPost *.gpg set nobin
-  autocmd BufReadPost,FileReadPost *.gpg let &ch = ch_save|unlet ch_save
-  autocmd BufReadPost,FileReadPost *.gpg execute ":doautocmd BufReadPost " . expand("%:r")
-
-  " Convert all text to encrypted text before writing
-  " (If you use tcsh, you may need to alter this line.)
-  autocmd BufWritePre,FileWritePre *.gpg '[,']!gpg --default-recipient-self -ae 2>/dev/null
-  " Undo the encryption so we are back in the normal text, directly
-  " after the file has been written.
-  autocmd BufWritePost,FileWritePost *.gpg u
+" }}}
+" Autogroups {{{
+" Allow folding of vim comments
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
-" EasyAlign settings.
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-
-"
-" Autocomplete
-"
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-
-
-"
-" Autocomand
-"
 " Automatically source Vimrc file on save.
-augroup autosourcing
-	autocmd!
-	autocmd BufWritePost .vimrc source %
+augroup AutoCommands
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
 
 " Make emmet work with Sass
 autocmd FileType html,css,scss,sass EmmetInstall
 
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
 " Trim whitespace on save
 autocmd FileType php,scss,sass,css,javascript,markdown autocmd BufWritePre <buffer> :%s/\s\+$//e
 
+" }}}
+" Netrw Settings {{{
+let g:netrw_banner = 0
+
+" Open Netrw in the project root
+nnoremap <leader>ne :edit .<cr>
+
+" Open Netrw in the path of the current buffer
+nnoremap <leader>n. :edit %:p:h<cr>
+
+" }}}
+" Neomake {{{
+nnoremap <leader>nm :Neomake<cr>
+
+" }}}
+" PHP Refactoring Settings {{{
+" php refactoring default keymap:
 "
-" Quick file access
-"
-
-" Easy editing of vimrc file.
-nmap <Leader>ev :e $MYVIMRC<CR>
-
-" Easy editing of snippets.
-nmap <Leader>es :UltiSnipsEdit<CR>
-
-"
-" end Quick file access
-"
-
-
-" **************************
-" Markdown
-" **************************
-
-" Disable instant markdown when opening markdown file.
-" Note: the instant markdown plugin requires a node daemon:
-"
-" npm -g install instant-markdown-d
-"
-let g:instant_markdown_autostart = 0
-nmap <Leader>mp :InstantMarkdownPreview<cr>
-
-" interpret .md files as markdown
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
-" Spelling
-nmap <Leader>ss :setlocal spell! spelllanguage=en_us<cr>
-
-" Set wordy dictionaries
-let g:wordy#ring = [
-  \ 'weak',
-  \ ['being', 'passive-voice', ],
-  \ 'business-jargon',
-  \ 'weasel',
-  \ 'puffery',
-  \ ['problematic', 'redundant', ],
-  \ ['colloquial', 'idiomatic', 'similies', ],
-  \ 'art-jargon',
-  \ ['contractions', 'opinion', 'vague-time', 'said-synonyms', ],
-  \ ]
-" Easier wordy navigation
-nnoremap <leader>sw K :NextWordy<cr>
-
-" searching
-set hlsearch
-set incsearch
-nmap <Leader><Leader> :nohlsearch<CR>
-
-" Set better tabs
-set tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
-" set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-" set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
-" set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-
-filetype plugin on
-filetype indent on
-
-"
-" Notes
-"
-" Default mappings for phpdocumentor
 " nnoremap <unique> <Leader>rlv :call PhpRenameLocalVariable()<CR>
 " nnoremap <unique> <Leader>rcv :call PhpRenameClassVariable()<CR>
 " nnoremap <unique> <Leader>rm :call PhpRenameMethod()<CR>
@@ -609,6 +216,105 @@ filetype indent on
 " nnoremap <unique> <Leader>du :call PhpDetectUnusedUseStatements()<CR>
 " vnoremap <unique> <Leader>== :call PhpAlignAssigns()<CR>
 " nnoremap <unique> <Leader>sg :call PhpCreateSettersAndGetters()<CR>
+" nnoremap <unique> <Leader>cog :call PhpCreateGetters()<CR>
 " nnoremap <unique> <Leader>da :call PhpDocAll()<CR>
-"
+
+let g:vim_php_refactoring_auto_validate_visibility = 1
+let g:vim_php_refactoring_default_property_visibility = 'public'
+let g:vim_php_refactoring_default_method_visibility = 'public'
+
+" }}}
+" FZF Settings {{{
+" This is the default extra key bindings
+" let g:fzf_action = {
+"   \ 'ctrl-t': 'tab split',
+"   \ 'ctrl-x': 'split',
+"   \ 'ctrl-v': 'vsplit' }
+
+" fzf layout
+" - down / up / left / right
+let g:fzf_layout = { 'down': '~50%' }
+
+" Select multiple items with tab
+nmap <Leader><tab> <plug>(fzf-maps-n)
+xmap <Leader><tab> <plug>(fzf-maps-x)
+omap <Leader><tab> <plug>(fzf-maps-o)
+
+nnoremap <Leader>fe :Files<CR>
+nnoremap <Leader>ft :Tags<CR>
+nnoremap <Leader>fl :Lines<CR>
+nnoremap <Leader>fb :Buffers<CR>
+nnoremap <Leader>fh :Helptags<CR>
+nnoremap <Leader>ff :Find 
+nnoremap <Leader>f* :Find <C-R><C-W><CR>
+nnoremap <silent> <Leader>fc :call fzf#run({
+\   'source':
+\     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
+\         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
+\   'sink':    'colo',
+\   'options': '+m',
+\   'left':    30
+\ })<CR>
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" Use Ripgrep if it's available
+if executable('rg')
+	" Replace the Files FZF command
+	let $FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+	" Replace Grep
+	command! -bang -nargs=* Find call fzf#vim#grep(
+		\ 'rg --column --line-number --no-heading --follow --color=always --hidden '.<q-args>, 1,
+		\ <bang>0 ? fzf#vim#with_preview('up:60%') : fzf#vim#with_preview('right:50%:hidden', '?'), <bang>0)
+endif
+
+" }}}
+" Easy Align Settings {{{
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+" }}}
+" Fugitive settings {{{
+nmap <Leader>gs :Gstatus<cr>
+nmap <Leader>gw :Gwrite<cr>
+nmap <Leader>gc :Gcommit<cr>
+nmap <Leader>gca :Gcommit --amend<cr>
+nmap <Leader>gdd :Gdiff<cr>
+nmap <Leader>gdc :Git diff --cached<cr>
+nmap <Leader>gnb :Git checkout -b 
+nmap <Leader>gb :Gblame<cr>
+nmap <Leader>gl :Git! lola<cr>
+
+" }}}
+" UltiSnips {{{
+let g:UltiSnipsSnippetsDir         = $HOME.'/.vim/UltiSnips/'
+let g:UltiSnipsSnippetDirectories  = ["UltiSnips"]
+let g:UltiSnipsExpandTrigger       = "<c-j>"
+let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+let g:UltiSnipsListSnippets        = "<c-h>"
+let g:UltiSnipsEditSplit           = "vertical"
+
+" }}}
+" Quick file access {{{
+
+" Add project subdirectories to path
+set path+=**
+
+" Easy editing of vimrc file.
+nmap <Leader>ev :edit $MYVIMRC<CR>
+
+" Open a new buffer using the current buffer's working directory
+nmap <Leader>enb :edit %:p:h/
+
+" end Quick file access }}}
+filetype plugin on
+filetype indent on
 

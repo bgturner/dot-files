@@ -80,7 +80,7 @@ set backupcopy:yes
 
 " Set colorscheme
 syntax on
-
+colorscheme gruvbox
 set background=dark
 
 " Use x system clipboard by default

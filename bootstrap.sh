@@ -31,6 +31,7 @@ ln -s $dotfiles_dir/.vimrc ~/.vimrc
 ln -s $dotfiles_dir/.tmux.conf ~/.tmux.conf
 ln -s $dotfiles_dir/.gitconfig ~/.gitconfig
 ln -s $dotfiles_dir/.gitignore ~/.gitignore
+ln -s $dotfiles_dir/vim ~/.vim
 
 if [ -d "$HOME/.oh-my-zsh" -a ! -h "$HOME/.oh-my-zsh" ]
 then
@@ -43,10 +44,11 @@ fi
 echo "Setting Zsh as default shell."
 chsh -s /bin/zsh
 
-# Ensure the .vim directory exists.
-mkdir -p $HOME/.vim
-
-echo "Setting up UltiSnips snippets for Vim."
-mv ~/.vim/UltiSnips $backupdir/UltiSnips-$date
-ln -s $dotfiles_dir/vim/UltiSnips $HOME/.vim/UltiSnips
+if [ -d "$HOME/.vim/autoload/plug.vim" -a ! -h "$HOME/.vim/autoload/plug.vim" ]
+then
+	echo "Vim Plug already installed."
+else
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
 

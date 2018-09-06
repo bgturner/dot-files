@@ -325,6 +325,33 @@ you should place your code here."
 
     ;; set line wrap for text modes
     (add-hook 'text-mode-hook #'visual-line-mode)
+
+    ;; Define default capture file
+    (setq org-default-notes-file "~/org/capture.org")
+
+    ;; Define the keyboard shortcut for capturing
+    (define-key global-map "\C-cc" 'org-capture)
+
+    ;; Define capture templates
+    (setq org-capture-templates
+          '(
+
+            ("b" "Templates for Ben")
+
+            ("bt" "Todo" entry (file+headline "~/org/life.org" "Tasks")
+             "* TODO %?\n  %i\n  %a")
+
+            ("p" "Templates for PassionsPlay")
+
+            ("pt" "Todo" entry (file+headline "~/org/passionsplay.org" "Tasks")
+             "* TODO %?\n  %i\n  %a")
+
+            ("f" "Templates for FW")
+
+            ("ft" "Todo" entry(file+headline "~/org/fw.org" "Todo")
+             "* TODO %?\n %i\n %a")
+
+            ))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

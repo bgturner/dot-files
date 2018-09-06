@@ -45,6 +45,7 @@ values."
      git
      markdown
      ranger
+     themes-megapack
      (org :variables
           org-enable-github-support t
           org-enable-bootstrap-support t

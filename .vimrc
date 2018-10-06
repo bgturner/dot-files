@@ -6,6 +6,7 @@ call plug#begin('~/.vim/plugged')
 " Misc
 Plug 'junegunn/vim-easy-align'
 Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
@@ -17,10 +18,16 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'neomake/neomake'
 Plug 'adelarsq/vim-matchit'
+Plug 'sheerun/vim-polyglot'
+Plug 'majutsushi/tagbar'
+
+if executable('ctags')
+    Plug 'prabirshrestha/asyncomplete-tags.vim'
+    Plug 'ludovicchabant/vim-gutentags'
+endif
 
 " Git
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
 
 " Styling
 Plug 'vim-airline/vim-airline'
@@ -41,6 +48,7 @@ Plug 'StanAngeloff/php.vim'
 Plug 'captbaritone/better-indent-support-for-php-with-html'
 Plug 'adoy/vim-php-refactoring-toolbox'
 Plug 'joseluis/wordpress.vim'
+Plug 'tobyS/pdv'
 
 " Initialize plugin system
 call plug#end()

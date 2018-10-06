@@ -270,11 +270,12 @@ nmap <Leader><tab> <plug>(fzf-maps-n)
 xmap <Leader><tab> <plug>(fzf-maps-x)
 omap <Leader><tab> <plug>(fzf-maps-o)
 
-nnoremap <Leader>fe :Files<CR>
+nnoremap <Leader>pf :Files<CR>
 nnoremap <Leader>ft :Tags<CR>
-nnoremap <Leader>fl :Lines<CR>
-nnoremap <Leader>fb :Buffers<CR>
-nnoremap <Leader>fh :Helptags<CR>
+nnoremap <Leader>ji :Lines<CR>
+nnoremap <Leader>bb :Buffers<CR>
+nnoremap <Leader>hh :Helptags<CR>
+nnoremap <Leader>fs :Snippets<CR>
 nnoremap <Leader>ff :Find 
 nnoremap <Leader>f* :Find <C-R><C-W><CR>
 nnoremap <silent> <Leader>fc :call fzf#run({

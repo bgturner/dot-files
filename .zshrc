@@ -10,7 +10,7 @@ plugins=(git nvm cp rsync composer vi-mode)
 
 # User configuration
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$HOME/.dot-files/bin:$HOME/.config/composer/vendor/bin:$HOME/.dot-files/projects:$HOME/.local/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$HOME/bin:$HOME/.config/composer/vendor/bin:$HOME/.local/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh

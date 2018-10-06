@@ -70,11 +70,11 @@ set timeoutlen=500
 set ttimeoutlen=500
 set synmaxcol=512
 set ttyfast
-set scrolloff=5
 set backspace=indent,eol,start
 set wildignore=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,*.pdf,*.bak,*.beam,*.pyc
 set autoindent
 set cindent
+set nowrap
 
 " Add subfolders recursively to path
 set path+=**
@@ -100,6 +100,16 @@ endif
 
 " Better pasting from system clipboard
 set pastetoggle=<F2>
+
+" Quick saving of file
+nnoremap <leader>s :w<cr>
+
+" Toggle display of whitespace
+nmap <leader>l :set list!<cr>
+
+" scroll the viewport faster
+nnoremap <C-e> 4<C-e>
+nnoremap <C-y> 4<C-y>
 
 " Keep the backup, swap, and undo files separate from working dir.
 silent !mkdir -p ~/.vim/.swp  ~/.vim/.backup ~/.vim/.undo
@@ -144,12 +154,18 @@ nnoremap [l :lprev<cr>zz
 " ----------------------------------------------------------------------------
 nnoremap ]b :bnext<cr>
 nnoremap [b :bprev<cr>
+nnoremap <Leader>bnh :split edit<cr>
+nnoremap <Leader>bnv :vertical split edit<cr>
+nnoremap <Leader>bc :close<cr>
+nnoremap <Leader>bd :bdelete<cr>
 
 " ----------------------------------------------------------------------------
 " Tabs
 " ----------------------------------------------------------------------------
 nnoremap ]t :tabn<cr>
 nnoremap [t :tabp<cr>
+nnoremap <Leader>tn :tabnew<cr>
+nnoremap <Leader>tc :tabclose<cr>
 
 " ----------------------------------------------------------------------------
 " Moving lines

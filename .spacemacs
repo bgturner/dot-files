@@ -327,7 +327,7 @@ you should place your code here."
     (add-hook 'text-mode-hook #'visual-line-mode)
 
     ;; Define default capture file
-    (setq org-default-notes-file "~/org/capture.org")
+    (setq org-default-notes-file "~/org/todo.org")
 
     ;; Define the keyboard shortcut for capturing
     (define-key global-map "\C-cc" 'org-capture)
@@ -338,17 +338,17 @@ you should place your code here."
 
             ("b" "Templates for Ben")
 
-            ("bt" "Todo" entry (file+headline "~/org/life.org" "Tasks")
+            ("bt" "Todo" entry (file+headline "~/Documents/benjamin/life.org" "Tasks")
              "* TODO %?\n  %i\n  %a")
 
             ("p" "Templates for PassionsPlay")
 
-            ("pt" "Todo" entry (file+headline "~/org/passionsplay.org" "Tasks")
+            ("pt" "Todo" entry (file+headline "~/Documents/passionsplay/passionsplay.org" "Tasks")
              "* TODO %?\n  %i\n  %a")
 
             ("f" "Templates for FW")
 
-            ("ft" "Todo" entry(file+headline "~/org/fw.org" "Todo")
+            ("ft" "Todo" entry(file+headline "~/Documents/flywheel/fw.org" "Todo")
              "* TODO %?\n %i\n %a")
 
             ))

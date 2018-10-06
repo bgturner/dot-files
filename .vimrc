@@ -30,8 +30,7 @@ endif
 Plug 'tpope/vim-fugitive'
 
 " Styling
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 
 " Color
 Plug 'tomasr/molokai'
@@ -118,6 +117,12 @@ inoremap jk <Esc>
 " Split management.
 set splitbelow
 set splitright
+
+" }}}
+" Lightline {{{
+let g:lightline = { 'colorscheme': 'solarized', }               "vim-lightline
+set laststatus=2                                                "vim-lightline
+set noshowmode                                                  "vim-lightline
 
 " }}}
 " General Remaps {{{

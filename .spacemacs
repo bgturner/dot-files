@@ -46,6 +46,7 @@ values."
      markdown
      ranger
      themes-megapack
+     restclient
      (org :variables
           org-enable-github-support t
           org-enable-bootstrap-support t

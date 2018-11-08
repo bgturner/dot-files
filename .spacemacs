@@ -62,7 +62,9 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(
+                                      org2blog
+                                      )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -358,6 +360,14 @@ you should place your code here."
 (load-library "find-lisp")
 (setq org-agenda-files
   (find-lisp-find-files "~/Documents/" "\.org$"))
+
+(setq org2blog/wp-sourcecode-langs
+      '("actionscript3" "bash" "coldfusion" "cpp" "csharp" "css" "delphi"
+        "erlang" "fsharp" "diff" "groovy" "javascript" "java" "javafx" "matlab"
+        "objc" "perl" "php" "text" "powershell" "python" "ruby" "scala" "sql"
+        "vb" "xml"
+        "sh" "emacs-lisp" "lisp" "lua"))
+(setq org2blog/wp-use-sourcecode-shortcode t)
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.

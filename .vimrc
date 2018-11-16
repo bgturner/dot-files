@@ -184,7 +184,34 @@ xnoremap > >gv
 " ----------------------------------------------------------------------------
 " <Leader>c Close quickfix/location window
 " ----------------------------------------------------------------------------
-nnoremap <leader>c :cclose<bar>lclose<cr>
+nnoremap <leader>q :call QuickfixToggle()<cr>
+nnoremap <leader>l :call LocationListToggle()<cr>
+
+let g:quickfix_is_open = 0
+function! QuickfixToggle()
+    if g:quickfix_is_open
+        cclose
+        let g:quickfix_is_open = 0
+        execute g:quickfix_return_to_window . "wincmd w"
+    else
+        let g:quickfix_return_to_window = winnr()
+        copen
+        let g:quickfix_is_open = 1
+    endif
+endfunction
+
+let g:location_list_is_open = 0
+function! LocationListToggle()
+    if g:location_list_is_open
+        lclose
+        let g:location_list_is_open = 0
+        execute g:location_list_return_to_window . "wincmd w"
+    else
+        let g:location_list_return_to_window = winnr()
+        lopen
+        let g:location_list_is_open = 1
+    endif
+endfunction
 
 " }}}
 " Ctags {{{

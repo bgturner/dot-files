@@ -61,6 +61,19 @@
   :config
   (helm-mode 1))
 
+;; Magit
+(use-package magit
+  :ensure t
+  :defer t
+  :bind (("C-x g" . magit-status))
+  :init
+  (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
+
+;; Evil-Magit
+(use-package evil-magit
+  :ensure t
+  :after evil magit)
+
 ;; RipGrep
 (use-package helm-rg :ensure t)
 

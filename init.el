@@ -28,6 +28,21 @@
   :config
   (evil-mode 1))
 
+(use-package evil-surround
+  :ensure t
+  :init
+  (global-evil-surround-mode 1))
+
+(use-package evil-commentary
+  :ensure t
+  :init
+  (evil-commentary-mode))
+
+(use-package evil-matchit
+  :ensure t
+  :init
+  (global-evil-matchit-mode 1))
+
 ;; Theme
 (use-package doom-themes
   :ensure t

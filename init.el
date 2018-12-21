@@ -205,6 +205,8 @@
 
 	))
 
+(setq org-agenda-window-setup (quote only-window))
+
 (eval-after-load 'org-agenda
  '(progn
     (evil-set-initial-state 'org-agenda-mode 'normal)

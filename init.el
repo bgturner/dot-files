@@ -166,6 +166,10 @@
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-cb" 'org-switchb)
 
+;; Org Exports
+(eval-after-load "org"
+  '(require 'ox-md nil t))
+
 (setq org-return-follows-link t)
 (setq org-html-validation-link nil)
 (use-package org-bullets

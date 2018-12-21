@@ -274,6 +274,17 @@
       "g\\" 'org-agenda-filter-by-tag-refine
       "]" 'org-agenda-manipulate-query-subtract)))
 
+;; org2blog
+(use-package org2blog
+  :ensure t)
+
+(setq org2blog/wp-use-sourcecode-shortcode t)
+(setq org2blog/wp-sourcecode-langs
+    '("actionscript3" "bash" "coldfusion" "cpp" "csharp" "css" "delphi"
+	"erlang" "fsharp" "diff" "groovy" "javascript" "java" "javafx" "matlab"
+	"objc" "perl" "php" "text" "powershell" "python" "ruby" "scala" "sql" "vb"
+	"xml" "sh" "emacs-lisp" "lisp" "lua"))
+
 ;; Show matching parens
 (setq show-paren-delay 0)
 (show-paren-mode 1)

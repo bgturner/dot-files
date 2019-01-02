@@ -186,6 +186,7 @@
   '(require 'ox-md nil t))
 
 (setq org-return-follows-link t)
+(setq org-log-done 'time)
 (setq org-html-validation-link nil)
 (use-package org-bullets
   :ensure t

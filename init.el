@@ -122,8 +122,18 @@
   "pf"  '(helm-projectile-find-file :which-key "find files")
   "pp"  '(helm-projectile-switch-project :which-key "switch project")
   "pb"  '(helm-projectile-switch-to-buffer :which-key "switch buffer")
-  "pr"  '(helm-show-kill-ring :which-key "show kill ring")  ;; Buffers
-  "bb"  '(helm-buffers-list :which-key "buffers list")
+  "pr"  '(helm-show-kill-ring :which-key "show kill ring")
+
+  ;; Files
+  "fr"  '(helm-recentf :which-key "Recent Files")
+
+  ;; Buffers
+  "bb"  '(helm-buffers-list :which-key "List Buffers")
+  "bd"  '(evil-delete-buffer :which-key "Delete Buffer")
+  "bn"  '(evil-next-buffer :which-key "Next Buffer")
+  "bp"  '(evil-prev-buffer :which-key "Next Buffer")
+  "bN"  '(evil-buffer-new :which-key "New Buffer")
+
   ;; Window
   "wl"  '(windmove-right :which-key "move right")
   "wh"  '(windmove-left :which-key "move left")

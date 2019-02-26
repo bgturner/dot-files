@@ -186,14 +186,6 @@
 (setq org-return-follows-link t)
 (setq org-log-done 'time)
 (setq org-html-validation-link nil)
-(use-package org-bullets
-  :ensure t
-  :init
-  (add-hook 'org-mode-hook (lambda ()
-			    (org-bullets-mode 1)
-			    (setq buffer-face-mode-face '(:family "Ubuntu Mono" :height 1.0))
-			    ;; (hide-mode-line-mode 1)
-			    (buffer-face-mode))))
 
 ;; set line wrap for text modes
 (add-hook 'text-mode-hook #'visual-line-mode)

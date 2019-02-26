@@ -4,9 +4,8 @@
 (tooltip-mode -1)
 (menu-bar-mode -1)
 
-(add-to-list 'default-frame-alist '(font . "Ubuntu Mono-16"))
-(add-to-list 'default-frame-alist '(height . 24))
-(add-to-list 'default-frame-alist '(width . 80))
+(add-to-list 'default-frame-alist '(height . 60))
+(add-to-list 'default-frame-alist '(width . 110))
 
 ;; Package configs
 (require 'package)

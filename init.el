@@ -55,11 +55,6 @@
 (setq ns-use-proxy-icon  nil)
 (setq frame-title-format nil)
 
-;; Ido
-(ido-mode 1)
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-
 ;; Helm
 (use-package helm
   :ensure t

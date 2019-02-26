@@ -176,6 +176,13 @@
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-cb" 'org-switchb)
 
+;; Make jumping to Org file headings fuzzy searchable using org-goto
+;;
+;;  See: https://emacs.stackexchange.com/questions/32617/how-to-jump-directly-to-an-org-headline
+;;
+(setq org-goto-interface 'outline-path-completion)
+(setq org-outline-path-complete-in-steps nil)
+
 ;; Org Exports
 (use-package ox-twbs
   :ensure t)

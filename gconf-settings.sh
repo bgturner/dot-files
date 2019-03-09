@@ -17,8 +17,8 @@ gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/prof
 #
 gsettings set "org.gnome.Terminal.Legacy.Settings" default-show-menubar false
 
-# Swap capslock with ctrl.
-gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:swapcaps']"
+# Make capslock an additional ctrl
+gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier']"
 
 # Register custom keyboard shortcuts.
 #

@@ -4,6 +4,9 @@
 (tooltip-mode -1)
 (menu-bar-mode -1)
 
+;; Splash Screen
+(setq inhibit-startup-screen t)
+
 (add-to-list 'default-frame-alist '(height . 60))
 (add-to-list 'default-frame-alist '(width . 110))
 
@@ -304,9 +307,6 @@
 ;; Disable backup files
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
-
-;; Splash Screen
-(setq inhibit-startup-screen t)
 
 ;; SysAdmin
 (use-package restclient

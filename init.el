@@ -57,27 +57,6 @@
 (setq ns-use-proxy-icon  nil)
 (setq frame-title-format nil)
 
-;; Helm
-(use-package helm
-  :ensure t
-  :init
-  (setq helm-M-x-fuzzy-match t
-	helm-mode-fuzzy-match t
-	helm-buffers-fuzzy-matching t
-	helm-recentf-fuzzy-match t
-	helm-locate-fuzzy-match t
-	helm-semantic-fuzzy-match t
-	helm-imenu-fuzzy-match t
-	helm-completion-in-region-fuzzy-match t
-	helm-candidate-number-list 150
-	helm-split-window-in-side-p t
-	helm-move-to-line-cycle-in-source t
-	helm-echo-input-in-header-line t
-	helm-autoresize-max-height 0
-	helm-autoresize-min-height 20)
-  :config
-  (helm-mode 1))
-
 ;; Magit
 (use-package magit
   :ensure t
@@ -90,12 +69,6 @@
 (use-package evil-magit
   :ensure t
   :after evil magit)
-
-;; RipGrep
-(use-package helm-rg :ensure t)
-
-;; Allow Helm to narrow M-x commands
-(global-set-key (kbd "M-x") 'helm-M-x)
 
 ;; Which Key
 (use-package which-key
@@ -115,17 +88,9 @@
   :non-normal-prefix "M-SPC"
   ;; "/"   '(counsel-rg :which-key "ripgrep") ; You'll need counsel package for this
   "TAB" '(switch-to-prev-buffer :which-key "previous buffer")
-  "SPC" '(helm-M-x :which-key "M-x")
-  "pf"  '(helm-projectile-find-file :which-key "find files")
-  "pp"  '(helm-projectile-switch-project :which-key "switch project")
-  "pb"  '(helm-projectile-switch-to-buffer :which-key "switch buffer")
-  "pr"  '(helm-show-kill-ring :which-key "show kill ring")
-
   ;; Files
-  "fr"  '(helm-recentf :which-key "Recent Files")
 
   ;; Buffers
-  "bb"  '(helm-buffers-list :which-key "List Buffers")
   "bd"  '(evil-delete-buffer :which-key "Delete Buffer")
   "bn"  '(evil-next-buffer :which-key "Next Buffer")
   "bp"  '(evil-prev-buffer :which-key "Next Buffer")
@@ -163,13 +128,6 @@
   :config
   (projectile-mode 1))
 
-;; Helm Projectile
-(use-package helm-projectile
-  :ensure t
-  :init
-  (setq helm-projectile-fuzzy-match t)
-  :config
-  (helm-projectile-on))
 
 ;; OrgMode Configs
 ;; Define Global Orgmode keybindings
@@ -245,7 +203,6 @@
       "t" 'org-agenda-todo
       ":" 'org-agenda-set-tags
       ";" 'org-timer-set-timer
-      "I" 'helm-org-task-file-headings
       "i" 'org-agenda-clock-in-avy
       "O" 'org-agenda-clock-out-avy
       "u" 'org-agenda-bulk-unmark
@@ -264,7 +221,6 @@
       "gv" 'org-agenda-view-mode-dispatch
       "f" 'org-agenda-later
       "b" 'org-agenda-earlier
-      "c" 'helm-org-capture-templates
       "e" 'org-agenda-set-effort
       "n" nil  ; evil-search-next
       "{" 'org-agenda-manipulate-query-add-re

@@ -24,6 +24,41 @@
   (package-install 'use-package))
 (require 'use-package)
 
+(use-package ivy
+  :ensure t
+  :demand
+  :config
+  (setq ivy-use-virtual-buffers t
+	ivy-count-format "%d/%d ")
+  (bind-key "C-c C-r" 'ivy-resume))
+
+(use-package swiper
+  :ensure t
+  :config
+  (global-set-key "\C-s" 'swiper))
+
+(use-package counsel
+  :ensure t
+  :config
+    (global-set-key (kbd "M-x") 'counsel-M-x)
+    (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+    (global-set-key (kbd "<f1> f") 'counsel-describe-function)
+    (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+    (global-set-key (kbd "<f1> l") 'counsel-find-library)
+    (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
+    (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+    (global-set-key (kbd "C-c g") 'counsel-git)
+    (global-set-key (kbd "C-c j") 'counsel-git-grep)
+    (global-set-key (kbd "C-c a") 'counsel-ag)
+    (global-set-key (kbd "C-x l") 'counsel-locate)
+    (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
+  :custom
+    (ivy-height 20 "number of result lines to display")
+  )
+
+;; (setq counsel-grep-base-command
+;;  "rg -i -M 120 --no-heading --line-number --color never '%s' %s")
+
 ;; Vim mode
 (use-package evil
   :ensure t
@@ -88,9 +123,24 @@
   :non-normal-prefix "M-SPC"
   ;; "/"   '(counsel-rg :which-key "ripgrep") ; You'll need counsel package for this
   "TAB" '(switch-to-prev-buffer :which-key "previous buffer")
+  "SPC" '(counsel-M-x :which-key "M-x")
+
+  ;; Projectile
+  "pp"   '(projectile-switch-project :which-key "Switch project")
+  "pd"   '(projectile-dired-other-window :which-key "Open dired in new window")
+  "pff"  '(projectile-find-file :which-key "Find files in project")
+  "pfd"  '(projectile-find-dir-other-window :which-key "Open project dired in other window")
+
+  ;; Org-mode
+  "oj" '(counsel-org-agenda-headlines :which-key "Org Jump to Headline")
+  "oa" '(org-agenda :which-key "Org agenda")
+  
   ;; Files
+  "ff" '(counsel-rg :which-key "Ripgrep")
+  "fr"  '(counsel-recentf :which-key "Recent Files")
 
   ;; Buffers
+  "bb"  '(counsel-switch-buffer :which-key "Switch Buffer")
   "bd"  '(evil-delete-buffer :which-key "Delete Buffer")
   "bn"  '(evil-next-buffer :which-key "Next Buffer")
   "bp"  '(evil-prev-buffer :which-key "Next Buffer")
@@ -104,9 +154,9 @@
   "w/"  '(split-window-right :which-key "split right")
   "w-"  '(split-window-below :which-key "split bottom")
   "wx"  '(delete-window :which-key "delete window")
+
   ;; Others
   "at"  '(ansi-term :which-key "open terminal")
-  "aoa"  '(org-agenda :which-key "org agenda")
 ))
 
 ;; Powerline
@@ -128,6 +178,7 @@
   :config
   (projectile-mode 1))
 
+(setq projectile-completion-system 'ivy)
 
 ;; OrgMode Configs
 ;; Define Global Orgmode keybindings

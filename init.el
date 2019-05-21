@@ -161,6 +161,10 @@
   "at"  '(ansi-term :which-key "open terminal")
 ))
 
+;; Increase the number of recent files that are stored
+(setq recentf-max-saved-items 100)
+(setq recentf-max-menu-items 50)
+
 ;; Powerline
 (use-package spaceline
   :ensure t

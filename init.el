@@ -32,6 +32,8 @@
 	ivy-count-format "%d/%d ")
   (bind-key "C-c C-r" 'ivy-resume))
 
+(ivy-mode 1)
+
 (use-package swiper
   :ensure t
   :config

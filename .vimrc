@@ -105,7 +105,12 @@ set pastetoggle=<F2>
 nnoremap <leader>s :w<cr>
 
 " Toggle display of whitespace
-nmap <leader>l :set list!<cr>
+nnoremap <leader>l :set list!<cr>
+
+" Tabstops
+nnoremap <leader>t2 :set expandtab shiftwidth=2 tabstop=2<cr>
+nnoremap <leader>t4 :set expandtab shiftwidth=4 tabstop=4<cr>
+" nnoremap <leader>t2 :set noexpandtab shiftwidth=2 tabstop=2<cr>
 
 " scroll the viewport faster
 nnoremap <C-e> 4<C-e>
@@ -220,6 +225,7 @@ autocmd FileType php,scss,sass,css,javascript,markdown autocmd BufWritePre <buff
 " }}}
 " Netrw Settings {{{
 let g:netrw_banner = 0
+let g:netrw_liststyle = 3
 
 " Open Netrw in the project root
 nnoremap <leader>ne :edit .<cr>

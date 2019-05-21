@@ -20,6 +20,7 @@ Plug 'neomake/neomake'
 Plug 'adelarsq/vim-matchit'
 Plug 'sheerun/vim-polyglot'
 Plug 'majutsushi/tagbar'
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
 if executable('ctags')
     Plug 'prabirshrestha/asyncomplete-tags.vim'

@@ -193,6 +193,17 @@
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-cb" 'org-switchb)
 
+;; Improve org-refile across files
+;;
+;;   See: https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html
+;;
+(setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
+(setq org-goto-interface 'outline-path-completion)
+(setq org-refile-use-outline-path 'file)
+(setq org-outline-path-complete-in-steps nil)
+(setq org-refile-allow-creating-parent-nodes 'confirm)
+
+
 ;; Make jumping to Org file headings fuzzy searchable using org-goto
 ;;
 ;;  See: https://emacs.stackexchange.com/questions/32617/how-to-jump-directly-to-an-org-headline

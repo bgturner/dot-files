@@ -23,6 +23,9 @@ mv ~/.vimrc $backupdir/
 mv ~/.tmux.conf $backupdir/
 mv ~/.gitconfig $backupdir/
 mv ~/.gitignore $backupdir/
+mv ~/.emacs.d/init.el $backupdir/
+
+mkdir ~/.emacs.d
 
 echo "Creating symlinks."
 ln -s $dotfiles_dir/.zshrc ~/.zshrc
@@ -32,6 +35,7 @@ ln -s $dotfiles_dir/.tmux.conf ~/.tmux.conf
 ln -s $dotfiles_dir/.gitconfig ~/.gitconfig
 ln -s $dotfiles_dir/.gitignore ~/.gitignore
 ln -s $dotfiles_dir/vim ~/.vim
+ln -s $dotfiles_dir/init.el ~/.emacs.d/init.el
 
 if [ -d "$HOME/.oh-my-zsh" -a ! -h "$HOME/.oh-my-zsh" ]
 then

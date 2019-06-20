@@ -10,6 +10,10 @@
 (add-to-list 'default-frame-alist '(height . 60))
 (add-to-list 'default-frame-alist '(width . 110))
 
+(setq display-time-format "%F %R")
+(setq display-time-default-load-average nil)
+(display-time-mode 1)
+
 ;; Package configs
 (require 'package)
 (setq package-enable-at-startup nil)

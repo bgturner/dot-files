@@ -227,6 +227,12 @@
 (use-package ox-twbs
   :ensure t)
 
+(use-package ox-reveal
+  :load-path ("~/src/org-reveal")
+  :defer 3
+  :after org
+  )
+
 (eval-after-load "org"
   '(require 'ox-md nil t))
 

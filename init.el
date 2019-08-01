@@ -251,16 +251,24 @@
 	'(
 
 	("b" "Templates for Ben")
-	("bt" "Todo" entry (file+headline "~/Documents/benjamin/life.org" "Tasks")
+	("bt" "New Task" entry (file+headline "~/Documents/benjamin/life.org" "Tasks")
 	    "* TODO %?\n  %i\n  %a")
 
 	("p" "Templates for PassionsPlay")
-	("pt" "Todo" entry (file+headline "~/Documents/passionsplay/passionsplay.org" "Tasks")
+	("pt" "New Task" entry (file+headline "~/Documents/passionsplay/passionsplay.org" "Tasks")
 	    "* TODO %?\n  %i\n  %a")
 
 	("f" "Templates for FW")
-	("ft" "Todo" entry(file+headline "~/Documents/flywheel/fw.org" "Todo")
+	("ft" "New Task" entry(file+headline "~/Documents/flywheel/fw.org" "Tasks")
 	    "* TODO %?\n %i\n %a")
+	("fc" "Calendar" entry(file+headline "~/Documents/flywheel/fw.org" "Calendar")
+	    "* %^{DateTime}T %?\n")
+
+	("l" "Local")
+	("lt" "New Task" entry(file+headline "~/Documents/local/local.org" "Tasks")
+	    "* TODO %?\n %i\n %a")
+	("lc" "Calendar" entry(file+headline "~/Documents/local/local.org" "Calendar")
+	    "* %^{DateTime}T %?\n")
 
 	))
 

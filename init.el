@@ -191,6 +191,14 @@
 (setq projectile-completion-system 'ivy)
 
 ;; OrgMode Configs
+
+;; See: https://blog.aaronbieber.com/2016/09/24/an-agenda-for-life-with-org-mode.html
+;; Adds a custom agenda view that displays all TODOs along with their place in time
+(setq org-agenda-custom-commands
+      '(("c" "Simple agenda view"
+         ((agenda "")
+          (alltodo "")))))
+
 ;; Define Global Orgmode keybindings
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)

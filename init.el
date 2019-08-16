@@ -192,6 +192,9 @@
 
 ;; OrgMode Configs
 
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "NEXT(n)" "WAIT(w@/!)" "SOMEDAY(s)" "|" "DONE(d!)" "CANCELED(c@)")))
+
 ;; See: https://blog.aaronbieber.com/2016/09/24/an-agenda-for-life-with-org-mode.html
 ;; Adds a custom agenda view that displays all TODOs along with their place in time
 (setq org-agenda-custom-commands

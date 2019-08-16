@@ -205,6 +205,9 @@
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-cb" 'org-switchb)
 
+;; Have Org notes logged into the LOGBOOK
+(setq org-log-into-drawer t)
+
 ;; Improve org-refile across files
 ;;
 ;;   See: https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html

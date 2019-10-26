@@ -198,6 +198,10 @@
 
 (setq projectile-completion-system 'ivy)
 
+;; Ledger for accounting
+(use-package ledger-mode
+  :ensure t)
+
 ;; OrgMode Configs
 
 (setq org-todo-keywords

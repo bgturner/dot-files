@@ -394,6 +394,24 @@
 (add-to-list 'auto-mode-alist '("\\.html\\.twig\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
+;;;;
+;; Python Dev
+;;;;
+
+;; ELPY - general python goodness
+(use-package elpy
+  :ensure t
+  :init
+    (elpy-enable)
+  :config
+    (add-hook 'python-mode-hook
+	(lambda ()
+	    (local-set-key (kbd "C-c t t") 'elpy-test-pytest-runner))))
+
+;; EIN - Jupyter Notebook client
+(use-package ein
+  :ensure t)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

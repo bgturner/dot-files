@@ -62,6 +62,14 @@
     (ivy-height 20 "number of result lines to display")
   )
 
+;; Company for autocomplete
+(use-package company
+  :ensure t
+  :config
+    (add-hook 'after-init-hook 'global-company-mode)
+  :init
+    (global-set-key (kbd "C-x c") 'company-complete-common))
+
 ;; (setq counsel-grep-base-command
 ;;  "rg -i -M 120 --no-heading --line-number --color never '%s' %s")
 

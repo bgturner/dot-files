@@ -207,15 +207,14 @@
 (setq org-todo-keywords
       '((sequence "TODO(t)" "NEXT(n)" "WAIT(w@/!)" "SOMEDAY(s)" "|" "DONE(d!)" "CANCELED(c@)")))
 
-;; See: https://blog.aaronbieber.com/2016/09/24/an-agenda-for-life-with-org-mode.html
-;; Adds a custom agenda view that displays all TODOs along with their place in time
 ;; Have Agenda opened full-screen
 (setq org-agenda-window-setup 'only-window)
 
 (setq org-agenda-custom-commands
-      '(("c" "Simple agenda view"
-         ((agenda "")
-          (alltodo "")))))
+      '(("c" "Simple agenda view with no Journal entries"
+         ((agenda ""))
+	 ((org-agenda-tag-filter-preset '("-journal"))))))
+
 ;; Have the Agenda mode default to one day
 (setq org-agenda-span 'day)
 

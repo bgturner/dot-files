@@ -209,6 +209,9 @@
 
 ;; See: https://blog.aaronbieber.com/2016/09/24/an-agenda-for-life-with-org-mode.html
 ;; Adds a custom agenda view that displays all TODOs along with their place in time
+;; Have Agenda opened full-screen
+(setq org-agenda-window-setup 'only-window)
+
 (setq org-agenda-custom-commands
       '(("c" "Simple agenda view"
          ((agenda "")

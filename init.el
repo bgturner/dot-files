@@ -216,6 +216,8 @@
       '(("c" "Simple agenda view"
          ((agenda "")
           (alltodo "")))))
+;; Have the Agenda mode default to one day
+(setq org-agenda-span 'day)
 
 ;; Define Global Orgmode keybindings
 (global-set-key "\C-cl" 'org-store-link)

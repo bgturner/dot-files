@@ -413,6 +413,14 @@ is possible if the heading has a property of DATE_TREE."
     (global-set-key (kbd "C-c C-g C-e") 'writegood-reading-ease)
     (global-set-key (kbd "C-c C-g C-g") 'writegood-grade-level))
 
+(use-package writeroom-mode
+  :ensure t
+  :config
+    (define-key writeroom-mode-map (kbd "C-c w r m") 'writeroom-mode)
+    (define-key writeroom-mode-map (kbd "C-M-<") 'writeroom-decrease-width)
+    (define-key writeroom-mode-map (kbd "C-M->") 'writeroom-increase-width)
+    (define-key writeroom-mode-map (kbd "C-M-=") 'writeroom-adjust-width))
+
 ;; Show matching parens
 (setq show-paren-delay 0)
 (show-paren-mode 1)

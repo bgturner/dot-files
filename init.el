@@ -211,9 +211,16 @@
 (setq org-agenda-window-setup 'only-window)
 
 (setq org-agenda-custom-commands
-      '(("c" "Simple agenda view with no Journal entries"
-         ((agenda ""))
-	 ((org-agenda-tag-filter-preset '("-journal"))))))
+      '(("c" . "Custom Agenda Views")
+	("cp" "Planning, Fourteen day agenda with all unscheduled todos"
+          ((agenda "" ((org-agenda-span 14)
+		       (org-agenda-start-on-weekday 0)))
+	   (alltodo "" ((org-agenda-skip-function '(org-agenda-skip-entry-if 'deadline 'scheduled)))))
+	   ((org-agenda-tag-filter-preset '("-journal"))))
+	("cj" "Journal Entries for the last 14 days"
+          ((agenda "" ((org-agenda-span 14)
+		      (org-agenda-start-day "-14d")))))
+	))
 
 ;; Have the Agenda mode default to one day
 (setq org-agenda-span 'day)

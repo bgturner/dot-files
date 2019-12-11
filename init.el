@@ -230,6 +230,7 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-cb" 'org-switchb)
+(global-set-key (kbd "C-c r d") 'org-refile-to-datetree)
 
 ;; Have Org notes logged into the LOGBOOK
 (setq org-log-into-drawer t)
@@ -244,6 +245,31 @@
 (setq org-outline-path-complete-in-steps nil)
 (setq org-refile-allow-creating-parent-nodes 'confirm)
 
+(defun org-refile-to-datetree (&optional file)
+  "Refile a subtree to a datetree corresponding to it's timestamp.
+
+The current time is used if the entry has no timestamp. If FILE
+is nil, refile in the current file. A datetree within a subheading
+is possible if the heading has a property of DATE_TREE."
+  (interactive "f")
+  (let* ((datetree-date (or (org-entry-get nil "TIMESTAMP" t)
+                            (org-read-date t nil "now")))
+         (date (org-date-to-gregorian datetree-date))
+         )
+    (save-excursion
+      (with-current-buffer (current-buffer)
+        (org-cut-subtree)
+        (if file (find-file file))
+	(widen)
+        (org-datetree-find-date-create date)
+        (org-narrow-to-subtree)
+        (show-subtree)
+        (org-end-of-subtree t)
+        (newline)
+        (goto-char (point-max))
+        (org-paste-subtree (+ org-datetree-base-level 3))
+        (widen)
+        ))))
 
 ;; Make jumping to Org file headings fuzzy searchable using org-goto
 ;;

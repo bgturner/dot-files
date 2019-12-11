@@ -406,6 +406,25 @@ is possible if the heading has a property of DATE_TREE."
 	"xml" "sh" "emacs-lisp" "lisp" "lua"))
 
 ;; Writing
+;;;;
+(use-package flyspell
+  :init
+    (defun flyspell-check-next-highlighted-word ()
+	"Custom function to spell check next highlighted word"
+	(interactive)
+	(flyspell-goto-next-error)
+	(ispell-word))
+  :config
+    (global-set-key (kbd "C-c s m") 'flyspell-mode)
+    (global-set-key (kbd "C-c s b") 'flyspell-buffer)
+    (global-set-key (kbd "C-c s w") 'ispell-word)
+    (global-set-key (kbd "C-c s c") 'flyspell-check-next-highlighted-word)
+    (when (executable-find "hunspell")
+	(setq-default ispell-program-name "hunspell")
+	(setq ispell-really-hunspell t))
+  :hook
+    (text-mode . flyspell-mode))
+
 (use-package writegood-mode
   :ensure t
   :config

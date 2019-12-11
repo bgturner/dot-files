@@ -405,6 +405,14 @@ is possible if the heading has a property of DATE_TREE."
 	"objc" "perl" "php" "text" "powershell" "python" "ruby" "scala" "sql" "vb"
 	"xml" "sh" "emacs-lisp" "lisp" "lua"))
 
+;; Writing
+(use-package writegood-mode
+  :ensure t
+  :config
+    (global-set-key (kbd "C-c C-g C-c") 'writegood-mode)
+    (global-set-key (kbd "C-c C-g C-e") 'writegood-reading-ease)
+    (global-set-key (kbd "C-c C-g C-g") 'writegood-grade-level))
+
 ;; Show matching parens
 (setq show-paren-delay 0)
 (show-paren-mode 1)

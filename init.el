@@ -217,9 +217,6 @@
 (setq org-todo-keywords
       '((sequence "TODO(t)" "NEXT(n)" "WAIT(w@/!)" "SOMEDAY(s)" "|" "DONE(d!)" "CANCELED(c@)")))
 
-;; Have Agenda opened full-screen
-(setq org-agenda-window-setup 'only-window)
-
 (setq org-agenda-custom-commands
       '(("c" . "Custom Agenda Views")
 	("cp" "Planning, Fourteen day agenda with all unscheduled todos"
@@ -336,8 +333,6 @@ is possible if the heading has a property of DATE_TREE."
 	    "* %^{DateTime}T %?\n")
 
 	))
-
-(setq org-agenda-window-setup (quote only-window))
 
 (eval-after-load 'org-agenda
  '(progn

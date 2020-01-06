@@ -209,6 +209,11 @@
 
 ;; OrgMode Configs
 
+(use-package org-bullets
+  :ensure t)
+
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
 (setq org-todo-keywords
       '((sequence "TODO(t)" "NEXT(n)" "WAIT(w@/!)" "SOMEDAY(s)" "|" "DONE(d!)" "CANCELED(c@)")))
 

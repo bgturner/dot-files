@@ -77,7 +77,12 @@
 (use-package evil
   :ensure t
   :config
-  (evil-mode 1))
+    (evil-mode 1)
+    (cl-loop for (mode . state) in '(
+				     (org-agenda . emacs)
+				     )
+	     do (evil-set-initial-state mode state))
+  )
 
 (use-package evil-surround
   :ensure t

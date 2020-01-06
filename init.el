@@ -435,7 +435,7 @@ is possible if the heading has a property of DATE_TREE."
 (use-package writeroom-mode
   :ensure t
   :config
-    (define-key writeroom-mode-map (kbd "C-c w r m") 'writeroom-mode)
+    (global-set-key (kbd "C-c ; w r m") 'writeroom-mode)
     (define-key writeroom-mode-map (kbd "C-M-<") 'writeroom-decrease-width)
     (define-key writeroom-mode-map (kbd "C-M->") 'writeroom-increase-width)
     (define-key writeroom-mode-map (kbd "C-M-=") 'writeroom-adjust-width))

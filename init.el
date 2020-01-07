@@ -420,22 +420,19 @@ is possible if the heading has a property of DATE_TREE."
 	(flyspell-goto-next-error)
 	(ispell-word))
   :config
-    (global-set-key (kbd "C-c s m") 'flyspell-mode)
-    (global-set-key (kbd "C-c s b") 'flyspell-buffer)
-    (global-set-key (kbd "C-c s w") 'ispell-word)
-    (global-set-key (kbd "C-c s c") 'flyspell-check-next-highlighted-word)
-    (when (executable-find "hunspell")
-	(setq-default ispell-program-name "hunspell")
-	(setq ispell-really-hunspell t))
+    (global-set-key (kbd "C-c ; s m") 'flyspell-mode)
+    (global-set-key (kbd "C-c ; s b") 'flyspell-buffer)
+    (global-set-key (kbd "C-c ; s w") 'ispell-word)
+    (global-set-key (kbd "C-c ; s c") 'flyspell-check-next-highlighted-word)
   :hook
     (text-mode . flyspell-mode))
 
 (use-package writegood-mode
   :ensure t
   :config
-    (global-set-key (kbd "C-c C-g C-c") 'writegood-mode)
-    (global-set-key (kbd "C-c C-g C-e") 'writegood-reading-ease)
-    (global-set-key (kbd "C-c C-g C-g") 'writegood-grade-level))
+    (global-set-key (kbd "C-c ; w g m") 'writegood-mode)
+    (global-set-key (kbd "C-c ; w g e") 'writegood-reading-ease)
+    (global-set-key (kbd "C-c ; w g l") 'writegood-grade-level))
 
 (use-package writeroom-mode
   :ensure t

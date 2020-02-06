@@ -455,6 +455,9 @@ is possible if the heading has a property of DATE_TREE."
   :ensure t)
 
 ;; Programming
+(use-package flycheck
+  :ensure t)
+
 ;; Smartparens
 (use-package smartparens
   :ensure t)

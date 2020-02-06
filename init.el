@@ -464,7 +464,14 @@ is possible if the heading has a property of DATE_TREE."
 
 ;; Web Mode
 (use-package web-mode
-  :ensure t)
+  :ensure t
+  :bind
+  (:map web-mode-map
+    ("C-c C-e h" . web-mode-element-sibling-previous)
+    ("C-c C-e l" . web-mode-element-sibling-next)
+    ("C-c t t" . phpunit-current-test)
+    ("C-c t c" . phpunit-current-class)
+    ("C-c t p" . phpunit-current-project)))
 
 ;; Emmet
 (use-package emmet-mode

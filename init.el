@@ -475,7 +475,12 @@ is possible if the heading has a property of DATE_TREE."
 
 ;; Emmet
 (use-package emmet-mode
-  :ensure t)
+  :ensure t
+  :init
+    (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+    (add-hook 'css-mode-hook  'emmet-mode) ;; Enable Emmet's css abbreviation.
+    (add-hook 'web-mode-hook 'emmet-mode) ;; Auto-start on any web modes
+  )
 
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))

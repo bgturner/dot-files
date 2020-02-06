@@ -2,7 +2,7 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (tooltip-mode -1)
-(menu-bar-mode -1)
+;; (menu-bar-mode -1)
 
 ;; Splash Screen
 (setq inhibit-startup-screen t)
@@ -77,12 +77,7 @@
 (use-package evil
   :ensure t
   :config
-    (evil-mode 1)
-    (cl-loop for (mode . state) in '(
-				     (org-agenda . emacs)
-				     )
-	     do (evil-set-initial-state mode state))
-  )
+    (evil-mode 1))
 
 (use-package evil-surround
   :ensure t
@@ -98,6 +93,26 @@
   :ensure t
   :init
   (global-evil-matchit-mode 1))
+
+(cl-loop for (mode . state) in '((inferior-emacs-lisp-mode . emacs)
+			    (nrepl-mode . insert)
+			    (pylookup-mode . emacs)
+			    (comint-mode . normal)
+			    (shell-mode . insert)
+			    (git-commit-mode . insert)
+			    (git-rebase-mode . emacs)
+			    (term-mode . emacs)
+			    (help-mode . emacs)
+			    (image . emacs)
+			    (helm-grep-mode . emacs)
+			    (grep-mode . emacs)
+			    (bc-menu-mode . emacs)
+			    (magit-branch-manager-mode . emacs)
+			    (rdictcc-buffer-mode . emacs)
+			    (dired-mode . emacs)
+			    (elfeed-search . emacs)
+			    (wdired-mode . normal))
+    do (evil-set-initial-state mode state))
 
 ;; Theme
 (use-package doom-themes
@@ -207,6 +222,88 @@
 (use-package ledger-mode
   :ensure t)
 
+
+
+;; Elfeed for News
+;; use an org file to organise feeds
+(use-package elfeed-org
+  :ensure t
+  :config
+  (elfeed-org)
+  (setq rmh-elfeed-org-files (list "~/Documents/rss/rss-feeds.org")))
+;;shortcut functions
+(defun passionsplay/elfeed-show-all ()
+  (interactive)
+  (bookmark-maybe-load-default-file)
+  (bookmark-jump "elfeed-all"))
+(defun passionsplay/elfeed-show-emacs ()
+  (interactive)
+  (bookmark-maybe-load-default-file)
+  (bookmark-jump "elfeed-emacs"))
+(defun passionsplay/elfeed-show-daily ()
+  (interactive)
+  (bookmark-maybe-load-default-file)
+  (bookmark-jump "elfeed-daily"))
+;;functions to support syncing .elfeed between machines
+;;makes sure elfeed reads index from disk before launching
+(defun passionsplay/elfeed-load-db-and-open ()
+  "Wrapper to load the elfeed db from disk before opening"
+  (interactive)
+  (elfeed-db-load)
+  (elfeed)
+  (elfeed-search-update--force))
+
+;;write to disk when quiting
+(defun passionsplay/elfeed-save-db-and-bury ()
+  "Wrapper to save the elfeed db to disk before burying buffer"
+  (interactive)
+  (elfeed-db-save)
+  (quit-window))
+
+(use-package elfeed
+  :ensure t
+  :init
+    (evil-set-initial-state 'elfeed-search-mode 'emacs)
+    (evil-set-initial-state 'elfeed-show-mode 'emacs)
+  :bind
+    (:map elfeed-search-mode-map
+              ("A" . passionsplay/elfeed-show-all)
+              ("E" . passionsplay/elfeed-show-emacs)
+              ("D" . passionsplay/elfeed-show-daily)
+              ("q" . passionsplay/elfeed-save-db-and-bury)))
+;; Writing
+(use-package writeroom-mode
+  :ensure t
+  :config
+    (define-key writeroom-mode-map (kbd "C-M-<") #'writeroom-decrease-width)
+    (define-key writeroom-mode-map (kbd "C-M->") #'writeroom-increase-width)
+    (define-key writeroom-mode-map (kbd "C-M-=") #'writeroom-adjust-width))
+
+(use-package flyspell
+  :init
+    (defun flyspell-check-next-highlighted-word ()
+	"Custom function to spell check next highlighted word"
+	(interactive)
+	(flyspell-goto-next-error)
+	(ispell-word))
+  :config
+    (global-set-key (kbd "C-c s m") 'flyspell-mode)
+    (global-set-key (kbd "C-c s b") 'flyspell-buffer)
+    (global-set-key (kbd "C-c s w") 'ispell-word)
+    (global-set-key (kbd "C-c s c") 'flyspell-check-next-highlighted-word)
+    (when (executable-find "hunspell")
+	(setq-default ispell-program-name "hunspell")
+	(setq ispell-really-hunspell t))
+  :hook
+    (text-mode . flyspell-mode))
+
+(use-package writegood-mode
+  :ensure t
+  :config
+    (global-set-key (kbd "C-c C-g C-c") 'writegood-mode)
+    (global-set-key (kbd "C-c C-g C-e") 'writegood-reading-ease)
+    (global-set-key (kbd "C-c C-g C-g") 'writegood-grade-level))
+
 ;; OrgMode Configs
 
 (use-package org-bullets
@@ -295,6 +392,8 @@ is possible if the heading has a property of DATE_TREE."
   :after org
   )
 
+
+
 (eval-after-load "org"
   '(require 'ox-md nil t))
 
@@ -319,6 +418,12 @@ is possible if the heading has a property of DATE_TREE."
 	("p" "Templates for PassionsPlay")
 	("pt" "New Task" entry (file+headline "~/Documents/passionsplay/passionsplay.org" "Tasks")
 	    "* TODO %?\n  %i\n  %a")
+
+	("j" "Templates for Journals")
+	("je" "New Entry" entry (file+olp+datetree "~/Documents/Journal/journal.org")
+	    "**** %?\n     %^{DateTime}T\n     %i\n     %a"
+	    :empty-lines 1
+	    :clock-in t)
 
 	("f" "Templates for FW")
 	("ft" "New Task" entry(file+headline "~/Documents/flywheel/fw.org" "Tasks")
@@ -442,6 +547,15 @@ is possible if the heading has a property of DATE_TREE."
     (define-key writeroom-mode-map (kbd "C-M->") 'writeroom-increase-width)
     (define-key writeroom-mode-map (kbd "C-M-=") 'writeroom-adjust-width))
 
+(setq org2blog/wp-blog-alist
+      '(("passionsplay"
+	    :url "https://passionsplay.com/xmlrpc.php"
+	    :username "henjamin"
+	    :default-title "Draft"
+	    :default-categories ("dev")
+	    :tags-as-categories nil)
+	))
+
 ;; Show matching parens
 (setq show-paren-delay 0)
 (show-paren-mode 1)
@@ -472,6 +586,10 @@ is possible if the heading has a property of DATE_TREE."
     ("C-c t t" . phpunit-current-test)
     ("C-c t c" . phpunit-current-class)
     ("C-c t p" . phpunit-current-project)))
+
+;; PHP
+(use-package php-mode
+  :ensure t)
 
 ;; Emmet
 (use-package emmet-mode
@@ -511,10 +629,13 @@ is possible if the heading has a property of DATE_TREE."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ivy-height 20)
  '(org-agenda-files
    (quote
-    ("~/Documents" )))
- '(package-selected-packages (quote (neotree general which-key helm evil use-package))))
+    ("~/Documents/Journal/journal.org" "~/Documents/home-purchase/3900-SW-Pendleton-St-97221_26466082/3900-SW-Pendleton-St-97221_26466082.org" "/mnt/Linux_Data/Documents/passionsplay/blog/blog-planner.org" "~/Documents/passionsplay/passionsplay.org" "~/Documents/benjamin/life.org" "/mnt/Linux_Data/Documents/passionsplay/blog/posts/using-emacs-instead-of-jupyter-notebook.org" "~/Documents/org-solving-with-text/solving-with-text.org")))
+ '(package-selected-packages
+   (quote
+    (exercism exercism-emacs php-mode writeroom-mode writegood-mode elfeed-org ranger ledger-mode python-pytest ace-window ein-subpackages ein-notebook ein ace-jump-mode emmet-mode neotree general which-key helm evil use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

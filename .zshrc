@@ -20,6 +20,9 @@ export EDITOR='vim'
 
 source $HOME/.bash_aliases
 
+export fpath=(~/.zsh/completionA $fpath)
+autoload -U compinit && compinit
+
 #
 # Custom prompt theme based on the 'philips' theme in oh-my-zsh
 # The main difference is this doesn't have the time stamp and

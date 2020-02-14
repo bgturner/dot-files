@@ -486,14 +486,15 @@ is possible if the heading has a property of DATE_TREE."
     (define-key writeroom-mode-map (kbd "C-M->") 'writeroom-increase-width)
     (define-key writeroom-mode-map (kbd "C-M-=") 'writeroom-adjust-width))
 
-(setq org2blog/wp-blog-alist
-      '(("passionsplay"
-	    :url "https://passionsplay.com/xmlrpc.php"
-	    :username "henjamin"
-	    :default-title "Draft"
-	    :default-categories ("dev")
-	    :tags-as-categories nil)
-	))
+;; Edit Chrome text areas with emacs
+(use-package edit-server
+  :ensure t
+  :init
+    (setq edit-server-new-frame nil) ;; Open in new buffer of existing frame
+  ;; Start the server and use markdown by default
+  :config
+    (edit-server-start)
+    (add-hook 'edit-server-start-hook 'markdown-mode))
 
 ;; Show matching parens
 (setq show-paren-delay 0)

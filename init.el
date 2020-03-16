@@ -411,6 +411,10 @@ is possible if the heading has a property of DATE_TREE."
 ;; Define default capture file
 (setq org-default-notes-file "~/org/capture.org")
 
+;; Persist Clocking History
+(setq org-clock-persist 'history)
+(org-clock-persistence-insinuate)
+
 ;; Define capture templates
 (setq org-capture-templates
 	'(

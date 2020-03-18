@@ -294,49 +294,71 @@
     (global-set-key (kbd "C-c C-g C-g") 'writegood-grade-level))
 
 ;; OrgMode Configs
+(use-package org
+  :ensure t
+  :init
+    ; General Settings
+    (setq org-hide-emphasis-markers t
+	  org-confirm-babel-evaluate nil
+	  org-log-into-drawer t
+	  org-return-follows-link t
+	  org-log-done 'time
+	  org-html-validation-link nil
+	  org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!)" "CANCELED(c@)")))
+
+    ; Agenda Settings
+    (setq org-agenda-span 'day
+          org-agenda-custom-commands
+	  '(("c" . "Custom Agenda Views")
+	    ("cp" "Planning, Fourteen day agenda with all unscheduled todos"
+	     ((agenda "" ((org-agenda-span 14)
+			  (org-agenda-start-on-weekday 0)))
+	      (alltodo "" ((org-agenda-skip-function '(org-agenda-skip-entry-if 'deadline 'scheduled))))))))
+
+    ;; Improve org-refile across files
+    ;;
+    ;;   See: https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html
+    ;;
+    (setq org-refile-targets '((org-agenda-files :maxlevel . 3))
+          org-goto-interface 'outline-path-completion
+          org-refile-use-outline-path 'file
+          org-outline-path-complete-in-steps nil
+          org-refile-allow-creating-parent-nodes 'confirm)
+
+    ;; Make jumping to Org file headings fuzzy searchable using org-goto
+    ;;
+    ;;  See: https://emacs.stackexchange.com/questions/32617/how-to-jump-directly-to-an-org-headline
+    ;;
+    (setq org-goto-interface 'outline-path-completion
+          org-outline-path-complete-in-steps nil)
+
+  :config
+    (global-set-key "\C-cl" 'org-store-link)
+    (global-set-key "\C-ca" 'org-agenda)
+    (global-set-key "\C-cc" 'org-capture)
+    (global-set-key "\C-cb" 'org-switchb)
+    (global-set-key (kbd "C-c r d") 'org-refile-to-datetree)
+    (font-lock-add-keywords            ; A bit silly but my headers are now
+     'org-mode `(("^\\*+ \\(TODO\\) "  ; shorter, and that is nice canceled
+		  (1 (progn (compose-region (match-beginning 1) (match-end 1) "□")
+			    nil)))
+		 ("^\\*+ \\(NEXT\\) "
+		  (1 (progn (compose-region (match-beginning 1) (match-end 1) "⇒")
+			    nil)))
+		 ("^\\*+ \\(DONE\\) "
+		  (1 (progn (compose-region (match-beginning 1) (match-end 1) "✔")
+			    nil)))
+		 ("^\\*+ \\(CANCELED\\) "
+		  (1 (progn (compose-region (match-beginning 1) (match-end 1) "✘")
+			    nil)))
+		 ))
+  )
 
 (use-package org-bullets
-  :ensure t)
+  :ensure t
+  :config
+    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-
-(setq org-todo-keywords
-      '((sequence "TODO(t)" "NEXT(n)" "WAIT(w@/!)" "SOMEDAY(s)" "|" "DONE(d!)" "CANCELED(c@)")))
-
-(setq org-agenda-custom-commands
-      '(("c" . "Custom Agenda Views")
-	("cp" "Planning, Fourteen day agenda with all unscheduled todos"
-          ((agenda "" ((org-agenda-span 14)
-		       (org-agenda-start-on-weekday 0)))
-	   (alltodo "" ((org-agenda-skip-function '(org-agenda-skip-entry-if 'deadline 'scheduled)))))
-	   ((org-agenda-tag-filter-preset '("-journal"))))
-	("cj" "Journal Entries for the last 14 days"
-          ((agenda "" ((org-agenda-span 14)
-		      (org-agenda-start-day "-14d")))))
-	))
-
-;; Have the Agenda mode default to one day
-(setq org-agenda-span 'day)
-
-;; Define Global Orgmode keybindings
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cc" 'org-capture)
-(global-set-key "\C-cb" 'org-switchb)
-(global-set-key (kbd "C-c r d") 'org-refile-to-datetree)
-
-;; Have Org notes logged into the LOGBOOK
-(setq org-log-into-drawer t)
-
-;; Improve org-refile across files
-;;
-;;   See: https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html
-;;
-(setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
-(setq org-goto-interface 'outline-path-completion)
-(setq org-refile-use-outline-path 'file)
-(setq org-outline-path-complete-in-steps nil)
-(setq org-refile-allow-creating-parent-nodes 'confirm)
 
 (defun org-refile-to-datetree (&optional file)
   "Refile a subtree to a datetree corresponding to it's timestamp.
@@ -363,13 +385,6 @@ is possible if the heading has a property of DATE_TREE."
         (org-paste-subtree (+ org-datetree-base-level 3))
         (widen)
         ))))
-
-;; Make jumping to Org file headings fuzzy searchable using org-goto
-;;
-;;  See: https://emacs.stackexchange.com/questions/32617/how-to-jump-directly-to-an-org-headline
-;;
-(setq org-goto-interface 'outline-path-completion)
-(setq org-outline-path-complete-in-steps nil)
 
 ;; Org Exports
 (use-package ox-twbs

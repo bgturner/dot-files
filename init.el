@@ -223,6 +223,12 @@
   :ensure t)
 
 
+;; News and Reading
+(use-package pocket-reader
+  :ensure t
+  :init
+    (evil-set-initial-state 'pocket-reader-mode 'emacs)
+  )
 
 ;; Elfeed for News
 ;; use an org file to organise feeds

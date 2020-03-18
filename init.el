@@ -229,31 +229,16 @@
 (use-package elfeed-org
   :ensure t
   :config
-  (elfeed-org)
-  (setq rmh-elfeed-org-files (list "~/Documents/rss/rss-feeds.org")))
-;;shortcut functions
-(defun passionsplay/elfeed-show-all ()
-  (interactive)
-  (bookmark-maybe-load-default-file)
-  (bookmark-jump "elfeed-all"))
-(defun passionsplay/elfeed-show-emacs ()
-  (interactive)
-  (bookmark-maybe-load-default-file)
-  (bookmark-jump "elfeed-emacs"))
-(defun passionsplay/elfeed-show-daily ()
-  (interactive)
-  (bookmark-maybe-load-default-file)
-  (bookmark-jump "elfeed-daily"))
-;;functions to support syncing .elfeed between machines
-;;makes sure elfeed reads index from disk before launching
-(defun passionsplay/elfeed-load-db-and-open ()
-  "Wrapper to load the elfeed db from disk before opening"
-  (interactive)
-  (elfeed-db-load)
-  (elfeed)
-  (elfeed-search-update--force))
+    (elfeed-org)
+    (setq rmh-elfeed-org-files (list "~/Documents/rss/rss-feeds.org")))
 
-;;write to disk when quiting
+(defun passionsplay/elfeed-load-db-and-open ()
+    "Wrapper to load the elfeed db from disk before opening"
+    (interactive)
+    (elfeed-db-load)
+    (elfeed)
+    (elfeed-search-update--force))
+
 (defun passionsplay/elfeed-save-db-and-bury ()
   "Wrapper to save the elfeed db to disk before burying buffer"
   (interactive)
@@ -267,10 +252,8 @@
     (evil-set-initial-state 'elfeed-show-mode 'emacs)
   :bind
     (:map elfeed-search-mode-map
-              ("A" . passionsplay/elfeed-show-all)
-              ("E" . passionsplay/elfeed-show-emacs)
-              ("D" . passionsplay/elfeed-show-daily)
               ("q" . passionsplay/elfeed-save-db-and-bury)))
+
 ;; Writing
 (use-package writeroom-mode
   :ensure t

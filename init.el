@@ -76,8 +76,11 @@
 (use-package company
   :config
     (add-hook 'after-init-hook 'global-company-mode)
+  :hook (prog-mode . company-mode)
   :init
-    (global-set-key (kbd "C-x c") 'company-complete-common))
+    (global-set-key (kbd "C-x c") 'company-complete-common)
+  :config (setq company-tooltip-align-annotations t)
+          (setq company-minimum-prefix-length 1))
 
 ;; Vim mode
 (use-package evil

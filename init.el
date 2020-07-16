@@ -319,11 +319,12 @@
           org-outline-path-complete-in-steps nil)
 
   :config
-    (global-set-key "\C-cl" 'org-store-link)
-    (global-set-key "\C-ca" 'org-agenda)
-    (global-set-key "\C-cc" 'org-capture)
-    (global-set-key "\C-cb" 'org-switchb)
-    (global-set-key (kbd "C-c r d") 'org-refile-to-datetree)
+    (global-set-key (kbd "C-c o l") 'org-store-link)
+    (global-set-key (kbd "C-c o a") 'org-agenda)
+    (global-set-key (kbd "C-c o c") 'org-capture)
+    (global-set-key (kbd "C-c o b") 'org-switchb)
+    (global-set-key (kbd "C-c o t j") 'org-clock-goto)
+    (global-set-key (kbd "C-c o r d") 'org-refile-to-datetree)
 
     (require 'org-tempo) ; needed to make <s<tag> expand to src blocks in macos
     (font-lock-add-keywords

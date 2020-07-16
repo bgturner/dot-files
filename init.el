@@ -146,6 +146,11 @@
   :config
   (which-key-mode 1))
 
+(use-package ace-window
+  :config
+  (global-set-key (kbd "M-o") 'ace-window)
+  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
+
 ;; Custom keybinding
 (use-package general
   :config (general-define-key

@@ -612,7 +612,9 @@ is possible if the heading has a property of DATE_TREE."
     (python-mode . pipenv-mode))
 
 ;; EIN - Jupyter Notebook client
-(use-package ein)
+(use-package ein
+  :config
+    (setq ein:output-area-inlined-images t))
 
 ;; Productivity
 (use-package wakatime-mode

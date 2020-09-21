@@ -378,7 +378,7 @@
 
 (use-package org-mru-clock
   :defer t
-  :bind* (("C-c ; c" . org-mru-clock-in))
+  :bind (("C-c o m" . org-mru-clock-in))
   :commands (org-mru-clock-in org-mru-clock-select-recent-task)
   :config
   (setq org-mru-clock-how-many 50

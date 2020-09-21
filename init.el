@@ -436,6 +436,27 @@ inserting the heading which will be handled by 'org-capture'."
               :map org-mode-map
 		(("C-c n i" . org-roam-insert))))
 
+(defun bt/start-org-roam-server ()
+  "Starts the org-roam-server and launches the webpage"
+  (interactive)
+  (require 'org-roam-protocol)
+  (require 'browse-url)
+  (server-start)
+  (browse-url "http://127.0.0.1:8080"))
+
+(use-package org-roam-server
+  :straight (:host github :repo "org-roam/org-roam-server")
+  :config
+    (setq org-roam-server-host "127.0.0.1"
+	    org-roam-server-port 8080
+	    org-roam-server-export-inline-images t
+	    org-roam-server-authenticate nil
+	    org-roam-server-network-poll t
+	    org-roam-server-network-arrows nil
+	    org-roam-server-network-label-truncate t
+	    org-roam-server-network-label-truncate-length 60
+	    org-roam-server-network-label-wrap-length 20))
+
 (use-package deft
   :after org
   :bind

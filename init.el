@@ -396,6 +396,33 @@
     :after org
     )
 
+(use-package org-journal
+  :bind
+    ("C-c n j" . org-journal-new-entry)
+  :custom
+    (org-journal-dir "~/Sync/org/roam/journal/")
+    (org-journal-file-format "journal-%Y-%m-%d.org")
+    (org-journal-date-prefix "#+CATEGORY: journal\n#+TITLE: Journal - ")
+    (org-journal-date-format "%Y-%m-%d - %A"))
+
+(defun org-journal-find-location ()
+  "Open today's journal. Specify a non-nil prefix in order to inhibit
+inserting the heading which will be handled by 'org-capture'."
+    (org-journal-new-entry t)
+    (goto-char (point-max)))
+
+(add-to-list 'org-capture-templates
+	    '("j" "Journal" plain
+		(function org-journal-find-location)
+"
+* %^{Title}
+  %U
+  %i
+  %?
+"
+		:empty-lines 1
+		:jump-to-captured t))
+
 (use-package org-roam
       :hook
 	(after-init . org-roam-mode)

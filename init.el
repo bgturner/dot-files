@@ -426,7 +426,7 @@ inserting the heading which will be handled by 'org-capture'."
 (use-package org-roam
       :hook
 	(after-init . org-roam-mode)
-      :straight (:host github :repo "jethrokuan/org-roam")
+      :straight (:host github :repo "org-roam/org-roam")
       :custom
 	(org-roam-directory "~/org/roam/")
       :bind (:map org-roam-mode-map

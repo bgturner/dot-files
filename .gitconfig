@@ -1,6 +1,7 @@
 [alias]
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr %cd) %C(cyan)%an%Creset' --date=format:'%d.%m' --abbrev-commit "$@"
 [color]
 	ui = auto
 [user]

@@ -330,6 +330,7 @@
     (global-set-key (kbd "C-c o b") 'org-switchb)
     (global-set-key (kbd "C-c o t j") 'org-clock-goto)
     (global-set-key (kbd "C-c o r d") 'org-refile-to-datetree)
+    (global-set-key (kbd "C-c o u r") 'org-web-tools--read-url)
 
     (require 'org-tempo) ; needed to make <s<tag> expand to src blocks in macos
 

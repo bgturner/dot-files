@@ -303,17 +303,27 @@
 	  org-return-follows-link t
 	  org-log-done 'time
 	  org-html-validation-link nil
-	  org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "|" "DONE(d!)" "CANCELED(c@)")))
-
+	  org-export-with-section-numbers nil
+	  org-priority-default 67 ;; Have the default priority be "C"
+	  org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "|" "DONE(d!)" "CANCELED(c@)"))
+          org-columns-default-format "%60ITEM(Task) %TODO %6Effort(Estim){:}  %6CLOCKSUM(Clock) %TIMESTAMP %SCHEDULED(Scheduled) %DEADLINE(Deadline)"
+          org-global-properties '(
+				  ("Effort_ALL" . "0 0:15 0:30 1:00 2:00 3:00 4:00 5:00 6:00 7:00")
+				  ))
     ; Agenda Settings
      (setq org-agenda-span 'day
+	   org-agenda-todo-ignore-scheduled 'all
+	   org-agenda-entry-text-maxlines 10
            org-agenda-custom-commands
      	  '(("c" . "Custom Agenda Views")
+	    ("cn" todo "NEXT")
      	    ("cp" "Planning, Fourteen day agenda with all unscheduled todos"
      	     ((agenda "" ((org-agenda-span 14)
      			  (org-agenda-start-on-weekday 0)))
-     	      (alltodo "" ((org-agenda-skip-function '(org-agenda-skip-entry-if 'deadline 'scheduled))))))))
-
+     	      (alltodo "" ((org-agenda-skip-function '(org-agenda-skip-entry-if 'deadline 'scheduled))))))
+	    ("cl" "Log View"
+	     ((agenda "" ((org-agenda-start-with-log-mode '(closed clock state))
+			  (org-agenda-archives-mode t)))))))
 
      (setq org-agenda-skip-additional-timestamps-same-entry t
 	   org-agenda-skip-scheduled-if-done t
@@ -323,6 +333,10 @@
 				  (800 1000 1200 1400 1600 1800 2000)
 				  "......" "----------------"))
 
+     (setq org-agenda-sorting-strategy '((agenda time-up todo-state-down priority-down)
+					 (todo priority-down category-up)
+					 (tags priority-down category-keep)
+					 (search category-keep)))
 
     ;; Improve org-refile across files
     ;;

@@ -361,6 +361,8 @@
 	(js . t)
        ))
 
+    (setq org-capture-templates ())
+
     (load-user-file ".org-capture-templates.el")
 
 ) ;; End orgmode config

@@ -332,23 +332,7 @@
     (global-set-key (kbd "C-c o r d") 'org-refile-to-datetree)
 
     (require 'org-tempo) ; needed to make <s<tag> expand to src blocks in macos
-    (font-lock-add-keywords
-     'org-mode '(("^\\*+ \\(TODO\\) "  ; could probably be refactored to a variable so that multiple modes can use this definition
-		  (1 (progn (compose-region (match-beginning 1) (match-end 1) "□")
-			    nil)))
-		 ("^\\*+ \\(NEXT\\) "
-		  (1 (progn (compose-region (match-beginning 1) (match-end 1) "⇒")
-			    nil)))
-		 ("^\\*+ \\(WAIT\\) "
-		  (1 (progn (compose-region (match-beginning 1) (match-end 1) "◐")
-			    nil)))
-		 ("^\\*+ \\(DONE\\) "
-		  (1 (progn (compose-region (match-beginning 1) (match-end 1) "✔")
-			    nil)))
-		 ("^\\*+ \\(CANCELED\\) "
-		  (1 (progn (compose-region (match-beginning 1) (match-end 1) "✘")
-			    nil)))
-    ))
+
     ;; Helper to generate unique ids
     (require 'org-id)
     (setq org-id-link-to-org-use-id 'nil)

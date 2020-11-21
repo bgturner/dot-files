@@ -442,6 +442,7 @@ inserting the heading which will be handled by 'org-capture'."
   (require 'org-roam-protocol)
   (require 'browse-url)
   (server-start)
+  (org-roam-server-mode)
   (browse-url "http://127.0.0.1:8080"))
 
 (use-package org-roam-server

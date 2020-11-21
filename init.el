@@ -619,6 +619,8 @@ is possible if the heading has a property of DATE_TREE."
 
 ;; SysAdmin
 (use-package restclient)
+(use-package graphql-mode)
+(use-package graphql)
 
 ;; Snippets
 (use-package yasnippet)

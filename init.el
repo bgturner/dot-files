@@ -306,6 +306,16 @@
      			  (org-agenda-start-on-weekday 0)))
      	      (alltodo "" ((org-agenda-skip-function '(org-agenda-skip-entry-if 'deadline 'scheduled))))))))
 
+
+     (setq org-agenda-skip-additional-timestamps-same-entry t
+	   org-agenda-skip-scheduled-if-done t
+	   org-agenda-skip-deadline-if-done t
+	   org-agenda-use-time-grid t
+	   org-agenda-time-grid '((daily today)
+				  (800 1000 1200 1400 1600 1800 2000)
+				  "......" "----------------"))
+
+
     ;; Improve org-refile across files
     ;;
     ;;   See: https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html

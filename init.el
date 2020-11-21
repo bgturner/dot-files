@@ -198,14 +198,12 @@
 (setq recentf-max-menu-items 50)
 
 ;; Powerline
-(use-package spaceline
-  :init
-  (setq powerline-default-separator 'slant)
+
+(use-package powerline
+  :straight (:host github :repo " milkypostman/powerline")
   :config
-  (spaceline-emacs-theme)
-  (spaceline-toggle-minor-modes-off)
-  (spaceline-toggle-buffer-size-off)
-  (spaceline-toggle-evil-state-on))
+    (require 'powerline)
+    (powerline-center-evil-theme))
 
 ;; Projectile
 (use-package projectile

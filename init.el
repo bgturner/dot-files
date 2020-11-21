@@ -598,21 +598,24 @@ is possible if the heading has a property of DATE_TREE."
 ;;
 ;; Backups
 ;;
-;; New location for backups.
-(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+;; Put backup files neatly away
+(let ((backup-dir "~/tmp/emacs/backups")
+      (auto-saves-dir "~/tmp/emacs/auto-saves/"))
+  (dolist (dir (list backup-dir auto-saves-dir))
+    (when (not (file-directory-p dir))
+      (make-directory dir t)))
+  (setq backup-directory-alist `(("." . ,backup-dir))
+	auto-save-file-name-transforms `((".*" ,auto-saves-dir t))
+	auto-save-list-file-prefix (concat auto-saves-dir ".saves-")
+	tramp-backup-directory-alist `((".*" . ,backup-dir))
+	tramp-auto-save-directory auto-saves-dir))
 
-;; Silently delete execess backup versions
-(setq delete-old-versions t)
-
-;; Only keep the last 1000 backups of a file.
-(setq kept-old-versions 1000)
-
-;; Even version controlled files get to be backed up.
-(setq vc-make-backup-files t)
-
-;; Use version numbers for backup files.
-(setq version-control t)
-
+(setq backup-by-copying t    ; Don't delink hardlinks
+      delete-old-versions t  ; Clean up the backups
+      version-control t      ; Use version numbers on backups,
+      kept-new-versions 5    ; keep some new versions
+      kept-old-versions 2    ; and some old ones, too
+      auto-save-interval 20)
 
 ;; SysAdmin
 (use-package restclient)

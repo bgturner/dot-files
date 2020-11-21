@@ -224,33 +224,43 @@
     (evil-set-initial-state 'pocket-reader-mode 'emacs)
   )
 
-;; ;; Elfeed for News
-;; ;; use an org file to organise feeds
-;; (use-package elfeed-org
-;;   :config
-;;     (elfeed-org)
-;;     (setq rmh-elfeed-org-files (list "~/Documents/rss/rss-feeds.org")))
+;; Elfeed for News
+;; use an org file to organise feeds
+(use-package elfeed-org
+  :config
+    (elfeed-org)
+    (setq rmh-elfeed-org-files (list "~/Documents/personal/rss/rss-feeds.org")))
 
-;; (defun pp/elfeed-load-db-and-open ()
-;;     "Wrapper to load the elfeed db from disk before opening"
-;;     (interactive)
-;;     (elfeed-db-load)
-;;     (elfeed)
-;;     (elfeed-search-update--force))
+(defun pp/elfeed-load-db-and-open ()
+    "Wrapper to load the elfeed db from disk before opening."
+    (interactive)
+    (elfeed-db-load)
+    (elfeed)
+    (elfeed-search-update--force))
 
-;; (defun pp/elfeed-save-db-and-bury ()
-;;   "Wrapper to save the elfeed db to disk before burying buffer"
-;;   (interactive)
-;;   (elfeed-db-save)
-;;   (quit-window))
+(defun pp/elfeed-save-db-and-bury ()
+  "Wrapper to save the elfeed db to disk before burying buffer."
+  (interactive)
+  (elfeed-db-save)
+  (quit-window))
 
-;; (use-package elfeed
-;;   :init
-;;     (evil-set-initial-state 'elfeed-search-mode 'emacs)
-;;     (evil-set-initial-state 'elfeed-show-mode 'emacs)
-;;   :bind
-;;     (:map elfeed-search-mode-map
-;;               ("q" . passionsplay/elfeed-save-db-and-bury)))
+(use-package elfeed
+  :init
+    (evil-set-initial-state 'elfeed-search-mode 'emacs)
+    (evil-set-initial-state 'elfeed-show-mode 'emacs)
+    (setq elfeed-db-directory "~/Documents/personal/rss/.elfeed")
+  :bind
+    (:map elfeed-search-mode-map
+              ("q" . pp/elfeed-save-db-and-bury)))
+
+(use-package elfeed-score
+  :ensure t
+  :init
+    (setq elfeed-score-score-file "~/Documents/personal/rss/elfeed.score")
+  :config
+  (progn
+    (elfeed-score-enable)
+    (define-key elfeed-search-mode-map "=" elfeed-score-map)))
 
 ;; Writing
 (use-package writeroom-mode

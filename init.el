@@ -571,9 +571,24 @@ is possible if the heading has a property of DATE_TREE."
 (setq show-paren-delay 0)
 (show-paren-mode 1)
 
-;; Disable backup files
-(setq make-backup-files nil) ; stop creating backup~ files
-(setq auto-save-default nil) ; stop creating #autosave# files
+;;
+;; Backups
+;;
+;; New location for backups.
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+
+;; Silently delete execess backup versions
+(setq delete-old-versions t)
+
+;; Only keep the last 1000 backups of a file.
+(setq kept-old-versions 1000)
+
+;; Even version controlled files get to be backed up.
+(setq vc-make-backup-files t)
+
+;; Use version numbers for backup files.
+(setq version-control t)
+
 
 ;; SysAdmin
 (use-package restclient)

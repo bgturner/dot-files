@@ -136,7 +136,18 @@ set splitright
 
 " }}}
 " Lightline {{{
-let g:lightline = { 'colorscheme': 'solarized', }               "vim-lightline
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
+      \ },
+      \ }
+
+function! LightlineFilename()
+  let filename = expand('%:F') !=# '' ? expand('%:F') : '[No Name]'
+  let modified = &modified ? ' +' : ''
+  return filename . modified
+endfunction
 set laststatus=2                                                "vim-lightline
 set noshowmode                                                  "vim-lightline
 

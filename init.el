@@ -631,6 +631,11 @@ is possible if the heading has a property of DATE_TREE."
 
 ;; Programming
 (use-package flycheck)
+(use-package editorconfig
+  :diminish
+  :config
+  (editorconfig-mode 1))
+
 ;; Shell (Bash, Zsh, sh, etc)
 (defun bt/browse-shellcheck-wiki ()
   "When point is on a shellcheck code (ie SC2162), browse the wiki entry for that code."

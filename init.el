@@ -321,7 +321,7 @@
 	  org-export-with-section-numbers nil
 	  org-priority-default 67 ;; Have the default priority be "C"
 	  org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "|" "DONE(d!)" "CANCELED(c@)"))
-          org-columns-default-format "%60ITEM(Task) %TODO %6Effort(Estim){:}  %6CLOCKSUM(Clock) %TIMESTAMP %SCHEDULED(Scheduled) %DEADLINE(Deadline)"
+          org-columns-default-format "%60ITEM(Task) %TODO %6Effort(Estim){:}  %6CLOCKSUM(Clock){:} %TIMESTAMP %SCHEDULED(Scheduled) %DEADLINE(Deadline)"
           org-global-properties '(
 				  ("Effort_ALL" . "0 0:15 0:30 1:00 2:00 3:00 4:00 5:00 6:00 7:00")
 				  ))

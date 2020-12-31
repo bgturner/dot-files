@@ -41,6 +41,9 @@
 (setq display-time-default-load-average nil)
 (display-time-mode 1)
 
+(global-set-key (kbd "C-x t l") 'toggle-truncate-lines)
+(global-set-key (kbd "C-x t w") 'whitespace-mode)
+
 (use-package ivy
   :demand
   :config

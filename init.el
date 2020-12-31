@@ -652,6 +652,38 @@ is possible if the heading has a property of DATE_TREE."
   :config
   (editorconfig-mode 1))
 
+(use-package lsp-mode
+ :config
+   (setq lsp-prefer-flymake nil)
+ :hook
+   (php-mode . lsp)
+   (python-mode . lsp)
+   (sh-mode . lsp)
+ :commands
+   lsp)
+
+(use-package lsp-ui
+    :requires
+	lsp-mode flycheck
+    :config
+	(setq
+	    lsp-ui-doc-enable t
+	    lsp-ui-doc-use-childframe t
+	    lsp-ui-doc-position 'top
+	    lsp-ui-doc-include-signature t
+	    lsp-ui-sideline-enable nil
+	    lsp-ui-flycheck-enable t
+	    lsp-ui-flycheck-list-position 'right
+	    lsp-ui-flycheck-live-reporting t
+	    lsp-ui-peek-enable t
+	    lsp-ui-peek-list-width 60
+	    lsp-ui-peek-peek-height 25
+	    lsp-ui-sideline-enable nil)
+	(add-hook 'lsp-mode-hook 'lsp-ui-mode))
+
+(use-package company-lsp
+    :commands company-lsp)
+
 ;; Shell (Bash, Zsh, sh, etc)
 (defun bt/browse-shellcheck-wiki ()
   "When point is on a shellcheck code (ie SC2162), browse the wiki entry for that code."
@@ -720,6 +752,10 @@ is possible if the heading has a property of DATE_TREE."
 ;;;;
 ;; Python Dev
 ;;;;
+
+(use-package lsp-python-ms
+  :defer 0.3
+  :custom (lsp-python-ms-auto-install-server t))
 
 ;; ELPY - general python goodness
 (use-package elpy

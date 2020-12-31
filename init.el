@@ -631,6 +631,17 @@ is possible if the heading has a property of DATE_TREE."
 
 ;; Programming
 (use-package flycheck)
+;; Shell (Bash, Zsh, sh, etc)
+(defun bt/browse-shellcheck-wiki ()
+  "When point is on a shellcheck code (ie SC2162), browse the wiki entry for that code."
+  (interactive)
+  (browse-url
+   (concat "https://github.com/koalaman/shellcheck/wiki/" (thing-at-point 'word))))
+
+(add-hook 'sh-mode-hook
+          (lambda ()
+            (set (make-local-variable 'compile-command)
+                 (concat "shellcheck --format=gcc " buffer-file-name))))
 
 ;; PHP
 (use-package php-mode

@@ -44,7 +44,15 @@
 (global-set-key (kbd "C-x t l") 'toggle-truncate-lines)
 (global-set-key (kbd "C-x t w") 'whitespace-mode)
 
+;; Clean up the modeline
+(use-package diminish
+  :config
+    (diminish 'undo-tree-mode)
+    (diminish 'visual-line-mode)
+    )
+
 (use-package ivy
+  :diminish
   :demand
   :config
     (setq ivy-use-virtual-buffers t
@@ -54,10 +62,12 @@
     )
 
 (use-package swiper
+  :diminish
   :config
   (global-set-key "\C-s" 'swiper))
 
 (use-package counsel
+  :diminish
   :config
     (global-set-key (kbd "M-x") 'counsel-M-x)
     (global-set-key (kbd "C-x C-f") 'counsel-find-file)
@@ -93,6 +103,7 @@
     :init
     (global-evil-surround-mode 1))
   (use-package evil-commentary
+    :diminish
     :init
     (evil-commentary-mode))
   (use-package evil-matchit
@@ -143,6 +154,7 @@
 
 ;; Which Key
 (use-package which-key
+  :diminish
   :init
   (setq which-key-separator " ")
   (setq which-key-prefix-prefix "+")
@@ -451,6 +463,7 @@ inserting the heading which will be handled by 'org-capture'."
 		:jump-to-captured t))
 
 (use-package org-roam
+      :diminish
       :hook
 	(after-init . org-roam-mode)
       :straight (:host github :repo "org-roam/org-roam")
@@ -731,6 +744,7 @@ is possible if the heading has a property of DATE_TREE."
 
 ;; Productivity
 (use-package wakatime-mode
+  :diminish
   :config
     (global-wakatime-mode))
 

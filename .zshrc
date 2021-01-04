@@ -22,9 +22,17 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd 'v' edit-command-line
 
+# Use FZF if installed
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-[ -f ~/.cargo/env ] && source $HOME/.cargo/env
+# Add Global Composer to path
+[ -d "$HOME/.config/composer/vendor/bin" ] && export PATH="$HOME/.config/composer/vendor/bin:${PATH}"
 
+# Add home bin to path
+[ -d "$HOME/bin" ] && export PATH="$HOME/bin:${PATH}"
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+[ -f ~/.pyenv ] && export PYENV_ROOT="$HOME/.pyenv" && export PATH="$PYENV_ROOT/bin:$PATH"
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi

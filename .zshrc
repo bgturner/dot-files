@@ -2,8 +2,8 @@
 source "$HOME/.bash_aliases"
 
 # User configuration
-export fpath=(~/.zsh/completionA "$fpath")
-autoload -U compinit && compinit
+export fpath=(~/.zsh/completionA $fpath)
+autoload -Uz compinit && compinit
 
 PROMPT='%(?.%F{green}★.%F{red}✗ %?)%f %B%F{240}%2~%f%b %# '
 

@@ -124,6 +124,7 @@
 			    (term-mode . emacs)
 			    (help-mode . emacs)
 			    (image-mode . emacs)
+			    (deft-mode . emacs)
 			    (helm-grep-mode . emacs)
 			    (grep-mode . emacs)
 			    (bc-menu-mode . emacs)

@@ -16,7 +16,14 @@ setopt share_history
 export fpath=(~/.zsh/completionA $fpath)
 autoload -Uz compinit && compinit
 
-PROMPT='%(?.%F{green}★.%F{red}✗ %?)%f %B%F{240}%2~%f%b %# '
+# To see available colors, run this command: spectrum_ls
+PROMPT='%(?.%F{green}★.%F{red}✗ %?)%f $(git_prompt_info) %B%F{240}%2~%f%b %# '
+
+# Settings for git theming of the prompt
+ZSH_THEME_GIT_PROMPT_PREFIX="%F{141}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%f"
+ZSH_THEME_GIT_PROMPT_CLEAN=""
+ZSH_THEME_GIT_PROMPT_DIRTY="%F{009}*%f"
 
 # LS colors, made with http://geoff.greer.fm/lscolors/
 export LSCOLORS="Gxfxcxdxbxegedabagacad"

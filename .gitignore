@@ -17,3 +17,5 @@ npm-debug.log
 vendor
 .DS_Store
 bin
+vim/plugged
+vim/autoload

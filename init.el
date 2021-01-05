@@ -61,6 +61,10 @@
     (ivy-mode 1)
     )
 
+(use-package ivy-rich
+  :init
+  (ivy-rich-mode 1))
+
 (use-package swiper
   :diminish
   :config

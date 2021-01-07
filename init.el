@@ -44,6 +44,11 @@
 (global-set-key (kbd "C-x t l") 'toggle-truncate-lines)
 (global-set-key (kbd "C-x t w") 'whitespace-mode)
 
+
+;; Prefer splitting the window to the right
+(setq split-height-threshold nil)
+(setq split-width-threshold 200)
+
 ;; Clean up the modeline
 (use-package diminish
   :config

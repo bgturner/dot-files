@@ -350,6 +350,16 @@
 	     ((agenda "" ((org-agenda-start-with-log-mode '(closed clock state))
 			  (org-agenda-archives-mode t)))))))
 
+     ;; What agenda files are used?
+     (setq org-agenda-files (apply 'append
+				   (mapcar
+				    (lambda (directory)
+				      (directory-files-recursively
+				       directory org-agenda-file-regexp))
+				    '("~/Sync/personal/"
+				      "~/Sync/fw/"
+				      ))))
+
      (setq org-agenda-skip-additional-timestamps-same-entry t
 	   org-agenda-skip-scheduled-if-done t
 	   org-agenda-skip-deadline-if-done t

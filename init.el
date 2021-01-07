@@ -806,18 +806,10 @@ is possible if the heading has a property of DATE_TREE."
   :config
     (global-wakatime-mode))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ivy-height 20)
- '(org-agenda-files
-   (quote
-    ("~/Documents/Journal/journal.org" "~/Documents/home-purchase/3900-SW-Pendleton-St-97221_26466082/3900-SW-Pendleton-St-97221_26466082.org" "/mnt/Linux_Data/Documents/passionsplay/blog/blog-planner.org" "~/Documents/passionsplay/passionsplay.org" "~/Documents/benjamin/life.org" "/mnt/Linux_Data/Documents/passionsplay/blog/posts/using-emacs-instead-of-jupyter-notebook.org" "~/Documents/org-solving-with-text/solving-with-text.org")))
- '(package-selected-packages
-   (quote
-    (exercism exercism-emacs php-mode writeroom-mode writegood-mode elfeed-org ranger ledger-mode python-pytest ace-window ein-subpackages ein-notebook ein ace-jump-mode emmet-mode neotree general which-key helm evil use-package))))
+
+(setq custom-file "~/.emacs.d/.custom.el")
+(load custom-file)
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

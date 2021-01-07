@@ -435,6 +435,8 @@
 
 ) ;; End orgmode config
 
+(use-package org-sidebar)
+
 (use-package org-mru-clock
   :defer t
   :bind (("C-c o m" . org-mru-clock-in))

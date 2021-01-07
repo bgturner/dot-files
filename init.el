@@ -377,7 +377,7 @@
     ;;
     ;;   See: https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html
     ;;
-    (setq org-refile-targets '((org-agenda-files :maxlevel . 3))
+    (setq org-refile-targets '((org-agenda-files :maxlevel . 5))
           org-goto-interface 'outline-path-completion
           org-refile-use-outline-path 'file
           org-outline-path-complete-in-steps nil

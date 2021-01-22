@@ -351,14 +351,17 @@
 			  (org-agenda-archives-mode t)))))))
 
      ;; What agenda files are used?
-     (setq org-agenda-files (apply 'append
-				   (mapcar
-				    (lambda (directory)
-				      (directory-files-recursively
-				       directory org-agenda-file-regexp))
-				    '("~/Sync/personal/"
-				      "~/Sync/fw/"
-				      ))))
+     ;; Add all org files under these directories
+     (setq org-agenda-files (apply 'append (mapcar (lambda (directory)
+						     (directory-files-recursively
+						      directory org-agenda-file-regexp))
+						   '("~/Sync/personal/"
+						     "~/Sync/fw/"
+						     ))))
+
+     ;; Ensure that the general org inbox is part of our agenda
+     (push '"~/Sync/org/inbox.org" org-agenda-files)
+
 
      (setq org-agenda-skip-additional-timestamps-same-entry t
 	   org-agenda-skip-scheduled-if-done t
@@ -429,7 +432,9 @@
 	(js . t)
        ))
 
-    (setq org-capture-templates ())
+    (setq org-capture-templates
+	  '(("i" "Inbox Task" entry (file+headline "~/Sync/org/inbox.org" "Tasks")
+	    "* TODO %?\n  %i\n  %a")))
 
     (load-user-file ".org-capture-templates.el")
 

@@ -756,6 +756,7 @@ is possible if the heading has a property of DATE_TREE."
 
 ;; Web Mode
 (use-package web-mode
+  :mode "(\\.\\(html?\\|ejs\\|jsx\\|twig\\|php\\|blade\\.php\\)\\'"
   :bind
   (:map web-mode-map
     ("C-c C-e h" . web-mode-element-sibling-previous)

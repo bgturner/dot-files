@@ -273,7 +273,7 @@
   :init
     (evil-set-initial-state 'elfeed-search-mode 'emacs)
     (evil-set-initial-state 'elfeed-show-mode 'emacs)
-    (setq elfeed-db-directory "~/Documents/personal/rss/.elfeed")
+    (setq elfeed-db-directory "~/Sync/personal/rss/.elfeed")
   :bind
     (:map elfeed-search-mode-map
               ("q" . pp/elfeed-save-db-and-bury)))
@@ -281,7 +281,7 @@
 (use-package elfeed-score
   :ensure t
   :init
-    (setq elfeed-score-score-file "~/Documents/personal/rss/elfeed.score")
+    (setq elfeed-score-score-file "~/Sync/personal/rss/elfeed.score")
   :config
   (progn
     (elfeed-score-enable)

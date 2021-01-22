@@ -789,6 +789,7 @@ is possible if the heading has a property of DATE_TREE."
 	(lambda ()
 	    (local-set-key (kbd "C-c t t") 'elpy-test-pytest-runner))))
 
+(use-package poetry)
 
 ;; Manage Pipenv within Emacs
 (use-package pipenv

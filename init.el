@@ -674,17 +674,28 @@ is possible if the heading has a property of DATE_TREE."
   :config
   (editorconfig-mode 1))
 
+(defun efs/lsp-mode-setup ()
+  (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
+  (lsp-headerline-breadcrumb-mode))
+
 (use-package lsp-mode
  :config
    (setq lsp-prefer-flymake nil)
+   (lsp-enable-which-key-integration t)
  :hook
+   (lsp-mode . efs/lsp-mode-setup)
    (php-mode . lsp)
    (python-mode . lsp)
    (sh-mode . lsp)
+ :init
+   (setq lsp-keymap-prefix "C-c l")
  :commands
-   lsp)
+   (lsp lsp-deferred))
 
 (use-package lsp-ui
+  :hook (lsp-mode . lsp-ui-mode)
+  :custom
+  (lsp-ui-doc-position 'bottom)
     :requires
 	lsp-mode flycheck
     :config
@@ -703,8 +714,19 @@ is possible if the heading has a property of DATE_TREE."
 	    lsp-ui-sideline-enable nil)
 	(add-hook 'lsp-mode-hook 'lsp-ui-mode))
 
+(use-package lsp-ivy)
+
 (use-package company-lsp
     :commands company-lsp)
+
+(use-package js2-mode
+  :mode "\\.jsx?\\'")
+
+(use-package typescript-mode
+  :mode "\\.ts\\'"
+  :hook (typescript-mode . lsp-deferred)
+  :config
+  (setq typescript-indent-level 2))
 
 ;; Shell (Bash, Zsh, sh, etc)
 (defun bt/browse-shellcheck-wiki ()

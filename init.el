@@ -51,6 +51,33 @@
 
 (setq auth-sources '("~/.authinfo.gpg"))
 
+;;
+;; One thing I miss from vim, increment/decrement number
+;;    - https://www.emacswiki.org/emacs/IncrementNumber
+;;
+(defun bt/change-number-at-point (change increment)
+  (let ((number (number-at-point))
+        (point (point)))
+    (when number
+      (progn
+        (forward-word)
+        (search-backward (number-to-string number))
+        (replace-match (number-to-string (funcall change number increment)))
+        (goto-char point)))))
+
+(defun bt/increment-number-at-point (&optional increment)
+  "Increment number at point like vim's C-a"
+  (interactive "p")
+  (bt/change-number-at-point '+ (or increment 1)))
+
+(defun bt/decrement-number-at-point (&optional increment)
+  "Decrement number at point like vim's C-x"
+  (interactive "p")
+  (bt/change-number-at-point '- (or increment 1)))
+
+(global-set-key (kbd "C-c a") 'bt/increment-number-at-point)
+(global-set-key (kbd "C-c x") 'bt/decrement-number-at-point)
+
 ;; Clean up the modeline
 (use-package diminish
   :config
@@ -85,7 +112,6 @@
     (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
     (global-set-key (kbd "C-c g") 'counsel-git)
     (global-set-key (kbd "C-c j") 'counsel-git-grep)
-    (global-set-key (kbd "C-c a") 'counsel-ag)
     (global-set-key (kbd "C-x l") 'counsel-locate)
     (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
   :custom

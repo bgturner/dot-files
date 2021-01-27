@@ -234,6 +234,8 @@
 (use-package projectile
   :init
     (setq projectile-require-project-root nil)
+  :bind-keymap
+    ("C-c p" . projectile-command-map)
   :config
     (projectile-mode 1)
     (setq projectile-completion-system 'ivy)

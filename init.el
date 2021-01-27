@@ -232,6 +232,7 @@
 
 ;; Projectile
 (use-package projectile
+  :diminish
   :init
     (setq projectile-require-project-root nil)
   :bind-keymap
@@ -297,6 +298,7 @@
     (define-key writeroom-mode-map (kbd "C-M-=") #'writeroom-adjust-width))
 
 (use-package flyspell
+  :diminish
   :init
     (defun flyspell-check-next-highlighted-word ()
 	"Custom function to spell check next highlighted word"
@@ -673,7 +675,8 @@ is possible if the heading has a property of DATE_TREE."
 (use-package logview)
 
 ;; Programming
-(use-package flycheck)
+(use-package flycheck
+  :diminish)
 (use-package editorconfig
   :diminish
   :config
@@ -809,6 +812,7 @@ is possible if the heading has a property of DATE_TREE."
 
 ;; ELPY - general python goodness
 (use-package elpy
+  :diminish
   :init
     (setq python-shell-completion-native-enable nil)
     (elpy-enable)
@@ -821,6 +825,7 @@ is possible if the heading has a property of DATE_TREE."
 
 ;; Manage Pipenv within Emacs
 (use-package pipenv
+  :diminish
   :hook
     (python-mode . pipenv-mode))
 

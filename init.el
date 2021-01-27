@@ -325,6 +325,7 @@
   :init
     ; General Settings
     (setq org-hide-emphasis-markers t
+	  org-hide-leading-stars t
 	  org-confirm-babel-evaluate nil
 	  org-log-into-drawer t
 	  org-return-follows-link t

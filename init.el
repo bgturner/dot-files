@@ -455,9 +455,6 @@
         org-mru-clock-completing-read #'ivy-completing-read))
 
 ;; Additional Orgmode Packages
-(use-package org-bullets
-    :config
-    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 (use-package ox-twbs)
 (use-package ox-reveal
     :load-path ("~/src/org-reveal")

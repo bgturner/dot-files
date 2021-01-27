@@ -381,7 +381,9 @@
 	   org-agenda-todo-ignore-scheduled 'all
 	   org-agenda-entry-text-maxlines 10
            org-agenda-custom-commands
-     	  '(("c" . "Custom Agenda Views")
+     	   '(("d" agenda "" ((org-agenda-start-with-log-mode t)
+			     (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo '("TODO" "WAIT")))))
+	     ("c" . "Custom Agenda Views")
 	    ("cn" todo "NEXT")
      	    ("cp" "Planning, Fourteen day agenda with all unscheduled todos"
      	     ((agenda "" ((org-agenda-span 14)

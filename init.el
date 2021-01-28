@@ -162,6 +162,9 @@
 (use-package evil-magit
   :after evil magit)
 
+;; Interact with Issues from places like Github
+(use-package forge)
+
 ;; Which Key
 (use-package which-key
   :diminish

@@ -49,6 +49,8 @@
 (setq split-height-threshold nil)
 (setq split-width-threshold 200)
 
+(setq auth-sources '("~/.authinfo.gpg"))
+
 ;; Clean up the modeline
 (use-package diminish
   :config

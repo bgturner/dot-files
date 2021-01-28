@@ -242,6 +242,11 @@
     (setq projectile-completion-system 'ivy)
   )
 
+;; Additional counsel actions for projectile
+;;    Press "M-o" over a counsel candidate
+(use-package counsel-projectile
+  :config (counsel-projectile-mode))
+
 ;; Ledger for accounting
 (use-package ledger-mode)
 

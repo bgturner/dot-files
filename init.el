@@ -209,40 +209,64 @@
 
 ;; Custom keybinding
 (use-package general
-  :config (general-define-key
-	   :states
-	   '(normal visual insert emacs)
-	   :prefix "SPC"
-	   :non-normal-prefix "M-SPC"
-	   "TAB" '(switch-to-prev-buffer :which-key "previous buffer")
-	   "SPC" '(counsel-M-x :which-key "M-x")
-	   ;; Projectile
-	   "pp"   '(projectile-switch-project :which-key "Switch project")
-	   "pd"   '(projectile-dired-other-window :which-key "Open dired in new window")
-	   "pff"  '(projectile-find-file :which-key "Find files in project")
-	   "pfd"  '(projectile-find-dir-other-window :which-key "Open project dired in other window")
-	   ;; Org-mode
-	   "oj" '(counsel-org-agenda-headlines :which-key "Org Jump to Headline")
-	   "oa" '(org-agenda :which-key "Org agenda")
-	   ;; Files
-	   "fr"  '(counsel-recentf :which-key "Recent Files")
-	   ;; Buffers
-	   "bb"  '(counsel-switch-buffer :which-key "Switch Buffer")
-	   "bd"  '(evil-delete-buffer :which-key "Delete Buffer")
-	   "bn"  '(evil-next-buffer :which-key "Next Buffer")
-	   "bp"  '(evil-prev-buffer :which-key "Next Buffer")
-	   "bN"  '(evil-buffer-new :which-key "New Buffer")
-	   ;; Window
-	   "wl"  '(windmove-right :which-key "move right")
-	   "wh"  '(windmove-left :which-key "move left")
-	   "wk"  '(windmove-up :which-key "move up")
-	   "wj"  '(windmove-down :which-key "move bottom")
-	   "w/"  '(split-window-right :which-key "split right")
-	   "w-"  '(split-window-below :which-key "split bottom")
-	   "wx"  '(delete-window :which-key "delete window")
-	   ;; Others
-	   "at"  '(ansi-term :which-key "open terminal")
-	   ))
+  :config
+  (general-evil-setup t)
+
+  (general-create-definer bt/leader-key-def
+    :keymaps '(normal visual insert emacs)
+    :prefix "SPC"
+    :global-prefix "M-SPC")
+
+  (bt/leader-key-def
+   "TAB" '(switch-to-prev-buffer :which-key "previous buffer")
+   "SPC" '(counsel-M-x :which-key "M-x")
+
+   "t" '(:ignore t :which-key "Toggle")
+   "tl" '(toggle-truncate-lines :which-key "Truncate lines")
+   "tw" '(whitespace-mode :which-key "Whitespace")
+
+   ;; Projectile
+   "p"   '(:ignore t :which-key "Projectile")
+   "pp"   '(projectile-switch-project :which-key "Switch project")
+   "pd"   '(projectile-dired-other-window :which-key "Open dired in new window")
+   "pff"  '(projectile-find-file :which-key "Find files in project")
+   "pfd"  '(projectile-find-dir-other-window :which-key "Open project dired in other window")
+
+   ;; Org-mode
+   "o" '(:ignore t :which-key "Org")
+   "oj" '(counsel-org-agenda-headlines :which-key "Jump to Headline")
+   "oa" '(org-agenda :which-key "Org agenda")
+   "ot" '(:ignore t :which-key "Toggle")
+   "oth" '(org-toggle-heading :which-key "Heading")
+   "oti" '(org-toggle-item :which-key "Item")
+   "otl" '(org-toggle-link-display :which-key "Link display")
+
+   ;; Files
+   "f" '(:ignore t :which-key "Files")
+   "fr"  '(counsel-recentf :which-key "Recent Files")
+
+   ;; Buffers
+   "b" '(:ignore t :which-key "Buffers")
+   "bb"  '(counsel-switch-buffer :which-key "Switch Buffer")
+   "bd"  '(evil-delete-buffer :which-key "Delete Buffer")
+   "bn"  '(evil-next-buffer :which-key "Next Buffer")
+   "bp"  '(evil-prev-buffer :which-key "Next Buffer")
+   "bN"  '(evil-buffer-new :which-key "New Buffer")
+
+   ;; Others
+   "a" '(:ignore t :which-key "Apps")
+   "as" '(:ignore t :which-key "Shells")
+   "ase"  '(eshell :which-key "Eshell")
+   "ass"  '(shell :which-key "Shell")
+
+   ;; Magit
+   "g" '(:ignore t :which-key "Magit")
+   "gs" '(magit-status :which-key "Status")
+   "gd" '(magit-diff-unstaged :which-key "Diff Unstaged")
+   "gl" '(:ignore t :which-key "Log")
+   "glc" '(magit-log-current :which-key "Current Branch")
+   "gla" '(magit-log-all :which-key "All")
+   "glf" '(magit-log-buffer-file :which-key "Current File")))
 
 ;;narrow dired to match filter
 (use-package dired-narrow

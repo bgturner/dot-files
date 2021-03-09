@@ -286,7 +286,7 @@
 ;; Powerline
 
 (use-package powerline
-  :straight (:host github :repo " milkypostman/powerline")
+  :straight (:host github :repo "milkypostman/powerline")
   :config
     (require 'powerline)
     (powerline-center-evil-theme))

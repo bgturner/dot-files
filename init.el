@@ -263,7 +263,7 @@
    "a" '(:ignore t :which-key "Apps")
    "as" '(:ignore t :which-key "Shells")
    "ase"  '(eshell :which-key "Eshell")
-   "ass"  '(shell :which-key "Shell")
+   "ass"  '(counsel-switch-to-shell-buffer :which-key "Switch to Shell")
 
    ;; Magit
    "g" '(:ignore t :which-key "Magit")

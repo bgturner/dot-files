@@ -274,6 +274,16 @@
    "gla" '(magit-log-all :which-key "All")
    "glf" '(magit-log-buffer-file :which-key "Current File")))
 
+
+(use-package dired+
+  :init
+    (setq dired-listing-switches "-aghBo --group-directories-first"))
+
+(use-package dired-hide-dotfiles
+  :hook (dired-mode . dired-hide-dotfiles-mode)
+  :config
+  (define-key dired-mode-map "h" 'dired-hide-dotfiles-mode))
+
 ;;narrow dired to match filter
 (use-package dired-narrow
   :bind (:map dired-mode-map

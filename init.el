@@ -440,6 +440,7 @@
      (setq org-agenda-span 'day
 	   org-agenda-todo-ignore-scheduled 'all
 	   org-agenda-entry-text-maxlines 10
+	   org-agenda-clockreport-parameter-plist '(:link t :maxlevel 4 :fileskip0 t) ;; Clocktable in agenda view
            org-agenda-custom-commands
      	   '(("d" agenda "" ((org-agenda-start-with-log-mode t)
 			     (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo '("TODO" "WAIT")))))

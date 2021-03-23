@@ -27,9 +27,6 @@ if executable('ctags')
     Plug 'ludovicchabant/vim-gutentags'
 endif
 
-" Git
-Plug 'tpope/vim-fugitive'
-
 " Styling
 Plug 'itchyny/lightline.vim'
 
@@ -355,18 +352,6 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-
-" }}}
-" Fugitive settings {{{
-nmap <Leader>gs :Gstatus<cr>
-nmap <Leader>gw :Gwrite<cr>
-nmap <Leader>gc :Gcommit<cr>
-nmap <Leader>gca :Gcommit --amend<cr>
-nmap <Leader>gdd :Gdiff<cr>
-nmap <Leader>gdc :Git diff --cached<cr>
-nmap <Leader>gnb :Git checkout -b 
-nmap <Leader>gb :Gblame<cr>
-nmap <Leader>gl :Git! lola<cr>
 
 " }}}
 " UltiSnips {{{

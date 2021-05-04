@@ -75,14 +75,15 @@
 (global-set-key (kbd "C-c x") 'bt/decrement-number-at-point)
 
 ;; Clean up the modeline
-(use-package diminish
+(use-package delight
   :config
-    (diminish 'undo-tree-mode)
-    (diminish 'visual-line-mode)
-    )
+    (delight '((visual-line-mode)
+	       (undo-tree-mode)
+               (emacs-lisp-mode "λ" :major)
+	       )))
 
 (use-package ivy
-  :diminish
+  :delight
   :demand
   :config
     (setq ivy-use-virtual-buffers t
@@ -92,12 +93,12 @@
     )
 
 (use-package swiper
-  :diminish
+  :delight
   :config
   (global-set-key "\C-s" 'swiper))
 
 (use-package counsel
-  :diminish
+  :delight
   :config
     (global-set-key (kbd "M-x") 'counsel-M-x)
     (global-set-key (kbd "C-x C-f") 'counsel-find-file)
@@ -136,7 +137,7 @@
     :init
     (global-evil-surround-mode 1))
   (use-package evil-commentary
-    :diminish
+    :delight
     :init
     (evil-commentary-mode))
   (use-package evil-matchit
@@ -197,7 +198,7 @@
 
 ;; Which Key
 (use-package which-key
-  :diminish
+  :delight
   :init
   (setq which-key-separator " ")
   (setq which-key-prefix-prefix "+")
@@ -299,7 +300,7 @@
 
 ;; Projectile
 (use-package projectile
-  :diminish
+  :delight
   :init
     (setq projectile-require-project-root nil)
   :bind-keymap
@@ -370,7 +371,7 @@
     (define-key writeroom-mode-map (kbd "C-M-=") #'writeroom-adjust-width))
 
 (use-package flyspell
-  :diminish
+  :delight
   :init
     (defun flyspell-check-next-highlighted-word ()
 	"Custom function to spell check next highlighted word"
@@ -604,7 +605,7 @@ inserting the heading which will be handled by 'org-capture'."
 		:jump-to-captured t))
 
 (use-package org-roam
-      :diminish
+      :delight
       :hook
 	(after-init . org-roam-mode)
       :straight (:host github :repo "org-roam/org-roam")
@@ -788,9 +789,9 @@ is possible if the heading has a property of DATE_TREE."
 
 ;; Programming
 (use-package flycheck
-  :diminish)
+  :delight)
 (use-package editorconfig
-  :diminish
+  :delight
   :config
   (editorconfig-mode 1))
 
@@ -938,7 +939,7 @@ is possible if the heading has a property of DATE_TREE."
 
 ;; ELPY - general python goodness
 (use-package elpy
-  :diminish
+  :delight
   :init
     (setq python-shell-completion-native-enable nil)
     (elpy-enable)
@@ -951,7 +952,7 @@ is possible if the heading has a property of DATE_TREE."
 
 ;; Manage Pipenv within Emacs
 (use-package pipenv
-  :diminish
+  :delight
   :hook
     (python-mode . pipenv-mode))
 

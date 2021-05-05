@@ -299,14 +299,6 @@
 (setq recentf-max-saved-items 100)
 (setq recentf-max-menu-items 50)
 
-;; Powerline
-
-(use-package powerline
-  :straight (:host github :repo "milkypostman/powerline")
-  :config
-    (require 'powerline)
-    (powerline-center-evil-theme))
-
 ;; Projectile
 (use-package projectile
   :delight

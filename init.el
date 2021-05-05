@@ -437,6 +437,7 @@
   :init
     ; General Settings
     (setq org-hide-emphasis-markers t
+	  org-clock-clocked-in-display nil
 	  org-hide-leading-stars t
 	  org-confirm-babel-evaluate nil
 	  org-log-into-drawer t

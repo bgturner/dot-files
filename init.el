@@ -243,6 +243,9 @@
    "oth" '(org-toggle-heading :which-key "Heading")
    "oti" '(org-toggle-item :which-key "Item")
    "otl" '(org-toggle-link-display :which-key "Link display")
+   "ow" '(:ignore t :which-key "Web Tools")
+   "owl" '(org-web-tools-insert-link-for-url :which-key "Insert Link")
+   "owr" '(org-web-tools-read-url-as-org :which-key "Read URL")
 
    ;; Files
    "f" '(:ignore t :which-key "Files")

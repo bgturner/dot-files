@@ -808,6 +808,12 @@ is possible if the heading has a property of DATE_TREE."
 
 ;; Programming
 
+;; Inherit shell environment
+(use-package exec-path-from-shell
+  :config
+    (when (memq window-system '(mac ns x))
+	(exec-path-from-shell-initialize)))
+
 ;; Make align-regex insert spaces instead of tabs
 ;;     See: https://stackoverflow.com/a/25164056
 (defadvice align-regexp (around align-regexp-with-spaces activate)
@@ -912,11 +918,6 @@ is possible if the heading has a property of DATE_TREE."
 ;; ;; Javascript
 ;; ;;;;
 
-
-(use-package exec-path-from-shell
-  :config
-    (when (memq window-system '(mac ns x))
-	(exec-path-from-shell-initialize)))
 
 (use-package typescript-mode
   :delight

@@ -237,7 +237,9 @@
 
    ;; Org-mode
    "o" '(:ignore t :which-key "Org")
-   "oj" '(counsel-org-agenda-headlines :which-key "Jump to Headline")
+   "oj" '(:ignore t :which-key "Jump")
+   "ojc" '(org-clock-goto :which-key "Current Clock")
+   "ojh" '(counsel-org-agenda-headlines :which-key "Headline")
    "oa" '(org-agenda :which-key "Org agenda")
    "ot" '(:ignore t :which-key "Toggle")
    "oth" '(org-toggle-heading :which-key "Heading")

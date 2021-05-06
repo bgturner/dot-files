@@ -528,6 +528,16 @@
     (global-set-key (kbd "C-c o r d") 'org-refile-to-datetree)
     (global-set-key (kbd "C-c o u r") 'org-web-tools--read-url)
 
+    (use-package org-habit-plus
+      :straight (:host github :repo "myshevchuk/org-habit-plus")
+      :config
+      (require 'org-habit)
+      (add-to-list 'org-modules 'org-habit)
+      (setq org-habit-graph-column 50
+	    org-habit-preceding-days 30
+	    org-habit-show-habits-only-for-today nil
+	    org-habit-show-done-always-green t))
+
     (require 'org-tempo) ; needed to make <s<tag> expand to src blocks in macos
 
     ;; Helper to generate unique ids

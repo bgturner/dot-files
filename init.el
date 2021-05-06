@@ -807,6 +807,13 @@ is possible if the heading has a property of DATE_TREE."
 (use-package logview)
 
 ;; Programming
+
+;; Make align-regex insert spaces instead of tabs
+;;     See: https://stackoverflow.com/a/25164056
+(defadvice align-regexp (around align-regexp-with-spaces activate)
+  (let ((indent-tabs-mode nil))
+    ad-do-it))
+
 (use-package flycheck
   :delight)
 (use-package editorconfig

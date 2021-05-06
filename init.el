@@ -877,6 +877,7 @@ is possible if the heading has a property of DATE_TREE."
 
 ;; PHP
 (use-package php-mode
+  :hook (php-mode . lsp-deferred)
   :bind
   (:map php-mode-map
     ("C-c t t" . phpunit-current-test)

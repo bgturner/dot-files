@@ -857,15 +857,6 @@ is possible if the heading has a property of DATE_TREE."
 (use-package company-lsp
     :commands company-lsp)
 
-(use-package js2-mode
-  :mode "\\.jsx?\\'")
-
-(use-package typescript-mode
-  :mode "\\.ts\\'"
-  :hook (typescript-mode . lsp-deferred)
-  :config
-  (setq typescript-indent-level 2))
-
 ;; Shell (Bash, Zsh, sh, etc)
 (defun bt/browse-shellcheck-wiki ()
   "When point is on a shellcheck code (ie SC2162), browse the wiki entry for that code."
@@ -894,41 +885,46 @@ is possible if the heading has a property of DATE_TREE."
 
 ;; Web Mode
 (use-package web-mode
-  :mode "(\\.\\(html?\\|ejs\\|jsx\\|twig\\|php\\|blade\\.php\\)\\'"
+  :hook (web-mode . lsp-deferred)
   :bind
   (:map web-mode-map
     ("C-c C-e h" . web-mode-element-sibling-previous)
-    ("C-c C-e l" . web-mode-element-sibling-next)
-    ("C-c t t" . phpunit-current-test)
-    ("C-c t c" . phpunit-current-class)
-    ("C-c t p" . phpunit-current-project)))
-
-;; Emmet
-(use-package emmet-mode
-  :init
-    (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
-    (add-hook 'css-mode-hook  'emmet-mode) ;; Enable Emmet's css abbreviation.
-    (add-hook 'web-mode-hook 'emmet-mode) ;; Auto-start on any web modes
-  )
+    ("C-c C-e l" . web-mode-element-sibling-next)))
 
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.blade\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html\\.twig\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tsx?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\lightning.log\\'" . json-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
+
+;; Emmet
+(use-package emmet-mode
+  :delight (emmet-mode)
+  :init
+    (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+    (add-hook 'css-mode-hook  'emmet-mode) ;; Enable Emmet's css abbreviation.
+    (add-hook 'web-mode-hook 'emmet-mode) ;; Auto-start on any web modes
+  )
 
 ;; ;;;;
 ;; ;; Javascript
 ;; ;;;;
 
-(use-package indium)
 
 (use-package exec-path-from-shell
   :config
     (when (memq window-system '(mac ns x))
 	(exec-path-from-shell-initialize)))
+
+(use-package typescript-mode
+  :delight
+  (typescript-mode "TS" :major)
+  :mode "\\.ts\\'"
+  :hook (typescript-mode . lsp-deferred)
+  :config
+  (setq typescript-indent-level 2))
 
 (use-package json-mode)
 

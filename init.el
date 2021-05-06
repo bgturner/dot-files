@@ -835,16 +835,10 @@ is possible if the heading has a property of DATE_TREE."
   :init
     (add-hook 'prog-mode-hook 'origami-mode))
 
-(defun efs/lsp-mode-setup ()
-  (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
-  (lsp-headerline-breadcrumb-mode))
-
 (use-package lsp-mode
  :config
-   (setq lsp-prefer-flymake nil)
    (lsp-enable-which-key-integration t)
  :hook
-   (lsp-mode . efs/lsp-mode-setup)
    (php-mode . lsp)
    (python-mode . lsp)
    (sh-mode . lsp)
@@ -853,29 +847,12 @@ is possible if the heading has a property of DATE_TREE."
  :commands
    (lsp lsp-deferred))
 
-(use-package lsp-ui
-  :hook (lsp-mode . lsp-ui-mode)
-  :custom
-  (lsp-ui-doc-position 'bottom)
-    :requires
-	lsp-mode flycheck
-    :config
-	(setq
-	    lsp-ui-doc-enable t
-	    lsp-ui-doc-use-childframe t
-	    lsp-ui-doc-position 'top
-	    lsp-ui-doc-include-signature t
-	    lsp-ui-sideline-enable nil
-	    lsp-ui-flycheck-enable t
-	    lsp-ui-flycheck-list-position 'right
-	    lsp-ui-flycheck-live-reporting t
-	    lsp-ui-peek-enable t
-	    lsp-ui-peek-list-width 60
-	    lsp-ui-peek-peek-height 25
-	    lsp-ui-sideline-enable nil)
-	(add-hook 'lsp-mode-hook 'lsp-ui-mode))
+(use-package lsp-ui)
 
 (use-package lsp-ivy)
+
+(use-package lsp-origami
+  :hook (lsp-after-open-hook . lsp-origami-try-enable))
 
 (use-package company-lsp
     :commands company-lsp)

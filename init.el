@@ -925,13 +925,6 @@ is possible if the heading has a property of DATE_TREE."
   :config
     (setq ein:output-area-inlined-images t))
 
-;; Productivity
-(use-package wakatime-mode
-  :diminish
-  :config
-    (global-wakatime-mode))
-
-
 (setq custom-file "~/.emacs.d/.custom.el")
 (load custom-file)
 

@@ -194,7 +194,8 @@
   :after evil magit)
 
 ;; Interact with Issues from places like Github
-(use-package forge)
+(use-package forge
+  :after magit)
 
 ;; Which Key
 (use-package which-key

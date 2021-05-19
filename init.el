@@ -234,6 +234,7 @@
    "pp"   '(projectile-switch-project :which-key "Switch project")
    "pd"   '(projectile-dired-other-window :which-key "Open dired in new window")
    "pff"  '(projectile-find-file :which-key "Find files in project")
+   "pfr"  '(projectile-ripgrep :which-key "Ripgrep in Project")
    "pfd"  '(projectile-find-dir-other-window :which-key "Open project dired in other window")
 
    ;; Org-mode

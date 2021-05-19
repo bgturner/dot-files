@@ -277,7 +277,26 @@
    "gl" '(:ignore t :which-key "Log")
    "glc" '(magit-log-current :which-key "Current Branch")
    "gla" '(magit-log-all :which-key "All")
-   "glf" '(magit-log-buffer-file :which-key "Current File")))
+   "glf" '(magit-log-buffer-file :which-key "Current File")
+
+   ;; Writing
+   "w" '(:ignore t :which-key "Writing")
+   "wg" '(:ignore t :which-key "Writegood")
+   "wgm" '(writegood-mode :which-key "Toggle Writegood Mode")
+   "wgr" '(writegood-reading-ease :which-key "Reading Ease Score")
+   "wr" '(:ignore t :which-key "Writeroom")
+   "wrm" '(writeroom-mode :which-key "Toggle Writeroom")
+   "wc" '(:ignore t :which-key "Word Count")
+   "wcm" '(wc-mode :which-key "Toggle Wordcount mode")
+   "wcg" '(wc-set-word-goal :which-key "Set Word Goal")
+   "wcr" '(wc-reset :which-key "Reset Word Goal")
+   "wd" '(:ignore t :which-key "Define")
+   "wdp" '(define-word-at-point :which-key "At Point")
+   "wdd" '(define-word :which-key "Define Word")
+   "wf" '(:ignore :which-key "Focus")
+   "wff" '(focus-mode :which-key "Focus Mode")
+   "wfc" '(focus-change-thing :which-key "Change")
+   ))
 
 
 ;; Dired
@@ -372,39 +391,10 @@
     (elfeed-score-enable)
     (define-key elfeed-search-mode-map "=" elfeed-score-map)))
 
-;; Writing
-(use-package writeroom-mode
-  :config
-    (define-key writeroom-mode-map (kbd "C-M-<") #'writeroom-decrease-width)
-    (define-key writeroom-mode-map (kbd "C-M->") #'writeroom-increase-width)
-    (define-key writeroom-mode-map (kbd "C-M-=") #'writeroom-adjust-width))
 
-(use-package flyspell
-  :delight
-  :init
-    (defun flyspell-check-next-highlighted-word ()
-	"Custom function to spell check next highlighted word"
-	(interactive)
-	(flyspell-goto-next-error)
-	(ispell-word))
-  :config
-    (global-set-key (kbd "C-c s m") 'flyspell-mode)
-    (global-set-key (kbd "C-c s b") 'flyspell-buffer)
-    (global-set-key (kbd "C-c s w") 'ispell-word)
-    (global-set-key (kbd "C-c s c") 'flyspell-check-next-highlighted-word)
-    (when (executable-find "hunspell")
-	(setq-default ispell-program-name "hunspell")
-	(setq ispell-really-hunspell t))
-  :hook
-    (text-mode . flyspell-mode))
 
-(use-package writegood-mode)
 
-(use-package markdown-mode
-  :commands (markdown-mode gfm-mode)
-  :mode (("README\\.md\\'" . gfm-mode)))
 
-;; OrgMode Configs
 (use-package org
   :init
     ; General Settings
@@ -683,18 +673,48 @@ is possible if the heading has a property of DATE_TREE."
   :hook
     (text-mode . flyspell-mode))
 
-(use-package writegood-mode
-  :config
-    (global-set-key (kbd "C-c ; w g m") 'writegood-mode)
-    (global-set-key (kbd "C-c ; w g e") 'writegood-reading-ease)
-    (global-set-key (kbd "C-c ; w g l") 'writegood-grade-level))
+(use-package writegood-mode)
 
 (use-package writeroom-mode
   :config
-    (global-set-key (kbd "C-c ; w r m") 'writeroom-mode)
     (define-key writeroom-mode-map (kbd "C-M-<") 'writeroom-decrease-width)
     (define-key writeroom-mode-map (kbd "C-M->") 'writeroom-increase-width)
     (define-key writeroom-mode-map (kbd "C-M-=") 'writeroom-adjust-width))
+
+(use-package focus)
+
+(use-package wc-mode
+  :init
+    (setq wc-modeline-format "WC[%W%w/%tw:%gw]"))
+
+(use-package define-word
+  :straight (:host github :repo "abo-abo/define-word"))
+
+(use-package clear-text
+  :straight (:host github :repo "xuchunyang/clear-text.el"))
+
+(use-package flyspell
+  :delight
+  :init
+    (defun flyspell-check-next-highlighted-word ()
+	"Custom function to spell check next highlighted word"
+	(interactive)
+	(flyspell-goto-next-error)
+	(ispell-word))
+  :config
+    (global-set-key (kbd "C-c s m") 'flyspell-mode)
+    (global-set-key (kbd "C-c s b") 'flyspell-buffer)
+    (global-set-key (kbd "C-c s w") 'ispell-word)
+    (global-set-key (kbd "C-c s c") 'flyspell-check-next-highlighted-word)
+    (when (executable-find "hunspell")
+	(setq-default ispell-program-name "hunspell")
+	(setq ispell-really-hunspell t))
+  :hook
+    (text-mode . flyspell-mode))
+
+(use-package markdown-mode
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)))
 
 ;; Edit Chrome text areas with emacs
 (use-package edit-server

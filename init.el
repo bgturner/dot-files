@@ -484,6 +484,14 @@
     (global-set-key (kbd "C-c o r d") 'org-refile-to-datetree)
     (global-set-key (kbd "C-c o u r") 'org-web-tools--read-url)
 
+    ;; View item from agenda in narrowed buffer.
+    ;; Useful when using "follow" in agenda views.
+    ;;     See: https://emacs.stackexchange.com/questions/17797/how-to-narrow-to-subtree-in-org-agenda-follow-mode
+    ;;
+    (advice-add 'org-agenda-goto :after
+		(lambda (&rest args)
+		  (org-narrow-to-subtree)))
+
     (use-package org-habit-plus
       :straight (:host github :repo "myshevchuk/org-habit-plus")
       :config

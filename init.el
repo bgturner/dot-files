@@ -254,6 +254,7 @@
    ;; Files
    "f" '(:ignore t :which-key "Files")
    "fr"  '(counsel-recentf :which-key "Recent Files")
+   "fd"  '(find-dired :which-key "Find Files")
 
    ;; Buffers
    "b" '(:ignore t :which-key "Buffers")

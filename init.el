@@ -269,6 +269,7 @@
    "as" '(:ignore t :which-key "Shells")
    "ase"  '(eshell :which-key "Eshell")
    "ass"  '(counsel-switch-to-shell-buffer :which-key "Switch to Shell")
+   "ar"  '(bt/restclient-sandbox :which-key "Restclient Sandbox")
 
    ;; Magit
    "g" '(:ignore t :which-key "Magit")
@@ -790,6 +791,17 @@ is possible if the heading has a property of DATE_TREE."
 
 ;; SysAdmin
 (use-package restclient)
+
+(defun bt/restclient-sandbox ()
+    "Create a new restclient sandbox to explore urls."
+  (interactive)
+  (let ((buffer (generate-new-buffer "restclient-sandbox.http")))
+    (with-current-buffer buffer
+      (restclient-mode)
+      (insert "# restclient sandbox\n\n#\nHEAD https://example.com"))
+    (display-buffer buffer '(display-buffer-pop-up-frame . nil))))
+
+
 (use-package graphql-mode)
 (use-package graphql)
 

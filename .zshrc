@@ -50,6 +50,11 @@ bindkey -M vicmd 'v' edit-command-line
 # Add home bin to path
 [ -d "$HOME/bin" ] && export PATH="$HOME/bin:${PATH}"
 
+# Configure python dev environment
+if [ -d "$HOME/.pyenv" ]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+fi
 if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
+    eval "$(pyenv init --path)"
 fi

@@ -10,10 +10,11 @@
 
 (defun load-user-file (file)
   (interactive "f")
-  "Load a file in current user's configuration directory
+  "load a file in current user's configuration directory
    if it exists."
-  (when (file-exists-p file)
-    (load-file (expand-file-name file user-init-dir))))
+  (let ((fullfile (expand-file-name file user-init-dir)))
+    (when (file-exists-p fullfile)
+      (load-file fullfile))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

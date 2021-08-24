@@ -667,6 +667,9 @@ inserting the heading which will be handled by 'org-capture'."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Programming
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Get POSIX shell everywhere
+(use-package vterm)
+
 ;; Code Folding
 (add-hook 'prog-mode-hook #'hs-minor-mode)
 

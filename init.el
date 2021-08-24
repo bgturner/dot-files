@@ -441,6 +441,7 @@ is possible if the heading has a property of DATE_TREE."
 	  org-clock-clocked-in-display nil
 	  org-tags-column 0 ; tags are right after headline
 	  org-hide-leading-stars t
+	  org-adapt-indentation t
 	  org-confirm-babel-evaluate nil
 	  org-log-into-drawer t
 	  org-log-done 'time

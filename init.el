@@ -523,6 +523,15 @@ is possible if the heading has a property of DATE_TREE."
 
 ) ;; End orgmode config
 
+(use-package org-mru-clock
+  :ensure t
+  :bind* (("C-c C-x i" . org-mru-clock-in)
+          ("C-c C-x C-j" . org-mru-clock-select-recent-task))
+  :config
+  (setq org-mru-clock-how-many 100
+        org-mru-clock-completing-read #'ivy-completing-read)
+  (add-hook 'minibuffer-setup-hook #'org-mru-clock-embark-minibuffer-hook))
+
 (use-package org-habit-plus
   :defer t
   :straight (:host github :repo "myshevchuk/org-habit-plus")

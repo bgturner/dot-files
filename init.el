@@ -575,6 +575,8 @@ inserting the heading which will be handled by 'org-capture'."
 	       :jump-to-captured t))
 
 (use-package org-roam
+      :init
+      (setq org-roam-v2-ack t)
       :ensure t
       :custom
       (org-roam-directory (file-truename "~/Sync/org/roam/"))

@@ -548,9 +548,7 @@ is possible if the heading has a property of DATE_TREE."
 ;; Additional Orgmode Packages
 (use-package ox-twbs)
 (use-package ox-reveal
-    :load-path ("~/src/org-reveal")
-    :defer 3
-    :after org)
+  :straight (:host github :repo "yjwen/org-reveal"))
 
 (use-package org-journal
   :defer t

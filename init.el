@@ -679,6 +679,10 @@ inserting the heading which will be handled by 'org-capture'."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Programming
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Prettier
+;;   Requires: npm install -g prettier
+(use-package prettier)
+
 ;; Get POSIX shell everywhere
 (use-package vterm)
 

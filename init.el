@@ -546,7 +546,11 @@ is possible if the heading has a property of DATE_TREE."
 (require 'org-tempo) ; needed to make <s<tag> expand to src blocks in macos
 
 ;; Additional Orgmode Packages
+(eval-after-load "org"
+  '(require 'ox-md nil t))
+
 (use-package ox-twbs)
+
 (use-package ox-reveal
   :straight (:host github :repo "yjwen/org-reveal"))
 

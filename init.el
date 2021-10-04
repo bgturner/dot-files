@@ -683,6 +683,9 @@ inserting the heading which will be handled by 'org-capture'."
 ;;   Requires: npm install -g prettier
 (use-package prettier)
 
+;; View Gherkin files
+(use-package feature-mode)
+
 ;; Get POSIX shell everywhere
 (use-package vterm)
 

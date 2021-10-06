@@ -59,6 +59,7 @@
 	     (hs-minor-mode nil "hideshow")
 	     (undo-tree-mode)
              (emacs-lisp-mode "λ" :major)
+             (js-mode "JS" :major)
 	     )))
 
 ;; Completely hide when we need focus

@@ -55,6 +55,8 @@
   :config
   (delight '((visual-line-mode)
 	     (eldoc-mode nil "eldoc")
+	     (yas-minor-mode nil "yasnippet")
+	     (hs-minor-mode nil "hideshow")
 	     (undo-tree-mode)
              (emacs-lisp-mode "λ" :major)
 	     )))

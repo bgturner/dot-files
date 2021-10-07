@@ -15,3 +15,5 @@
 	default = simple
 [merge]
 	tool = meld
+[pull]
+	rebase = true

@@ -50,6 +50,10 @@
 (setq inhibit-startup-screen t)
 (setq vc-follow-symlinks nil)
 
+;; Set coding font with ligature support
+(custom-set-faces
+ '(default ((t (:height 180 :family "Fira Code")))))
+
 ;; Clean up the modeline
 (use-package delight
   :config

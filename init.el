@@ -733,6 +733,9 @@ inserting the heading which will be handled by 'org-capture'."
 ;;   Requires: npm install -g prettier
 (use-package prettier)
 
+;; Autocomplete paired brackets
+(electric-pair-mode 1)
+
 ;; View Gherkin files
 (use-package feature-mode)
 

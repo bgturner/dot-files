@@ -779,6 +779,16 @@ inserting the heading which will be handled by 'org-capture'."
 (use-package company-lsp
     :commands company-lsp)
 
+(use-package dap-mode
+  :custom
+  (lsp-enable-dap-auto-configure nil)
+  :config
+  (dap-ui-mode 1)
+  (general-define-key
+   :keymaps 'lsp-mode-map
+   :prefix lsp-keymap-prefix
+   "d" '(dap-hydra t :wk "debugger")))
+
 ;; Web Mode
 (use-package web-mode
   :hook (web-mode . lsp-deferred)
@@ -814,7 +824,10 @@ inserting the heading which will be handled by 'org-capture'."
 ;; PHP
 (use-package php-mode
   :defer t
-  :hook (php-mode . lsp-deferred))
+  :hook (php-mode . lsp-deferred)
+  :config
+  (require 'dap-php)
+  (dap-php-setup))
 
 ;; JS
 (use-package typescript-mode

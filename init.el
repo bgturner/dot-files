@@ -843,6 +843,8 @@ inserting the heading which will be handled by 'org-capture'."
 
 (use-package json-mode)
 
+;; Rust
+(use-package rust-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Backups

@@ -32,6 +32,9 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/or
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'gnome-terminal'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Super>t'
 
+# Make alt-tab cycle through all apps on all desktops
+gsettings set org.gnome.shell.window-switcher current-workspace-only false
+
 # Adjust title bar button settings
 #
 # Note: the colon indicates where the window title will be. To have the 

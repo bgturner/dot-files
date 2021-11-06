@@ -159,6 +159,7 @@
   "Set the initial Evil states for various modes."
   (cl-loop for (mode . state)
 	   in '((inferior-emacs-lisp-mode . emacs)
+		(diff-mode . emacs)
 		(nrepl-mode . insert)
 		(pylookup-mode . emacs)
 		(comint-mode . normal)

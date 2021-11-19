@@ -334,7 +334,20 @@
   ("C-c p" . projectile-command-map)
   :config
   (projectile-mode 1)
-  (setq projectile-completion-system 'ivy))
+  (setq projectile-completion-system 'ivy)
+  (projectile-register-project-type 'npm '("package.json")
+                                    :project-file "package.json"
+				    :compile "npm install"
+				    :test "npm test"
+				    :run "npm start"
+				    :test-suffix ".spec")
+  (projectile-register-project-type 'php '("composer.json")
+                                    :project-file "composer.json"
+				    :compile "composer install"
+				    :test "composer run test"
+				    :run "composer run start"
+				    :test-suffix "test.php")
+  )
 
 ;; Snippets
 (use-package yasnippet

@@ -226,6 +226,9 @@
    "tl" '(toggle-truncate-lines :which-key "Truncate lines")
    "tw" '(whitespace-mode :which-key "Whitespace")
 
+   ;; Placeholder for running tests depending on the language
+   "tt" '(:ignore t :which-key "Testing")
+
    ;; Org-mode
    "o" '(:ignore t :which-key "Org")
    "ob" '(org-switchb :which-key "Switch to Org Buffer")
@@ -846,9 +849,18 @@ inserting the heading which will be handled by 'org-capture'."
 (use-package php-mode
   :defer t
   :hook (php-mode . lsp-deferred)
+  :general
+  (:states 'normal
+	   :prefix "SPC t"
+           :keymaps 'php-mode-map
+	   "tt" 'phpunit-current-test
+	   "tc" 'phpunit-current-class
+	   "tp" 'phpunit-current-project)
   :config
   (require 'dap-php)
-  (dap-php-setup))
+  (dap-php-setup)
+  (use-package phpunit))
+
 
 ;; JS
 (use-package typescript-mode

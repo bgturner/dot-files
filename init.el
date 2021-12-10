@@ -608,6 +608,9 @@ is possible if the heading has a property of DATE_TREE."
       org-habit-show-habits-only-for-today nil
       org-habit-show-done-always-green t))
 
+(use-package org-ql
+  :straight (:host github :repo "alphapapa/org-ql"))
+
 (require 'org-tempo) ; needed to make <s<tag> expand to src blocks in macos
 
 ;; Additional Orgmode Packages

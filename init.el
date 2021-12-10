@@ -588,6 +588,13 @@ is possible if the heading has a property of DATE_TREE."
 
 ) ;; End orgmode config
 
+(use-package org-projectile
+  :config
+  (org-projectile-per-project)
+  (setq org-projectile-per-project-filepath "todos.org")
+  (global-set-key (kbd "C-c o n p") 'org-projectile-project-todo-completing-read)
+  (setq org-projectile-capture-template "* TODO %?\n  %a"))
+
 (use-package org-mru-clock
   :ensure t
   :bind* (("C-c C-x i" . org-mru-clock-in)

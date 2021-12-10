@@ -760,7 +760,7 @@ inserting the heading which will be handled by 'org-capture'."
   (let ((buffer (generate-new-buffer "restclient-sandbox.http")))
     (with-current-buffer buffer
       (restclient-mode)
-      (insert "# restclient sandbox\n\n#\nHEAD https://example.com"))
+      (insert "# restclient sandbox\n\n#\n"))
     (display-buffer buffer '(display-buffer-pop-up-frame . nil))))
 
 ;; Viewing Logs

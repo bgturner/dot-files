@@ -118,6 +118,8 @@
   :config
   (global-set-key (kbd "M-x") 'counsel-M-x)
   (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+  (global-set-key (kbd "C-x j m") 'counsel-evil-marks)
+  (global-set-key (kbd "C-x j r") 'counsel-evil-registers)
   (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
   :custom
   (ivy-height 20 "number of result lines to display"))
@@ -244,6 +246,12 @@
    "ow" '(:ignore t :which-key "Web Tools")
    "owl" '(org-web-tools-insert-link-for-url :which-key "Insert Link")
    "owr" '(org-web-tools-read-url-as-org :which-key "Read URL")
+
+   ;; "Jump"
+   "j" '(:ignore t :which-key "Jump")
+   "jb" '(counsel-switch-buffer :which-key "Switch Buffer")
+   "jm" '(counsel-evil-marks :which-key "Evil Marks")
+   "jr" '(counsel-evil-registers :which-key "Evil Registers")
 
    ;; Files
    "f" '(:ignore t :which-key "Files")

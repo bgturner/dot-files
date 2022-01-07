@@ -900,7 +900,9 @@ inserting the heading which will be handled by 'org-capture'."
 
 (use-package ob-typescript)
 
-(use-package json-mode)
+(use-package json-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\lightning[^.]?*.log\\'" . json-mode)))
 
 ;; Rust
 (use-package rust-mode)

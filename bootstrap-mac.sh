@@ -25,7 +25,7 @@ brew install stow
 #
 echo "☻ Installing GUI tools..."
 # Fonts and themes
-brew install font-fira-code
+brew install font-fira-sans font-fira-code
 
 # Productivity
 brew install amethyst

@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: wpaddfilter
+# key: wpaddfilter
+# --
+function $2( $${3:param} ) {
+    $0
+    return $$3;
+}
+add_filter( '${1:filter_name}', '${2:callback}' );

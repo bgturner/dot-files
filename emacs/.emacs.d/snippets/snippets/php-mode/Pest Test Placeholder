@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: Pest Test Placeholder
+# key: pskip
+# --
+test('$1');
+$0

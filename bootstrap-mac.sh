@@ -16,6 +16,7 @@ brew install librsvg
 brew install jq
 brew install fzf
 brew install asciinema
+brew install stow
 
 #
 # GUI

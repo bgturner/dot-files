@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: wpaddaction
+# key: wpaddaction
+# --
+function $2() {
+    $0
+}
+add_action( '${1:init}', '${2:my_function_name}' );

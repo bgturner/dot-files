@@ -1,0 +1,10 @@
+# -*- mode: php-mode -*-
+# name: PHPUnit Test
+# key: test
+# --
+
+/** @test */
+function it_${1}() {
+	 $0
+}
+

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Pest Test
+# key: pt
+# --
+test('$0');

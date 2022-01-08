@@ -10,7 +10,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -24,7 +23,6 @@ Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
 if executable('ctags')
     Plug 'prabirshrestha/asyncomplete-tags.vim'
-    Plug 'ludovicchabant/vim-gutentags'
 endif
 
 " Styling
@@ -86,7 +84,7 @@ set backupcopy:yes
 
 " Set colorscheme
 syntax on
-colorscheme gruvbox
+colorscheme tomorrow-night
 set background=dark
 
 " Use x system clipboard by default

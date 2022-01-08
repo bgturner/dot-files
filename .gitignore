@@ -18,7 +18,9 @@ vendor
 .DS_Store
 bin
 vim/plugged
-vim/autoloademacs/.emacs.d/straight
+vim/autoload
+tags
+vetur.config.js
 emacs/.emacs.d/straight
 emacs/.emacs.d/.extension
 emacs/.emacs.d/lsp-cache

@@ -18,4 +18,12 @@ vendor
 .DS_Store
 bin
 vim/plugged
-vim/autoload
+vim/autoloademacs/.emacs.d/straight
+emacs/.emacs.d/straight
+emacs/.emacs.d/.extension
+emacs/.emacs.d/lsp-cache
+emacs/.emacs.d/projectile-bookmarks.eld
+emacs/.emacs.d/.lsp-session*
+emacs/.emacs.d/forge-database.sqlite
+emacs/.emacs.d/recentf
+emacs/.emacs.d/transient

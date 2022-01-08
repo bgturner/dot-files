@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: WP Enqueue Script
+# key: wpenqueuescript
+# --
+wp_enqueue_script('${1:handle}'${2:, ${3:$4{:src},} ${5:array(), ${7:${8:version},} ${9:in_footer}}});

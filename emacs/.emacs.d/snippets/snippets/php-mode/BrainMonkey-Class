@@ -1,0 +1,20 @@
+# -*- mode: snippet -*-
+# name: BrainMonkey Class
+# key: brainmonkey
+# --
+
+use PHPUnit\Framework\TestCase;
+use Brain\Monkey;
+
+class ${1}Test extends TestCase
+{
+
+	${0}
+
+	protected function tearDown(): void
+	{
+		Monkey\tearDown();
+		parent::tearDown();
+	}
+
+}

@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: WP Add Action
+# key: wpaddaction
+# --
+function ${2:function_name}(${7:arg})
+{
+	$0
+}
+add_action('${1:wp_action}', '$2'${3:, ${4:priority}}${5:, ${6:number_of_args}});

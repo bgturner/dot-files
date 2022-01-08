@@ -1,0 +1,14 @@
+# -*- mode: php-mode -*-
+# name: PHPUnit Class
+# key: phpunitclass
+# --
+
+<?php
+
+use PHPUnit\Framework\TestCase;
+
+class ${1}Test extends TestCase
+{
+	$0
+}
+

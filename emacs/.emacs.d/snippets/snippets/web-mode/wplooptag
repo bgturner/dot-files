@@ -1,0 +1,9 @@
+# -*- mode: web-mode -*-
+# name: wplooptag
+# key: wplooptag
+# --
+<?php if ( have_posts() ) : ?>
+    <?php while ( have_posts() ) : the_post(); ?>
+    	  $0
+    <?php endwhile; ?>
+<?php endif; ?>

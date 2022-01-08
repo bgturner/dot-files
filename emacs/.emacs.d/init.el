@@ -35,6 +35,16 @@
 (straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
 
+(use-package esup)
+
+
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; Specific configs
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; (if (eq system-type 'darwin)
+;;     (load-user-file "work-config.el")
+;;   (load-user-file "personal-config.el"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI Improvements
@@ -44,42 +54,16 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (tooltip-mode -1)
-(menu-bar-mode -1)
 
 ;; Splash Screen
 (setq inhibit-startup-screen t)
 (setq vc-follow-symlinks nil)
 
-;; Set coding font with ligature support
-(custom-set-faces
- '(default ((t (:height 180 :family "Fira Code")))))
-
-;; Enable Ligatures within Emacs
-(use-package ligature
-  :straight (:host github :repo "mickeynp/ligature.el")
+;; Theme
+(use-package doom-themes
   :config
-  ;; Enable the "www" ligature in every possible major mode
-  (ligature-set-ligatures 't '("www"))
-  ;; Enable traditional ligature support in eww-mode, if the
-  ;; `variable-pitch' face supports it
-  (ligature-set-ligatures 'eww-mode '("ff" "fi" "ffi"))
-  ;; Enable all Cascadia Code ligatures in programming modes
-  (ligature-set-ligatures 'prog-mode '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
-                                       ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
-                                       "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
-                                       "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
-                                       "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
-                                       "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
-                                       "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
-                                       "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
-                                       ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
-                                       "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
-                                       "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
-                                       "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
-                                       "\\\\" "://"))
-  ;; Enables ligature checks globally in all buffers. You can also do it
-  ;; per mode with `ligature-mode'.
-  (global-ligature-mode t))
+  ;; (load-theme 'doom-one t)
+  (load-theme 'doom-Iosvkem t))
 
 ;; Clean up the modeline
 (use-package delight
@@ -94,7 +78,8 @@
 	     )))
 
 ;; Completely hide when we need focus
-(use-package hide-mode-line)
+(use-package hide-mode-line
+  :defer t)
 
 ;; Ivy: Generic completion framework
 (use-package ivy
@@ -144,15 +129,8 @@
   :config
   (which-key-mode 1))
 
- ;; Theme
-(use-package doom-themes
-  :config
-  ;; (load-theme 'doom-one t)
-  (load-theme 'doom-Iosvkem t)
-  )
-
 ;; Where to find secrets
-(setq auth-sources '("~/.authinfo.gpg"))
+(setq auth-sources '("~/.authinfo"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Evil
@@ -199,12 +177,6 @@
   (use-package evil-matchit
     :init
     (global-evil-matchit-mode 1)))
-
-(use-package better-jumper
-  :config
-  (with-eval-after-load 'evil-maps
-    (define-key evil-motion-state-map (kbd "C-o") 'better-jumper-jump-backward)
-    (define-key evil-motion-state-map (kbd "C-i") 'better-jumper-jump-forward)))
 
     
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -302,6 +274,8 @@
 (setq show-paren-delay 0)
 (show-paren-mode 1)
 
+;; (use-package smartparens)
+
 ;; Better undo
 (use-package undo-fu
   :config
@@ -311,9 +285,10 @@
 
 ;; Company for autocomplete
 (use-package company
+  :defer t
   :delight
-  :config
-    (add-hook 'after-init-hook 'global-company-mode)
+  ;; :config
+  ;;   (add-hook 'after-init-hook 'global-company-mode)
   :hook (prog-mode . company-mode)
   :init
     (global-set-key (kbd "C-x c") 'company-complete-common)
@@ -365,29 +340,24 @@
 				    :compile "composer install"
 				    :test "composer run test"
 				    :run "composer run start"
-				    :test-suffix "test.php")
+				    :test-suffix "Test.php")
   )
 
 ;; Snippets
 (use-package yasnippet
   :delight
-  :defer t
+  ;; :defer t
   :config
   (yas-global-mode 1))
 (use-package yasnippet-snippets
-  :defer t)
+  ;; :defer t
+  )
 
 ;; Make align-regex insert spaces instead of tabs
 ;;     See: https://stackoverflow.com/a/25164056
 (defadvice align-regexp (around align-regexp-with-spaces activate)
   (let ((indent-tabs-mode nil))
     ad-do-it))
-
-;; Fancy titlebar for MacOS
-(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
-(add-to-list 'default-frame-alist '(ns-appearance . dark))
-(setq ns-use-proxy-icon  nil)
-(setq frame-title-format nil)
 
 (use-package ansi-color
   :config
@@ -409,347 +379,20 @@
 
 ;; Evil-Magit
 (use-package evil-magit
+  :defer t
   :after evil magit)
 
 ;; Interact with Issues from places like Github
 (use-package forge
+  :defer t
   :after magit)
 
-;; Ledger for accounting
-(use-package ledger-mode
-  :defer t)
-
-;; News and Reading
-(use-package pocket-reader
-  :defer t
-  :init
-    (evil-set-initial-state 'pocket-reader-mode 'emacs))
-
-;; Elfeed News
-(use-package elfeed-org
-  :defer t
-  :config
-    (elfeed-org)
-    (setq rmh-elfeed-org-files (list "~/Documents/personal/rss/rss-feeds.org")))
-
-(defun pp/elfeed-load-db-and-open ()
-    "Wrapper to load the elfeed db from disk before opening."
-    (interactive)
-    (elfeed-db-load)
-    (elfeed)
-    (elfeed-search-update--force))
-
-(defun pp/elfeed-save-db-and-bury ()
-  "Wrapper to save the elfeed db to disk before burying buffer."
-  (interactive)
-  (elfeed-db-save)
-  (quit-window))
-
-(use-package elfeed
-  :defer t
-  :init
-    (evil-set-initial-state 'elfeed-search-mode 'emacs)
-    (evil-set-initial-state 'elfeed-show-mode 'emacs)
-    (setq elfeed-db-directory "~/Sync/personal/rss/.elfeed")
-  :bind
-    (:map elfeed-search-mode-map
-              ("q" . pp/elfeed-save-db-and-bury)))
-
-(use-package elfeed-score
-  :defer t
-  :ensure t
-  :init
-    (setq elfeed-score-score-file "~/Sync/personal/rss/elfeed.score")
-  :config
-  (progn
-    (elfeed-score-enable)
-    (define-key elfeed-search-mode-map "=" elfeed-score-map)))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Org-mode
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun org-refile-to-datetree (&optional file)
-  "Refile a subtree to a datetree corresponding to it's timestamp.
-The current time is used if the entry has no timestamp. If FILE
-is nil, refile in the current file. A datetree within a subheading
-is possible if the heading has a property of DATE_TREE."
-  (interactive "f")
-  (let* ((datetree-date (or (org-entry-get nil "TIMESTAMP" t)
-                            (org-read-date t nil "now")))
-         (date (org-date-to-gregorian datetree-date)))
-    (save-excursion
-      (with-current-buffer (current-buffer)
-        (org-cut-subtree)
-        (if file (find-file file))
-	(widen)
-        (org-datetree-find-date-create date)
-        (org-narrow-to-subtree)
-        (show-subtree)
-        (org-end-of-subtree t)
-        (newline)
-        (goto-char (point-max))
-        (org-paste-subtree (+ org-datetree-base-level 3))
-        (widen)
-        ))))
-
-(defun bt/set-org-agenda-files ()
-  "Generates the list of Org agenda files."
-  (interactive)
-  (setq org-agenda-files
-	(apply 'append (mapcar (lambda (directory)
-				 (directory-files-recursively
-				  directory org-agenda-file-regexp))
-			       '("~/Sync/personal/"
-				 "~/Private/"
-				 "~/Sync/learning/"
-				 "~/Sync/fw/"
-				 ))))
-  ;; Ensure that the general org inbox is part of our agenda
-  (push '"~/Sync/org/inbox.org" org-agenda-files))
-
-(use-package org
-  :init
-    ; General Settings
-    (setq org-hide-emphasis-markers t
-	  org-clock-clocked-in-display nil
-	  org-tags-column 0 ; tags are right after headline
-	  org-hide-leading-stars t
-	  org-adapt-indentation t
-	  org-confirm-babel-evaluate nil
-	  org-log-into-drawer t
-	  org-log-done 'time
-	  org-html-validation-link nil
-	  org-export-with-section-numbers nil
-	  org-export-with-toc nil
-	  org-export-with-author nil
-	  org-export-with-email nil
-	  org-export-with-date nil
-	  org-priority-default 67 ;; Have the default priority be "C"
-	  org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "|" "DONE(d!)" "CANCELED(c@)"))
-          org-columns-default-format "%60ITEM(Task) %TODO %6Effort(Estim){:}  %6CLOCKSUM(Clock){:} %TIMESTAMP %SCHEDULED(Scheduled) %DEADLINE(Deadline)"
-          org-global-properties '(("Effort_ALL" . "0 0:15 0:30 1:00 2:00 3:00 4:00 5:00 6:00 7:00"))
-	  org-capture-templates '(("i" "Inbox Task" entry (file+headline "~/Sync/org/inbox.org" "Tasks")
-				   "* TODO %?\n  %i\n  %a")))
-
-    ; Agenda Settings
-    (setq org-agenda-span 'day
-	   org-agenda-todo-ignore-scheduled 'all
-	   org-agenda-entry-text-maxlines 10
-	   org-agenda-clockreport-parameter-plist '(:link t :maxlevel 4 :fileskip0 t :tags nil) ;; Clocktable in agenda view
-	   org-agenda-skip-additional-timestamps-same-entry t
-	   org-agenda-skip-scheduled-if-done t
-	   org-agenda-skip-deadline-if-done t
-	   org-agenda-sorting-strategy '((agenda time-up todo-state-down priority-down)
-					 (todo priority-down category-up)
-					 (tags priority-down category-keep)
-					 (search category-keep))
-	   org-agenda-use-time-grid t
-	   org-agenda-time-grid '((daily today)
-				  (800 1000 1200 1400 1600 1800 2000)
-				  "......" "----------------"))
-
-    ;; Improve org-refile across files
-    ;;
-    ;;   See: https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html
-    ;;
-    (setq org-refile-targets '((org-agenda-files :maxlevel . 5))
-          org-goto-interface 'outline-path-completion
-          org-refile-use-outline-path 'file
-          org-outline-path-complete-in-steps nil
-          org-refile-allow-creating-parent-nodes 'confirm)
-
-    ;; Make jumping to Org file headings fuzzy searchable using org-goto
-    ;;
-    ;;  See: https://emacs.stackexchange.com/questions/32617/how-to-jump-directly-to-an-org-headline
-    ;;
-    (setq org-goto-interface 'outline-path-completion
-          org-outline-path-complete-in-steps nil)
-
-  :config
-    (global-set-key (kbd "C-c o a") 'org-agenda)
-    (global-set-key (kbd "C-c o c") 'org-capture)
-    (global-set-key (kbd "C-c o b") 'org-switchb)
-    (global-set-key (kbd "C-c o r d") 'org-refile-to-datetree)
-
-    ;; View item from agenda in narrowed buffer.
-    ;; Useful when using "follow" in agenda views.
-    ;;     See: https://emacs.stackexchange.com/questions/17797/how-to-narrow-to-subtree-in-org-agenda-follow-mode
-    ;;
-    (advice-add 'org-agenda-goto :after
-		(lambda (&rest args)
-		  (org-narrow-to-subtree)))
-
-    ;; Define babel languages
-    (org-babel-do-load-languages
-     'org-babel-load-languages
-     '((emacs-lisp . t)
-        (shell . t)
-	(sql . t)
-	(python . t)
-	(css . t)
-	(js . t)
-       ))
-
-    (load-user-file ".org-capture-templates.el")
-
-    (bt/set-org-agenda-files)
-
-) ;; End orgmode config
-
-(use-package org-projectile
-  :config
-  (org-projectile-per-project)
-  (setq org-projectile-per-project-filepath "todos.org")
-  (global-set-key (kbd "C-c o n p") 'org-projectile-project-todo-completing-read)
-  (setq org-projectile-capture-template "* TODO %?\n  %a"))
-
-(use-package org-mru-clock
-  :ensure t
-  :bind* (("C-c C-x i" . org-mru-clock-in)
-          ("C-c C-x C-j" . org-mru-clock-select-recent-task))
-  :config
-  (setq org-mru-clock-how-many 100
-        org-mru-clock-completing-read #'ivy-completing-read)
-  (add-hook 'minibuffer-setup-hook #'org-mru-clock-embark-minibuffer-hook))
-
-(use-package org-habit-plus
-  :defer t
-  :straight (:host github :repo "myshevchuk/org-habit-plus")
-  :init
-  (setq org-habit-graph-column 60
-      org-habit-preceding-days 10
-      org-habit-show-habits-only-for-today nil
-      org-habit-show-done-always-green t)
-  :config
-  (require 'org-habit)
-  (add-to-list 'org-modules 'org-habit))
-
-(use-package org-ql
-  :straight (:host github :repo "alphapapa/org-ql"))
-
-(require 'org-tempo) ; needed to make <s<tag> expand to src blocks in macos
-
-;; Additional Orgmode Packages
-(eval-after-load "org"
-  '(require 'ox-md nil t))
-
-(use-package ox-twbs)
-
-(use-package ox-reveal
-  :straight (:host github :repo "yjwen/org-reveal"))
-
-(use-package org-journal
-  :defer t
-  :bind
-    ("C-c n j" . org-journal-new-entry)
-  :custom
-    (org-journal-dir "~/Sync/org/roam/journal/")
-    (org-journal-file-format "journal-%Y-%m-%d.org")
-    (org-journal-date-prefix "#+CATEGORY: journal\n#+TITLE: Journal - ")
-    (org-journal-date-format "%Y-%m-%d - %A"))
-
-(defun org-journal-find-location ()
-  "Open today's journal. Specify a non-nil prefix in order to inhibit
-inserting the heading which will be handled by 'org-capture'."
-    (org-journal-new-entry t)
-    (goto-char (point-max)))
-
-(add-to-list 'org-capture-templates
-	     '("j" "Journal" plain (function org-journal-find-location)
-	       "* %^{Title}\n%U\n%i\n%? "
-	       :empty-lines 1
-	       :jump-to-captured t))
-
-(use-package org-roam
-      :init
-      (setq org-roam-v2-ack t)
-      :ensure t
-      :custom
-      (org-roam-directory (file-truename "~/roam"))
-      :bind (("C-c n l" . org-roam-buffer-toggle)
-             ("C-c n f" . org-roam-node-find)
-             ("C-c n g" . org-roam-graph)
-             ("C-c n i" . org-roam-node-insert)
-             ("C-c n c" . org-roam-capture))
-      :config
-      (org-roam-db-autosync-mode)
-      ;; If using org-roam-protocol
-      ;; (require 'org-roam-protocol)
-      )
-
-(use-package org-roam-ui
-  :straight
-    (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
-    :after org-roam
-;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
-;;         a hookable mode anymore, you're advised to pick something yourself
-;;         if you don't care about startup time, use
-;;  :hook (after-init . org-roam-ui-mode)
-    :config
-    (setq org-roam-ui-sync-theme t
-          org-roam-ui-follow t
-          org-roam-ui-update-on-save t
-          org-roam-ui-open-on-start t))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Writing
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package writeroom-mode
-  :defer t
-  :config
-    (define-key writeroom-mode-map (kbd "C-M-<") 'writeroom-decrease-width)
-    (define-key writeroom-mode-map (kbd "C-M->") 'writeroom-increase-width)
-    (define-key writeroom-mode-map (kbd "C-M-=") 'writeroom-adjust-width))
-
-(use-package focus
-  :defer t)
-
-(use-package wc-mode
-  :defer t
-  :init
-    (setq wc-modeline-format "WC[%W%w/%tw:%gw]"))
-
-(use-package define-word
-  :defer t
-  :straight (:host github :repo "abo-abo/define-word"))
-
-(use-package clear-text
-  :defer t
-  :straight (:host github :repo "xuchunyang/clear-text.el"))
-
-(use-package flyspell
-  :defer t
-  :delight
-  :init
-    (defun flyspell-check-next-highlighted-word ()
-	"Custom function to spell check next highlighted word"
-	(interactive)
-	(flyspell-goto-next-error)
-	(ispell-word))
-  :config
-    (global-set-key (kbd "C-c s m") 'flyspell-mode)
-    (global-set-key (kbd "C-c s b") 'flyspell-buffer)
-    (global-set-key (kbd "C-c s w") 'ispell-word)
-    (global-set-key (kbd "C-c s c") 'flyspell-check-next-highlighted-word)
-    (when (executable-find "hunspell")
-	(setq-default ispell-program-name "hunspell")
-	(setq ispell-really-hunspell t))
-  :hook
-    (text-mode . flyspell-mode))
 
 (use-package markdown-mode
   :defer t
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)))
 
-;; Edit Chrome textareas in Emacs
-(use-package edit-server
-  :init
-    (setq edit-server-new-frame nil) ;; Open in new buffer of existing frame
-  ;; Start the server and use markdown by default
-  :config
-    (edit-server-start)
-    (add-hook 'edit-server-start-hook 'markdown-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Request Clients
@@ -781,23 +424,27 @@ inserting the heading which will be handled by 'org-capture'."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Prettier
 ;;   Requires: npm install -g prettier
-(use-package prettier)
+(use-package prettier
+  :defer t
+  :config
+  (add-hook 'typescript-mode-hook 'prettier-mode))
 
 ;; Autocomplete paired brackets
 (electric-pair-mode 1)
 
 ;; View Gherkin files
-(use-package feature-mode)
+(use-package feature-mode
+  :defer t)
 
-;; Get POSIX shell everywhere
-(use-package vterm)
+;; ;; Get POSIX shell everywhere
+;; (use-package vterm)
 
 ;; Code Folding
 (add-hook 'prog-mode-hook #'hs-minor-mode)
 
-;; Inherit shell environment
-(use-package exec-path-from-shell
-   :config (exec-path-from-shell-initialize))
+;; ;; Inherit shell environment
+;; (use-package exec-path-from-shell
+;;    :config (exec-path-from-shell-initialize))
 
 (use-package ripgrep)
 
@@ -811,25 +458,28 @@ inserting the heading which will be handled by 'org-capture'."
   (editorconfig-mode 1))
 
 (use-package lsp-mode
- :config
-   (lsp-enable-which-key-integration t)
- :hook
-   (php-mode . lsp)
-   ;; (python-mode . lsp)
-   ;; (sh-mode . lsp)
- :init
-   (setq lsp-keymap-prefix "C-c l")
- :commands
-   (lsp lsp-deferred))
+  :config
+  (lsp-enable-which-key-integration t)
+  :hook
+  (php-mode . lsp)
+  (typescript-mode . lsp)
+  (js-mode . lsp)
+  ;; (python-mode . lsp)
+  ;; (sh-mode . lsp)
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :commands
+  (lsp lsp-deferred))
 
 (use-package lsp-ui)
 
 (use-package lsp-ivy)
 
 (use-package company-lsp
-    :commands company-lsp)
+  :commands company-lsp)
 
 (use-package dap-mode
+  :defer t
   :custom
   (lsp-enable-dap-auto-configure nil)
   :config
@@ -870,7 +520,6 @@ inserting the heading which will be handled by 'org-capture'."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Install individual language configurations
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;; PHP
 (use-package php-mode
   :defer t
@@ -896,16 +545,17 @@ inserting the heading which will be handled by 'org-capture'."
   :mode "\\.ts\\'"
   :hook (typescript-mode . lsp-deferred)
   :config
-  (setq typescript-indent-level 2))
-
-(use-package ob-typescript)
+  (setq typescript-indent-level 2)
+  (require 'dap-node)
+  (dap-node-setup))
 
 (use-package json-mode
   :config
   (add-to-list 'auto-mode-alist '("\\lightning[^.]?*.log\\'" . json-mode)))
 
 ;; Rust
-(use-package rust-mode)
+(use-package rust-mode
+  :defer t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Backups
@@ -938,9 +588,13 @@ inserting the heading which will be handled by 'org-capture'."
     (load custom-file)
   ))
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(show-paren-mode t)
+ '(tool-bar-mode nil))
+
+(put 'narrow-to-region 'disabled nil)
+

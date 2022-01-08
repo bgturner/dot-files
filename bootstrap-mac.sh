@@ -9,6 +9,7 @@ brew install cmake libtool # for compiling rando things
 brew install --cask syncthing
 brew install ispell
 brew install ffmpeg
+brew install pandoc
 brew install imagemagick
 brew install grep
 brew install ripgrep

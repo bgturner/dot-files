@@ -374,8 +374,9 @@
 (use-package magit
   :defer t
   :bind (("C-x g" . magit-status))
-  :init
-  (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
+  ;; :init
+  ;; (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
+  )
 
 ;; Evil-Magit
 (use-package evil-magit

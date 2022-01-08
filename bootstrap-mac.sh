@@ -5,6 +5,7 @@
 #
 echo "☻ Installing CLI tools..."
 brew install coreutils
+brew install cmake libtool # for compiling rando things
 brew install --cask syncthing
 brew install ispell
 brew install ffmpeg

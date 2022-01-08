@@ -42,5 +42,37 @@ zle -N edit-command-line
 bindkey -M vicmd 'v' edit-command-line
 
 
+# Add Global Composer to path
+[ -d "$HOME/.config/composer/vendor/bin" ] && export PATH="$HOME/.config/composer/vendor/bin:${PATH}"
+
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+# Configure python dev environment
+if [ -d "$HOME/.pyenv" ]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+fi
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init --path)"
+fi
+
+# Configure node dev environment
+if [ -d "$HOME/.nvm" ]; then
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+fi
+
 # Use FZF if installed
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(direnv hook zsh)"
+

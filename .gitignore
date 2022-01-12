@@ -29,3 +29,8 @@ emacs/.emacs.d/.lsp-session*
 emacs/.emacs.d/forge-database.sqlite
 emacs/.emacs.d/recentf
 emacs/.emacs.d/transient
+emacs/.emacs.d/.cache
+emacs/.emacs.d/.org-id-locations
+emacs/.emacs.d/bookmarks
+emacs/.emacs.d/org-roam.db
+emacs/.emacs.d/.custom.el

@@ -18,7 +18,9 @@
 
 ;; Emmet
 (use-package emmet
-  :straight (:host github :repo "joostkremers/emmet-for-emacs")
+  :straight (:host github
+	     :repo "joostkremers/emmet-for-emacs"
+	     :files ("*.el" "conf"))
   :defer t
   :delight (emmet)
   :init

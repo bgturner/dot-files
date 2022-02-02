@@ -3,7 +3,7 @@
   :defer t
   :delight
   (typescript-mode "TS" :major)
-  :mode "\\.ts\\'"
+  :mode "\\.tsx?\\'"
   :hook (typescript-mode . lsp-deferred)
   :config
   (setq typescript-indent-level 2)

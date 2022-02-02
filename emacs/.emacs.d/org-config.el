@@ -115,6 +115,9 @@ is possible if the heading has a property of DATE_TREE."
 
 ) ;; End orgmode config
 
+(eval-after-load "org"
+  '(require 'ox-md nil t))
+
 (use-package org-projectile
   :config
   (org-projectile-per-project)

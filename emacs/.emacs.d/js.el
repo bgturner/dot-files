@@ -13,3 +13,13 @@
 (use-package json-mode
   :config
   (add-to-list 'auto-mode-alist '("\\lightning[^.]?*.log\\'" . json-mode)))
+
+(use-package jest
+  :general
+  (:states 'normal
+	   :prefix "SPC t"
+           :keymaps 'js-mode-map
+	   "tt" 'jest-function
+	   "tf" 'jest-file
+	   "tr" 'jest-repeat)
+  )

@@ -21,6 +21,7 @@
   ("C-c p" . projectile-command-map)
   :config
   (projectile-mode 1)
+  (setq projectile-per-project-compilation-buffer t)
   (setq projectile-completion-system 'ivy)
   (projectile-register-project-type 'npm '("package.json")
                                     :project-file "package.json"

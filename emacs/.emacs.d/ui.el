@@ -119,6 +119,10 @@
    "ase"  '(eshell :which-key "Eshell")
    "ass"  '(counsel-switch-to-shell-buffer :which-key "Switch to Shell")
    "ar"  '(bt/restclient-sandbox :which-key "Restclient Sandbox")
+   "at" '(:ignore t :which-key "Treemacs")
+   "ats" '(treemacs-select-window :which-key "Treemacs Select Window")
+   "atd" '(treemacs-delete-other-windows :which-key "Treemacs Delete other windows")
+   "att" '(treemacs :which-key "Treemacs")
 
    ;; Magit
    "g" '(:ignore t :which-key "Magit")

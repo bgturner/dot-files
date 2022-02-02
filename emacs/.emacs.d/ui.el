@@ -67,7 +67,7 @@
 
   (bt/leader-key-def
    "TAB" '(switch-to-prev-buffer :which-key "previous buffer")
-   "SPC" '(counsel-M-x :which-key "M-x")
+   "SPC" '(execute-extended-command :which-key "M-x")
 
    "t" '(:ignore t :which-key "Toggle")
    "tl" '(toggle-truncate-lines :which-key "Truncate lines")
@@ -82,7 +82,7 @@
    "o/" '(org-occur-in-agenda-files :which-key "Occur in Agenda files")
    "oj" '(:ignore t :which-key "Jump")
    "ojc" '(org-clock-goto :which-key "Current Clock")
-   "ojh" '(counsel-org-agenda-headlines :which-key "Headline")
+   "ojh" '(consult-org-agenda :which-key "Headline")
    "oa" '(org-agenda :which-key "Org agenda")
    "ot" '(:ignore t :which-key "Toggle")
    "oth" '(org-toggle-heading :which-key "Heading")
@@ -94,19 +94,19 @@
 
    ;; "Jump"
    "j" '(:ignore t :which-key "Jump")
-   "jb" '(counsel-switch-buffer :which-key "Switch Buffer")
-   "jm" '(counsel-evil-marks :which-key "Evil Marks")
-   "jr" '(counsel-evil-registers :which-key "Evil Registers")
+   "jb" '(consult-buffer :which-key "Switch Buffer")
+   "jm" '(consult-mark :which-key "Evil Marks")
+   "jr" '(consult-register :which-key "Evil Registers")
 
    ;; Files
    "f" '(:ignore t :which-key "Files")
-   "fr"  '(counsel-recentf :which-key "Recent Files")
+   "fr"  '(consult-recent-file :which-key "Recent Files")
    "fd"  '(find-dired :which-key "Find Files")
 
    ;; Buffers
    "b" '(:ignore t :which-key "Buffers")
    "bi"  '(ibuffer :which-key "iBuffer")
-   "bb"  '(counsel-switch-buffer :which-key "Switch Buffer")
+   "bb"  '(consult-buffer :which-key "Switch Buffer")
 
    ;; Others
    "a" '(:ignore t :which-key "Apps")

@@ -6,5 +6,8 @@
     "workbench.activityBar.visible": false,
     "editor.minimap.enabled": false,
     "editor.tabCompletion": "on",
-    "vim.useSystemClipboard": true
+    "vim.useSystemClipboard": true,
+    "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "workbench.colorTheme": "doom-one"
 }

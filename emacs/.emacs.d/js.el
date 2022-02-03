@@ -18,7 +18,7 @@
   :general
   (:states 'normal
 	   :prefix "SPC t"
-           :keymaps 'js-mode-map
+           :keymaps '(js-mode-map typescript-mode-map)
 	   "tt" 'jest-function
 	   "tf" 'jest-file
 	   "tr" 'jest-repeat)

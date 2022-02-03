@@ -65,6 +65,10 @@
   :defer t
   :bind (("C-x g" . magit-status)))
 
+(use-package diff-hl
+  :config
+    (global-diff-hl-mode))
+
 ;; Evil-Magit
 (use-package evil-magit
   :defer t

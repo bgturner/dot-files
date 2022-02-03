@@ -34,3 +34,6 @@ emacs/.emacs.d/.org-id-locations
 emacs/.emacs.d/bookmarks
 emacs/.emacs.d/org-roam.db
 emacs/.emacs.d/.custom.el
+emacs/.emacs.d/.dap-breakpoints
+emacs/.emacs.d/projectile.cache
+emacs/.emacs.d/url

@@ -174,3 +174,5 @@
 
 (use-package undo-tree                    ; Enable undo-tree, sane undo/redo behavior
   :init (global-undo-tree-mode))
+
+(use-package graphviz-dot-mode)

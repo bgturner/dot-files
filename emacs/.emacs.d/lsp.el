@@ -21,12 +21,15 @@
   :commands company-lsp)
 
 (use-package dap-mode
-  :defer t
-  :custom
-  (lsp-enable-dap-auto-configure nil)
+  :commands dap-debug
   :config
-  (dap-ui-mode 1)
+  (require 'dap-node) ;; Set up Node debugging
+  (dap-node-setup)    ;; Automatically installs Node debug adapter if needed
+  (require 'dap-hydra)
+  (require 'dap-gdb-lldb)
+  (dap-gdb-lldb-setup)
+  ;; Bind `C-c l d` to `dap-hydra` for easy access
   (general-define-key
-   :keymaps 'lsp-mode-map
-   :prefix lsp-keymap-prefix
-   "d" '(dap-hydra t :wk "debugger")))
+    :keymaps 'lsp-mode-map
+    :prefix lsp-keymap-prefix
+    "d" '(dap-hydra t :wk "debugger")))

@@ -24,8 +24,3 @@
 	   "tr" 'jest-repeat)
   )
 
-(use-package js2-mode
-  :config
-  ;; Adding js2 provides an actual JS AST which jest needs to
-  ;; know more about what functions (test) it can filter to.
-  (add-hook 'js-mode-hook 'js2-minor-mode))

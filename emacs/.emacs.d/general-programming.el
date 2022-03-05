@@ -89,8 +89,9 @@
 ;;   Requires: npm install -g prettier
 (use-package prettier
   :defer t
-  :config
-  (add-hook 'typescript-mode-hook 'prettier-mode))
+  :delight
+  :hook ((typescript-mode . prettier-mode)
+	 (js-mode . prettier-mode)))
 
 ;; Code Folding
 (add-hook 'prog-mode-hook #'hs-minor-mode)

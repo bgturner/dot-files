@@ -90,8 +90,7 @@
 (use-package prettier
   :defer t
   :delight
-  :hook ((typescript-mode . prettier-mode)
-	 (js-mode . prettier-mode)))
+  :hook ((after-init . global-prettier-mode)))
 
 ;; Code Folding
 (add-hook 'prog-mode-hook #'hs-minor-mode)

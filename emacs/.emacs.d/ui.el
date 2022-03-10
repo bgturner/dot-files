@@ -12,6 +12,9 @@
 
 (recentf-mode)
 
+;; Make "sentence movements" feel more intuitive
+(setq sentence-end-double-space nil)
+
 (setq initial-scratch-message "")         ; Make *scratch* buffer blank
 (setq ring-bell-function 'ignore)         ; Disable bell sound
 (fset 'yes-or-no-p 'y-or-n-p)             ; y-or-n-p makes answering questions faster

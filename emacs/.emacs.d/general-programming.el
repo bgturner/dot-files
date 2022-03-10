@@ -26,7 +26,7 @@
   (projectile-register-project-type 'npm '("package.json")
                                     :project-file "package.json"
 				    :compile "npm install"
-				    :test "npm test"
+				    :test "npx jest --color"
 				    :run "npm start"
 				    :test-suffix ".spec")
   (projectile-register-project-type 'php '("composer.json")

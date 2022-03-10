@@ -41,6 +41,12 @@
   ;; (load-theme 'doom-one t)
   (load-theme 'doom-Iosvkem t))
 
+;; use Jetbrains Mono. larger font-size for MacOS
+(let ((font-size (if (eq system-type 'darwin)
+		     (format "14")
+		   (format "11"))))
+  (set-frame-font (format "Jetbrains Mono %s" font-size) nil t))
+
 ;; Clean up the modeline
 (use-package delight
   :config

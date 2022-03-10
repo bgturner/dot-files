@@ -63,6 +63,7 @@
 ;; Magit
 (use-package magit
   :defer t
+  :init (setq magit-refresh-status-buffer nil)
   :bind (("C-x g" . magit-status)))
 
 (use-package diff-hl

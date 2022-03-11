@@ -5,6 +5,7 @@
   "Set the initial Evil states for various modes."
   (cl-loop for (mode . state)
 	   in '((inferior-emacs-lisp-mode . emacs)
+		(flycheck-error-list-mod . emacs)
 		(diff-mode . emacs)
 		(nrepl-mode . insert)
 		(pylookup-mode . emacs)

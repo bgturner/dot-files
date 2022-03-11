@@ -37,8 +37,10 @@
 (straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
 
-(load-user-file "personal-config.el")
-;; (load-user-file "work.init.el")
+(let ((system-specific-config (if (eq system-type 'darwin)
+				  (format "work-config.el")
+				(format "personal-config.el"))))
+  (load-user-file system-specific-config))
 
 (load-user-file "ui.el")
 (load-user-file "evil.el")

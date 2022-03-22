@@ -10,6 +10,8 @@
   ;; (sh-mode . lsp)
   :init
   (setq lsp-keymap-prefix "C-c l")
+  (setq company-minimum-prefix-length 1
+      company-idle-delay 2.0)
   :commands
   (lsp lsp-deferred))
 

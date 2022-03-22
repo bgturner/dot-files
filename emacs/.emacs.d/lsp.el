@@ -17,9 +17,6 @@
 
 (use-package lsp-ivy)
 
-(use-package company-lsp
-  :commands company-lsp)
-
 (use-package dap-mode
   :commands dap-debug
   :config

@@ -3,11 +3,61 @@
     "workbench.colorTheme": "Gruvbox Dark (Hard)",
     "workbench.statusBar.visible": true,
     "explorer.openEditors.visible": 0,
-    "workbench.activityBar.visible": false,
     "editor.minimap.enabled": false,
     "editor.tabCompletion": "on",
     "vim.useSystemClipboard": true,
     "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
     "editor.fontLigatures": true,
-    "workbench.colorTheme": "doom-one"
+    "workbench.colorTheme": "doom-one",
+    "vim.easymotion": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<space>"
+            ],
+            "commands": [
+                "vspacecode.space"
+            ]
+        },
+        {
+            "before": [
+                ","
+            ],
+            "commands": [
+                "vspacecode.space",
+                {
+                    "command": "whichkey.triggerKey",
+                    "args": "m"
+                }
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<space>"
+            ],
+            "commands": [
+                "vspacecode.space"
+            ]
+        },
+        {
+            "before": [
+                ","
+            ],
+            "commands": [
+                "vspacecode.space",
+                {
+                    "command": "whichkey.triggerKey",
+                    "args": "m"
+                }
+            ]
+        }
+    ],
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.renderWhitespace": "none",
+    "workbench.activityBar.visible": false,
+    "magit.forge-enabled": true
 }

@@ -8,6 +8,12 @@
 (tooltip-mode -1)
 (menu-bar-mode -1)
 
+;; Configure time display in modeline
+(setq display-time-default-load-average nil)
+(setq display-time-day-and-date t)
+(setq display-time-format "%F %H:%M %z")
+(display-time)
+
 ;; Remember window layouts
 (winner-mode 1)
 

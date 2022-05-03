@@ -177,3 +177,6 @@
   :init (global-undo-tree-mode))
 
 (use-package graphviz-dot-mode)
+
+(use-package tree-sitter)
+(use-package tree-sitter-langs)

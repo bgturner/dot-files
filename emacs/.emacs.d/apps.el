@@ -13,7 +13,7 @@
   :defer t
   :config
     (elfeed-org)
-    (setq rmh-elfeed-org-files (list "~/Documents/personal/rss/rss-feeds.org")))
+    (setq rmh-elfeed-org-files (list "~/org/personal/rss/rss-feeds.org")))
 
 (defun pp/elfeed-load-db-and-open ()
     "Wrapper to load the elfeed db from disk before opening."
@@ -33,7 +33,7 @@
   :init
     (evil-set-initial-state 'elfeed-search-mode 'emacs)
     (evil-set-initial-state 'elfeed-show-mode 'emacs)
-    (setq elfeed-db-directory "~/Sync/personal/rss/.elfeed")
+    (setq elfeed-db-directory "~/org/personal/rss/.elfeed")
   :bind
     (:map elfeed-search-mode-map
               ("q" . pp/elfeed-save-db-and-bury)))
@@ -42,7 +42,7 @@
   :defer t
   :ensure t
   :init
-    (setq elfeed-score-score-file "~/Sync/personal/rss/elfeed.score")
+    (setq elfeed-score-score-file "~/org/personal/rss/elfeed.score")
   :config
   (progn
     (elfeed-score-enable)

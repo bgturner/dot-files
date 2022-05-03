@@ -56,6 +56,7 @@
 (load-user-file "php.el")
 (load-user-file "js.el")
 (load-user-file "rust.el")
+(load-user-file "apps.el")
 (load-user-file "backups.el")
 
 

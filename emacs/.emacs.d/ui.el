@@ -66,6 +66,7 @@
 	     (hs-minor-mode nil "hideshow")
 	     (undo-tree-mode nil "undo-tree")
 	     (which-key-mode nil "which-key")
+	     (wakatime-mode)
 	     (auto-revert-mode nil "autorevert")
              (emacs-lisp-mode "λ" :major)
              (js-mode "JS" :major)

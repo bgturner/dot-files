@@ -37,3 +37,7 @@ emacs/.emacs.d/.custom.el
 emacs/.emacs.d/.dap-breakpoints
 emacs/.emacs.d/projectile.cache
 emacs/.emacs.d/url
+emacs/.emacs.d/elpa
+emacs/.emacs.d/eshell
+emacs/.emacs.d/games
+emacs/.emacs.d/eudc-options

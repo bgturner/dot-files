@@ -169,4 +169,7 @@
    "wf" '(:ignore :which-key "Focus")
    "wff" '(focus-mode :which-key "Focus Mode")
    "wfc" '(focus-change-thing :which-key "Change")
+
+   "wl" '(winner-undo :which-key "Winner Undo")
+   "wk" '(winner-redo :which-key "Winner Redo")
    ))

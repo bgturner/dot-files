@@ -178,5 +178,9 @@
 
 (use-package graphviz-dot-mode)
 
+(use-package wakatime-mode
+  :config
+  (global-wakatime-mode))
+
 (use-package tree-sitter)
 (use-package tree-sitter-langs)

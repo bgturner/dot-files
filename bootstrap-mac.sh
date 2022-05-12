@@ -41,6 +41,7 @@ asciinema
 stow
 direnv
 pyenv
+git-lfs
 emacs-plus
 EOF
 

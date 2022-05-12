@@ -17,8 +17,9 @@ npm-debug.log
 vendor
 .DS_Store
 bin
-vim/plugged
-vim/autoload
+vim/.vim/.netrwhist
+vim/.vim/autoload/
+vim/.vim/plugged/
 tags
 vetur.config.js
 emacs/.emacs.d/straight
@@ -41,3 +42,4 @@ emacs/.emacs.d/elpa
 emacs/.emacs.d/eshell
 emacs/.emacs.d/games
 emacs/.emacs.d/eudc-options
+emacs/.emacs.d/org-persist

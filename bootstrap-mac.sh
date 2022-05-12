@@ -42,6 +42,7 @@ stow
 direnv
 pyenv
 git-lfs
+wakatime-cli
 emacs-plus
 EOF
 

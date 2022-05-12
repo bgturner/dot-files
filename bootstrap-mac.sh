@@ -1,50 +1,69 @@
 #!/bin/bash
 
-#
-# CLI tooling
-#
-echo "☻ Installing CLI tools..."
-brew install coreutils
-brew install cmake libtool # for compiling rando things
-brew install --cask syncthing
-brew install ispell
-brew install ffmpeg
-brew install pandoc
-brew install imagemagick
-brew install grep
-brew install ripgrep
-brew install pup
-brew install librsvg
-brew install jq
-brew install fzf
-brew install asciinema
-brew install stow
+# Manually install certain tools
+[ ! -d /opt/homebrew ] && \
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-#
-# GUI
-#
-echo "☻ Installing GUI tools..."
-# Fonts and themes
-brew install font-fira-sans font-fira-code
+[ ! -d $HOME/.oh-my-zsh ] && \
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# Productivity
-brew install amethyst
-brew install 1password
+[ ! -d $HOME/.nvm ] && \
+    bash -c "$(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh)"
 
-# Browsers
-brew install firefox
-brew install brave-browser
+[ ! -f $HOME/.vim/autoload/plug.vim ] && \
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+	 https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-# OSS graphic design
-brew install inkscape
-brew install gimp
 
-# Media
-brew install vlc
-brew install obs
+# Configure Brew taps
+brew tap homebrew/cask-versions
+brew tap homebrew/cask-fonts
+brew tap d12frosted/emacs-plus 
 
-# Install Emacs
-echo "☻ Installing Emacs..."
-brew tap d12frosted/emacs-plus && \
-    brew install emacs-plus && \
-    ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications/Emacs.app
+# Install various cli tools
+while IFS= read -r app || [[ -n "$app" ]]; do
+    brew install $app
+done <<EOF
+coreutils
+libtool
+cmake
+ispell
+ffmpeg
+pandoc
+imagemagick
+grep
+ripgrep
+pup
+librsvg
+jq
+fzf
+asciinema
+stow
+direnv
+pyenv
+emacs-plus
+EOF
+
+# Install Brew Cask apps
+while IFS= read -r app || [[ -n "$app" ]]; do
+    brew install --cask $app
+done <<EOF
+syncthing
+font-jetbrains-mono
+font-fira-sans
+font-fira-code
+amethyst
+1password
+firefox-developer-edition
+firefox brave-browser
+inkscape
+gimp
+vlc
+obs
+visual-studio-code
+EOF
+
+
+# Link apps to play nice with Apple's default location.
+[ ! -d /Applications/Emacs.app ] && \
+    ln -s /opt/homebrew/opt/emacs-plus@28/Emacs.app /Applications

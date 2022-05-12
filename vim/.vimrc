@@ -13,37 +13,13 @@ Plug 'tpope/vim-repeat'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'neomake/neomake'
 Plug 'adelarsq/vim-matchit'
 Plug 'sheerun/vim-polyglot'
 Plug 'majutsushi/tagbar'
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-
-if executable('ctags')
-    Plug 'prabirshrestha/asyncomplete-tags.vim'
-endif
 
 " Styling
 Plug 'itchyny/lightline.vim'
-
-" Color
-Plug 'tomasr/molokai'
-Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'morhetz/gruvbox'
-Plug 'yuttie/hydrangea-vim'
-Plug 'tyrannicaltoucan/vim-deep-space'
-Plug 'AlessandroYorba/Despacio'
-Plug 'cocopon/iceberg.vim'
-Plug 'w0ng/vim-hybrid'
-
-" PHP
-Plug 'StanAngeloff/php.vim'
-Plug 'captbaritone/better-indent-support-for-php-with-html'
-Plug 'adoy/vim-php-refactoring-toolbox'
-Plug 'joseluis/wordpress.vim'
-Plug 'tobyS/pdv'
 
 " Initialize plugin system
 call plug#end()
@@ -84,7 +60,7 @@ set backupcopy:yes
 
 " Set colorscheme
 syntax on
-colorscheme tomorrow-night
+colorscheme gruvbox
 set background=dark
 
 " Use x system clipboard by default
@@ -226,11 +202,6 @@ function! LocationListToggle()
 endfunction
 
 " }}}
-" Ctags {{{
-" Rebuild ctags
-nmap <leader>T :!ctags -R --exclude=node_modules --exclude=bower_components --exclude="*.min.js" --exclude="*jquery*.js" --exclude="*bootstrap*.js"<CR>
-
-" }}}
 " Search Settings {{{
 set hlsearch
 set incsearch
@@ -266,32 +237,6 @@ nnoremap <leader>ne :edit .<cr>
 
 " Open Netrw in the path of the current buffer
 nnoremap <leader>n. :edit %:p:h<cr>
-
-" }}}
-" Neomake {{{
-nnoremap <leader>nm :Neomake<cr>
-
-" }}}
-" PHP Refactoring Settings {{{
-" php refactoring default keymap:
-"
-" nnoremap <unique> <Leader>rlv :call PhpRenameLocalVariable()<CR>
-" nnoremap <unique> <Leader>rcv :call PhpRenameClassVariable()<CR>
-" nnoremap <unique> <Leader>rm :call PhpRenameMethod()<CR>
-" nnoremap <unique> <Leader>eu :call PhpExtractUse()<CR>
-" vnoremap <unique> <Leader>ec :call PhpExtractConst()<CR>
-" nnoremap <unique> <Leader>ep :call PhpExtractClassProperty()<CR>
-" vnoremap <unique> <Leader>em :call PhpExtractMethod()<CR>
-" nnoremap <unique> <Leader>np :call PhpCreateProperty()<CR>
-" nnoremap <unique> <Leader>du :call PhpDetectUnusedUseStatements()<CR>
-" vnoremap <unique> <Leader>== :call PhpAlignAssigns()<CR>
-" nnoremap <unique> <Leader>sg :call PhpCreateSettersAndGetters()<CR>
-" nnoremap <unique> <Leader>cog :call PhpCreateGetters()<CR>
-" nnoremap <unique> <Leader>da :call PhpDocAll()<CR>
-
-let g:vim_php_refactoring_auto_validate_visibility = 1
-let g:vim_php_refactoring_default_property_visibility = 'public'
-let g:vim_php_refactoring_default_method_visibility = 'public'
 
 " }}}
 " FZF Settings {{{
@@ -342,24 +287,6 @@ if executable('rg')
 		\ 'rg --column --line-number --no-heading --follow --color=always --hidden '.<q-args>, 1,
 		\ <bang>0 ? fzf#vim#with_preview('up:60%') : fzf#vim#with_preview('right:50%:hidden', '?'), <bang>0)
 endif
-
-" }}}
-" Easy Align Settings {{{
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
-" }}}
-" UltiSnips {{{
-let g:UltiSnipsSnippetsDir         = $HOME.'/.vim/UltiSnips/'
-let g:UltiSnipsSnippetDirectories  = ["UltiSnips"]
-let g:UltiSnipsExpandTrigger       = "<c-j>"
-let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
-let g:UltiSnipsListSnippets        = "<c-h>"
-let g:UltiSnipsEditSplit           = "vertical"
 
 " }}}
 " Quick file access {{{

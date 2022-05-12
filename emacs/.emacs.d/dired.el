@@ -3,7 +3,7 @@
 (when (eq system-type 'darwin)
   ;; installed with `brew install coreutils`
   ;; use proper GNU ls
-  (setq insert-directory-program "/usr/local/bin/gls"))
+  (setq insert-directory-program "/opt/homebrew/bin/gls"))
 
 (use-package dired+
     :init

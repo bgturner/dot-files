@@ -9,10 +9,10 @@
 				 (directory-files-recursively
 				  directory org-agenda-file-regexp))
 			       '(
-				 "~/syncthing/WPE/org/"
+				 "~/WPESync/org/"
 				 ))))
   ;; Ensure that the general org inbox is part of our agenda
-  (push '"~/syncthing/WPE/inbox.org" org-agenda-files))
+  (push '"~/WPESync/inbox.org" org-agenda-files))
 
 (menu-bar-mode 1)
 

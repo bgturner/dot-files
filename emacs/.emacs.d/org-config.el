@@ -46,7 +46,7 @@ is possible if the heading has a property of DATE_TREE."
 	  org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "|" "DONE(d!)" "CANCELED(c@)"))
           org-columns-default-format "%60ITEM(Task) %TODO %6Effort(Estim){:}  %6CLOCKSUM(Clock){:} %TIMESTAMP %SCHEDULED(Scheduled) %DEADLINE(Deadline)"
           org-global-properties '(("Effort_ALL" . "0 0:15 0:30 1:00 2:00 3:00 4:00 5:00 6:00 7:00"))
-	  org-capture-templates '(("i" "Inbox Task" entry (file+headline "~/Sync/org/inbox.org" "Tasks")
+	  org-capture-templates '(("i" "Inbox Task" entry (file+headline "~/WPESync/inbox.org" "Tasks")
 				   "* TODO %?\n  %i\n  %a")))
 
     ; Agenda Settings

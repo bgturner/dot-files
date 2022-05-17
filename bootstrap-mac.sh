@@ -52,6 +52,7 @@ while IFS= read -r app || [[ -n "$app" ]]; do
 done <<EOF
 alfred
 around
+cloudapp
 syncthing
 font-jetbrains-mono
 font-fira-sans

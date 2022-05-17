@@ -50,6 +50,7 @@ EOF
 while IFS= read -r app || [[ -n "$app" ]]; do
     brew install --cask $app
 done <<EOF
+alfred
 syncthing
 font-jetbrains-mono
 font-fira-sans

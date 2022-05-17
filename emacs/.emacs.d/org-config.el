@@ -186,7 +186,7 @@ inserting the heading which will be handled by 'org-capture'."
       (setq org-roam-v2-ack t)
       :ensure t
       :custom
-      (org-roam-directory (file-truename "~/roam"))
+      (org-roam-directory (file-truename "~/OrgRoam"))
       :bind (("C-c n l" . org-roam-buffer-toggle)
              ("C-c n f" . org-roam-node-find)
              ("C-c n g" . org-roam-graph)

@@ -174,7 +174,9 @@
   (define-key evil-normal-state-map "\C-r" 'undo-fu-only-redo))
 
 (use-package undo-tree                    ; Enable undo-tree, sane undo/redo behavior
-  :init (global-undo-tree-mode))
+  :init
+  (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+  (global-undo-tree-mode))
 
 (use-package graphviz-dot-mode)
 

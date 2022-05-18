@@ -44,6 +44,7 @@ pyenv
 git-lfs
 wakatime-cli
 emacs-plus
+tmux
 EOF
 
 # Install Brew Cask apps

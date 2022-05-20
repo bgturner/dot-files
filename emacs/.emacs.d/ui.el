@@ -184,3 +184,6 @@
    "wl" '(winner-undo :which-key "Winner Undo")
    "wk" '(winner-redo :which-key "Winner Redo")
    ))
+
+(use-package expand-region
+  :bind ("C-=" . er/expand-region))

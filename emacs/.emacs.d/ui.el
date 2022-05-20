@@ -124,6 +124,10 @@
 
    "e" '(:ignore t :which-key "Errors/Eval")
    "eb" '(eval-buffer :which-key "Eval Buffer")
+   "ep" '(flycheck-previous-error :which-key "Prev")
+   "en" '(flycheck-next-error :which-key "Next")
+   "el" '(flycheck-list-errors :which-key "List")
+
    ;; Files
    "f" '(:ignore t :which-key "Files")
    "fr"  '(consult-recent-file :which-key "Recent Files")

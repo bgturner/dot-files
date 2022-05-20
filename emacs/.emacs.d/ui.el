@@ -118,6 +118,7 @@
 
    ;; "Jump"
    "j" '(:ignore t :which-key "Jump")
+   "jl" '(consult-line :which-key "Line")
    "jb" '(consult-buffer :which-key "Switch Buffer")
    "jm" '(consult-mark :which-key "Evil Marks")
    "jr" '(consult-register :which-key "Evil Registers")

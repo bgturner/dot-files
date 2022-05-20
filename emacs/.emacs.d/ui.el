@@ -128,6 +128,10 @@
    "en" '(flycheck-next-error :which-key "Next")
    "el" '(flycheck-list-errors :which-key "List")
 
+   ;; Compilation
+   "c" '(:ignore t :which-key "Compilation")
+   "cc" '(recompile :which-key "Re-Compile")
+
    ;; Files
    "f" '(:ignore t :which-key "Files")
    "fr"  '(consult-recent-file :which-key "Recent Files")

@@ -45,6 +45,7 @@ git-lfs
 wakatime-cli
 emacs-plus
 tmux
+gh
 EOF
 
 # Install Brew Cask apps

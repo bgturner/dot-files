@@ -122,6 +122,8 @@
    "jm" '(consult-mark :which-key "Evil Marks")
    "jr" '(consult-register :which-key "Evil Registers")
 
+   "e" '(:ignore t :which-key "Errors/Eval")
+   "eb" '(eval-buffer :which-key "Eval Buffer")
    ;; Files
    "f" '(:ignore t :which-key "Files")
    "fr"  '(consult-recent-file :which-key "Recent Files")

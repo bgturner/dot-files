@@ -55,10 +55,68 @@
             ]
         }
     ],
+    "vspacecode.bindingOverrides": [
+        {
+            "keys": "u",
+            "name": "Unittests",
+            "type": "bindings",
+            "bindings": [
+                {
+                    "key": "u",
+                    "name": "Run current test",
+                    "icon": "run",
+                    "type": "command",
+                    "command": "testing.runAtCursor"
+                },
+                {
+                    "key": "t",
+                    "name": "Open test explorer",
+                    "icon": "list-selection",
+                    "type": "command",
+                    "command": "workbench.view.testing.toggleVisibility"
+                },
+                {
+                    "key": "r",
+                    "name": "Re-run last test",
+                    "icon": "debug-restart",
+                    "type": "command",
+                    "command": "testing.reRunLastRun"
+                },
+                {
+                    "key": "f",
+                    "name": "Debug fail tests",
+                    "icon": "error",
+                    "type": "command",
+                    "command": "testing.debugFailTests"
+                },
+                {
+                    "key": "l",
+                    "name": "Show test log",
+                    "icon": "list-flat",
+                    "type": "command",
+                    "command": "testing.debugAtCursor"
+                },
+                {
+                    "key": "b",
+                    "name": "Run current test file",
+                    "icon": "file",
+                    "type": "command",
+                    "command": "testing.runCurrentFile"
+                },
+                {
+                    "key": "c",
+                    "name": "Cancel running tests",
+                    "icon": "close",
+                    "type": "command",
+                    "command": "testing.cancelRun"
+                }
+            ]
+        }
+    ],
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "editor.renderWhitespace": "none",
-    "workbench.activityBar.visible": false,
-    "magit.forge-enabled": true
+    "magit.forge-enabled": true,
+    "workbench.activityBar.visible": false
 }

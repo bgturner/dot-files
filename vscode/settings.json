@@ -55,6 +55,18 @@
     ],
     "vspacecode.bindingOverrides": [
         {
+            "keys": "s.n",
+            "name": "Next Search Result",
+            "type": "command",
+            "command": "search.action.focusNextSearchResult"
+        },
+        {
+            "keys": "s.p",
+            "name": "Previous Search Result",
+            "type": "command",
+            "command": "search.action.focusPreviousSearchResult"
+        },
+        {
             "keys": "u",
             "name": "Unittests",
             "type": "bindings",

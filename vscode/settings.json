@@ -1,14 +1,12 @@
 {
     "window.zoomLevel": 0,
     "workbench.colorTheme": "Gruvbox Dark (Hard)",
-    "workbench.statusBar.visible": true,
     "explorer.openEditors.visible": 0,
     "editor.minimap.enabled": false,
     "editor.tabCompletion": "on",
     "vim.useSystemClipboard": true,
     "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
     "editor.fontLigatures": true,
-    "workbench.colorTheme": "doom-one",
     "jest.autoRun": {},
     "vim.easymotion": true,
     "vim.normalModeKeyBindingsNonRecursive": [

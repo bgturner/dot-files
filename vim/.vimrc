@@ -16,6 +16,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'adelarsq/vim-matchit'
 Plug 'sheerun/vim-polyglot'
 Plug 'majutsushi/tagbar'
+Plug 'wakatime/vim-wakatime'
 
 " Styling
 Plug 'itchyny/lightline.vim'

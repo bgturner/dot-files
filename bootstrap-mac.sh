@@ -56,6 +56,7 @@ done <<EOF
 alfred
 around
 cloudapp
+docker
 syncthing
 font-jetbrains-mono
 font-fira-sans

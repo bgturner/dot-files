@@ -32,6 +32,7 @@ ffmpeg
 pandoc
 imagemagick
 grep
+graphviz
 ripgrep
 pup
 librsvg

@@ -69,6 +69,7 @@ inkscape
 gimp
 vlc
 obs
+parallels
 visual-studio-code
 EOF
 

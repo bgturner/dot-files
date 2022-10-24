@@ -17,6 +17,7 @@
   :init
   ;; Make Projectile usable even outside of project roots
   (setq projectile-require-project-root nil)
+  (setq projectile-switch-project-action #'projectile-dired)
   :bind-keymap
   ("C-c p" . projectile-command-map)
   :config

@@ -1,3 +1,9 @@
+;; Compilation
+(use-package compile
+  :init
+  (progn
+    (setq compilation-scroll-output t)
+))
 
 ;; Company for autocomplete
 (use-package company

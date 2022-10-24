@@ -5,6 +5,8 @@
     (setq compilation-scroll-output t)
 ))
 
+(use-package wgrep)
+
 ;; Company for autocomplete
 (use-package company
   :defer t

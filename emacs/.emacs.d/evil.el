@@ -10,6 +10,7 @@
 		(nrepl-mode . insert)
 		(pylookup-mode . emacs)
 		(comint-mode . normal)
+		(compilation-mode . emacs)
 		(shell-mode . insert)
 		(git-commit-mode . insert)
 		(git-rebase-mode . emacs)

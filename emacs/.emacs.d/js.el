@@ -24,6 +24,13 @@
 	   "tr" 'jest-repeat)
   )
 
+(defun bt/occur-jest-tests ()
+    "Show lines that match Jest describe and it function signatures."
+  (interactive)
+  (occur "\\(\\s ?+describe(\\|\\s ?+it(\\)")
+  (other-window 1)
+  (follow-mode t))
+
 ;; use local eslint from node_modules before global
 ;; http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-eslint-executable
 (defun bt/use-eslint-from-node-modules ()

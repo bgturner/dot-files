@@ -26,12 +26,12 @@
   ;; Make Projectile usable even outside of project roots
   (setq projectile-require-project-root nil)
   (setq projectile-switch-project-action #'projectile-dired)
+  (setq projectile-completion-system 'default)
+  (setq projectile-per-project-compilation-buffer t)
   :bind-keymap
   ("C-c p" . projectile-command-map)
   :config
   (projectile-mode 1)
-  (setq projectile-per-project-compilation-buffer t)
-  (setq projectile-completion-system 'ivy)
   (projectile-register-project-type 'npm '("package.json")
                                     :project-file "package.json"
 				    :compile "npm install"

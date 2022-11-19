@@ -164,7 +164,7 @@ is possible if the heading has a property of DATE_TREE."
   :bind
     ("C-c n j" . org-journal-new-entry)
   :custom
-    (org-journal-dir "~/Sync/org/roam/journal/")
+    (org-journal-dir "~/org/journal/")
     (org-journal-file-format "journal-%Y-%m-%d.org")
     (org-journal-date-prefix "#+CATEGORY: journal\n#+TITLE: Journal - ")
     (org-journal-date-format "%Y-%m-%d - %A"))

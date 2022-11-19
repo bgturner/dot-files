@@ -195,3 +195,14 @@
 
 (use-package tree-sitter)
 (use-package tree-sitter-langs)
+
+(use-package codespaces
+  :straight (:host github
+	     :repo "patrickt/codespaces.el")
+  :init (setq vc-handled-backends '(Git))
+  :config (codespaces-setup)
+  :bind ("C-c S" . #'codespaces-connect))
+
+(use-package company-tabnine :ensure t
+  :config
+  (add-to-list 'company-backends #'company-tabnine))

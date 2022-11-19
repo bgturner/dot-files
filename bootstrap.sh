@@ -1,57 +1,70 @@
 #!/bin/bash
 
-# This script creates symlinks from the home directory to any desired dotfiles in ~/.dot-files
+# This script creates symlinks from the home directory to the various dotfiles in ~/.dot-files
 
 dotfiles_dir=~/.dot-files
 date=`date +%Y-%m-%d--%H-%M-%S`
 backupdir=~/.dot-files.bak/$date
 
-if [ -d "$dotfiles_dir" -a ! -h "$dotfiles_dir" ]
-then
-	echo "Dotfiles directory exists. Skipping retrieval of this repo."
-else
-	git clone https://github.com/bgturner/dot-files $dotfiles_dir
-fi
+function backup_file {
+  srcFile="$HOME/${1}"
+  mv "${srcFile}" "${backupdir}"
+}
 
-# Create backup of existing files.
-mkdir -p $backupdir
+function link_file {
+  file="${1}"
+  ln -s "$(pwd)/${file}" "${HOME}/${file}"
+}
 
-echo "Backing up current dotfiles to: $backupdir"
-mv ~/.zshrc $backupdir/
-mv ~/.bash_aliases $backupdir/
-mv ~/.vimrc $backupdir/
-mv ~/.tmux.conf $backupdir/
-mv ~/.gitconfig $backupdir/
-mv ~/.gitignore $backupdir/
-mv ~/.emacs.d/init.el $backupdir/
-
-mkdir ~/.emacs.d
-
-echo "Creating symlinks."
-ln -s $dotfiles_dir/.zshrc ~/.zshrc
-ln -s $dotfiles_dir/.bash_aliases ~/.bash_aliases
-ln -s $dotfiles_dir/.vimrc ~/.vimrc
-ln -s $dotfiles_dir/.tmux.conf ~/.tmux.conf
-ln -s $dotfiles_dir/.gitconfig ~/.gitconfig
-ln -s $dotfiles_dir/.gitignore ~/.gitignore
-ln -s $dotfiles_dir/vim ~/.vim
-ln -s $dotfiles_dir/init.el ~/.emacs.d/init.el
+while IFS= read -r slug || [[ -n "$slug" ]]; do
+  if [[ ! -L "${HOME}/${slug}" ]]; then
+    backup_file $slug
+    link_file $slug
+  else
+    echo "Skipping: ${slug}"
+  fi
+done <<EOF
+.bash_aliases
+.bash_prompt
+.bashrc
+.emacs.d
+.gitconfig
+.inputrc
+.profile
+.sqliterc
+.tmux.conf
+.vim
+.zshrc
+EOF
 
 if [ -d "$HOME/.oh-my-zsh" -a ! -h "$HOME/.oh-my-zsh" ]
 then
-	echo "Oh My Zsh already exists. Skipping git clone."
+	echo "Skipping: Oh My Zsh already exists."
 else
 	echo "Cloning Oh My Zsh."
 	git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 fi
 
-echo "Setting Zsh as default shell."
-chsh -s /bin/zsh
-
-if [ -d "$HOME/.vim/autoload/plug.vim" -a ! -h "$HOME/.vim/autoload/plug.vim" ]
+if [ -d "$HOME/.fzf" -a ! -h "$HOME/.fzf" ]
 then
-	echo "Vim Plug already installed."
+	echo "Skipping: FZF already installed."
 else
+	echo "Cloning FZF"
+	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
+fi
+
+if [ -d "$HOME/.cargo" ]; then
+	echo "Skipping: Rust already installed."
+else
+	echo "Installing Rust Cargo"
+  curl https://sh.rustup.rs -sSf | sh
+fi
+
+if [ -f "$HOME/.vim/autoload/plug.vim" -a ! -h "$HOME/.vim/autoload/plug.vim" ]
+then
+	echo "Skipping: Vim Plug already installed."
+else
+  echo "Cloning Vim Plug"
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi

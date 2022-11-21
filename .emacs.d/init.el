@@ -58,7 +58,7 @@
 (load-user-file "rust.el")
 (load-user-file "apps.el")
 (load-user-file "backups.el")
-
+(load-user-file "writing-config.el")
 
 ;; Where to find secrets
 (setq auth-sources '("~/.authinfo"))

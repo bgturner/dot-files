@@ -12,7 +12,6 @@
   :defer t)
 
 (use-package wc-mode
-  :defer t
   :init
     (setq wc-modeline-format "WC[%W%w/%tw:%gw]"))
 

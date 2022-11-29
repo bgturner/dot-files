@@ -35,8 +35,6 @@ that I can re-add any projects that I'm actively working on. See:
   (setq lsp-ui-doc-show-with-cursor t)
   (setq lsp-ui-doc-position 'at-point))
 
-(use-package lsp-ivy)
-
 (use-package dap-mode
   :commands dap-debug
   :config

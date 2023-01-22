@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Node
+# key: n
+# --
+$1 [label="$2"]$0

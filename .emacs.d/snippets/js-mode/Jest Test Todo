@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Jest Test Todo
+# key: jt
+# --
+test.todo('$1');$0

@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: SQL Block
+# key: <sql
+# --
+#+name: $1
+#+header: :engine ${2:postgres}
+#+header: :dbhost ${3:localhost}
+#+header: :database ${4:postgres}
+#+header: :dbuser ${5:postgres}
+#+header: :dbpassword ${6:postgres}
+#+begin_src sql 
+    $0
+#+end_src

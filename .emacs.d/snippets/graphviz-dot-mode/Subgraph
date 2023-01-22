@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: Subgraph
+# key: sg
+# --
+subgraph cluster_$1 {
+  ${1:$(downcase yas-text)} [label="${2:$1}"]
+  ${1:$(downcase yas-text)}_desc [shape=plaintext label="$3"]}$0
+}

@@ -749,6 +749,18 @@ like the ones used by Jest."
 
   (provide 'general-programming))  
 
+(use-package devops
+  :straight nil
+  :preface
+  (use-package kubernetes
+    :ensure t
+    :commands (kubernetes-overview)
+    :config
+    (setq kubernetes-poll-frequency 3600
+          kubernetes-redraw-frequency 3600))
+
+  (provide 'devops))
+
 (use-package lsp
   :straight nil
   :preface

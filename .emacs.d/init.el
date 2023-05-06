@@ -629,7 +629,13 @@ like the ones used by Jest."
     :bind-keymap
     ("C-c p" . projectile-command-map)
     :config
-    (projectile-mode 1))
+    (projectile-mode 1)
+    (projectile-register-project-type 'npm '("package.json")
+                                      :project-file "package.json"
+				      :compile "npm install"
+				      :test "npx jest"
+				      :run "npm start"
+				      :test-suffix ".spec"))
 
   (use-package yasnippet
     :delight yas-minor-mode

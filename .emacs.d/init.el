@@ -297,13 +297,7 @@ like the ones used by Jest."
      "att" '(treemacs :which-key "Treemacs")
      
      ;; Magit
-     "g" '(:ignore t :which-key "Magit")
-     "gs" '(magit-status :which-key "Status")
-     "gd" '(magit-diff-unstaged :which-key "Diff Unstaged")
-     "gl" '(:ignore t :which-key "Log")
-     "glc" '(magit-log-current :which-key "Current Branch")
-     "gla" '(magit-log-all :which-key "All")
-     "glf" '(magit-log-buffer-file :which-key "Current File")
+     "g" '(magit-file-dispatch :which-key "Magit")
      
      ;; Writing
      "w" '(:ignore t :which-key "Writing")

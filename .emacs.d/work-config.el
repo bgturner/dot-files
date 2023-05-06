@@ -58,5 +58,10 @@
   (interactive)
   (dired "~/Library/Application Support/Local/" nil))
 
+(defun bt/open-local-log ()
+  "Opens the Local Log"
+  (interactive)
+  (find-file "~/Library/Logs/local-lightning-verbose.log"))
+
 
 ;; (global-set-key (kbd "C-c C-l") 'counsel-find-file)

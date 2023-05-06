@@ -2,6 +2,7 @@
 export ZSH=$HOME/.oh-my-zsh
 plugins=(
     vi-mode
+    wakatime
 )
 source $ZSH/oh-my-zsh.sh
 

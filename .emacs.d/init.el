@@ -1148,6 +1148,8 @@ inserting the heading which will be handled by 'org-capture'."
           org-roam-ui-open-on-start t))
   
   (use-package ob-typescript)
+
+  (use-package ob-async)
   
   (eval-after-load "org"
     '(require 'ox-md nil t))

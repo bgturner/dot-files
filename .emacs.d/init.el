@@ -1154,6 +1154,32 @@ inserting the heading which will be handled by 'org-capture'."
   (eval-after-load "org"
     '(require 'ox-md nil t))
   
+  ;; Colorize org-babel output
+  ;; https://emacs.stackexchange.com/a/63562
+  ;;
+  ;; So something like this produces nice, escaped output:
+  ;;
+  ;;     #+begin_src shell :session my-session-name :results raw :wrap shell_output
+  ;;       mkdir -p ~/src/installing-minikube
+  ;;       cd ~/src/installing-minikube
+  ;;     #+end_src
+  ;;
+  ;;     #+RESULTS:
+  ;;     #+begin_shell_output
+  ;;     mkdir -p ~/src/my-sandbox
+  ;;     ★  ~ % cd ~/src/my-sandbox
+  ;;     #+end_shell_output
+  ;;
+  (defun bt/babel-ansi ()
+    (when-let ((beg (org-babel-where-is-src-block-result nil nil)))
+      (save-excursion
+	(goto-char beg)
+	(when (looking-at org-babel-result-regexp)
+	  (let ((end (org-babel-result-end))
+		(ansi-color-context-region nil))
+	    (ansi-color-apply-on-region beg end))))))
+  (add-hook 'org-babel-after-execute-hook 'bt/babel-ansi)
+
   ) ;; End orgmode config
 
 

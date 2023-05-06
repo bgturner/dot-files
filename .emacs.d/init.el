@@ -791,7 +791,7 @@ that I can re-add any projects that I'm actively working on. See:
     :bind (("C-h ." . lsp-ui-doc-focus-frame)
 	   ("C-c z" . lsp-ui-doc-unfocus-frame))
     :init
-    (setq lsp-ui-doc-show-with-cursor nil)
+    (setq lsp-ui-doc-show-with-cursor t)
     (setq lsp-ui-doc-show-with-mouse t)
     (setq lsp-ui-doc-max-width 80)
     (setq lsp-ui-doc-position 'at-point))

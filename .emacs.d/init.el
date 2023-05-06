@@ -573,6 +573,8 @@ like the ones used by Jest."
   :straight nil
   :preface
 
+  (use-package imenu-list)
+
   (use-package tree-sitter
     :delight
     :ensure t

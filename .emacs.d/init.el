@@ -1,6 +1,10 @@
 (setq custom-file (expand-file-name ".custom.el" user-emacs-directory))
 (load custom-file)
 
+(defun load-if-exists (f)
+  (if (file-exists-p (expand-file-name f))
+      (load-file (expand-file-name f))))
+
 ;; Where to find secrets
 (setq auth-sources '("~/.authinfo"))
 

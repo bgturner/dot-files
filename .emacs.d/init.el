@@ -143,7 +143,14 @@ like the ones used by Jest."
   (use-package doom-themes
     :config
     ;; (load-theme 'doom-one t)
-    (load-theme 'doom-Iosvkem t))
+    (load-theme 'doom-dracula t)
+
+    ;; Enable flashing mode-line on errors
+    (doom-themes-visual-bell-config)
+    (doom-themes-treemacs-config)
+    ;; Corrects (and improves) org-mode's native fontification.
+    (doom-themes-org-config)
+    )
   
   ;; Fonts - use Jetbrains Mono. larger font-size for MacOS
   (let ((font-size (if (eq system-type 'darwin)

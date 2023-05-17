@@ -1137,7 +1137,22 @@ inserting the heading which will be handled by 'org-capture'."
            ("C-c n i" . org-roam-node-insert)
            ("C-c n c" . org-roam-capture))
     :config
-    (org-roam-db-autosync-mode))
+    (org-roam-db-autosync-mode)
+    :general
+    (general-nmap "SPC o r" 'hydra-org-roam/body)
+    :hydra
+    (hydra-org-roam ()
+		    "
+  _n_ : Next Daily
+  _p_ : Prev Daily
+  _g_ : Goto Daily
+  _c_ : Capture Daily
+"
+		    ("n" org-roam-dailies-goto-next-note)
+		    ("p" org-roam-dailies-goto-previous-note)
+		    ("c" org-roam-dailies-capture-date)
+		    ("g" org-roam-dailies-goto-date)
+		    ))
   
   (use-package org-roam-ui
     :straight

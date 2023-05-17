@@ -5,9 +5,6 @@
   (if (file-exists-p (expand-file-name f))
       (load-file (expand-file-name f))))
 
-;; Where to find secrets
-(setq auth-sources '("~/.authinfo"))
-
 ;;;; Load any system-specific config early
 ;;(let ((system-specific-config (if (eq system-type 'darwin)
 ;;				  (format "work-config.el")

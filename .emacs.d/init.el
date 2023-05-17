@@ -134,6 +134,9 @@ like the ones used by Jest."
 
   (provide 'defaults))
 
+
+(use-package use-package-hydra)
+
 (use-package ui
   :straight nil
   :defer t

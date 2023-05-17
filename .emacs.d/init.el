@@ -1108,10 +1108,7 @@ that I can re-add any projects that I'm actively working on. See:
 				 (css . t)
 				 (js . t)))
   
-  (let ((file ".org-capture-templates.el"))
-    (when (file-exists-p file)
-      (message "Loading Org Capture templates from %s" file)
-      (load-user-file file)))
+  (load-if-exists ".org-capture-templates.el")
 
   ;; (bt/set-org-agenda-files)
   

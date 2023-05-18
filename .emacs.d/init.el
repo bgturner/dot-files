@@ -110,13 +110,26 @@ like the ones used by Jest."
   :straight nil
   :defer t
   :preface
-  ;; Minimal UI
-  (setq inhibit-startup-screen t)
-  (scroll-bar-mode -1)
-  (tool-bar-mode -1)
-  (tooltip-mode -1)
-  (menu-bar-mode -1)
+  (use-package emacs
+    :init
+    (menu-bar-mode -1)
+    (toggle-scroll-bar -1)
+    (tool-bar-mode -1)
+    (tooltip-mode -1)
+    (scroll-bar-mode -1)
+    (global-hl-line-mode +1)
+    (blink-cursor-mode -1)
+    (line-number-mode +1)
+    (global-display-line-numbers-mode 1)
+    (column-number-mode t)
+    (size-indication-mode t)
+    (fset 'yes-or-no-p 'y-or-n-p)
+    (setq-default tab-width 4)
+    (setq-default indent-tabs-mode nil)
+    (setq inhibit-startup-screen t)
+    )
 
+  (show-paren-mode t)
   ; Allow minibuffers within minibuffers
   enable-recursive-minibuffers t
 
@@ -155,7 +168,6 @@ like the ones used by Jest."
   :straight nil
   :defer t
   :preface
-  (show-paren-mode t)
   ;; Theme
   (use-package doom-themes
     :config

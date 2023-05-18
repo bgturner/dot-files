@@ -1,15 +1,29 @@
 (setq custom-file (expand-file-name ".custom.el" user-emacs-directory))
 (load custom-file)
 
-(defun load-if-exists (f)
-  (if (file-exists-p (expand-file-name f))
-      (load-file (expand-file-name f))))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Helper functions for loading files
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defconst user-init-dir
+  (cond ((boundp 'user-emacs-directory)
+         user-emacs-directory)
+        ((boundp 'user-init-directory)
+         user-init-directory)
+        (t "~/.emacs.d/")))
 
-;;;; Load any system-specific config early
-;;(let ((system-specific-config (if (eq system-type 'darwin)
-;;				  (format "work-config.el")
-;;				(format "personal-config.el"))))
-;;  (load-user-file system-specific-config))
+(defun load-user-file (file)
+  (interactive "f")
+  "load a file in current user's configuration directory
+   if it exists."
+  (let ((fullfile (expand-file-name file user-init-dir)))
+    (when (file-exists-p fullfile)
+      (load-file fullfile))))
+
+;; Load any system-specific config early
+(let ((system-specific-config (if (eq system-type 'darwin)
+				  (format "work-config.el")
+				(format "personal-config.el"))))
+ (load-user-file system-specific-config))
 
 ;; Include Melpa so we can install packages with:
 ;;
@@ -1108,7 +1122,7 @@ that I can re-add any projects that I'm actively working on. See:
 				 (css . t)
 				 (js . t)))
   
-  (load-if-exists ".org-capture-templates.el")
+  (load-user-file ".org-capture-templates.el")
 
   ;; (bt/set-org-agenda-files)
   

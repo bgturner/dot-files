@@ -198,6 +198,8 @@ like the ones used by Jest."
   :preface
   ;; Evil Package
   (use-package evil
+    :init
+    (setq evil-want-C-i-jump nil) ;; Fix tab key in org-mode
     :config
     (evil-set-undo-system 'undo-fu)
     (evil-mode 1)

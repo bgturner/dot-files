@@ -798,6 +798,20 @@ like the ones used by Jest."
     (setq kubernetes-poll-frequency 3600
           kubernetes-redraw-frequency 3600))
 
+  (use-package dockerfile-mode)
+
+  (use-package docker)
+
+  (use-package yaml-mode)
+
+  (use-package yaml-pro
+    :after yaml-mode
+    :hook (yaml-mode . yaml-pro-mode)
+    :general (:keymaps 'yaml-pro-mode-map
+	      :states 'normal
+	      "zc" #'yaml-pro-fold-at-point
+	      "zo" #'yaml-pro-unfold-at-point))
+
   (provide 'devops))
 
 (use-package lsp

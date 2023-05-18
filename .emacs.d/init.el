@@ -1124,7 +1124,7 @@ that I can re-add any projects that I'm actively working on. See:
   
   (load-user-file ".org-capture-templates.el")
 
-  ;; (bt/set-org-agenda-files)
+  (bt/set-org-agenda-files)
   
   (defun org-refile-to-datetree (&optional file)
     "Refile a subtree to a datetree corresponding to it's timestamp.

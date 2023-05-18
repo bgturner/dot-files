@@ -1,7 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 plugins=(
-    vi-mode
     wakatime
 )
 source $ZSH/oh-my-zsh.sh
@@ -32,16 +31,7 @@ export LS_COLORS='no=00:fi=00:di=01;34:ln=00;36:pi=40;33:so=01;35:do=01;35:bd=40
 export CLICOLOR=1
 
 # Preferred editor for local and remote sessions
-export EDITOR='vim'
-
-# Enable vi-style keybindings
-bindkey -v
-
-# allow v to edit the command line (standard behaviour)
-autoload -Uz edit-command-line
-zle -N edit-command-line
-bindkey -M vicmd 'v' edit-command-line
-
+export EDITOR="emacsclient -nw"
 
 # Add Global Composer to path
 [ -d "$HOME/.config/composer/vendor/bin" ] && export PATH="$HOME/.config/composer/vendor/bin:${PATH}"

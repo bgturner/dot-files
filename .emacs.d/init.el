@@ -934,8 +934,11 @@ that I can re-add any projects that I'm actively working on. See:
   (use-package graphviz-dot-mode
     :defer t)
   
+  ;; Install marked with:
+  ;;     npm install -g marked
   (use-package markdown-mode
     :defer t
+    :init (setq markdown-command "marked")
     :commands (markdown-mode gfm-mode)
     :mode (("README\\.md\\'" . gfm-mode)))
 

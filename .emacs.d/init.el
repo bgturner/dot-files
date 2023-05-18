@@ -677,20 +677,6 @@ like the ones used by Jest."
   (use-package eldoc
     :delight eldoc-mode)
 
-  (use-package eglot
-    :custom
-    (eglot-autoshutdown t)
-    (eglot-autoreconnect nil)
-    (eglot-confirm-server-initiated-edits nil)
-    (eldoc-idle-delay 1)
-    (eldoc-echo-area-display-truncation-message nil)
-    :init
-    ;; Option 1: Specify explicitly to use Orderless for Eglot
-    (setq completion-category-overrides '((eglot (styles orderless))))
-    :bind (:map eglot-mode-map
-		("C-c l a" . eglot-code-actions)
-		("C-c l f" . eglot-format-buffer)))
-
   (use-package compile
     :init
     (progn
@@ -953,7 +939,6 @@ that I can re-add any projects that I'm actively working on. See:
     :defer t
     :delight (typescript-mode "TS" :major)
     :mode "\\.tsx?\\'"
-    :hook (typescript-mode . eglot-ensure)
     :init (setq typescript-indent-level 2))
 
   (use-package json-mode
@@ -963,7 +948,6 @@ that I can re-add any projects that I'm actively working on. See:
 
   ;; Web Mode
   (use-package web-mode
-    :hook (web-mode . eglot-ensure)
     :defer t
     :config
     (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
@@ -982,7 +966,6 @@ that I can re-add any projects that I'm actively working on. See:
   ;; PHP
   (use-package php-mode
     :defer t
-    :hook (php-mode . eglot-ensure)
     :config
     (use-package phpunit))
 

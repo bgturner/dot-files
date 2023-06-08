@@ -666,7 +666,8 @@ like the ones used by Jest."
   (use-package exec-path-from-shell
     :config (exec-path-from-shell-initialize))
   
-  (use-package ripgrep)
+  (use-package deadgrep)
+  (use-package wgrep-deadgrep)
   
   (use-package flycheck
     :delight

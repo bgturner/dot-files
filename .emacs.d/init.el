@@ -234,12 +234,6 @@ like the ones used by Jest."
 
   (electric-pair-mode 1)
 
-  (use-package puni
-    :defer t
-    :ensure t
-    :init
-    (puni-global-mode))
-
   ;; Evil Package
   (use-package evil
     :init

@@ -175,11 +175,10 @@ like the ones used by Jest."
 
     ;; Enable flashing mode-line on errors
     (doom-themes-visual-bell-config)
-    (doom-themes-treemacs-config)
     ;; Corrects (and improves) org-mode's native fontification.
     (doom-themes-org-config)
     )
-  
+
   ;; Fonts - use Jetbrains Mono. larger font-size for MacOS
   (let ((font-size (if (eq system-type 'darwin)
 		       (format "14")

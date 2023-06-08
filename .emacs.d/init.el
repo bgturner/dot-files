@@ -905,7 +905,7 @@ that I can re-add any projects that I'm actively working on. See:
     :straight (:host github
 		     :repo "joostkremers/emmet-for-emacs"
 		     :files ("*.el" "conf"))
-    :delight (emmet)
+    :delight emmet-mode
     :init
     (add-hook 'sgml-mode-hook 'emmet-mode)
     (add-hook 'css-mode-hook  'emmet-mode)

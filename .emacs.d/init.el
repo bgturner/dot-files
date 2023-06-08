@@ -338,6 +338,7 @@ like the ones used by Jest."
      ;; "Jump"
      "j" '(:ignore t :which-key "Jump")
      "jl" '(consult-line :which-key "Line")
+     "ja" '(avy-goto-char :which-key "Avy Goto Char")
      "jb" '(consult-buffer :which-key "Switch Buffer")
      "jm" '(consult-mark :which-key "Evil Marks")
      "jr" '(consult-register :which-key "Evil Registers")

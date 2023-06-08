@@ -120,7 +120,6 @@ like the ones used by Jest."
     (global-hl-line-mode +1)
     (blink-cursor-mode -1)
     (line-number-mode +1)
-    (global-display-line-numbers-mode 1)
     (column-number-mode t)
     (size-indication-mode t)
     (fset 'yes-or-no-p 'y-or-n-p)

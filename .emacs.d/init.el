@@ -573,77 +573,12 @@ like the ones used by Jest."
       :hook
       (embark-collect-mode . consult-preview-at-point-mode)))
 
-  (use-package corfu
-    :general
-    (:keymaps 'corfu-map
-	    :states 'insert
-	    "C-n" #'corfu-next
-	    "C-p" #'corfu-previous
-	    "<escape>" #'corfu-quit
-	    "<return>" #'corfu-insert
-	    "H-SPC" #'corfu-insert-separator
-	    ;; "SPC" #'corfu-insert-separator ; Use when `corfu-quit-at-boundary' is non-nil
-	    "M-d" #'corfu-show-documentation
-	    "C-g" #'corfu-quit
-	    "M-l" #'corfu-show-location)
-    :custom-face
-    (corfu-current ((t (:foreground "light gray" :background "gray14"))))
-    :custom
-    (corfu-min-width 80)
-    (corfu-max-width corfu-min-width)     ; Always have the same width
-    (corfu-cycle t)
-    (corfu-commit-predicate nil)
-    (corfu-quit-no-match nil)
-    (corfu-echo-documentation nil)
-    ;; `nil' means to ignore `corfu-separator' behavior, that is, use the older
-    ;; `corfu-quit-at-boundary' = nil behavior. Set this to separator if using
-    ;; `corfu-auto' = `t' workflow (in that case, make sure you also set up
-    ;; `corfu-separator' and a keybind for `corfu-insert-separator', which my
-    ;; configuration already has pre-prepared). Necessary for manual corfu usage with
-    ;; orderless, otherwise first component is ignored, unless `corfu-separator'
-    ;; is inserted.
-    (corfu-quit-at-boundary nil)
-    (corfu-separator ?\s)            ; Use space
-    (corfu-quit-no-match 'separator) ; Don't quit if there is `corfu-separator' inserted
-    (corfu-preview-current 'insert)  ; Preview first candidate. Insert on input if only one
-    (corfu-preselect-first t)        ; Preselect first candidate?
-    
-    :init
-    (global-corfu-mode))
-
-  ;; Add extensions
-  (use-package cape
-    ;; Bind dedicated completion commands
-    ;; Alternative prefix keys: C-c p, M-p, M-+, ...
-
-    :bind (("C-M-i" . completion-at-point) ;; capf
-           ("C-c p t" . complete-tag)        ;; etags
-           ("C-c p d" . cape-dabbrev)        ;; or dabbrev-completion
-           ("C-c p h" . cape-history)
-           ("C-c p f" . cape-file)
-           ("C-c p k" . cape-keyword)
-           ("C-c p s" . cape-symbol)
-           ("C-c p a" . cape-abbrev)
-           ("C-c p i" . cape-ispell)
-           ("C-c p l" . cape-line)
-           ("C-c p w" . cape-dict)
-           ("C-c p r" . cape-rfc1345))
-    :init
-    ;; Add `completion-at-point-functions', used by `completion-at-point'.
-    (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-    (add-to-list 'completion-at-point-functions #'cape-file)
-    ;;(add-to-list 'completion-at-point-functions #'cape-history)
-    ;;(add-to-list 'completion-at-point-functions #'cape-keyword)
-    ;;(add-to-list 'completion-at-point-functions #'cape-tex)
-    ;;(add-to-list 'completion-at-point-functions #'cape-sgml)
-    ;;(add-to-list 'completion-at-point-functions #'cape-rfc1345)
-    ;;(add-to-list 'completion-at-point-functions #'cape-abbrev)
-    ;; (add-to-list 'completion-at-point-functions #'cape-ispell)
-    ;;(add-to-list 'completion-at-point-functions #'cape-dict)
-    ;;(add-to-list 'completion-at-point-functions #'cape-symbol)
-    ;; (add-to-list 'completion-at-point-functions #'cape-line)
-    )
-
+  (use-package company
+    :delight
+    :hook (after-init . global-company-mode)
+    :bind (("C-M-i" . company-complete))
+    :config
+    (use-package company-lsp))
 
   (provide 'completions))
 

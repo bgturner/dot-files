@@ -2,7 +2,7 @@
 [
   {
     "key": "ctrl+space",
-    "command": "vspacecode.space",
+    "command": "vspacecode.space"
   },
   {
     "key": "space",

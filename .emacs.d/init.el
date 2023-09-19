@@ -875,6 +875,12 @@ that I can re-add any projects that I'm actively working on. See:
     :config
     (add-to-list 'auto-mode-alist '("\\lightning[^.]?*.log\\'" . json-mode)))
 
+  ;; shell
+  (use-package flymake-shellcheck
+    :commands flymake-shellcheck-load
+    :init
+    (add-hook 'sh-mode-hook 'flymake-shellcheck-load))
+
   ;; Web Mode
   (use-package web-mode
     :defer t

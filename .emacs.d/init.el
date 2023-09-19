@@ -1262,11 +1262,28 @@ inserting the heading which will be handled by 'org-capture'."
 	(interactive)
 	(flyspell-goto-next-error)
 	(ispell-word))
+  :general
+  (general-nmap "SPC w s" 'hydra-flyspell/body)
+  :hydra
+  (hydra-flyspell ()
+		  "
+_m_ Enable Flyspell Mode
+_b_ Check spelling in buffer
+_c_ Check next highlighted word
+_n_ Goto Next error
+_p_ Goto Prev error
+_a_ Auto-correct
+"
+		  ("m" flyspell-mode)
+		  ("b" flyspell-buffer)
+		  ("c" flyspell-check-next-highlighted-word)
+		  ("n" flyspell-goto-next-error)
+		  ("n" evil-next-flyspell-error)
+		  ("p" evil-prev-flyspell-error)
+		  ("a" flyspell-auto-correct-word)
+		  )
+    
   :config
-    (global-set-key (kbd "C-c s m") 'flyspell-mode)
-    (global-set-key (kbd "C-c s b") 'flyspell-buffer)
-    (global-set-key (kbd "C-c s w") 'ispell-word)
-    (global-set-key (kbd "C-c s c") 'flyspell-check-next-highlighted-word)
     (when (executable-find "hunspell")
 	(setq-default ispell-program-name "hunspell")
 	(setq ispell-really-hunspell t))

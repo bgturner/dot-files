@@ -646,26 +646,6 @@ like the ones used by Jest."
     (let ((indent-tabs-mode nil))
       ad-do-it))
 
-  ;; Built-in version control
-  (use-package vc
-    :general
-    (general-nmap "SPC v" 'hydra-vc/body)
-    :hydra
-    (hydra-vc ()
-		    "
-  _]_ : Next Hunk
-  _[_ : Prev Hunk
-  _k_ : Revert Hunk
-  _S_ : Stage Hunk
-  _v_ : Next Action
-"
-		    ("]" diff-hl-next-hunk)
-		    ("[" diff-hl-previous-hunk)
-		    ("k" diff-hl-revert-hunk)
-		    ("S" diff-hl-stage-current-hunk)
-		    ("v" vc-next-action)
-		    ))
-
   ;; Magit
   (use-package magit
     :defer t

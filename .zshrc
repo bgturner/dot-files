@@ -33,6 +33,14 @@ export CLICOLOR=1
 # Preferred editor for local and remote sessions
 export EDITOR="emacsclient -nw"
 
+# Enable vi-style keybindings in regular shell
+bindkey -v
+
+# allow v to edit the command line (standard behaviour)
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd 'v' edit-command-line
+
 # Add Global Composer to path
 [ -d "$HOME/.config/composer/vendor/bin" ] && export PATH="$HOME/.config/composer/vendor/bin:${PATH}"
 [ -d "$HOME/.composer/vendor/bin" ] && export PATH="$HOME/.composer/vendor/bin:${PATH}"

@@ -666,7 +666,11 @@ like the ones used by Jest."
   (use-package exec-path-from-shell
     :config (exec-path-from-shell-initialize))
   
-  (use-package deadgrep)
+  (use-package deadgrep
+    :init
+    (evil-set-initial-state 'deadgrep-mode 'emacs)
+    :general
+    (bt/leader-key-def "D" '(deadgrep :which-key "Deadgrep")))
   (use-package wgrep-deadgrep)
   
   (use-package flycheck

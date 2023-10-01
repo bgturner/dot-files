@@ -904,6 +904,10 @@ that I can re-add any projects that I'm actively working on. See:
 	  ("C-c C-e h" . web-mode-element-sibling-previous)
 	  ("C-c C-e l" . web-mode-element-sibling-next)))
 
+  ;; Python
+  (use-package poetry
+    :defer t)
+
   ;; PHP
   (use-package php-mode
     :defer t

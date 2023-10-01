@@ -749,6 +749,12 @@ like the ones used by Jest."
 
   (provide 'general-programming))  
 
+(use-package copilot
+  :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
+  :config
+  (define-key copilot-completion-map (kbd "C-M-<return>") 'copilot-accept-completion)
+  )
+
 (use-package devops
   :straight nil
   :preface

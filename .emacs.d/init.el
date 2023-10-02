@@ -671,7 +671,6 @@ like the ones used by Jest."
     (evil-set-initial-state 'deadgrep-mode 'emacs)
     :general
     (bt/leader-key-def "D" '(deadgrep :which-key "Deadgrep")))
-  (use-package wgrep-deadgrep)
   
   (use-package flycheck
     :delight

@@ -5,6 +5,7 @@
     "editor.minimap.enabled": false,
     "editor.tabCompletion": "on",
     "vim.useSystemClipboard": true,
+    "vim.foldfix": true,
     "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
     "editor.fontLigatures": true,
     "jest.autoRun": {},

@@ -183,7 +183,7 @@ like the ones used by Jest."
   (let ((font-size (if (eq system-type 'darwin)
 		       (format "14")
 		     (format "11"))))
-    (set-frame-font (format "Jetbrains Mono %s" font-size) nil t))
+    (set-frame-font (format "JetbrainsMono Nerd Font %s" font-size) nil t))
 
   ;; Completely hide when we need focus
   (use-package hide-mode-line

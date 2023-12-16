@@ -52,6 +52,11 @@
 (straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
 
+
+;; Needed for LSP to work, and maybe other things...
+(setq read-process-output-max (* 1024 1024)) ; Set it to 1 MB (or adjust as needed)
+(setq gc-cons-threshold (* 2 1024 1024)) ; Set it to 2 MB (or adjust as needed)
+
 (use-package delight
   :config (delight '((visual-line-mode)
 		     (auto-revert-mode nil "autorevert")

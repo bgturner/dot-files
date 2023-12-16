@@ -237,8 +237,6 @@ like the ones used by Jest."
   :straight nil
   :preface
 
-  (electric-pair-mode 1)
-
   ;; Evil Package
   (use-package evil
     :init

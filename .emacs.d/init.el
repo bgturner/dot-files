@@ -768,11 +768,17 @@ like the ones used by Jest."
 (use-package codemetrics
   :straight (codemetrics :type git :host github :repo "jcs-elpa/codemetrics"))
 
-(use-package copilot
-  :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
+;; Save in ~/.authinfo.gpg
+;;     machine api.openai.com password sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+(use-package gptel
+  :bind ("C-c a" . gptel-send)
   :config
-  (define-key copilot-completion-map (kbd "C-M-<return>") 'copilot-accept-completion)
-  )
+  (defun get-openapi-key ()
+    "Return the API key from ~/.authinfo.gpg"
+    (require 'auth-source)
+    (let ((inhibit-message t))
+        (auth-source-pick-first-password :host "api.openai.com")))
+  (setq gptel-api-key (get-openapi-key)))
 
 (use-package devops
   :straight nil

@@ -830,6 +830,8 @@ that I can re-add any projects that I'm actively working on. See:
     :hook
     (php-mode . lsp)
     (typescript-mode . lsp)
+    (typescript-ts-mode . lsp)
+    (web-mode . lsp)
     (js-mode . lsp)
     ;; (python-mode . lsp)
     ;; (sh-mode . lsp)

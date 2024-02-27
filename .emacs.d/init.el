@@ -269,6 +269,7 @@ like the ones used by Jest."
 		    (comint-mode . normal)
 		    (compilation-mode . emacs)
 		    (shell-mode . insert)
+		    (vterm-mode . emacs)
 		    (git-commit-mode . insert)
 		    (git-rebase-mode . emacs)
 		    (term-mode . emacs)

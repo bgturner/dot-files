@@ -242,7 +242,7 @@ like the ones used by Jest."
     :init
     (setq evil-want-C-i-jump nil) ;; Fix tab key in org-mode
     :config
-    (evil-set-undo-system 'undo-fu)
+    (evil-set-undo-system 'undo-redo)
     (evil-mode 1)
     (evil-define-key 'normal diff-hl-mode-map "]v" 'diff-hl-next-hunk)
     (evil-define-key 'normal diff-hl-mode-map "[v" 'diff-hl-previous-hunk)
@@ -285,6 +285,13 @@ like the ones used by Jest."
 		    (wdired-mode . normal))
 	       do (evil-set-initial-state mode state))))
   (bt/set-initial-evil-states)
+
+  (use-package vundo
+    :commands (vundo)
+    :straight (vundo :type git :host github :repo "casouri/vundo")
+    :config
+    (setq vundo-compact-display t))
+  (with-eval-after-load 'evil (evil-define-key 'normal 'global (kbd "C-c u") 'vundo))
 
   ;; Navigate directly to specific windows quickly.
   (use-package ace-window

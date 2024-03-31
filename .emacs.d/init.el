@@ -938,6 +938,8 @@ that I can re-add any projects that I'm actively working on. See:
     :init
     (add-hook 'sh-mode-hook 'flymake-shellcheck-load))
 
+  (use-package vterm)
+
   ;; Web Mode
   (use-package web-mode
     :defer t

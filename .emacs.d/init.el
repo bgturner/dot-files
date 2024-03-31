@@ -788,6 +788,22 @@ like the ones used by Jest."
         (auth-source-pick-first-password :host "api.openai.com")))
   (setq gptel-api-key (get-openapi-key)))
 
+;; Trying out some ideas/bindings from:
+;; https://robert.kra.hn/posts/2023-02-22-copilot-emacs-setup/
+;; https://github.com/rksm/copilot-emacsd/blob/master/init.el
+(use-package copilot
+  :straight (:host github :repo "copilot-emacs/copilot.el" :files ("dist" "*.el"))
+  :delight
+  :ensure t
+  :bind
+  (:map copilot-mode-map
+        ("M-C-'" . copilot-complete)
+        ("M-C-;" . copilot-accept-completion)
+        ("M-C-<down>" . copilot-next-completion)
+        ("M-C-<up>" . copilot-previous-completion)
+        ("M-C-<left>" . copilot-panel-complete)
+        ("M-C-<right>" . copilot-accept-completion-by-word)))
+
 (use-package devops
   :straight nil
   :preface

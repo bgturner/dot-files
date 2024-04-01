@@ -1150,8 +1150,6 @@ is possible if the heading has a property of DATE_TREE."
   
   (use-package org-web-tools)
   
-  (use-package ox-twbs)
-  
   (use-package ox-reveal
     :straight (:host github :repo "yjwen/org-reveal"))
   

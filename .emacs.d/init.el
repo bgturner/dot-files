@@ -281,6 +281,7 @@ like the ones used by Jest."
 		    (magit-branch-manager-mode . emacs)
 		    (rdictcc-buffer-mode . emacs)
 		    (dired-mode . emacs)
+            (org-roam-mode . emacs)
 		    (elfeed-search . emacs)
 		    (wdired-mode . normal))
 	       do (evil-set-initial-state mode state))))

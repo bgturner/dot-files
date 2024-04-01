@@ -246,7 +246,6 @@ like the ones used by Jest."
     (evil-mode 1)
     (evil-define-key 'normal diff-hl-mode-map "]v" 'diff-hl-next-hunk)
     (evil-define-key 'normal diff-hl-mode-map "[v" 'diff-hl-previous-hunk)
-    (use-package undo-fu)
     (use-package evil-surround
       :init
       (global-evil-surround-mode 1))

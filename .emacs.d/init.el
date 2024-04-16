@@ -1183,18 +1183,6 @@ is possible if the heading has a property of DATE_TREE."
     (setq org-mru-clock-how-many 100)
     (add-hook 'minibuffer-setup-hook #'org-mru-clock-embark-minibuffer-hook))
   
-  (use-package org-habit-plus
-    :defer t
-    :straight (:host github :repo "myshevchuk/org-habit-plus")
-    :init
-    (setq org-habit-graph-column 60
-	  org-habit-preceding-days 10
-	  org-habit-show-habits-only-for-today nil
-	  org-habit-show-done-always-green t)
-    :config
-    (require 'org-habit)
-    (add-to-list 'org-modules 'org-habit))
-  
   ;; (use-package org-ql
   ;;   :straight (:host github :repo "alphapapa/org-ql"))
   

@@ -1183,9 +1183,6 @@ is possible if the heading has a property of DATE_TREE."
     (setq org-mru-clock-how-many 100)
     (add-hook 'minibuffer-setup-hook #'org-mru-clock-embark-minibuffer-hook))
   
-  ;; (use-package org-ql
-  ;;   :straight (:host github :repo "alphapapa/org-ql"))
-  
   (require 'org-tempo) ; needed to make <s<tag> expand to src blocks in macos
   
   (use-package org-journal

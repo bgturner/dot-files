@@ -1391,3 +1391,7 @@ _a_ Auto-correct
   :config
     (edit-server-start)
     (add-hook 'edit-server-start-hook 'markdown-mode))
+
+;; *****************************************************************
+;; Misc functions
+;; *****************************************************************

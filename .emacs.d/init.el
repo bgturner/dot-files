@@ -1395,3 +1395,12 @@ _a_ Auto-correct
 ;; *****************************************************************
 ;; Misc functions
 ;; *****************************************************************
+
+(defun bt/create-typescript-sandbox ()
+  "Create a temporary Typescript file and set a local variable for
+the compile-command."
+  (interactive)
+  (let ((folder (make-temp-file "typescript-sandbox-" t)))
+    (find-file (concat folder "/index.ts"))
+    (typescript-mode)
+    (set (make-local-variable 'compile-command) (format "deno run %s" (buffer-file-name)))))

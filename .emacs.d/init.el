@@ -1189,28 +1189,6 @@ is possible if the heading has a property of DATE_TREE."
   
   (require 'org-tempo) ; needed to make <s<tag> expand to src blocks in macos
   
-  (use-package org-journal
-    :defer t
-    :bind
-    ("C-c n j" . org-journal-new-entry)
-    :custom
-    (org-journal-dir "~/org/journal/")
-    (org-journal-file-format "journal-%Y-%m-%d.org")
-    (org-journal-date-prefix "#+CATEGORY: journal\n#+TITLE: Journal - ")
-    (org-journal-date-format "%Y-%m-%d - %A"))
-  
-  (defun org-journal-find-location ()
-    "Open today's journal. Specify a non-nil prefix in order to inhibit
-inserting the heading which will be handled by 'org-capture'."
-    (org-journal-new-entry t)
-    (goto-char (point-max)))
-  
-  (add-to-list 'org-capture-templates
-	       '("j" "Journal" plain (function org-journal-find-location)
-		 "* %^{Title}\n%U\n%i\n%? "
-		 :empty-lines 1
-		 :jump-to-captured t))
-  
   (use-package org-roam
     :init
     (setq org-roam-v2-ack t)

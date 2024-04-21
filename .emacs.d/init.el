@@ -176,17 +176,6 @@ like the ones used by Jest."
   :defer t
   :preface
   ;; Theme
-  (use-package doom-themes
-    :config
-    ;; (load-theme 'doom-one t)
-    (load-theme 'doom-dracula t)
-
-    ;; Enable flashing mode-line on errors
-    (doom-themes-visual-bell-config)
-    ;; Corrects (and improves) org-mode's native fontification.
-    (doom-themes-org-config)
-    )
-
   ;; Fonts - use Jetbrains Mono. larger font-size for MacOS
   (let ((font-size (if (eq system-type 'darwin)
 		       (format "14")
@@ -235,6 +224,21 @@ like the ones used by Jest."
   (global-auto-composition-mode)
 
   (provide 'ui))
+
+(use-package doom-themes
+  :config
+  ;; (load-theme 'doom-one t)
+  ;; (load-theme 'doom-dracula t)
+  ;; (load-theme 'doom-1337 t)
+
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
+
+(use-package ef-themes
+            :config
+            (load-theme 'ef-rosa t))
 
 (use-package ux
   :straight nil

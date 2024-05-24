@@ -2,9 +2,19 @@
 
 # This script creates symlinks from the home directory to the various dotfiles in ~/.dot-files
 
+
+heading () {
+	echo ""
+	echo "*******************************************************************************"
+	echo "$1"
+	echo "*******************************************************************************"
+}
+
+heading "Backing up and linking dot files..."
+
 dotfiles_dir=~/.dot-files
 date=`date +%Y-%m-%d--%H-%M-%S`
-backupdir=~/.dot-files.bak/$date
+backupdir=~/${dotfiles_dir}.bak/$date
 
 function backup_file {
   srcFile="$HOME/${1}"
@@ -36,6 +46,7 @@ done <<EOF
 .vim
 .zshrc
 EOF
+
 
 if [ -d "$HOME/.oh-my-zsh" -a ! -h "$HOME/.oh-my-zsh" ]
 then
@@ -69,3 +80,35 @@ else
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
+## Ensure apps
+
+heading "Installing Nerd Fonts"
+
+## Ensure Fonts
+install_nerd_font () {
+	nerd_font_name="$1"
+	nerd_font_version="v3.1.1"
+
+	# TODO: guard for already existing font
+	echo "Installing ${nerd_font_name}"
+
+	(
+		mkdir -p ~/.fonts
+		cd ~/.fonts
+
+		curl -fLo "${nerd_font_name}.zip" \
+			"https://github.com/ryanoasis/nerd-fonts/releases/download/${nerd_font_version}/${nerd_font_name}.zip" \
+			&& unzip -d "${nerd_font_name}" "${nerd_font_name}.zip" \
+			&& mv "${nerd_font_name}/"*.ttf ./ \
+			&& rm "${nerd_font_name}.zip"
+	)
+}
+
+install_nerd_font "JetBrainsMono"
+install_nerd_font "SourceCodePro" # wtf, SauceCodePro?
+
+fc-cache -f -v
+
+heading "Ensure required apps are installed"
+
+sudo apt install git git-lfs direnv wget tmux jq pandoc build-essential

@@ -700,6 +700,10 @@ like the ones used by Jest."
                  "https://github.com/search?q=%s&type=pullrequests"
                  commit-hash)))
 
+  (use-package browse-at-remote
+    :defer t
+    :bind (("C-c g g" . browse-at-remote)))
+
   ;; Prettier
   ;;   Requires: npm install -g prettier
   (use-package prettier

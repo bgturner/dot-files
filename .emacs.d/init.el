@@ -694,6 +694,12 @@ like the ones used by Jest."
     '(define-key magit-mode-map "v"
                  #'bt/visit-pull-request-url))
 
+  (defun bt/find-pull-request (commit-hash)
+    (interactive "sCommit hash: ")
+    (browse-url (format
+                 "https://github.com/search?q=%s&type=pullrequests"
+                 commit-hash)))
+
   ;; Prettier
   ;;   Requires: npm install -g prettier
   (use-package prettier

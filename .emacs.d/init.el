@@ -1177,9 +1177,6 @@ is possible if the heading has a property of DATE_TREE."
   
   (require 'org-tempo) ; needed to make <s<tag> expand to src blocks in macos
   
-  (use-package ox-reveal
-    :straight (:host github :repo "yjwen/org-reveal"))
-  
   (use-package org-journal
     :defer t
     :bind

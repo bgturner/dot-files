@@ -807,14 +807,15 @@ like the ones used by Jest."
 ;; Save in ~/.authinfo.gpg
 ;;     machine api.openai.com password sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 (use-package gptel
-  :bind ("C-c a" . gptel-send)
+  :bind (("C-c a" . gptel-send)
+         ("C-c c" . gptel))
+  :init (setq gptel-default-mode 'org-mode)
   :config
-  (defun get-openapi-key ()
-    "Return the API key from ~/.authinfo.gpg"
-    (require 'auth-source)
-    (let ((inhibit-message t))
-        (auth-source-pick-first-password :host "api.openai.com")))
-  (setq gptel-api-key (get-openapi-key)))
+  (setq gptel-model "mistral:latest"
+        gptel-backend (gptel-make-ollama "Ollama"
+                                         :host "localhost:11434"
+                                         :stream t
+                                         :models '("mistral:latest"))))
 
 ;; Trying out some ideas/bindings from:
 ;; https://robert.kra.hn/posts/2023-02-22-copilot-emacs-setup/

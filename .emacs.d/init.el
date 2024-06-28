@@ -676,6 +676,24 @@ like the ones used by Jest."
       :defer t
       :after evil magit))
 
+  ;; View/Open a new PR on Github from within a Magit related buffer
+  ;; See:
+  ;;     https://prathamesh.tech/2019/06/21/creating-pull-requests-from-emacs/
+  (defun bt/visit-pull-request-url ()
+    "Visit the current branch's PR on Github."
+    (interactive)
+    (browse-url
+     (format "https://github.com/%s/pull/new/%s"
+             (replace-regexp-in-string
+              "\\`.+github\\.com:\\(.+\\)\\.git\\'" "\\1"
+              (magit-get "remote"
+                         (magit-get-push-remote)
+                         "url"))
+             (magit-get-current-branch))))
+  (eval-after-load 'magit
+    '(define-key magit-mode-map "v"
+                 #'bt/visit-pull-request-url))
+
   ;; Prettier
   ;;   Requires: npm install -g prettier
   (use-package prettier

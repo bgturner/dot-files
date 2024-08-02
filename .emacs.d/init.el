@@ -714,8 +714,7 @@ like the ones used by Jest."
   ;;   Requires: npm install -g prettier
   (use-package prettier
     :defer t
-    :delight
-    :hook (after-init . global-prettier-mode))
+    :delight)
 
   ;; Inherit shell environment
   (use-package exec-path-from-shell

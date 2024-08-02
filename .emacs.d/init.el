@@ -901,14 +901,15 @@ that I can re-add any projects that I'm actively working on. See:
     (lsp lsp-deferred))
   
   (use-package lsp-ui
-    :bind (("C-h ." . lsp-ui-doc-focus-frame)
-	   ("C-c z" . lsp-ui-doc-unfocus-frame))
-    :init
-    (setq lsp-ui-doc-show-with-cursor t)
-    (setq lsp-ui-doc-delay 2.0)
-    (setq lsp-ui-doc-show-with-mouse t)
-    (setq lsp-ui-doc-max-width 80)
-    (setq lsp-ui-doc-position 'at-point))
+    :bind (("C-h ." . lsp-describe-thing-at-point)
+	       ("C-c z" . lsp-ui-doc-unfocus-frame))
+    :custom
+    (lsp-ui-doc-enhanced-markdown nil)
+    (lsp-ui-doc-max-width 80)
+    (lsp-ui-doc-show-with-cursor nil)
+    (lsp-ui-doc-delay 0.3)
+    (lsp-ui-doc-show-with-mouse t)
+    (lsp-ui-doc-position 'at-point))
   
   (use-package dap-mode
     :commands dap-debug

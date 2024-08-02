@@ -1,3 +1,6 @@
+;; Ensure we have a .custom.el file and use it to store customizations
+(unless (file-exists-p (expand-file-name ".custom.el" user-emacs-directory))
+  (write-region "" nil (expand-file-name ".custom.el" user-emacs-directory)))
 (setq custom-file (expand-file-name ".custom.el" user-emacs-directory))
 (load custom-file)
 

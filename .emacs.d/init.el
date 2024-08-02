@@ -940,6 +940,23 @@ that I can re-add any projects that I'm actively working on. See:
   :preface
   (use-package graphviz-dot-mode
     :defer t)
+
+  ;; Using docker image to avoid fragile setup. Be sure to save .mmd
+  ;; files in /tmp so that it's mounted correctly within the container
+  (use-package mermaid-mode
+    :config
+    (setq mermaid-mmdc-location "docker")
+    (setq mermaid-flags "run -u 1000 -v /tmp:/tmp ghcr.io/mermaid-js/mermaid-cli/mermaid-cli:9.1.6")
+
+    (defun bt/mermaid-sandbox-open-file ()
+      (interactive)
+      (let ((filename (read-file-name "File name: " "/tmp/mermaid-sandbox/")))
+        (find-file filename)))
+
+    :bind
+    ("C-c C-a C-m" . 'bt/mermaid-sandbox-open-file)
+    :general
+    (general-nmap "SPC a m" 'bt/mermaid-sandbox-open-file))
   
   ;; Install marked with:
   ;;     npm install -g marked

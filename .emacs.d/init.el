@@ -264,6 +264,7 @@ like the ones used by Jest."
       "Set the initial Evil states for various modes."
       (cl-loop for (mode . state)
 	       in '((inferior-emacs-lisp-mode . emacs)
+            (vc-git-log-edit-mode . emacs)
 		    (flycheck-error-list-mod . emacs)
 		    (diff-mode . emacs)
 		    (nrepl-mode . insert)

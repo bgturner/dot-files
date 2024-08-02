@@ -270,6 +270,8 @@ like the ones used by Jest."
 		    (nrepl-mode . insert)
 		    (pylookup-mode . emacs)
 		    (comint-mode . normal)
+            (kubernetes-overview-mode . emacs)
+            (kubernetes-display-thing-mode . emacs)
 		    (compilation-mode . emacs)
 		    (shell-mode . insert)
 		    (vterm-mode . emacs)

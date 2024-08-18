@@ -28,6 +28,17 @@
 				(format "personal-config.el"))))
  (load-user-file system-specific-config))
 
+
+(defun bt/get-api-key (host)
+  "Return the API key from ~/.authinfo.gpg An example entry in
+~/.authinfo.gpg would be:
+
+machine api.openai.com password sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+"
+    (require 'auth-source)
+    (let ((inhibit-message t))
+        (auth-source-pick-first-password :host host)))
+
 ;; Include Melpa so we can install packages with:
 ;;
 ;;    M-x package-install
@@ -828,11 +839,22 @@ like the ones used by Jest."
          ("C-c c" . gptel))
   :init (setq gptel-default-mode 'org-mode)
   :config
-  (setq gptel-model "mistral:latest"
-        gptel-backend (gptel-make-ollama "Ollama"
-                                         :host "localhost:11434"
-                                         :stream t
-                                         :models '("mistral:latest"))))
+  (setq
+   gptel-model   "llama-3.1-sonar-large-128k-chat"
+   gptel-backend
+   (gptel-make-openai "Perplexity"
+     :host "api.perplexity.ai"
+     :key (get-api-key "api.perplexity.ai")
+     :endpoint "/chat/completions"
+     :stream t
+     :models '(
+               "llama-3.1-sonar-small-128k-online"
+               "llama-3.1-sonar-large-128k-online"
+               "llama-3.1-sonar-huge-128k-online"
+               "llama-3.1-sonar-small-128k-chat"
+               "llama-3.1-sonar-large-128k-chat"
+               ))))
+
 
 ;; Trying out some ideas/bindings from:
 ;; https://robert.kra.hn/posts/2023-02-22-copilot-emacs-setup/

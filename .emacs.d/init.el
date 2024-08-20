@@ -1404,3 +1404,12 @@ the compile-command."
     (find-file (concat folder "/index.ts"))
     (typescript-mode)
     (set (make-local-variable 'compile-command) (format "deno run %s" (buffer-file-name)))))
+
+(defun bt/npm-deps-dev-search ()
+  "Searches for an NPM package on deps.dev. Prompts for the
+package name unless the region is active."
+  (interactive)
+  (let* ((package-name (if (region-active-p)
+                           (buffer-substring (region-beginning) (region-end))
+                         (read-string "Package Name: "))))
+    (browse-url (format "https://deps.dev/npm/%s" package-name))))

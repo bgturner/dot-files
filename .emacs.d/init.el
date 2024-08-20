@@ -255,6 +255,8 @@ like the ones used by Jest."
     (evil-mode 1)
     (evil-define-key 'normal diff-hl-mode-map "]v" 'diff-hl-next-hunk)
     (evil-define-key 'normal diff-hl-mode-map "[v" 'diff-hl-previous-hunk)
+    (evil-define-key 'normal 'global "]q" 'next-error)
+    (evil-define-key 'normal 'global "[q" 'previous-error)
     (use-package evil-surround
       :init
       (global-evil-surround-mode 1))

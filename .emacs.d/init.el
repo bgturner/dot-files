@@ -944,7 +944,20 @@ that I can re-add any projects that I'm actively working on. See:
      (lambda (key _value)
        (file-notify-rm-watch key))
      file-notify-descriptors))
-  
+
+  ;; Flycheck stopped working with this error in *Messages*
+  ;;
+  ;;     Error while checking syntax automatically: (error "Undefined error level: lsp-flycheck-info-unnecessary")
+  ;;
+  (with-eval-after-load 'flycheck
+    (flycheck-define-error-level 'lsp-flycheck-info-unnecessary
+      :severity 1
+      :compilation-level 1
+      :overlay-category 'flycheck-info-overlay
+      :fringe-bitmap 'flycheck-fringe-bitmap-info
+      :fringe-face 'flycheck-fringe-info
+      :error-list-face 'flycheck-error-list-info))
+
   (provide 'lsp))
 
 (use-package languages

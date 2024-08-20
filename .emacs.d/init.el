@@ -1213,8 +1213,6 @@ is possible if the heading has a property of DATE_TREE."
     :init
     (setq org-roam-v2-ack t)
     :ensure t
-    :custom
-    (org-roam-directory (file-truename "~/OrgRoam"))
     :bind (("C-c n l" . org-roam-buffer-toggle)
            ("C-c n f" . org-roam-node-find)
            ("C-c n g" . org-roam-graph)

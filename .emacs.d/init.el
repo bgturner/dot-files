@@ -433,6 +433,7 @@ like the ones used by Jest."
   :defer t
   :custom
   (dired-dwim-target 'dired-dwim-target-next)
+  (dired-free-space nil)
   :config
   (when (eq system-type 'darwin)
     ;; installed with `brew install coreutils`

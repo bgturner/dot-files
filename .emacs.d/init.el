@@ -382,8 +382,9 @@ like the ones used by Jest."
      
      ;; Files
      "f" '(:ignore t :which-key "Files")
-     "fr"  '(consult-recent-file :which-key "Recent Files")
-     "fd"  '(find-dired :which-key "Find Files")
+     "ff" '(project-find-file :which-key "Find Files")
+     "fr" '(consult-recent-file :which-key "Recent Files")
+     "fd" '(find-dired :which-key "Find Dired")
      
      ;; Buffers
      "b" '(:ignore t :which-key "Buffers")

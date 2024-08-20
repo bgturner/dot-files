@@ -431,6 +431,8 @@ like the ones used by Jest."
 (use-package dired
   :straight nil
   :defer t
+  :custom
+  (dired-dwim-target 'dired-dwim-target-next)
   :config
   (when (eq system-type 'darwin)
     ;; installed with `brew install coreutils`

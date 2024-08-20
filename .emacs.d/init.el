@@ -1110,7 +1110,6 @@ that I can re-add any projects that I'm actively working on. See:
   
   ;; Agenda Settings
   (setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$")
-	org-agenda-span 'day
 	org-agenda-todo-ignore-scheduled 'all
 	org-agenda-entry-text-maxlines 10
 	org-agenda-clockreport-parameter-plist '(:link t :maxlevel 4 :fileskip0 t :tags nil) ;; Clocktable in agenda view

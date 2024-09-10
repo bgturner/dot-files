@@ -1313,7 +1313,11 @@ is possible if the heading has a property of DATE_TREE."
   :preface
   (use-package restclient
     :defer t)
-  
+
+  (use-package hurl-mode
+    :defer t
+    :straight (:host github :repo "jaszhe/hurl-mode"))
+
   (defun bt/restclient-sandbox ()
     "Create a new restclient sandbox to explore urls."
     (interactive)

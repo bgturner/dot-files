@@ -1042,7 +1042,27 @@ that I can re-add any projects that I'm actively working on. See:
     :init
     (add-hook 'sh-mode-hook 'flymake-shellcheck-load))
 
-  (use-package vterm)
+  (use-package vterm
+    :after project
+    :bind (:map project-prefix-map
+                ("t" . project-vterm))
+    :preface
+    (defun project-vterm ()
+      (interactive)
+      (defvar vterm-buffer-name)
+      (let* ((default-directory (project-root     (project-current t)))
+             (vterm-buffer-name (project-prefixed-buffer-name "vterm"))
+             (vterm-buffer (get-buffer vterm-buffer-name)))
+        (if (and vterm-buffer (not current-prefix-arg))
+            (pop-to-buffer vterm-buffer  (bound-and-true-p display-comint-buffer-action))
+          (vterm))))
+    :config
+    (add-to-list 'project-switch-commands         '(project-vterm "Vterm") t)
+    (add-to-list 'project-kill-buffer-conditions  '(major-mode . vterm-mode))
+    (setq vterm-copy-exclude-prompt t)
+    (setq vterm-max-scrollback 100000)
+    (setq vterm-tramp-shells '(("ssh" "/bin/bash")
+                               ("podman" "/bin/bash"))))
 
   ;; Web Mode
   (use-package web-mode

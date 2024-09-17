@@ -180,6 +180,8 @@ like the ones used by Jest."
   ;; Ask for GnuPG password in minibuffer instead of popup
   (setq epa-pinentry-mode 'loopback)
 
+  (global-set-key [remap list-buffers] 'ibuffer)
+
   (provide 'defaults))
 
 

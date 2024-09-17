@@ -177,6 +177,9 @@ like the ones used by Jest."
   ; y-or-n-p makes answering questions faster
   (fset 'yes-or-no-p 'y-or-n-p)
 
+  ;; Ask for GnuPG password in minibuffer instead of popup
+  (setq epa-pinentry-mode 'loopback)
+
   (provide 'defaults))
 
 

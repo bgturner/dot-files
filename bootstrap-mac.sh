@@ -30,6 +30,7 @@ asciinema
 cmake
 coreutils
 direnv
+difftastic
 emacs-plus
 fd
 ffmpeg

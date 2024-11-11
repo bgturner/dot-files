@@ -79,8 +79,3 @@ obs
 parallels
 visual-studio-code
 EOF
-
-
-# Link apps to play nice with Apple's default location.
-[ ! -d /Applications/Emacs.app ] && \
-    ln -s /opt/homebrew/opt/emacs-plus@28/Emacs.app /Applications

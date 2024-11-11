@@ -26,29 +26,34 @@ brew tap d12frosted/emacs-plus
 while IFS= read -r app || [[ -n "$app" ]]; do
     brew install $app
 done <<EOF
-coreutils
-libtool
-cmake
-ispell
-ffmpeg
-pandoc
-imagemagick
-grep
-graphviz
-ripgrep
-pup
-librsvg
-jq
-fzf
 asciinema
-stow
+cmake
+coreutils
 direnv
-pyenv
-git-lfs
-wakatime-cli
 emacs-plus
-tmux
+fd
+ffmpeg
+fzf
 gh
+git-lfs
+graphviz
+grep
+heroku
+imagemagick
+ispell
+jq
+librsvg
+libtool
+neovim
+pandoc
+pup
+pyenv
+ripgrep
+shellcheck
+sqlite
+stow
+tmux
+wakatime-cli
 EOF
 
 # Install Brew Cask apps

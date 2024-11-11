@@ -61,7 +61,6 @@ while IFS= read -r app || [[ -n "$app" ]]; do
     brew install --cask $app
 done <<EOF
 alfred
-around
 cloudapp
 docker
 syncthing

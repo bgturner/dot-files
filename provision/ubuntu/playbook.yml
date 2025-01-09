@@ -1,0 +1,57 @@
+---
+- name: Install software
+  hosts: all
+  become: yes
+
+  tasks:
+    # TODO: introduce a cached check so that if an update or upgrade has been done within the last hour, don't do that step
+    - name: Update package list
+      apt:
+        update_cache: yes
+
+    - name: Update packages to latest version
+      apt:
+        upgrade: dist
+
+    - name: Install core tooling
+      apt:
+        state: present
+        name:
+          - build-essential
+          - curl
+          - cargo-1.76
+          - direnv
+          - fd-find
+          - gh
+          - git
+          - jq
+          - python3
+          - restic
+          - ripgrep
+          - rsync
+          - sqlite3
+          - syncthing
+          - tmux
+          - wget
+          - zsh
+
+    - name: Install Graphic Design Packaages
+      apt:
+        state: present
+        name:
+          - gimp
+          - gimp-lensfun
+          - gimp-plugin-registry
+          - gimp-save-for-web
+          - gpick
+          - inkscape
+          - shutter
+
+    - name: Install Multimedia Packaages
+      apt:
+        state: present
+        name:
+          - audacity
+          - clementine
+          - obs-studio
+          - vlc

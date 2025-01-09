@@ -1,0 +1,42 @@
+#+TITLE: Ubuntu Provisioner
+
+A collection of Ansible scripts to provision an Ubuntu dev machine.
+
+* Requirements
+
+  1. python / pip[x]
+  2. ansible
+
+
+  #+begin_src shell
+    pipx install ansible-core
+  #+end_src
+
+* Defining Inventory
+
+  You need to define what hosts to run the playbooks against. Create a file called =inventory= and add sections for the local machine as well as any remote hosts you want to run playbooks against. For example, an inventory file that looks like:
+
+  #+begin_example
+    [local]
+    localhost ansible_connection=local
+
+    [remote]
+    s76
+  #+end_example
+
+  Will allow you to install software against the local machine as well as the "remote" hosts. In this case, the =s76= host is the name of a host that's defined within the =~/.ssh/config= file, something like:
+
+  #+begin_example
+    Host s76
+      HostName 192.168.68.73
+      IdentityFile ~/.ssh/id_rsa
+      User myUserName
+  #+end_example
+
+* Running the playbook
+
+  #+begin_src shell
+    ansible-playbook --ssh-common-args "-F $HOME/.ssh/config" -i inventory --ask-become-pass playbook.yml --limit remote
+  #+end_src
+
+

@@ -4,6 +4,11 @@
   become: yes
 
   tasks:
+    - name: Add xournal++ ppa
+      apt_repository:
+        repo: ppa:apandada1/xournalpp-stable
+        state: present
+
     # TODO: introduce a cached check so that if an update or upgrade has been done within the last hour, don't do that step
     - name: Update package list
       apt:
@@ -46,6 +51,7 @@
           - gpick
           - inkscape
           - shutter
+          - xournalpp
 
     - name: Install Multimedia Packaages
       apt:

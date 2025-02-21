@@ -61,3 +61,10 @@
           - clementine
           - obs-studio
           - vlc
+
+    - name: Link fdfind to fd
+      ansible.builtin.file:
+        src: /usr/bin/fdfind
+        dest: /usr/bin/fd
+        state: link
+

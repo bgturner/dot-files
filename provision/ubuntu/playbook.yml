@@ -3,6 +3,9 @@
   hosts: all
   become: yes
 
+  vars:
+    krita_version: 5.2.9
+
   tasks:
     - name: Add xournal++ ppa
       apt_repository:
@@ -68,3 +71,50 @@
         dest: /usr/bin/fd
         state: link
 
+    #
+    # # TODO: This works, but it's slow. Find a way to test for a missing Krita installation and only run this if it's missing
+    #
+    # - name: Download Krita AppImage
+    #   get_url:
+    #     url: https://download.kde.org/stable/krita/{{ krita_version }}/krita-{{ krita_version }}-x86_64.appimage
+    #     dest: /opt/krita-{{ krita_version }}-x86_64.AppImage
+    #     mode: 0755
+    # - name: Extract Krita AppImage
+    #   ansible.builtin.shell: /opt/krita-{{ krita_version }}-x86_64.AppImage --appimage-extract
+    #   args:
+    #     chdir: /opt
+    # - name: Move extracted Krita to /opt/krita-{{ krita_version }}
+    #   ansible.builtin.shell: mv /opt/squashfs-root /opt/krita-{{ krita_version }}
+    #   args:
+    #     chdir: /opt
+    # - name: Copy Krita Freedesktop Config
+    #   ansible.builtin.copy:
+    #     src: /opt/krita-{{ krita_version }}/org.kde.krita.desktop
+    #     dest: /usr/share/applications/krita.desktop
+    #     mode: 0644
+    #     remote_src: true
+    # - name: Copy Krita Icon
+    #   ansible.builtin.copy:
+    #     src: /opt/krita-{{ krita_version }}/krita.png
+    #     dest: /opt/krita.png
+    #     mode: 0644
+    #     remote_src: true
+    # - name: Update Krita Exec Path in Freedesktop Config
+    #   ansible.builtin.replace:
+    #     path: /usr/share/applications/krita.desktop
+    #     regexp: 'Exec=krita %F'
+    #     replace: 'Exec=/opt/krita-{{ krita_version }}-x86_64.AppImage %F'
+    # - name: Update Krita Icon in Freedesktop Config
+    #   ansible.builtin.replace:
+    #     path: /usr/share/applications/krita.desktop
+    #     regexp: 'Icon=krita'
+    #     replace: 'Icon=/opt/krita.png'
+    # - name: Add Krita to defaults.list
+    #   ansible.builtin.lineinfile:
+    #     path: /usr/share/applications/defaults.list
+    #     line: image/krita=krita.desktop;
+    #     create: yes
+    # - name: Add Krita to mimeapps.list
+    #   ansible.builtin.lineinfile:
+    #     path: ~/.config/mimeapps.list
+    #     line: image/krita=krita.desktop;

@@ -30,6 +30,7 @@
           - gh
           - git
           - jq
+          - libfuse2 # required for older AppImage builds
           - python3
           - restic
           - ripgrep

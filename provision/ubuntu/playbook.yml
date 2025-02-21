@@ -50,7 +50,6 @@
           - gimp-save-for-web
           - gpick
           - inkscape
-          - shutter
           - xournalpp
 
     - name: Install Multimedia Packaages

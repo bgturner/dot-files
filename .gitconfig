@@ -9,6 +9,9 @@
 	sort = version:refname
 [init]
 	defaultBranch = main
+[rerere]
+	enabled = true
+	autoupdate = true
 [diff]
 	algorithm = histogram
 	colorMoved = plain

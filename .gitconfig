@@ -12,6 +12,10 @@
 [rerere]
 	enabled = true
 	autoupdate = true
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
 [diff]
 	algorithm = histogram
 	colorMoved = plain

@@ -9,6 +9,11 @@
 	sort = version:refname
 [init]
 	defaultBranch = main
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
 [color]
 	ui = auto
 [user]

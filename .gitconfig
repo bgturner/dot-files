@@ -3,6 +3,8 @@
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 [column]
 	ui = auto
+[branch]
+	sort = -committerdate
 [color]
 	ui = auto
 [user]

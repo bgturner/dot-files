@@ -5,6 +5,8 @@
 	ui = auto
 [branch]
 	sort = -committerdate
+[tag]
+	sort = version:refname
 [color]
 	ui = auto
 [user]

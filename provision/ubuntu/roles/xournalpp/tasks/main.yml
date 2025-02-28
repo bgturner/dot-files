@@ -1,0 +1,10 @@
+---
+- name: Add xournal++ ppa
+  apt_repository:
+    repo: ppa:apandada1/xournalpp-stable
+    state: present
+
+- name: Install Xournal++
+  apt:
+    state: present
+    name: xournalpp

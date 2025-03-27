@@ -1052,6 +1052,8 @@ that I can re-add any projects that I'm actively working on. See:
 
   (use-package vterm
     :after project
+    :config
+    (setq vterm-shell "screen")
     :bind (:map project-prefix-map
                 ("t" . project-vterm))
     :preface

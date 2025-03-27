@@ -618,6 +618,12 @@ like the ones used by Jest."
     :config
     (global-corfu-mode))
 
+  (use-package kind-icon
+    :ensure t
+    :after corfu
+    :config
+    (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+
   (use-package company
     :delight
     :hook (after-init . global-company-mode)

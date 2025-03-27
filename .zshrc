@@ -87,3 +87,8 @@ if [ -d "$FNM_PATH" ]; then
     export PATH="${HOME}/.fnm:$PATH"
     eval "$(fnm env --use-on-cd --shell zsh)"
 fi
+
+if [ -d $HOME/.deno ]; then
+    export DENO_INSTALL="${HOME}/.deno"
+    export PATH="$DENO_INSTALL/bin:$PATH"
+fi

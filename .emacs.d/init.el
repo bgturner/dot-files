@@ -136,7 +136,6 @@ like the ones used by Jest."
     (tool-bar-mode -1)
     (tooltip-mode -1)
     (scroll-bar-mode -1)
-    (global-hl-line-mode +1)
     (blink-cursor-mode -1)
     (line-number-mode +1)
     (column-number-mode t)

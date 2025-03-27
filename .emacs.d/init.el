@@ -844,8 +844,11 @@ like the ones used by Jest."
 ;; Save in ~/.authinfo.gpg
 ;;     machine api.openai.com password sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 (use-package gptel
-  :bind (("C-c a" . gptel-send)
-         ("C-c c" . gptel))
+  :bind (("C-c a a" . gptel-abort)
+         ("C-c a RET" . gptel-send)
+         ("C-c a n" . gptel)
+         ("C-c a r" . gptel-rewrite-menu)
+         ("C-c a m" . gptel-menu))
   :init (setq gptel-default-mode 'org-mode)
   :config
   (setq

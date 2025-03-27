@@ -92,3 +92,12 @@ if [ -d $HOME/.deno ]; then
     export DENO_INSTALL="${HOME}/.deno"
     export PATH="$DENO_INSTALL/bin:$PATH"
 fi
+
+if [ -d $HOME/.bun ]; then
+    # bun completions
+    [ -s "/home/benjamin/.bun/_bun" ] && source "/home/benjamin/.bun/_bun"
+
+    # bun config
+    export BUN_INSTALL="$HOME/.bun"
+    export PATH="$BUN_INSTALL/bin:$PATH"
+fi

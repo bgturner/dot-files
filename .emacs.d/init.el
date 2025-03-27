@@ -351,6 +351,7 @@ like the ones used by Jest."
      "t" '(:ignore t :which-key "Toggle")
      "tl" '(toggle-truncate-lines :which-key "Truncate lines")
      "tw" '(whitespace-mode :which-key "Whitespace")
+     "tv" '(visual-line-mode :which-key "Visual line mode")
      
      ;; Placeholder for running tests depending on the language
      "tt" '(:ignore t :which-key "Testing")

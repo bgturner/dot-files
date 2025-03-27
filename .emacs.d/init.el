@@ -852,19 +852,20 @@ like the ones used by Jest."
   :init (setq gptel-default-mode 'org-mode)
   :config
   (setq
-   gptel-model   "llama-3.1-sonar-large-128k-chat"
+   gptel-model   "sonar"
    gptel-backend
    (gptel-make-openai "Perplexity"
      :host "api.perplexity.ai"
-     :key (get-api-key "api.perplexity.ai")
+     :key (bt/get-api-key "api.perplexity.ai")
      :endpoint "/chat/completions"
      :stream t
      :models '(
-               "llama-3.1-sonar-small-128k-online"
-               "llama-3.1-sonar-large-128k-online"
-               "llama-3.1-sonar-huge-128k-online"
-               "llama-3.1-sonar-small-128k-chat"
-               "llama-3.1-sonar-large-128k-chat"
+               "sonar"                ;; 128k Context length
+               "sonar-pro"            ;; 200k Context length
+               "sonar-reasoning"      ;; 128k Context length
+               "sonar-reasoning-pro"  ;; 128k Context length
+               "sonar-deep-research"  ;; 60k Context length
+               "r1-1776"              ;; 128k Context length, offline chat model, no search subsystem
                ))))
 
 

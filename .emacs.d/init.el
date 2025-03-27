@@ -150,12 +150,6 @@ like the ones used by Jest."
   ; Allow minibuffers within minibuffers
   enable-recursive-minibuffers t
 
-  ;; Configure time display in modeline
-  (setq display-time-default-load-average nil)
-  (setq display-time-day-and-date t)
-  (setq display-time-format "%F %H:%M %z")
-  (display-time)
-
   ;; Remember window layouts
   (winner-mode 1)
 

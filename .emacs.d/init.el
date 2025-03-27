@@ -614,6 +614,10 @@ like the ones used by Jest."
       :hook
       (embark-collect-mode . consult-preview-at-point-mode)))
 
+  (use-package corfu
+    :config
+    (global-corfu-mode))
+
   (use-package company
     :delight
     :hook (after-init . global-company-mode)

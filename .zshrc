@@ -81,3 +81,9 @@ export NVS_HOME="$HOME/.nvs"
 export PATH="/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/:$PATH"
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+FNM_PATH="/home/benjamin/.fnm"
+if [ -d "$FNM_PATH" ]; then
+    export PATH="${HOME}/.fnm:$PATH"
+    eval "$(fnm env --use-on-cd --shell zsh)"
+fi

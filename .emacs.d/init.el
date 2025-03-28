@@ -851,6 +851,17 @@ like the ones used by Jest."
          ("C-c a m" . gptel-menu))
   :init (setq gptel-default-mode 'org-mode)
   :config
+  ;; OpenRouter offers an OpenAI compatible API
+  (gptel-make-openai "OpenRouter"
+    :host "openrouter.ai"
+    :endpoint "/api/v1/chat/completions"
+    :stream t
+    :key (bt/get-api-key "openrouter.ai")
+    :models '(
+              deepseek/deepseek-chat-v3-0324:free
+              google/gemini-2.5-pro-exp-03-25:free
+              open-r1/olympiccoder-7b:free
+              ))
   (setq
    gptel-model   "sonar"
    gptel-backend

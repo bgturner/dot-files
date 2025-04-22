@@ -81,6 +81,11 @@
   :config
   (global-corfu-mode t))
 
+(use-package kind-icon
+  :after corfu
+  :config
+  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+
 (use-package vertico
   :init
   (setq enable-recursive-minibuffers t)

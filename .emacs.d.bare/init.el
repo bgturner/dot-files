@@ -18,6 +18,8 @@
   (setq-default tab-width 4)
   (setq-default indent-tabs-mode nil)
   (setq inhibit-startup-screen t)
+  (setq initial-scratch-message "")
+  (setq ring-bell-function 'ignore)
   (setq enable-recursive-minibuffers t)
   :config
   (toggle-scroll-bar -1)

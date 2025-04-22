@@ -10,3 +10,5 @@
 (add-to-list 'package-archives
 	     '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
+
+(global-set-key [remap list-buffers] 'ibuffer)

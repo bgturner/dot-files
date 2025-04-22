@@ -12,3 +12,10 @@
 (package-initialize)
 
 (global-set-key [remap list-buffers] 'ibuffer)
+
+(use-package evil
+  :config
+  (evil-set-undo-system 'undo-redo)
+  (evil-mode 1)
+  (evil-define-key 'normal 'global "]q" 'next-error)
+  (evil-define-key 'normal 'global "[q" 'previous-error))

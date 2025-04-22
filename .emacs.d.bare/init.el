@@ -1,4 +1,5 @@
 (setq user-emacs-directory "~/.emacs.d.bare")
+
 (setq custom-file "~/.emacs.d.bare/custom.el")
 (load custom-file)
 
@@ -46,3 +47,9 @@
   (evil-define-key 'normal 'global "]q" 'next-error)
   (evil-define-key 'normal 'global "[q" 'previous-error))
 
+(use-package vundo
+  :init
+  (setq vundo-glyph-alist vundo-unicode-symbols)
+  (setq vundo-compact-display t)
+  :commands (vundo)
+  :bind (("C-c u" . vundo)))

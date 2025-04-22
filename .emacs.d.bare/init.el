@@ -69,3 +69,24 @@
 (use-package minions
   :config
   (minions-mode t))
+
+(use-package corfu
+  :config
+  (global-corfu-mode t))
+
+(use-package vertico
+  :init
+  (setq enable-recursive-minibuffers t)
+  :config
+  (vertico-mode))
+
+(use-package orderless
+  :init
+  (setq completion-styles '(orderless basic partial-completion emacs22)))
+
+(use-package prescient)
+
+(use-package marginalia
+  :bind ("M-A" . marginalia-cycle)
+  :init
+  (marginalia-mode))

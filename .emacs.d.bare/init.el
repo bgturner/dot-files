@@ -18,6 +18,7 @@
   (setq-default tab-width 4)
   (setq-default indent-tabs-mode nil)
   (setq inhibit-startup-screen t)
+  (setq enable-recursive-minibuffers t)
   :config
   (toggle-scroll-bar -1)
   (tool-bar-mode -1)

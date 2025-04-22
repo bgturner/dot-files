@@ -35,6 +35,8 @@
   (column-number-mode t)
   (size-indication-mode t)
   (fset 'yes-or-no-p 'y-or-n-p)
+  ;; Remember window layouts
+  (winner-mode 1)
   (load-theme 'misterioso))
 
 (use-package evil

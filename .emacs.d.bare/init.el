@@ -65,3 +65,7 @@
   :defer t
   :bind (("C-c g" . magit-file-dispatch))
   :init (setq magit-refresh-status-buffer nil))
+
+(use-package minions
+  :config
+  (minions-mode t))

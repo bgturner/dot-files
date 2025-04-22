@@ -21,6 +21,10 @@
   (setq initial-scratch-message "")
   (setq ring-bell-function 'ignore)
   (setq enable-recursive-minibuffers t)
+
+  ;; Ask for GnuPG password in minibuffer instead of popup
+  (setq epa-pinentry-mode 'loopback)
+
   :config
   (toggle-scroll-bar -1)
   (tool-bar-mode -1)

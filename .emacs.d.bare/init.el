@@ -60,3 +60,8 @@
   (setq which-key-prefix-prefix "+")
   :config
   (which-key-mode 1))
+
+(use-package magit
+  :defer t
+  :bind (("C-c g" . magit-file-dispatch))
+  :init (setq magit-refresh-status-buffer nil))

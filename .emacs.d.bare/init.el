@@ -45,7 +45,9 @@
   (evil-set-undo-system 'undo-redo)
   (evil-mode 1)
   (evil-define-key 'normal 'global "]q" 'next-error)
-  (evil-define-key 'normal 'global "[q" 'previous-error))
+  (evil-define-key 'normal 'global "[q" 'previous-error)
+  (evil-define-key 'normal diff-hl-mode-map "]v" 'diff-hl-next-hunk)
+  (evil-define-key 'normal diff-hl-mode-map "[v" 'diff-hl-previous-hunk))
 
 (use-package vundo
   :init
@@ -65,6 +67,11 @@
   :defer t
   :bind (("C-c g" . magit-file-dispatch))
   :init (setq magit-refresh-status-buffer nil))
+
+(use-package diff-hl
+  :after evil
+  :config
+  (global-diff-hl-mode))
 
 (use-package minions
   :config

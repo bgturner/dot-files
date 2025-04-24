@@ -198,3 +198,10 @@
   ;; Both < and C-+ work reasonably well.
   (setq consult-narrow-key "<") ;; (kbd "C-+")
   )
+
+(use-package treesit-auto
+  :custom
+  (treesit-auto-install 'prompt)
+  :config
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (global-treesit-auto-mode))

@@ -205,3 +205,7 @@
   :config
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
+
+(use-package hideshow
+  :delight hs-minor-mode
+  :hook (prog-mode . hs-minor-mode))

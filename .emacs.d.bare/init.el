@@ -209,3 +209,11 @@
 (use-package hideshow
   :delight hs-minor-mode
   :hook (prog-mode . hs-minor-mode))
+
+(use-package flycheck
+  :defer t)
+
+(use-package flycheck-eglot
+  :after (flycheck eglot)
+  :config
+  (global-flycheck-eglot-mode 1))

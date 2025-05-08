@@ -62,6 +62,10 @@
   :init
   (global-evil-matchit-mode 1))
 
+(use-package direnv
+  :config
+  (direnv-mode))
+
 (use-package vundo
   :init
   (setq vundo-glyph-alist vundo-unicode-symbols)

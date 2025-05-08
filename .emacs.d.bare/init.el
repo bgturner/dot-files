@@ -238,3 +238,13 @@
 (use-package rg
   :config
   (rg-enable-default-bindings))
+
+(defun bt/get-api-key (host)
+  "Return the API key from ~/.authinfo.gpg An example entry in
+~/.authinfo.gpg would be:
+
+machine api.openai.com password sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+"
+    (require 'auth-source)
+    (let ((inhibit-message t))
+        (auth-source-pick-first-password :host host)))

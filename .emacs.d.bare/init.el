@@ -248,3 +248,18 @@ machine api.openai.com password sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     (require 'auth-source)
     (let ((inhibit-message t))
         (auth-source-pick-first-password :host host)))
+
+;; Save in ~/.authinfo.gpg
+;;     machine api.openai.com password sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+(use-package gptel
+  :bind (("C-c a a" . gptel-abort)
+         ("C-c a RET" . gptel-send)
+         ("C-c a n" . gptel)
+         ("C-c a r" . gptel-rewrite-menu)
+         ("C-c a m" . gptel-menu))
+  :init (setq gptel-default-mode 'org-mode)
+  :config
+  (setq gptel-model 'sonar
+        gptel-backend (gptel-make-perplexity "Perplexity"
+                                             :key (bt/get-api-key "api.perplexity.ai")
+                                             :stream t)))

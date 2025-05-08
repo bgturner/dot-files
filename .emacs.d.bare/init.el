@@ -49,6 +49,19 @@
   (evil-define-key 'normal diff-hl-mode-map "]v" 'diff-hl-next-hunk)
   (evil-define-key 'normal diff-hl-mode-map "[v" 'diff-hl-previous-hunk))
 
+(use-package evil-surround
+  :after evil
+  :init
+  (global-evil-surround-mode 1))
+
+(use-package evil-nerd-commenter
+  :init (evilnc-default-hotkeys))
+
+(use-package evil-matchit
+  :after evil
+  :init
+  (global-evil-matchit-mode 1))
+
 (use-package vundo
   :init
   (setq vundo-glyph-alist vundo-unicode-symbols)

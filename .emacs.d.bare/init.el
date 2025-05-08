@@ -234,3 +234,7 @@
   :after (flycheck eglot)
   :config
   (global-flycheck-eglot-mode 1))
+
+(use-package rg
+  :config
+  (rg-enable-default-bindings))

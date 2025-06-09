@@ -988,9 +988,6 @@ that I can re-add any projects that I'm actively working on. See:
   ;; files in /tmp so that it's mounted correctly within the container
   (use-package mermaid-mode
     :config
-    (setq mermaid-mmdc-location "docker")
-    (setq mermaid-flags "run -u 1000 -v /tmp:/tmp ghcr.io/mermaid-js/mermaid-cli/mermaid-cli:9.1.6")
-
     (defun bt/mermaid-sandbox-open-file ()
       (interactive)
       (let ((filename (read-file-name "File name: " "/tmp/mermaid-sandbox/")))

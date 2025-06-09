@@ -851,22 +851,10 @@ like the ones used by Jest."
          ("C-c a m" . gptel-menu))
   :init (setq gptel-default-mode 'org-mode)
   :config
-  (setq
-   gptel-model   "sonar"
-   gptel-backend
-   (gptel-make-openai "Perplexity"
-     :host "api.perplexity.ai"
-     :key (bt/get-api-key "api.perplexity.ai")
-     :endpoint "/chat/completions"
-     :stream t
-     :models '(
-               "sonar"                ;; 128k Context length
-               "sonar-pro"            ;; 200k Context length
-               "sonar-reasoning"      ;; 128k Context length
-               "sonar-reasoning-pro"  ;; 128k Context length
-               "sonar-deep-research"  ;; 60k Context length
-               "r1-1776"              ;; 128k Context length, offline chat model, no search subsystem
-               ))))
+  (setq gptel-model 'sonar
+        gptel-backend (gptel-make-perplexity "Perplexity"
+                                             :key (bt/get-api-key "api.perplexity.ai")
+                                             :stream t)))
 
 
 ;; Trying out some ideas/bindings from:

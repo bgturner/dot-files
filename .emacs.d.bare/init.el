@@ -286,3 +286,6 @@ machine api.openai.com password sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
         gptel-backend (gptel-make-perplexity "Perplexity"
                                              :key (bt/get-api-key "api.perplexity.ai")
                                              :stream t)))
+
+(use-package vterm
+  :ensure t)

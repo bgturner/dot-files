@@ -38,7 +38,7 @@
   (fset 'yes-or-no-p 'y-or-n-p)
   ;; Remember window layouts
   (winner-mode 1)
-  (load-theme 'misterioso))
+  (load-theme 'modus-vivendi))
 
 (use-package evil
   :ensure t

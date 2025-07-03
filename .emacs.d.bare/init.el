@@ -41,6 +41,7 @@
   (load-theme 'misterioso))
 
 (use-package evil
+  :ensure t
   :config
   (evil-set-undo-system 'undo-redo)
   (evil-mode 1)
@@ -50,23 +51,28 @@
   (evil-define-key 'normal diff-hl-mode-map "[v" 'diff-hl-previous-hunk))
 
 (use-package evil-surround
+  :ensure t
   :after evil
   :init
   (global-evil-surround-mode 1))
 
 (use-package evil-nerd-commenter
+  :ensure t
   :init (evilnc-default-hotkeys))
 
 (use-package evil-matchit
+  :ensure t
   :after evil
   :init
   (global-evil-matchit-mode 1))
 
 (use-package direnv
+  :ensure t
   :config
   (direnv-mode))
 
 (use-package vundo
+  :ensure t
   :init
   (setq vundo-glyph-alist vundo-unicode-symbols)
   (setq vundo-compact-display t)
@@ -74,6 +80,7 @@
   :bind (("C-c u" . vundo)))
 
 (use-package which-key
+  :ensure t
   :init
   (setq which-key-separator " ")
   (setq which-key-prefix-prefix "+")
@@ -81,46 +88,56 @@
   (which-key-mode 1))
 
 (use-package magit
+  :ensure t
   :defer t
   :bind (("C-c g" . magit-file-dispatch))
   :init (setq magit-refresh-status-buffer nil))
 
 (use-package diff-hl
+  :ensure t
   :after evil
   :config
   (global-diff-hl-mode))
 
 (use-package minions
+  :ensure t
   :config
   (minions-mode t))
 
 (use-package corfu
+  :ensure t
   :config
   (global-corfu-mode t))
 
 (use-package kind-icon
+  :ensure t
   :after corfu
   :config
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
 (use-package vertico
+  :ensure t
   :init
   (setq enable-recursive-minibuffers t)
   :config
   (vertico-mode))
 
 (use-package orderless
+  :ensure t
   :init
   (setq completion-styles '(orderless basic partial-completion emacs22)))
 
-(use-package prescient)
+(use-package prescient
+  :ensure t)
 
 (use-package marginalia
+  :ensure t
   :bind ("M-A" . marginalia-cycle)
   :init
   (marginalia-mode))
 
 (use-package consult
+  :ensure t
   ;; Replace bindings. Lazily loaded due by `use-package'.
   :bind (;; C-c bindings (mode-specific-map)
          ("C-c h" . consult-history)
@@ -217,6 +234,7 @@
   )
 
 (use-package treesit-auto
+  :ensure t
   :custom
   (treesit-auto-install 'prompt)
   :config
@@ -224,18 +242,22 @@
   (global-treesit-auto-mode))
 
 (use-package hideshow
+  :ensure t
   :delight hs-minor-mode
   :hook (prog-mode . hs-minor-mode))
 
 (use-package flycheck
+  :ensure t
   :defer t)
 
 (use-package flycheck-eglot
+  :ensure t
   :after (flycheck eglot)
   :config
   (global-flycheck-eglot-mode 1))
 
 (use-package rg
+  :ensure t
   :config
   (rg-enable-default-bindings))
 
@@ -252,6 +274,7 @@ machine api.openai.com password sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ;; Save in ~/.authinfo.gpg
 ;;     machine api.openai.com password sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 (use-package gptel
+  :ensure t
   :bind (("C-c a a" . gptel-abort)
          ("C-c a RET" . gptel-send)
          ("C-c a n" . gptel)

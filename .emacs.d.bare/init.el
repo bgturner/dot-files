@@ -24,7 +24,7 @@
   (setq enable-recursive-minibuffers t)
 
   ;; Ask for GnuPG password in minibuffer instead of popup
-  (setq epa-pinentry-mode 'loopback)
+  (setq epg-pinentry-mode 'loopback)
 
   :config
   (toggle-scroll-bar -1)

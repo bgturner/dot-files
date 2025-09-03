@@ -1454,3 +1454,44 @@ package name unless the region is active."
                            (buffer-substring (region-beginning) (region-end))
                          (read-string "Package Name: "))))
     (browse-url (format "https://deps.dev/npm/%s" package-name))))
+
+
+;; ************************************************************************
+;; Eshell
+;; ************************************************************************
+(use-package eshell
+  :init
+  (setq eshell-banner-message "")
+  :config
+  ;; Eshell
+  ;; TODO: improve this to get last exit code, if possible
+  (defun bt/get-last-two-folders (path)
+	"Return a string with the current folder and its parent folder from PATH."
+	(let* ((dir (file-name-directory path))
+           (parent (file-name-directory (directory-file-name dir)))
+           (current (file-name-nondirectory (directory-file-name dir))))
+      (if (or (null parent) (string= parent "/"))
+          current
+		(concat (file-name-nondirectory (directory-file-name parent)) "/" current))))
+
+  (defun bt/eshell-get-git-info ()
+	"Function to get the current Git branch and check if it's dirty."
+	(let ((git-branch (shell-command-to-string "git rev-parse --abbrev-ref HEAD 2>/dev/null"))
+          (git-dirty (shell-command-to-string "git diff --quiet && echo true || echo false")))
+      (if git-branch
+          (format "%s%s" (string-trim git-branch)
+                  (propertize (if (string-match "true" git-dirty) "" "*")
+                              'face `(:foreground "#FF0000")))
+		"")))
+
+  (defun bt/eshell-prompt ()
+	"Custom eshell prompt including git status and last command exit code."
+	(let ((current-dir default-directory))
+      (concat
+       (propertize "★ " 'face `(:foreground "#00CD00"))
+       (propertize (bt/get-last-two-folders current-dir) 'face `(:foreground "#93a1a1"))
+       " "
+       (bt/eshell-get-git-info)
+       (propertize (if (= (user-uid) 0) " # " " $ ") 'face `(:foreground "#777777")))))
+
+  (setq eshell-prompt-function 'bt/eshell-prompt))

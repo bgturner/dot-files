@@ -843,12 +843,30 @@ like the ones used by Jest."
          ("C-c a n" . gptel)
          ("C-c a r" . gptel-rewrite-menu)
          ("C-c a m" . gptel-menu))
-  :init (setq gptel-default-mode 'org-mode)
+  :init
+  (setq gptel-default-mode 'org-mode)
+  (setq gptel-log-level "info")
+
   :config
+  (gptel-make-openai "OpenRouter"
+    :host "openrouter.ai"
+    :endpoint "/api/v1/chat/completions"
+    :stream t
+    :key (bt/get-api-key "api.openrouter.ai")
+    :models '(
+              cognitivecomputations/dolphin-mistral-24b-venice-edition:free
+              openai/gpt-3.5-turbo
+              mistralai/mixtral-8x7b-instruct
+              meta-llama/codellama-34b-instruct
+              codellama/codellama-70b-instruct
+              google/palm-2-codechat-bison-32k
+              google/gemini-pro
+              ))
+
   (setq gptel-model 'sonar
         gptel-backend (gptel-make-perplexity "Perplexity"
-                                             :key (bt/get-api-key "api.perplexity.ai")
-                                             :stream t)))
+                        :key (bt/get-api-key "api.perplexity.ai")
+                        :stream t)))
 
 
 ;; Trying out some ideas/bindings from:

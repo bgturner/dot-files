@@ -1174,10 +1174,16 @@ that I can re-add any projects that I'm actively working on. See:
         org-outline-path-complete-in-steps nil)
   
   :config
-  (global-set-key (kbd "C-c o a") 'org-agenda)
-  (global-set-key (kbd "C-c o c") 'org-capture)
-  (global-set-key (kbd "C-c o b") 'org-switchb)
-  (global-set-key (kbd "C-c o r d") 'org-refile-to-datetree)
+  ;; Create a keymap for Org prefix commands
+  (define-prefix-command 'bt/org-map)
+  (global-set-key (kbd "C-c o") 'bt/org-map)
+
+  ;; Bind commands under the "C-c o" prefix
+  (define-key bt/org-map (kbd "a") #'org-agenda)
+  (define-key bt/org-map (kbd "c") #'org-capture)
+  (define-key bt/org-map (kbd "b") #'org-switchb)
+  (define-key bt/org-map (kbd "j c") #'org-clock-goto)
+  (define-key bt/org-map (kbd "j h") #'consult-org-agenda)
   
   ;; View item from agenda in narrowed buffer.
   ;; Useful when using "follow" in agenda views.

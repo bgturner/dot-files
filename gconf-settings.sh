@@ -45,3 +45,5 @@ gsettings set org.gnome.shell.window-switcher current-workspace-only false
 #
 gsettings set org.gnome.desktop.wm.preferences button-layout 'close:'
 
+# Prefer dark mode
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'

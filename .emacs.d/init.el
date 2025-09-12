@@ -842,7 +842,10 @@ like the ones used by Jest."
          ("C-c a n" . gptel)
          ("C-c a r" . gptel-rewrite-menu)
          ("C-c a m" . gptel-menu))
-  :init (setq gptel-default-mode 'org-mode)
+  :init
+  (setq gptel-default-mode 'org-mode)
+  (setq gptel-log-level "info")
+
   :config
   ;; OpenRouter offers an OpenAI compatible API
   (gptel-make-openai "OpenRouter"

@@ -1529,3 +1529,10 @@ package name unless the region is active."
 
   (setq eshell-prompt-function 'bt/eshell-prompt))
 
+(defun bt/print-buffer-as-pdf ()
+  "Prints the buffer as a PDF."
+  (interactive)
+  (let ((buffer-name (buffer-name)))
+    (ps-print-buffer (concat buffer-name ".ps"))
+    (shell-command (concat "ps2pdf " buffer-name ".ps " buffer-name ".pdf"))
+    (shell-command (concat "open " buffer-name ".pdf"))))

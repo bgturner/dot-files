@@ -287,8 +287,6 @@ like the ones used by Jest."
 		    (nrepl-mode . insert)
 		    (pylookup-mode . emacs)
 		    (comint-mode . normal)
-            (kubernetes-overview-mode . emacs)
-            (kubernetes-display-thing-mode . emacs)
 		    (compilation-mode . emacs)
 		    (shell-mode . insert)
 		    (vterm-mode . emacs)
@@ -894,13 +892,6 @@ like the ones used by Jest."
 (use-package devops
   :straight nil
   :preface
-  (use-package kubernetes
-    :ensure t
-    :commands (kubernetes-overview)
-    :config
-    (setq kubernetes-poll-frequency 3600
-          kubernetes-redraw-frequency 3600))
-
   (use-package dockerfile-mode)
 
   (use-package docker)

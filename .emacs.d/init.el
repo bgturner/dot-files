@@ -884,6 +884,13 @@ like the ones used by Jest."
         ("M-C-<left>" . copilot-panel-complete)
         ("M-C-<right>" . copilot-accept-completion-by-word)))
 
+;; Configure model and project details in .env file:
+;; - https://aider.chat/docs/config/dotenv.html
+(use-package aider
+  :ensure t
+  :config
+  (global-set-key (kbd "C-c a A") 'aider-transient-menu))
+
 (use-package devops
   :straight nil
   :preface

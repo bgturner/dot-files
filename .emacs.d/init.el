@@ -847,33 +847,25 @@ like the ones used by Jest."
   (setq gptel-log-level "info")
 
   :config
-  ;; OpenRouter offers an OpenAI compatible API
   (gptel-make-openai "OpenRouter"
     :host "openrouter.ai"
     :endpoint "/api/v1/chat/completions"
     :stream t
-    :key (bt/get-api-key "openrouter.ai")
+    :key (bt/get-api-key "api.openrouter.ai")
     :models '(
-              deepseek/deepseek-chat-v3-0324:free
-              google/gemini-2.5-pro-exp-03-25:free
-              open-r1/olympiccoder-7b:free
+              cognitivecomputations/dolphin-mistral-24b-venice-edition:free
+              openai/gpt-3.5-turbo
+              mistralai/mixtral-8x7b-instruct
+              meta-llama/codellama-34b-instruct
+              codellama/codellama-70b-instruct
+              google/palm-2-codechat-bison-32k
+              google/gemini-pro
               ))
-  (setq
-   gptel-model   "sonar"
-   gptel-backend
-   (gptel-make-openai "Perplexity"
-     :host "api.perplexity.ai"
-     :key (bt/get-api-key "api.perplexity.ai")
-     :endpoint "/chat/completions"
-     :stream t
-     :models '(
-               "sonar"                ;; 128k Context length
-               "sonar-pro"            ;; 200k Context length
-               "sonar-reasoning"      ;; 128k Context length
-               "sonar-reasoning-pro"  ;; 128k Context length
-               "sonar-deep-research"  ;; 60k Context length
-               "r1-1776"              ;; 128k Context length, offline chat model, no search subsystem
-               ))))
+
+  (setq gptel-model 'sonar
+        gptel-backend (gptel-make-perplexity "Perplexity"
+                        :key (bt/get-api-key "api.perplexity.ai")
+                        :stream t)))
 
 
 ;; Trying out some ideas/bindings from:

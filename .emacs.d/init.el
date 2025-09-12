@@ -66,6 +66,7 @@ machine api.openai.com password sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 (straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
 
+(straight-use-package 'org)
 
 ;; Needed for LSP to work, and maybe other things...
 (setq read-process-output-max (* 1024 1024)) ; Set it to 1 MB (or adjust as needed)

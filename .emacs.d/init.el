@@ -782,11 +782,6 @@ like the ones used by Jest."
     :config
     (global-diff-hl-mode))
 
-  (use-package wakatime-mode
-    :delight wakatime-mode
-    :config
-    (global-wakatime-mode))
-  
   (use-package ansi-color
     :config
     (defun my-colorize-compilation-buffer ()

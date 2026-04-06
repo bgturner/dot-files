@@ -132,7 +132,6 @@ like the ones used by Jest."
   :preface
   (use-package emacs
     :init
-    (menu-bar-mode -1)
     (toggle-scroll-bar -1)
     (tool-bar-mode -1)
     (tooltip-mode -1)

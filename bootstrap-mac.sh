@@ -54,6 +54,7 @@ ghostty
 syncthing
 font-jetbrains-mono-nerd-font
 font-fira-code-nerd-font
+google-cloud-sdk
 amethyst
 1password
 visual-studio-code

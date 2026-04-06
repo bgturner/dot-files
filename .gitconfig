@@ -33,7 +33,7 @@
 [color]
 	ui = auto
 [core]
-	excludesfile = /home/benjamin/.gitignore
+	excludesfile = ~/.gitignore
 	editor = vim
 	whitespace = cr-at-eol
 [push]

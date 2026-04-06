@@ -757,25 +757,29 @@ like the ones used by Jest."
   (setq gptel-log-level "info")
 
   :config
-  (gptel-make-openai "OpenRouter"
-    :host "openrouter.ai"
-    :endpoint "/api/v1/chat/completions"
-    :stream t
-    :key (bt/get-api-key "api.openrouter.ai")
-    :models '(
-              cognitivecomputations/dolphin-mistral-24b-venice-edition:free
-              openai/gpt-3.5-turbo
-              mistralai/mixtral-8x7b-instruct
-              meta-llama/codellama-34b-instruct
-              codellama/codellama-70b-instruct
-              google/palm-2-codechat-bison-32k
-              google/gemini-pro
-              ))
-
-  (setq gptel-model 'sonar
-        gptel-backend (gptel-make-perplexity "Perplexity"
-                        :key (bt/get-api-key "api.perplexity.ai")
-                        :stream t)))
+  ;; (setq gptel-model 'sonar
+  ;;       gptel-backend (gptel-make-perplexity "Perplexity"
+  ;;                       :key (bt/get-api-key "api.perplexity.ai")
+  ;;                       :stream t))
+  (setq gptel-model 'google/gemini-2.5-flash:online
+		gptel-backend
+		(gptel-make-openai "OpenRouter"
+		  :host "openrouter.ai"
+		  :endpoint "/api/v1/chat/completions"
+		  :stream t
+		  :key (bt/get-api-key "api.openrouter.ai")
+		  :models '(
+					cognitivecomputations/dolphin-mistral-24b-venice-edition:free
+					openai/gpt-3.5-turbo
+					openai/gpt-4.1-mini:online
+					mistralai/mixtral-8x7b-instruct
+					meta-llama/codellama-34b-instruct
+					codellama/codellama-70b-instruct
+					google/palm-2-codechat-bison-32k
+					google/gemini-2.5-flash:online
+					))
+		)
+  )
 
 
 ;; Trying out some ideas/bindings from:

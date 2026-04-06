@@ -200,6 +200,10 @@ like the ones used by Jest."
 
 (use-package ux
   :straight nil
+  :config
+  (global-set-key (kbd "C-x C-m") 'execute-extended-command)
+  (global-set-key (kbd "C-c C-m") 'execute-extended-command)
+
   :preface
 
   ;; Evil Package

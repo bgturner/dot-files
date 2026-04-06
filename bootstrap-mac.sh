@@ -48,8 +48,6 @@ EOF
 while IFS= read -r app || [[ -n "$app" ]]; do
     brew install --cask $app
 done <<EOF
-alfred
-cloudapp
 docker
 emacs-plus-app
 ghostty
@@ -59,12 +57,5 @@ font-fira-sans
 font-fira-code
 amethyst
 1password
-firefox-developer-edition
-firefox brave-browser
-inkscape
-gimp
-vlc
-obs
-parallels
 visual-studio-code
 EOF

@@ -1153,18 +1153,18 @@ that I can re-add any projects that I'm actively working on. See:
   ;;     See: https://emacs.stackexchange.com/questions/17797/how-to-narrow-to-subtree-in-org-agenda-follow-mode
   ;;
   (advice-add 'org-agenda-goto :after
-	      (lambda (&rest args)
-		(org-narrow-to-subtree)))
+	          (lambda (&rest args)
+		        (org-narrow-to-subtree)))
   
   ;; Define babel languages
   (org-babel-do-load-languages 'org-babel-load-languages
-			       '((emacs-lisp . t)
-				 (dot . t)
-				 (shell . t)
-				 (sql . t)
-				 (python . t)
-				 (css . t)
-				 (js . t)))
+			                   '((emacs-lisp . t)
+				                 (dot . t)
+				                 (shell . t)
+				                 (sql . t)
+				                 (python . t)
+				                 (css . t)
+				                 (js . t)))
   
   (load-user-file ".org-capture-templates.el")
 
@@ -1177,13 +1177,13 @@ is nil, refile in the current file. A datetree within a subheading
 is possible if the heading has a property of DATE_TREE."
     (interactive "f")
     (let* ((datetree-date (or (org-entry-get nil "TIMESTAMP" t)
-			      (org-read-date t nil "now")))
+			                  (org-read-date t nil "now")))
            (date (org-date-to-gregorian datetree-date)))
       (save-excursion
-	(with-current-buffer (current-buffer)
+	    (with-current-buffer (current-buffer)
           (org-cut-subtree)
           (if file (find-file file))
-	  (widen)
+	      (widen)
           (org-datetree-find-date-create date)
           (org-narrow-to-subtree)
           (show-subtree)
@@ -1224,17 +1224,17 @@ is possible if the heading has a property of DATE_TREE."
     (general-nmap "SPC o r" 'hydra-org-roam/body)
     :hydra
     (hydra-org-roam ()
-		    "
+		            "
   _n_ : Next Daily
   _p_ : Prev Daily
   _g_ : Goto Daily
   _c_ : Capture Daily
 "
-		    ("n" org-roam-dailies-goto-next-note)
-		    ("p" org-roam-dailies-goto-previous-note)
-		    ("c" org-roam-dailies-capture-date)
-		    ("g" org-roam-dailies-goto-date)
-		    ))
+		            ("n" org-roam-dailies-goto-next-note)
+		            ("p" org-roam-dailies-goto-previous-note)
+		            ("c" org-roam-dailies-capture-date)
+		            ("g" org-roam-dailies-goto-date)
+		            ))
   
   (use-package org-roam-ui
     :straight
@@ -1276,14 +1276,14 @@ is possible if the heading has a property of DATE_TREE."
   (defun bt/babel-ansi ()
     (when-let ((beg (org-babel-where-is-src-block-result nil nil)))
       (save-excursion
-	(goto-char beg)
-	(when (looking-at org-babel-result-regexp)
-	  (let ((end (org-babel-result-end))
-		(ansi-color-context-region nil))
-	    (ansi-color-apply-on-region beg end))))))
+	    (goto-char beg)
+	    (when (looking-at org-babel-result-regexp)
+	      (let ((end (org-babel-result-end))
+		        (ansi-color-context-region nil))
+	        (ansi-color-apply-on-region beg end))))))
   (add-hook 'org-babel-after-execute-hook 'bt/babel-ansi)
 
-  ) ;; End orgmode config
+;; End orgmode config
 
 
 (use-package rest

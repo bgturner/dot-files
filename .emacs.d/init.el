@@ -177,77 +177,24 @@ like the ones used by Jest."
 
   (provide 'defaults))
 
-
 (use-package use-package-hydra)
 
 (use-package ui
   :straight nil
   :defer t
   :preface
-  ;; Theme
-  ;; (load-theme 'leuven)
   (use-package doom-themes
     :config
-    (load-theme 'doom-one t)
-    ;; (load-theme 'doom-one-light t)
-    ;; (load-theme 'doom-nord-light t)
-    ;; (load-theme 'doom-oksolar-light)
-    ;; (load-theme 'doom-gruvbox t)
-    ;; (load-theme 'doom-dracula t)
-    )
+    (load-theme 'doom-one t))
 
-  (use-package ef-themes
-    ;; :config
-    ;; (load-theme 'ef-summer t)
-    ;; (load-theme 'ef-rosa t)
-    )
-
-  ;; Fonts - use Jetbrains Mono. larger font-size for MacOS
-  (let ((font-size (if (eq system-type 'darwin)
-		       (format "14")
-		     (format "11"))))
-    (set-frame-font (format "JetbrainsMono Nerd Font %s" font-size) nil t))
-
-  ;; Completely hide when we need focus
-  (use-package hide-mode-line
-    :defer t)
-
-  (dolist (char/ligature-re
-           `((?-  . ,(rx (or (or "-->" "-<<" "->>" "-|" "-~" "-<" "->") (+ "-"))))
-             (?/  . ,(rx (or (or "/==" "/=" "/>" "/**" "/*") (+ "/"))))
-             (?*  . ,(rx (or (or "*>" "*/") (+ "*"))))
-             (?<  . ,(rx (or (or "<<=" "<<-" "<|||" "<==>" "<!--" "<=>" "<||" "<|>" "<-<"
-				 "<==" "<=<" "<-|" "<~>" "<=|" "<~~" "<$>" "<+>" "</>"
-				 "<*>" "<->" "<=" "<|" "<:" "<>"  "<$" "<-" "<~" "<+"
-				 "</" "<*")
-                             (+ "<"))))
-             (?:  . ,(rx (or (or ":?>" "::=" ":>" ":<" ":?" ":=") (+ ":"))))
-             (?=  . ,(rx (or (or "=>>" "==>" "=/=" "=!=" "=>" "=:=") (+ "="))))
-             (?!  . ,(rx (or (or "!==" "!=") (+ "!"))))
-             (?>  . ,(rx (or (or ">>-" ">>=" ">=>" ">]" ">:" ">-" ">=") (+ ">"))))
-             (?&  . ,(rx (+ "&")))
-             (?|  . ,(rx (or (or "|->" "|||>" "||>" "|=>" "||-" "||=" "|-" "|>"
-				 "|]" "|}" "|=")
-                             (+ "|"))))
-             (?.  . ,(rx (or (or ".?" ".=" ".-" "..<") (+ "."))))
-             (?+  . ,(rx (or "+>" (+ "+"))))
-             (?\[ . ,(rx (or "[<" "[|")))
-             (?\{ . ,(rx "{|"))
-             (?\? . ,(rx (or (or "?." "?=" "?:") (+ "?"))))
-             (?#  . ,(rx (or (or "#_(" "#[" "#{" "#=" "#!" "#:" "#_" "#?" "#(")
-                             (+ "#"))))
-             (?\; . ,(rx (+ ";")))
-             (?_  . ,(rx (or "_|_" "__")))
-             (?~  . ,(rx (or "~~>" "~~" "~>" "~-" "~@")))
-             (?$  . ,(rx "$>"))
-             (?^  . ,(rx "^="))
-             (?\] . ,(rx "]#"))))
-    (let ((char (car char/ligature-re))
-          (ligature-re (cdr char/ligature-re)))
-      (set-char-table-range composition-function-table char
-                            `([,ligature-re 0 font-shape-gstring]))))
-
-  (global-auto-composition-mode)
+  (use-package ligature
+    :config
+    (ligature-set-ligatures 'prog-mode
+                            '("--" "---" "==" "===" "!=" "!==" "=>>" "=>" "<-" "<=" "<=="
+                              "<=>" "~~>" ">>" "<<" "||" "|>" "!!" "::" ":::" ".." "..."
+                              "/*" "*/" "///" "&&" "||" "!!" "??"))
+    ;; Enables ligature-mode globally
+    (global-ligature-mode t))
 
   (provide 'ui))
 

@@ -619,8 +619,6 @@ like the ones used by Jest."
 
   (use-package wgrep)
 
-  (use-package noccur)
-
   ;; Projectile
   (use-package projectile
     :delight

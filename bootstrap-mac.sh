@@ -52,9 +52,8 @@ docker
 emacs-plus-app
 ghostty
 syncthing
-font-jetbrains-mono
-font-fira-sans
-font-fira-code
+font-jetbrains-mono-nerd-font
+font-fira-code-nerd-font
 amethyst
 1password
 visual-studio-code

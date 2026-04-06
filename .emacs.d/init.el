@@ -579,6 +579,15 @@ like the ones used by Jest."
   :straight nil
   :preface
 
+  (use-package ediff
+    :init
+    (add-hook 'ediff-after-quit-hook-internal 'winner-undo)
+    :custom
+    (ediff-window-setup-function 'ediff-setup-windows-plain
+                                 (ediff-split-window-function 'split-window-vertically)
+                                 (ediff-diff-options "-w")
+                                 ))
+
   (use-package imenu-list)
 
   (use-package tree-sitter

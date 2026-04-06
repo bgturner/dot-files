@@ -605,13 +605,6 @@ like the ones used by Jest."
     :ensure t
     :after tree-sitter)
 
-  (use-package treesit-auto
-    :custom
-    (treesit-auto-install 'prompt)
-    :config
-    (treesit-auto-add-to-auto-mode-alist 'all)
-    (global-treesit-auto-mode))
-  
   (use-package hideshow
     :delight hs-minor-mode
     :hook (prog-mode . hs-minor-mode))

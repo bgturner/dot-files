@@ -573,13 +573,6 @@ like the ones used by Jest."
     :config
     (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
-  (use-package company
-    :delight
-    :hook (after-init . global-company-mode)
-    :bind (("C-M-i" . company-complete))
-    :config
-    (use-package company-lsp))
-
   (provide 'completions))
 
 (use-package general-programming
@@ -896,8 +889,6 @@ that I can re-add any projects that I'm actively working on. See:
     ;; (sh-mode . lsp)
     :init
     (setq lsp-keymap-prefix "C-c l")
-    (setq company-minimum-prefix-length 1
-	  company-idle-delay 2.0)
     :commands
     (lsp lsp-deferred))
   

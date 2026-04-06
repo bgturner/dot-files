@@ -7,11 +7,6 @@
 [ ! -d $HOME/.oh-my-zsh ] && \
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-if ! command -v fnm &> /dev/null
-then
-    curl -fsSL https://fnm.vercel.app/install | bash
-fi
-
 [ ! -f $HOME/.vim/autoload/plug.vim ] && \
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 	 https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -31,6 +26,7 @@ direnv
 difftastic
 fd
 ffmpeg
+fnm
 fzf
 gh
 git-lfs

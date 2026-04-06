@@ -37,3 +37,25 @@ fi
 if (( $+commands[direnv] )); then
     eval "$(direnv hook zsh)"
 fi
+
+## Prompt
+# 1. Load the module
+autoload -Uz vcs_info
+setopt PROMPT_SUBST
+
+# 2. Configure vcs_info to check for changes
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git:*' check-for-changes true
+
+# 3. Define the purple format and the red asterisk for unstaged changes
+# %b = branch name, %u = unstaged (dirty) string
+zstyle ':vcs_info:git:*' formats ' %F{magenta}%b%u%F{magenta}%f'
+zstyle ':vcs_info:git:*' unstagedstr '%F{red}*%f'
+
+# 4. Run vcs_info before every prompt
+precmd() { vcs_info }
+
+# 5. Your existing status logic + the new vcs_info variable
+STATUS_INDICATOR='%(?.%F{green}◉%f.%F{red}! %?%f)'
+PROMPT='${STATUS_INDICATOR} %~${vcs_info_msg_0_} %# '
+

@@ -27,3 +27,13 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
+
+# FZF https://github.com/junegunn/fzf
+if (( $+commands[fzf] )); then
+  source <(fzf --zsh)
+fi
+
+# Direnv
+if (( $+commands[direnv] )); then
+    eval "$(direnv hook zsh)"
+fi

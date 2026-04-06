@@ -1137,6 +1137,10 @@ that I can re-add any projects that I'm actively working on. See:
         org-outline-path-complete-in-steps nil)
   
   :config
+  (use-package org-bullets
+    :ensure t
+    :hook (org-mode . org-bullets-mode))
+
   ;; Create a keymap for Org prefix commands
   (define-prefix-command 'bt/org-map)
   (global-set-key (kbd "C-c o") 'bt/org-map)

@@ -1290,6 +1290,18 @@ is possible if the heading has a property of DATE_TREE."
     :straight (:host github :repo "yjwen/org-reveal")))
 ;; End orgmode config
 
+(use-package elfeed
+  :defer t
+  :init
+  (setq elfeed-db-directory (expand-file-name (concat (file-name-as-directory org-directory) "/news/.elfeed")))
+  :config
+  (evil-set-initial-state 'elfeed-search-mode 'emacs)
+  (evil-set-initial-state 'elfeed-show-mode 'emacs)
+  (use-package elfeed-org
+    :config
+    (setq rmh-elfeed-org-files '("news/feeds.org"))
+    (elfeed-org))
+  )
 
 (use-package rest
   :straight nil

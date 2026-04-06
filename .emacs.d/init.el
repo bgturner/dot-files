@@ -702,6 +702,10 @@ like the ones used by Jest."
     (evil-set-initial-state 'deadgrep-mode 'emacs)
     :general
     (bt/leader-key-def "D" '(deadgrep :which-key "Deadgrep")))
+
+  (use-package rg
+    :config
+    (rg-enable-default-bindings))
   
   (use-package flycheck
     :delight

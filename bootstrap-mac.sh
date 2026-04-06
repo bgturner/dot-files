@@ -18,8 +18,6 @@ fi
 
 
 # Configure Brew taps
-brew tap homebrew/cask-versions
-brew tap homebrew/cask-fonts
 brew tap d12frosted/emacs-plus 
 
 # Install various cli tools

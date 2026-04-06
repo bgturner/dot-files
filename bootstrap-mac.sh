@@ -58,6 +58,7 @@ alfred
 cloudapp
 docker
 emacs-plus-app
+ghostty
 syncthing
 font-jetbrains-mono
 font-fira-sans

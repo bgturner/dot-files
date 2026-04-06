@@ -68,3 +68,6 @@ if [ -d "$GCLOUD_PATH" ]; then
     export PATH="${GCLOUD_PATH}:$PATH"
 fi
 
+if (( $+commands[fnm] )); then
+  source <(fnm env --use-on-cd --shell zsh)
+fi

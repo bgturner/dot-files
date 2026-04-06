@@ -1,3 +1,12 @@
+# Include machine specific info, ie:
+# [user]
+#	name = My Name
+# 	email = my.name@work.com
+
+[include]
+    path = ~/.gitconfig.local
+
+# Shared config
 [alias]
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
@@ -23,9 +32,6 @@
 	renames = true
 [color]
 	ui = auto
-[user]
-	name = Benjamin Turner
-	email = benjamin@passionsplay.com
 [core]
 	excludesfile = /home/benjamin/.gitignore
 	editor = vim

@@ -1285,6 +1285,9 @@ is possible if the heading has a property of DATE_TREE."
 	        (ansi-color-apply-on-region beg end))))))
   (add-hook 'org-babel-after-execute-hook 'bt/babel-ansi)
 
+  (use-package ox-reveal
+    :after org
+    :straight (:host github :repo "yjwen/org-reveal")))
 ;; End orgmode config
 
 

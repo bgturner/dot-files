@@ -588,6 +588,10 @@ like the ones used by Jest."
                                  (ediff-diff-options "-w")
                                  ))
 
+  (use-package direnv
+    :config
+    (direnv-mode))
+
   (use-package imenu-list)
 
   (use-package tree-sitter

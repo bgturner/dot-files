@@ -29,7 +29,6 @@ cmake
 coreutils
 direnv
 difftastic
-emacs-plus
 fd
 ffmpeg
 fzf
@@ -62,6 +61,7 @@ done <<EOF
 alfred
 cloudapp
 docker
+emacs-plus-app
 syncthing
 font-jetbrains-mono
 font-fira-sans

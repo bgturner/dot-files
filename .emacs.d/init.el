@@ -1053,44 +1053,71 @@ that I can re-add any projects that I'm actively working on. See:
   :init
   ;; General Settings
   (setq org-hide-emphasis-markers t
-	org-clock-clocked-in-display nil
-	org-tags-column 0 ; tags are right after headline
-	org-hide-leading-stars t
-	org-adapt-indentation t
-	org-confirm-babel-evaluate nil
-	org-log-into-drawer t
-	org-log-done 'time
-	org-html-validation-link nil
-	org-export-with-section-numbers nil
-	org-export-with-toc nil
-	org-export-with-author nil
-	org-export-with-email nil
-	org-export-with-date nil
-	org-priority-default 68 ;; Have the default priority be below "C"
-    org-priority-highest 65
-    org-priority-lowest 68
-	org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "|" "DONE(d!)" "CANCELED(c@)"))
+	    org-clock-clocked-in-display nil
+	    org-tags-column 0 ; tags are right after headline
+	    org-hide-leading-stars t
+	    org-confirm-babel-evaluate nil
+	    org-log-into-drawer t
+	    org-log-done 'time
+	    org-html-validation-link nil
+	    org-export-with-section-numbers nil
+	    org-export-with-toc nil
+	    org-export-with-author nil
+	    org-export-with-email nil
+	    org-export-with-date nil
+	    org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "|" "DONE(d!)" "CANCELED(c@)"))
         org-columns-default-format "%60ITEM(Task) %TODO %6Effort(Estim){:}  %6CLOCKSUM(Clock){:} %TIMESTAMP %SCHEDULED(Scheduled) %DEADLINE(Deadline)"
         org-global-properties '(("Effort_ALL" . "0 0:15 0:30 1:00 2:00 4:00 8:00"))
-	org-capture-templates '(("i" "Inbox Task" entry (file+headline "~/org/inbox.org" "Tasks")
-				 "* TODO %?\n  %i\n  %a")))
+
+	    org-capture-templates '(("i" "Inbox Task" entry
+							     (file+headline "~/org/inbox.org" "Tasks")
+							     "* TODO %?\n%i\n%a")
+
+							    ("j" "Journal")
+
+							    ("jg" "Goal"
+							     entry(file+olp+datetree "~/org/journal.org" "Journal")
+							     "* Daily Goal :goal:\n%?"
+							     :time-prompt t
+							     :tree-type week)
+
+							    ("jd" "Daily Review"
+							     entry(file+olp+datetree "~/org/journal.org" "Journal")
+							     "* Daily Review :review:\n%?"
+							     :time-prompt t
+							     :tree-type week)))
+
+  (setq org-highest-priority ?A)
+  (setq org-lowest-priority ?D)    ; Set lowest to D
+  (setq org-default-priority ?C)   ; New items default to C
+  (setq org-priority-faces '((?A . (:foreground "red" :weight bold))
+                             (?B . (:foreground "orange"))
+                             (?C . (:foreground "yellow"))
+                             (?D . (:foreground "green")))) ; optional color
+
   
   ;; Agenda Settings
   (setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$")
-	org-agenda-todo-ignore-scheduled 'all
-	org-agenda-entry-text-maxlines 10
-	org-agenda-clockreport-parameter-plist '(:link t :maxlevel 4 :fileskip0 t :tags nil) ;; Clocktable in agenda view
-	org-agenda-skip-additional-timestamps-same-entry t
-	org-agenda-skip-scheduled-if-done t
-	org-agenda-skip-deadline-if-done t
-	org-agenda-sorting-strategy '((agenda time-up todo-state-down priority-down)
-				      (todo priority-down category-up)
-				      (tags priority-down category-keep)
-				      (search category-keep))
-	org-agenda-use-time-grid t
-	org-agenda-time-grid '((daily today)
-			       (800 1000 1200 1400 1600 1800 2000)
-			       "......" "----------------"))
+		org-agenda-todo-ignore-scheduled 'all
+		org-agenda-entry-text-maxlines 10
+		org-agenda-clockreport-parameter-plist '(:link t :maxlevel 4 :fileskip0 t :tags nil) ;; Clocktable in agenda view
+		org-agenda-skip-additional-timestamps-same-entry t
+		org-agenda-skip-scheduled-if-done t
+		org-agenda-skip-deadline-if-done t
+		org-agenda-sorting-strategy '((agenda time-up todo-state-down priority-down)
+									  (todo priority-down category-up)
+									  (tags priority-down category-keep)
+									  (search category-keep))
+		org-agenda-use-time-grid t
+		org-agenda-time-grid '((daily today)
+							   (800 1000 1200 1400 1600 1800 2000)
+							   "      " "")
+		org-agenda-prefix-format '((agenda . "  %-12t% s")
+								   (todo . " %i %-12:c")
+								   (tags . " %i %-12:c")
+								   (search . " %i %-12:c"))
+		org-agenda-remove-tags t
+		org-agenda-span 'day)
   
   ;; Improve org-refile across files
   ;;

@@ -4,58 +4,53 @@
 [ ! -d /opt/homebrew ] && \
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-[ ! -d $HOME/.oh-my-zsh ] && \
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
 [ ! -f $HOME/.vim/autoload/plug.vim ] && \
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 	 https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-
 # Configure Brew taps
 brew tap d12frosted/emacs-plus 
+brew tap heroku/brew
+brew tap oven-sh/bun
 
-# Install various cli tools
-while IFS= read -r app || [[ -n "$app" ]]; do
-    brew install $app
-done <<EOF
-cmake
-coreutils
-direnv
-difftastic
-fd
-ffmpeg
-fnm
-fzf
-gh
-git-lfs
-graphviz
-grep
-heroku
-imagemagick
-ispell
-jq
-librsvg
-libtool
-neovim
-pandoc
-ripgrep
-sqlite
-tmux
-EOF
+PACKAGES=(
+    bun
+    cmake
+    coreutils
+    difftastic
+    direnv
+    fd
+    ffmpeg
+    fnm
+    fzf
+    gh
+    git-lfs
+    graphviz
+    grep
+    heroku
+    imagemagick
+    ispell
+    jq
+    librsvg
+    libtool
+    neovim
+    pandoc
+    ripgrep
+    sqlite
+    tmux
+)
+brew install "${PACKAGES[@]}"
 
-# Install Brew Cask apps
-while IFS= read -r app || [[ -n "$app" ]]; do
-    brew install --cask $app
-done <<EOF
-docker
-emacs-plus-app
-ghostty
-syncthing
-font-jetbrains-mono-nerd-font
-font-fira-code-nerd-font
-google-cloud-sdk
-amethyst
-1password
-visual-studio-code
-EOF
+CASKS=(
+    1password
+    amethyst
+    docker
+    emacs-plus-app
+    font-fira-code-nerd-font
+    font-jetbrains-mono-nerd-font
+    ghostty
+    google-cloud-sdk
+    syncthing
+    visual-studio-code
+)
+brew install --cask "${CASKS[@]}"

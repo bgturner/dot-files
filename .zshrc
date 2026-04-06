@@ -59,3 +59,12 @@ precmd() { vcs_info }
 STATUS_INDICATOR='%(?.%F{green}◉%f.%F{red}! %?%f)'
 PROMPT='${STATUS_INDICATOR} %~${vcs_info_msg_0_} %# '
 
+## Tools
+
+# Gcloud
+# Add additional binary components installed via gcloud
+GCLOUD_PATH='/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/'
+if [ -d "$GCLOUD_PATH" ]; then
+    export PATH="${GCLOUD_PATH}:$PATH"
+fi
+

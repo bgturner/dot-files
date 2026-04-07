@@ -14,6 +14,7 @@ brew tap heroku/brew
 brew tap oven-sh/bun
 
 PACKAGES=(
+    1password-cli
     bun
     cmake
     coreutils

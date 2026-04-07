@@ -10,6 +10,7 @@
 
 # Configure Brew taps
 brew tap d12frosted/emacs-plus 
+brew tap hashicorp/tap
 brew tap heroku/brew
 brew tap oven-sh/bun
 
@@ -28,16 +29,21 @@ PACKAGES=(
     git-lfs
     graphviz
     grep
+    helm
+    helmfile
     heroku
     imagemagick
     ispell
     jq
+    kubectl
+    kube-ps1
     librsvg
     libtool
     neovim
     pandoc
     ripgrep
     sqlite
+    terraform
     tmux
 )
 brew install "${PACKAGES[@]}"

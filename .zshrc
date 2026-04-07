@@ -55,9 +55,21 @@ zstyle ':vcs_info:git:*' unstagedstr '%F{red}*%f'
 # 4. Run vcs_info before every prompt
 precmd() { vcs_info }
 
+# Include kube_ps1 if present
+# See: https://github.com/jonmosco/kube-ps1
+KUBE_PS1_PATH="/opt/homebrew/opt/kube-ps1/share/kube-ps1.sh"
+if [ -f "$KUBE_PS1_PATH" ]; then
+    source "$KUBE_PS1_PATH"
+    # Create a helper function that only runs if kube_ps1 was successfully sourced
+    _render_kube_ps1() { kube_ps1 }
+else
+    # Empty function so the prompt doesn't break if kube_ps1 is missing
+    _render_kube_ps1() { : }
+fi
+
 # 5. Your existing status logic + the new vcs_info variable
 STATUS_INDICATOR='%(?.%F{green}◉%f.%F{red}! %?%f)'
-PROMPT='${STATUS_INDICATOR} %~${vcs_info_msg_0_} %# '
+PROMPT='${STATUS_INDICATOR} %~${vcs_info_msg_0_} $(_render_kube_ps1)%# '
 
 ## Tools
 

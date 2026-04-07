@@ -84,6 +84,10 @@ if (( $+commands[fnm] )); then
   source <(fnm env --use-on-cd --shell zsh)
 fi
 
+if [ -d /opt/homebrew/bin ] ; then
+    PATH="/opt/homebrew/bin:$PATH"
+fi
+
 # Source any config not tracked in git, but needed for this machine
 if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local

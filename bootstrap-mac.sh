@@ -27,6 +27,7 @@ PACKAGES=(
     fzf
     gh
     git-lfs
+    gpg
     graphviz
     grep
     helm

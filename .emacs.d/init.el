@@ -1051,6 +1051,17 @@ that I can re-add any projects that I'm actively working on. See:
 
 (use-package org
   :init
+  (setq org-capture-templates
+        '(("i" "Inbox Task" entry
+		   (file+headline "inbox.org" "Tasks")
+		   "* TODO %?\n%i\n%a")
+
+		  ("j" "Journal Entry"
+		   item(file+olp+datetree "journal.org" "Journal")
+		   "%?"
+		   :time-prompt t
+		   :tree-type week)))
+
   ;; General Settings
   (setq org-hide-emphasis-markers t
 	    org-clock-clocked-in-display nil
@@ -1067,25 +1078,8 @@ that I can re-add any projects that I'm actively working on. See:
 	    org-export-with-date nil
 	    org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "|" "DONE(d!)" "CANCELED(c@)"))
         org-columns-default-format "%60ITEM(Task) %TODO %6Effort(Estim){:}  %6CLOCKSUM(Clock){:} %TIMESTAMP %SCHEDULED(Scheduled) %DEADLINE(Deadline)"
-        org-global-properties '(("Effort_ALL" . "0 0:15 0:30 1:00 2:00 4:00 8:00"))
+        org-global-properties '(("Effort_ALL" . "0 0:15 0:30 1:00 2:00 4:00 8:00")))
 
-	    org-capture-templates '(("i" "Inbox Task" entry
-							     (file+headline "~/org/inbox.org" "Tasks")
-							     "* TODO %?\n%i\n%a")
-
-							    ("j" "Journal")
-
-							    ("jg" "Goal"
-							     entry(file+olp+datetree "~/org/journal.org" "Journal")
-							     "* Daily Goal :goal:\n%?"
-							     :time-prompt t
-							     :tree-type week)
-
-							    ("jd" "Daily Review"
-							     entry(file+olp+datetree "~/org/journal.org" "Journal")
-							     "* Daily Review :review:\n%?"
-							     :time-prompt t
-							     :tree-type week)))
 
   (setq org-highest-priority ?A)
   (setq org-lowest-priority ?D)    ; Set lowest to D

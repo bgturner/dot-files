@@ -75,6 +75,9 @@ STATUS_INDICATOR='%(?.%F{green}◉%f.%F{red}! %?%f)'
 PROMPT='${STATUS_INDICATOR} %~${vcs_info_msg_0_} $(_render_kube_ps1)%# '
 
 ## Tools
+if [ -d /opt/homebrew/bin ] ; then
+    PATH="/opt/homebrew/bin:$PATH"
+fi
 
 # Gcloud
 # Add additional binary components installed via gcloud
@@ -85,10 +88,6 @@ fi
 
 if (( $+commands[fnm] )); then
   source <(fnm env --use-on-cd --shell zsh)
-fi
-
-if [ -d /opt/homebrew/bin ] ; then
-    PATH="/opt/homebrew/bin:$PATH"
 fi
 
 # Source any config not tracked in git, but needed for this machine

@@ -15,6 +15,8 @@ autoload -Uz compinit && compinit
 
 export CLICOLOR=1
 
+export EDITOR="emacsclient -nw"
+
 # Enable vi-style keybindings in regular shell
 bindkey -v
 

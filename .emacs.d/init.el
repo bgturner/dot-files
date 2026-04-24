@@ -1097,7 +1097,7 @@ that I can re-add any projects that I'm actively working on. See:
   (setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$")
 		org-agenda-todo-ignore-scheduled 'all
 		org-agenda-entry-text-maxlines 10
-		org-agenda-clockreport-parameter-plist '(:link t :maxlevel 4 :fileskip0 t :tags nil) ;; Clocktable in agenda view
+		org-agenda-clockreport-parameter-plist '(:link t :maxlevel 4 :fileskip0 t :tags nil :filetitle t) ;; Clocktable in agenda view
 		org-agenda-skip-additional-timestamps-same-entry t
 		org-agenda-skip-scheduled-if-done t
 		org-agenda-skip-deadline-if-done t

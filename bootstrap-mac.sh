@@ -58,7 +58,7 @@ CASKS=(
     font-fira-code-nerd-font
     font-jetbrains-mono-nerd-font
     ghostty
-    google-cloud-sdk
+    gcloud-cli
     syncthing
     visual-studio-code
 )

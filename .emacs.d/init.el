@@ -1115,6 +1115,19 @@ that I can re-add any projects that I'm actively working on. See:
 								   (search . " %i %-12:c"))
 		org-agenda-remove-tags t
 		org-agenda-span 'day)
+
+  ;; Ran into an odd gotcha -- if you have narrowed org buffers
+  ;; and are viewing the Clock Report in an Agenda buffer, the
+  ;; summed times are incorrect
+  (defun bt/widen-all-org-buffers ()
+    "Widen all org-mode buffers."
+    (interactive)
+    (dolist (buf (buffer-list))
+      (with-current-buffer buf
+        (when (eq major-mode 'org-mode)
+          (widen))))
+    (message "Widened all org-mode buffers"))
+  (global-set-key (kbd "C-c o w") #'bt/widen-all-org-buffers)
   
   ;; Improve org-refile across files
   ;;

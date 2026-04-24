@@ -904,6 +904,9 @@ that I can re-add any projects that I'm actively working on. See:
       :fringe-face 'flycheck-fringe-info
       :error-list-face 'flycheck-error-list-info))
 
+  (use-package lsp-biome
+    :straight (:host github :repo "cxa/lsp-biome"))
+
   (provide 'lsp))
 
 (use-package languages

@@ -857,6 +857,13 @@ that I can re-add any projects that I'm actively working on. See:
     (setq lsp-keymap-prefix "C-c l")
     :commands
     (lsp lsp-deferred))
+
+  ;; tsc 7.x+ doesn't include tsserver so use vtsls
+  ;; npm install -g @vtsls/language-server typescript
+  (use-package lsp-vtsls
+    :straight (:host github :repo "sdvcrx/lsp-vtsls")
+    :after lsp-mode)
+
   
   (use-package lsp-ui
     :bind (("C-h ." . lsp-describe-thing-at-point)

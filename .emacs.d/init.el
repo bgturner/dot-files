@@ -854,6 +854,9 @@ that I can re-add any projects that I'm actively working on. See:
     ;; (python-mode . lsp)
     ;; (sh-mode . lsp)
     :init
+    ;; I kept getting odd formatting when typing in TS buffers, so
+    ;; disable auto formatting
+    (setq lsp-enable-on-type-formatting nil)
     (setq lsp-keymap-prefix "C-c l")
     :commands
     (lsp lsp-deferred))

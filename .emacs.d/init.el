@@ -947,6 +947,8 @@ that I can re-add any projects that I'm actively working on. See:
     :commands (markdown-mode gfm-mode)
     :mode (("README\\.md\\'" . gfm-mode)))
 
+  (use-package edit-indirect)
+
   (use-package graphql-mode
     :defer t)
   

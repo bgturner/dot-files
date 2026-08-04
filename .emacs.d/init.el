@@ -844,7 +844,7 @@ that I can re-add any projects that I'm actively working on. See:
 "
       (interactive)
       (dolist (workspace (lsp-session-folders (lsp-session)))
-	(lsp-workspace-folders-remove workspace)))
+	    (lsp-workspace-folders-remove workspace)))
     :hook
     (php-mode . lsp)
     (typescript-mode . lsp)

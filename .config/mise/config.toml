@@ -1,2 +1,5 @@
 [tools]
+# Ketch: Web search and scrape CLI tool
+# https://github.com/1broseidon/ketch
+"github:1broseidon/ketch" = "latest"
 sonarqube-cli = "latest"

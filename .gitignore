@@ -56,5 +56,6 @@ emacs/.emacs.d/recentf
 emacs/.emacs.d/request/
 emacs/.emacs.d/straight
 emacs/.emacs.d/transient
+emacs/.emacs.d/tree-sitter
 emacs/.emacs.d/tramp
 emacs/.emacs.d/url

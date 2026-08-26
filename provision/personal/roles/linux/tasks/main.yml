@@ -17,8 +17,10 @@
       - fd-find
       - gh
       - git
+      - git-lfs
       - jq
       - libfuse2 # required for older AppImage builds
+      - pandoc
       - python3
       - restic
       - ripgrep

@@ -3,10 +3,5 @@
   hosts: all
   become: yes
 
-  vars:
-    krita_version: 5.2.9
-
   roles:
     - common
-    - xournalpp
-    - krita

@@ -356,11 +356,7 @@ like the ones used by Jest."
      "ase"  '(eshell :which-key "Eshell")
      "ass"  '(counsel-switch-to-shell-buffer :which-key "Switch to Shell")
      "ar"  '(bt/restclient-sandbox :which-key "Restclient Sandbox")
-     "at" '(:ignore t :which-key "Treemacs")
-     "ats" '(treemacs-select-window :which-key "Treemacs Select Window")
-     "atd" '(treemacs-delete-other-windows :which-key "Treemacs Delete other windows")
-     "att" '(treemacs :which-key "Treemacs")
-     
+
      ;; Magit
      "g" '(magit-file-dispatch :which-key "Magit")
      
@@ -871,20 +867,6 @@ that I can re-add any projects that I'm actively working on. See:
     (lsp-ui-doc-delay 0.3)
     (lsp-ui-doc-show-with-mouse t)
     (lsp-ui-doc-position 'at-point))
-  
-  (use-package dap-mode
-    :commands dap-debug
-    :config
-    (require 'dap-node) ;; Set up Node debugging
-    (dap-node-setup)    ;; Automatically installs Node debug adapter if needed
-    (require 'dap-hydra)
-    (require 'dap-gdb-lldb)
-    (dap-gdb-lldb-setup)
-    ;; Bind `C-c l d` to `dap-hydra` for easy access
-    (general-define-key
-     :keymaps 'lsp-mode-map
-     :prefix lsp-keymap-prefix
-     "d" '(dap-hydra t :wk "debugger")))
   
   (defun bt/lsp-file-notify-rm-all-watches ()
     "Remove all existing file notification watches from Emacs."

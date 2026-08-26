@@ -1,22 +1,20 @@
 ---
 # Most CLI dev tools (rust, direnv, fzf, bun, starship, plus fd, gh, git-lfs,
-# jq, pandoc, ripgrep, sqlite, tmux, kubectl, helm/helmfile, cmake, coreutils,
+# jq, pandoc, ripgrep, sqlite, tmux, kubectl, helm/helmfile, cmake,
 # difftastic, imagemagick, terraform, heroku, claude-code, 1password-cli) are
 # mise-managed (.config/mise/config.toml) instead of brew — same version on
 # every personal machine, not whatever Homebrew happens to ship. What's left
 # here either needs real OS integration (gpg's keyring, syncthing as a
-# service) or isn't a mise concept at all (GUI casks, system libraries).
+# service), isn't a mise concept at all (GUI casks, system libraries), or —
+# coreutils specifically — mise's registry entry is uutils/coreutils (a
+# different Rust reimplementation, one multi-call binary, no `g`-prefixed
+# gls/gcat/etc.), not a substitute for GNU coreutils. Stays on brew.
 # kube-ps1 is dropped too: Starship's built-in kubernetes module replaces it.
-
-- name: Add Homebrew taps
-  community.general.homebrew_tap:
-    name:
-      - d12frosted/emacs-plus
-    state: present
 
 - name: Install Homebrew formulae
   community.general.homebrew:
     name:
+      - coreutils
       - gpg
       - graphviz
       - grep
@@ -33,6 +31,7 @@
       - 1password
       - amethyst
       - docker
+      - emacs-app
       - font-fira-code-nerd-font
       - font-jetbrains-mono-nerd-font
       - font-sauce-code-pro-nerd-font

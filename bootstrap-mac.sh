@@ -16,6 +16,7 @@ export PATH="$HOME/.local/bin:$PATH"
 [ ! -x "$HOME/.local/bin/mise" ] && curl -fsSL https://mise.run | sh
 
 PACKAGES=(
+    coreutils
     gpg
     graphviz
     grep
@@ -31,6 +32,7 @@ CASKS=(
     1password
     amethyst
     docker
+    emacs-app
     font-fira-code-nerd-font
     font-jetbrains-mono-nerd-font
     ghostty
@@ -41,16 +43,17 @@ CASKS=(
 brew install --cask "${CASKS[@]}"
 
 # Most CLI dev tools (rust, direnv, fzf, bun, starship, plus fd, gh, git-lfs,
-# jq, pandoc, ripgrep, sqlite, tmux, kubectl, helm/helmfile, cmake, coreutils,
+# jq, pandoc, ripgrep, sqlite, tmux, kubectl, helm/helmfile, cmake,
 # difftastic, imagemagick, terraform, heroku, claude-code, 1password-cli) are
 # mise-managed (.config/mise/config.toml, now mise/.config/mise/config.toml
 # once stowed) — not installed via brew. What's left above either needs real
-# OS integration (gpg's keyring) or isn't a mise concept at all (GUI casks,
-# system libraries other formulae link against).
+# OS integration (gpg's keyring), isn't a mise concept at all (GUI casks,
+# system libraries other formulae link against), or — coreutils specifically
+# — mise's registry entry is uutils/coreutils (a different Rust
+# reimplementation), not a substitute for GNU coreutils's gls/gcat/etc.
 # kube-ps1 is dropped too: Starship's built-in kubernetes module replaces it.
-# emacs-plus-app is NOT installed here — that cask name no longer resolves
-# under d12frosted/emacs-plus (now versioned source-build formulae behind a
-# brew-trust gate). See ISA.md Decisions for what's needed to re-add it.
+# emacs-plus deliberately not pursued — plain emacs-app is what's actually
+# running, has no tap-trust gate, and needs no build step. Simpler wins.
 
 echo "==> Installing mise-managed tool versions"
 mise install

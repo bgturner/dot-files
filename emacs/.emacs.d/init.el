@@ -395,9 +395,12 @@ like the ones used by Jest."
   (dired-free-space nil)
   :config
   (when (eq system-type 'darwin)
-    ;; installed with `brew install coreutils`
-    ;; use proper GNU ls
-    (setq insert-directory-program "/opt/homebrew/bin/gls"))
+    ;; installed with `brew install coreutils`; found via PATH instead of a
+    ;; hardcoded prefix so this works on both Intel (/usr/local) and Apple
+    ;; Silicon (/opt/homebrew) Macs
+    (let ((gls (executable-find "gls")))
+      (when gls
+        (setq insert-directory-program gls))))
 
   (use-package dired+
     :init

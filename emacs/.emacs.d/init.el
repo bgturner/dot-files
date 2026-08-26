@@ -746,9 +746,6 @@ like the ones used by Jest."
 
   (provide 'general-programming))  
 
-(use-package codemetrics
-  :straight (codemetrics :type git :host github :repo "jcs-elpa/codemetrics"))
-
 ;; Save in ~/.authinfo.gpg
 ;;     machine api.openai.com password sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 (use-package gptel

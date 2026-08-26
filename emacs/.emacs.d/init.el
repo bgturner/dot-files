@@ -644,8 +644,8 @@ like the ones used by Jest."
 
   (use-package yasnippet
     :delight yas-minor-mode
+    :hook ((prog-mode text-mode) . yas-minor-mode)
     :config
-    (yas-global-mode 1)
     (use-package yasnippet-snippets))
 
   ;; Make align-regex insert spaces instead of tabs
@@ -801,19 +801,10 @@ like the ones used by Jest."
         ("M-C-<left>" . copilot-panel-complete)
         ("M-C-<right>" . copilot-accept-completion-by-word)))
 
-;; Configure model and project details in .env file:
-;; - https://aider.chat/docs/config/dotenv.html
-(use-package aider
-  :ensure t
-  :config
-  (global-set-key (kbd "C-c a A") 'aider-transient-menu))
-
 (use-package devops
   :straight nil
   :preface
   (use-package dockerfile-mode)
-
-  (use-package docker)
 
   (use-package yaml-mode)
 

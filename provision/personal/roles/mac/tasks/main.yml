@@ -1,0 +1,60 @@
+---
+# Rust, direnv, fzf, and bun are mise-managed (.config/mise/config.toml) —
+# not installed via brew, to avoid a second source of truth. kube-ps1 is
+# dropped too: Starship's built-in kubernetes module replaces it.
+
+- name: Add Homebrew taps
+  community.general.homebrew_tap:
+    name:
+      - d12frosted/emacs-plus
+      - hashicorp/tap
+      - heroku/brew
+    state: present
+
+- name: Install Homebrew formulae
+  community.general.homebrew:
+    name:
+      - cmake
+      - coreutils
+      - difftastic
+      - ffmpeg
+      - fd
+      - gh
+      - git-lfs
+      - gpg
+      - graphviz
+      - grep
+      - helm
+      - helmfile
+      - heroku
+      - imagemagick
+      - ispell
+      - jq
+      - kubectl
+      - librsvg
+      - libtool
+      - neovim
+      - pandoc
+      - ripgrep
+      - sqlite
+      - stow
+      - hashicorp/tap/terraform
+      - tmux
+    state: present
+
+- name: Install Homebrew casks
+  community.general.homebrew_cask:
+    name:
+      - 1password
+      - 1password-cli
+      - amethyst
+      - claude-code
+      - docker
+      - font-fira-code-nerd-font
+      - font-jetbrains-mono-nerd-font
+      - font-sauce-code-pro-nerd-font
+      - ghostty
+      - gcloud-cli
+      - syncthing
+      - visual-studio-code
+    state: present

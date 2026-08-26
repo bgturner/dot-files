@@ -1,0 +1,35 @@
+#+TITLE: Personal Machine Provisioner
+
+Ansible playbook to provision personal machines: the personal Mac, Ubuntu, and Debian. The work Mac is deliberately out of scope — see =~/.dot-files/ISA.md=.
+
+* Requirements
+
+  1. python / pip[x]
+  2. ansible
+
+  #+begin_src shell
+    pipx install ansible-core
+    ansible-galaxy collection install -r requirements.yml
+  #+end_src
+
+* Host groups
+
+  - =[mac]= — the personal Mac. Runs locally (=ansible_connection=local=).
+  - =[ubuntu]= / =[debian]=, grouped under =[linux:children]= — remote personal Linux boxes, reached over SSH via =~/.ssh/config= host aliases. Fill in real =ansible_host=/=ansible_user= entries in =inventory= once a machine is reachable.
+  - =[personal:children]= (=mac= + =linux=) — everything this playbook's cross-platform play targets.
+
+* What each role does
+
+  - =common= — installs mise (cross-platform tool-version manager), the one thing every personal machine needs regardless of OS.
+  - =linux= — apt packages, Nerd Fonts, Krew. Runs only against =[linux]= hosts.
+  - =mac= — Homebrew taps/formulae/casks (folded in from the old =bootstrap-mac.sh=). Runs only against =[mac]= hosts.
+
+  Rust, direnv, fzf, bun, and Starship are mise-managed everywhere and intentionally absent from both the =linux= and =mac= roles — mise is the single source of truth for those, not apt or brew.
+
+* Running the playbook
+
+  #+begin_src shell
+    ansible-playbook -i inventory playbook.yml --syntax-check
+    ansible-playbook -i inventory playbook.yml --limit mac
+    ansible-playbook --ssh-common-args "-F $HOME/.ssh/config" -i inventory --ask-become-pass playbook.yml --limit linux
+  #+end_src

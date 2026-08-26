@@ -1,0 +1,5 @@
+---
+- name: Install mise (cross-platform tool-version manager)
+  ansible.builtin.shell: curl -fsSL https://mise.run | sh
+  args:
+    creates: "{{ ansible_facts.env.HOME }}/.local/bin/mise"

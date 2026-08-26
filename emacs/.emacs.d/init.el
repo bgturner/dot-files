@@ -597,16 +597,18 @@ like the ones used by Jest."
 
   (use-package imenu-list)
 
-  (use-package tree-sitter
-    :delight
-    :ensure t
+  ;; Emacs's built-in tree-sitter (treesit.el) instead of the external
+  ;; elisp-tree-sitter package — treesit-auto remaps known major modes
+  ;; (typescript-mode -> typescript-ts-mode, json-mode -> json-ts-mode,
+  ;; etc.) to their tree-sitter equivalents and installs grammars as
+  ;; needed, using Emacs's own grammar management instead of a
+  ;; separately-versioned bundle.
+  (use-package treesit-auto
+    :custom
+    (treesit-auto-install t)
     :config
-    (global-tree-sitter-mode)
-    (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
-
-  (use-package tree-sitter-langs
-    :ensure t
-    :after tree-sitter)
+    (treesit-auto-add-to-auto-mode-alist 'all)
+    (global-treesit-auto-mode))
 
   (use-package hideshow
     :delight hs-minor-mode

@@ -591,7 +591,20 @@ like the ones used by Jest."
     :config
     (direnv-mode))
 
-  (use-package imenu-list)
+  (use-package imenu-list
+    :commands (imenu-list-smart-toggle)
+    :custom
+    (imenu-list-focus-after-activation t)
+    (imenu-list-auto-resize t)
+    :general
+    (bt/leader-key-def
+      "ai" '(imenu-list-smart-toggle :which-key "Imenu List"))
+    :init
+    ;; imenu-list-major-mode has its own n/p/RET/g/q keymap, built for
+    ;; exactly this kind of read-only ToC navigation — emacs state lets
+    ;; those single keys through instead of evil's normal-state bindings
+    ;; swallowing them (same treatment as deadgrep-mode below)
+    (evil-set-initial-state 'imenu-list-major-mode 'emacs))
 
   ;; Emacs's built-in tree-sitter (treesit.el) instead of the external
   ;; elisp-tree-sitter package — treesit-auto remaps known major modes

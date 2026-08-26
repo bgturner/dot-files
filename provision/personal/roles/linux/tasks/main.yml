@@ -14,25 +14,21 @@
     name:
       - build-essential
       - curl
-      - fd-find
-      - gh
       - git
-      - git-lfs
-      - jq
       - libfuse2 # required for older AppImage builds
-      - pandoc
       - python3
       - restic
-      - ripgrep
       - rsync
-      - sqlite3
       - stow
       - syncthing
-      - tmux
       - wget
       - zsh
-      # Rust and direnv are mise-managed (see .config/mise/config.toml) —
-      # not installed via apt to avoid a second source of truth.
+      # Most CLI dev tools (fd, gh, git-lfs, jq, pandoc, ripgrep, sqlite,
+      # tmux, kubectl, helm/helmfile, cmake, coreutils, difftastic,
+      # imagemagick, terraform, heroku, claude-code, 1password-cli, plus
+      # rust/direnv/fzf/bun/starship) are mise-managed (.config/mise/config.toml)
+      # instead — same version on every personal machine, not whatever apt
+      # happens to ship.
 
 - name: Install Graphic Design Packaages
   apt:
@@ -53,12 +49,6 @@
       - clementine
       - obs-studio
       - vlc
-
-- name: Link fdfind to fd
-  ansible.builtin.file:
-    src: /usr/bin/fdfind
-    dest: /usr/bin/fd
-    state: link
 
 - name: Ensure ~/.fonts exists
   ansible.builtin.file:

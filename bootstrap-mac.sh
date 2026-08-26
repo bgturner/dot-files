@@ -1,30 +1,29 @@
 #!/bin/bash
+set -euo pipefail
 
-# Manually install certain tools
+# Provisions the work Mac. Deliberately NOT Ansible — this machine is
+# enterprise-locked-down and Ansible use there is still an open question
+# (see ISA.md). Everything mise/Ansible/Stow would otherwise cover for a
+# personal machine has to be installed by hand here instead.
+
 [ ! -d /opt/homebrew ] && \
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-[ ! -f $HOME/.vim/autoload/plug.vim ] && \
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-	 https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# mise and stow: on a personal machine Ansible's common/linux/mac roles
+# install these; there's no Ansible on the work Mac, so they're installed
+# directly here instead.
+[ ! -x "$HOME/.local/bin/mise" ] && curl -fsSL https://mise.run | sh
 
 # Configure Brew taps
-brew tap d12frosted/emacs-plus 
 brew tap hashicorp/tap
 brew tap heroku/brew
-brew tap oven-sh/bun
 
 PACKAGES=(
-    1password-cli
-    bun
     cmake
     coreutils
     difftastic
-    direnv
-    fd
     ffmpeg
-    fnm
-    fzf
+    fd
     gh
     git-lfs
     gpg
@@ -37,24 +36,24 @@ PACKAGES=(
     ispell
     jq
     kubectl
-    kube-ps1
     librsvg
     libtool
     neovim
     pandoc
     ripgrep
     sqlite
-    terraform
+    stow
+    hashicorp/tap/terraform
     tmux
 )
 brew install "${PACKAGES[@]}"
 
 CASKS=(
     1password
+    1password-cli
     amethyst
     claude-code
     docker
-    emacs-plus-app
     font-fira-code-nerd-font
     font-jetbrains-mono-nerd-font
     ghostty
@@ -63,3 +62,10 @@ CASKS=(
     visual-studio-code
 )
 brew install --cask "${CASKS[@]}"
+
+# Rust, direnv, fzf, bun, and Starship are mise-managed (.config/mise/config.toml,
+# now mise/.config/mise/config.toml once stowed) — not installed via brew.
+# kube-ps1 is dropped too: Starship's built-in kubernetes module replaces it.
+# emacs-plus-app is NOT installed here — that cask name no longer resolves
+# under d12frosted/emacs-plus (now versioned source-build formulae behind a
+# brew-trust gate). See ISA.md Decisions for what's needed to re-add it.

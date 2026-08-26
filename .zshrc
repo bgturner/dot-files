@@ -33,7 +33,31 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-# FZF https://github.com/junegunn/fzf
+## Homebrew — check both prefixes so this works on Intel and Apple Silicon
+if [ -d /opt/homebrew/bin ] ; then
+    PATH="/opt/homebrew/bin:$PATH"
+    BREW_PREFIX="/opt/homebrew"
+elif [ -d /usr/local/bin ] ; then
+    PATH="/usr/local/bin:$PATH"
+    BREW_PREFIX="/usr/local"
+fi
+
+# Gcloud
+# Add additional binary components installed via gcloud
+if [ -n "$BREW_PREFIX" ]; then
+    GCLOUD_PATH="$BREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin"
+    [ -d "$GCLOUD_PATH" ] && PATH="${GCLOUD_PATH}:$PATH"
+fi
+
+# opencode (unmanaged — not a mise tool)
+export PATH="/Users/ben/.opencode/bin:$PATH"
+
+# mise — activates node/python/rust/fzf/bun/direnv/starship shims
+if command -v mise >/dev/null 2>&1; then
+    eval "$(mise activate zsh)"
+fi
+
+# FZF
 if (( $+commands[fzf] )); then
   source <(fzf --zsh)
 fi
@@ -43,56 +67,16 @@ if (( $+commands[direnv] )); then
     eval "$(direnv hook zsh)"
 fi
 
-## Prompt
-# 1. Load the module
-autoload -Uz vcs_info
-setopt PROMPT_SUBST
-
-# 2. Configure vcs_info to check for changes
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git:*' check-for-changes true
-
-# 3. Define the purple format and the red asterisk for unstaged changes
-# %b = branch name, %u = unstaged (dirty) string
-zstyle ':vcs_info:git:*' formats ' %F{magenta}%b%u%F{magenta}%f'
-zstyle ':vcs_info:git:*' unstagedstr '%F{red}*%f'
-
-# 4. Run vcs_info before every prompt
-precmd() { vcs_info }
-
-# Include kube_ps1 if present
-# See: https://github.com/jonmosco/kube-ps1
-KUBE_PS1_PATH="/opt/homebrew/opt/kube-ps1/share/kube-ps1.sh"
-if [ -f "$KUBE_PS1_PATH" ]; then
-    source "$KUBE_PS1_PATH"
-    # Create a helper function that only runs if kube_ps1 was successfully sourced
-    _render_kube_ps1() { kube_ps1 }
-else
-    # Empty function so the prompt doesn't break if kube_ps1 is missing
-    _render_kube_ps1() { : }
+# Starship prompt
+if command -v starship >/dev/null 2>&1; then
+    eval "$(starship init zsh)"
 fi
 
-# 5. Your existing status logic + the new vcs_info variable
-STATUS_INDICATOR='%(?.%F{green}◉%f.%F{red}! %?%f)'
-PROMPT='${STATUS_INDICATOR} %~${vcs_info_msg_0_} $(_render_kube_ps1)%# '
-
-## Tools
-if [ -d /opt/homebrew/bin ] ; then
-    PATH="/opt/homebrew/bin:$PATH"
-fi
-
-# Gcloud
-# Add additional binary components installed via gcloud
-GCLOUD_PATH='/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/'
-if [ -d "$GCLOUD_PATH" ]; then
-    export PATH="${GCLOUD_PATH}:$PATH"
-fi
-
-if (( $+commands[fnm] )); then
-  source <(fnm env --use-on-cd --shell zsh)
-fi
+# LifeOS launch command (added by LifeOS installer)
+alias lifeos='bun /Users/ben/.claude/LIFEOS/TOOLS/lifeos.ts -s /Users/ben/.claude/LIFEOS/LIFEOS_SYSTEM_PROMPT.md'
 
 # Source any config not tracked in git, but needed for this machine
+# (e.g. CLAUDE_CODE_USE_VERTEX / CLOUD_ML_REGION on the work Mac)
 if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local
 fi

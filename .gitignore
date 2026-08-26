@@ -1,3 +1,7 @@
+# Per-machine local overrides (env vars, secrets) — never tracked
+.zshrc.local
+.bashrc.local
+
 .directory
 *~
 *.class

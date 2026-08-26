@@ -1,0 +1,111 @@
+---
+# TODO: introduce a cached check so that if an update or upgrade has been done within the last hour, don't do that step
+- name: Update package list
+  apt:
+    update_cache: yes
+
+- name: Update packages to latest version
+  apt:
+    upgrade: dist
+
+- name: Install core tooling
+  apt:
+    state: present
+    name:
+      - build-essential
+      - curl
+      - fd-find
+      - gh
+      - git
+      - jq
+      - libfuse2 # required for older AppImage builds
+      - python3
+      - restic
+      - ripgrep
+      - rsync
+      - sqlite3
+      - stow
+      - syncthing
+      - tmux
+      - wget
+      - zsh
+      # Rust and direnv are mise-managed (see .config/mise/config.toml) —
+      # not installed via apt to avoid a second source of truth.
+
+- name: Install Graphic Design Packaages
+  apt:
+    state: present
+    name:
+      - gimp
+      - gimp-lensfun
+      - gimp-plugin-registry
+      - gimp-save-for-web
+      - gpick
+      - inkscape
+
+- name: Install Multimedia Packaages
+  apt:
+    state: present
+    name:
+      - audacity
+      - clementine
+      - obs-studio
+      - vlc
+
+- name: Link fdfind to fd
+  ansible.builtin.file:
+    src: /usr/bin/fdfind
+    dest: /usr/bin/fd
+    state: link
+
+- name: Ensure ~/.fonts exists
+  ansible.builtin.file:
+    path: "{{ ansible_facts.env.HOME }}/.fonts"
+    state: directory
+    mode: "0755"
+
+- name: Install Nerd Fonts
+  ansible.builtin.unarchive:
+    src: "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/{{ item }}.zip"
+    dest: "{{ ansible_facts.env.HOME }}/.fonts"
+    remote_src: yes
+    creates: "{{ ansible_facts.env.HOME }}/.fonts/{{ item }}-marker"
+  loop:
+    - JetBrainsMono
+    - SourceCodePro
+  register: nerd_fonts_installed
+
+- name: Mark Nerd Fonts as installed
+  ansible.builtin.file:
+    path: "{{ ansible_facts.env.HOME }}/.fonts/{{ item }}-marker"
+    state: touch
+    mode: "0644"
+  loop:
+    - JetBrainsMono
+    - SourceCodePro
+
+- name: Refresh font cache
+  ansible.builtin.command: fc-cache -f
+  when: nerd_fonts_installed.changed
+
+- name: Install Krew (kubectl plugin manager)
+  ansible.builtin.shell: |
+    set -e
+    cd "$(mktemp -d)"
+    OS="$(uname | tr '[:upper:]' '[:lower:]')"
+    ARCH="$(uname -m | sed -e 's/x86_64/amd64/' -e 's/\(arm\)\(64\)\?.*/\1\2/' -e 's/aarch64$/arm64/')"
+    KREW="krew-${OS}_${ARCH}"
+    curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/${KREW}.tar.gz"
+    tar zxvf "${KREW}.tar.gz"
+    "./${KREW}" install krew
+  args:
+    creates: "{{ ansible_facts.env.HOME }}/.krew/bin/kubectl-krew"
+
+- name: Install kubectl-ctx and kubectl-ns via Krew
+  ansible.builtin.command: "{{ ansible_facts.env.HOME }}/.krew/bin/kubectl-krew install {{ item }}"
+  loop:
+    - ctx
+    - ns
+  environment:
+    PATH: "{{ ansible_facts.env.HOME }}/.krew/bin:{{ ansible_facts.env.PATH }}"
+  changed_when: true

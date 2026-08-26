@@ -1,0 +1,21 @@
+---
+- name: Provision personal machines (cross-platform)
+  hosts: personal
+  become: no
+
+  roles:
+    - common
+
+- name: Provision personal Linux machines
+  hosts: linux
+  become: yes
+
+  roles:
+    - linux
+
+- name: Provision personal Mac
+  hosts: mac
+  become: no
+
+  roles:
+    - mac

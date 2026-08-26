@@ -1,0 +1,17 @@
+[mac]
+iMac ansible_connection=local
+
+[ubuntu]
+# fill in with ansible_host/ansible_user once this machine is reachable
+# e.g. ubuntu-desktop ansible_host=192.168.1.50 ansible_user=ben
+
+[debian]
+# fill in with ansible_host/ansible_user once this machine is reachable
+
+[linux:children]
+ubuntu
+debian
+
+[personal:children]
+mac
+linux

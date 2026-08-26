@@ -1,3 +1,0 @@
-[submodule "neovim-config"]
-	path = neovim-config
-	url = git@github.com:bgturner/neovim-config.git

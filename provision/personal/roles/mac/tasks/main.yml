@@ -1,54 +1,37 @@
 ---
-# Rust, direnv, fzf, and bun are mise-managed (.config/mise/config.toml) —
-# not installed via brew, to avoid a second source of truth. kube-ps1 is
-# dropped too: Starship's built-in kubernetes module replaces it.
+# Most CLI dev tools (rust, direnv, fzf, bun, starship, plus fd, gh, git-lfs,
+# jq, pandoc, ripgrep, sqlite, tmux, kubectl, helm/helmfile, cmake, coreutils,
+# difftastic, imagemagick, terraform, heroku, claude-code, 1password-cli) are
+# mise-managed (.config/mise/config.toml) instead of brew — same version on
+# every personal machine, not whatever Homebrew happens to ship. What's left
+# here either needs real OS integration (gpg's keyring, syncthing as a
+# service) or isn't a mise concept at all (GUI casks, system libraries).
+# kube-ps1 is dropped too: Starship's built-in kubernetes module replaces it.
 
 - name: Add Homebrew taps
   community.general.homebrew_tap:
     name:
       - d12frosted/emacs-plus
-      - hashicorp/tap
-      - heroku/brew
     state: present
 
 - name: Install Homebrew formulae
   community.general.homebrew:
     name:
-      - cmake
-      - coreutils
-      - difftastic
-      - ffmpeg
-      - fd
-      - gh
-      - git-lfs
       - gpg
       - graphviz
       - grep
-      - helm
-      - helmfile
-      - heroku
-      - imagemagick
       - ispell
-      - jq
-      - kubectl
       - librsvg
       - libtool
       - neovim
-      - pandoc
-      - ripgrep
-      - sqlite
       - stow
-      - hashicorp/tap/terraform
-      - tmux
     state: present
 
 - name: Install Homebrew casks
   community.general.homebrew_cask:
     name:
       - 1password
-      - 1password-cli
       - amethyst
-      - claude-code
       - docker
       - font-fira-code-nerd-font
       - font-jetbrains-mono-nerd-font

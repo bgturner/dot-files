@@ -14,3 +14,30 @@ fzf = "0.74.3"
 bun = "1.4.0"
 direnv = "2.37.1"
 starship = "1.26.0"
+
+# CLI tools previously installed per-OS via Ansible/brew — moved here so
+# every personal machine gets the same version regardless of what apt/brew
+# happen to ship. Anything with real OS integration (gpg, syncthing, zsh,
+# system libraries like graphviz/librsvg/libtool) stays OS-managed instead.
+gh = "2.98.0"
+# aqua's fd build has no darwin/amd64 release (Intel Mac) — force the cargo
+# backend so this installs identically on every personal machine.
+"cargo:fd-find" = "10.4.2"
+jq = "1.8.2"
+ripgrep = "15.2.0"
+pandoc = "3.10.2"
+tmux = "3.7c"
+ffmpeg = "9.0.1"
+cmake = "4.4.3"
+coreutils = "0.10.0"
+difftastic = "0.70.0"
+git-lfs = "3.7.1"
+helm = "4.2.4"
+helmfile = "1.7.4"
+imagemagick = "7.1.2_30"
+kubectl = "1.36.4"
+sqlite = "3.53.4"
+terraform = "1.15.9"
+heroku = "11.10.0"
+claude-code = "2.1.245"
+1password-cli = "2.39.0"

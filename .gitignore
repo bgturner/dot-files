@@ -1,6 +1,10 @@
-# Per-machine local overrides (env vars, secrets) — never tracked
+# Per-machine local overrides (env vars, git identity, secrets) — never
+# tracked. These live at $HOME directly (sibling to this checkout, not
+# inside it), so this mostly guards against one ending up inside the
+# repo by accident rather than being the primary protection.
 .zshrc.local
 .bashrc.local
+.gitconfig.local
 
 .directory
 *~

@@ -3,3 +3,14 @@
 # https://github.com/1broseidon/ketch
 "github:1broseidon/ketch" = "latest"
 sonarqube-cli = "latest"
+
+# Language runtimes — replaces pyenv, nvm, fnm, and the rustup curl installer
+node = "24.19.0"
+python = "3.14.7"
+rust = "1.98.0"
+
+# CLI tools previously installed by hand or via a separate installer
+fzf = "0.74.3"
+bun = "1.4.0"
+direnv = "2.37.1"
+starship = "1.26.0"

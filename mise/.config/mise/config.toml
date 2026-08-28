@@ -41,4 +41,8 @@ heroku = "11.10.0"
 claude-code = "2.1.247"
 # pi coding agent (pi.dev, by Earendil) — aqua binary, npm package as fallback
 pi = "0.84.3"
+# rtk — CLI proxy that compresses bash output before the agent reads it
+# (rtk-ai/rtk, Apache-2.0, single Rust binary). Wire into an agent with
+# `rtk init -g --agent <name>`.
+rtk = "0.46.0"
 1password-cli = "2.39.0"

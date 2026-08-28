@@ -39,4 +39,6 @@ sqlite = "3.53.4"
 terraform = "1.16.0"
 heroku = "11.10.0"
 claude-code = "2.1.247"
+# pi coding agent (pi.dev, by Earendil) — aqua binary, npm package as fallback
+pi = "0.84.3"
 1password-cli = "2.39.0"

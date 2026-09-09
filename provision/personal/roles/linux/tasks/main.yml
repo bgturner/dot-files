@@ -16,6 +16,7 @@
       - curl
       - emacs
       - git
+      - gnupg # OS-managed (keyring/gpg-agent integration) — not a mise concept
       - libfuse2 # required for older AppImage builds
       - python3
       - restic

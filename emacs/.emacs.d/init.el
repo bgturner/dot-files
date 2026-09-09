@@ -1243,6 +1243,9 @@ is possible if the heading has a property of DATE_TREE."
   (use-package org-roam
     :init
     (setq org-roam-v2-ack t)
+    (setq org-roam-directory (expand-file-name "~/kb"))
+    ;; Skip the PARA archive and anything vendored/VCS under project dirs.
+    (setq org-roam-file-exclude-regexp (list "/4_Archive/" "/node_modules/" "\\.git/"))
     :ensure t
     :bind (("C-c n l" . org-roam-buffer-toggle)
            ("C-c n f" . org-roam-node-find)

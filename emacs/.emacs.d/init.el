@@ -606,18 +606,36 @@ like the ones used by Jest."
     ;; swallowing them (same treatment as deadgrep-mode below)
     (evil-set-initial-state 'imenu-list-major-mode 'emacs))
 
-  ;; Emacs's built-in tree-sitter (treesit.el) instead of the external
-  ;; elisp-tree-sitter package — treesit-auto remaps known major modes
-  ;; (typescript-mode -> typescript-ts-mode, json-mode -> json-ts-mode,
-  ;; etc.) to their tree-sitter equivalents and installs grammars as
-  ;; needed, using Emacs's own grammar management instead of a
-  ;; separately-versioned bundle.
-  (use-package treesit-auto
-    :custom
-    (treesit-auto-install t)
+  ;; Explicit tree-sitter mode remapping — replaced treesit-auto 2026-09-09.
+  ;; treesit-auto rebuilt its remap table and probed every grammar on every
+  ;; single file visit (`treesit-auto--set-major-remap' inside `set-auto-mode'),
+  ;; which made bulk file operations like `org-roam-db-sync' ~15x slower.
+  ;; Emacs 30's built-in `major-mode-remap-alist' does the same remapping as a
+  ;; plain alist lookup with zero per-buffer cost. Grammars already live under
+  ;; ~/.emacs.d/tree-sitter/; the source alist below feeds
+  ;; `treesit-install-language-grammar' when one needs (re)building.
+  (use-package treesit
+    :straight nil
     :config
-    (treesit-auto-add-to-auto-mode-alist 'all)
-    (global-treesit-auto-mode))
+    (setq treesit-language-source-alist
+          '((bash       "https://github.com/tree-sitter/tree-sitter-bash")
+            (css        "https://github.com/tree-sitter/tree-sitter-css")
+            (dockerfile "https://github.com/camdencheek/tree-sitter-dockerfile")
+            (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
+            (json       "https://github.com/tree-sitter/tree-sitter-json")
+            (python     "https://github.com/tree-sitter/tree-sitter-python")
+            (tsx        "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
+            (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")))
+    (dolist (mapping '((js-mode         . js-ts-mode)
+                       (javascript-mode . js-ts-mode)
+                       (js-json-mode    . json-ts-mode)
+                       (json-mode       . json-ts-mode)
+                       (typescript-mode . typescript-ts-mode)
+                       (css-mode        . css-ts-mode)
+                       (python-mode     . python-ts-mode)
+                       (sh-mode         . bash-ts-mode)
+                       (dockerfile-mode . dockerfile-ts-mode)))
+      (add-to-list 'major-mode-remap-alist mapping)))
 
   (use-package hideshow
     :delight hs-minor-mode

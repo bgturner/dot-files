@@ -743,12 +743,13 @@ like the ones used by Jest."
   (use-package flycheck
     :delight
     :defer t)
-  
-  (use-package editorconfig
-    :delight
-    :config
-    (editorconfig-mode 1))
-  
+
+  ;; editorconfig removed 2026-09-09 — no .editorconfig files in any active
+  ;; repo, and its find-file-noselect advice was a passenger cost on every
+  ;; file open (visible in the org-roam-db-sync profile). Emacs 30 ships
+  ;; editorconfig built-in if it is ever needed again: (editorconfig-mode 1),
+  ;; no package.
+
   ;; Show matching parens
   (use-package smartparens
     :delight

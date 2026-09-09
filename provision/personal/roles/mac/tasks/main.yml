@@ -30,6 +30,7 @@
     name:
       - 1password
       - amethyst
+      - cmux
       - docker
       - emacs-app
       - font-fira-code-nerd-font

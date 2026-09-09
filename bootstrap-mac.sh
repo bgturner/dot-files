@@ -31,6 +31,7 @@ brew install "${PACKAGES[@]}"
 CASKS=(
     1password
     amethyst
+    cmux
     docker
     emacs-app
     font-fira-code-nerd-font

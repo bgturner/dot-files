@@ -1253,6 +1253,26 @@ is possible if the heading has a property of DATE_TREE."
            ("C-c n i" . org-roam-node-insert)
            ("C-c n c" . org-roam-capture))
     :config
+    ;; `org-roam-db-sync' visits every note in a full interactive buffer, so
+    ;; magit-auto-revert and every file/mode hook would otherwise run once
+    ;; per file (~1000x) on a full sync. Strip that machinery for the dynamic
+    ;; extent of the sync ONLY: this :around advice wraps `org-roam-db-sync'
+    ;; and nothing else, and the `let' bindings revert the instant it returns
+    ;; (including on error). Per-save updates go through
+    ;; `org-roam-db-update-file', not this, so normal note editing is untouched.
+    (define-advice org-roam-db-sync (:around (fn &rest args) bt/fast-bulk-sync)
+      (let ((auto-mode-alist '(("\\.org\\'" . org-mode)))
+            (magic-mode-alist nil)
+            (find-file-hook nil)
+            (org-mode-hook nil)
+            (vc-handled-backends nil)
+            (had-mar (bound-and-true-p magit-auto-revert-mode))
+            (gc-cons-threshold most-positive-fixnum))
+        (unwind-protect
+            (progn
+              (when had-mar (magit-auto-revert-mode -1))
+              (apply fn args))
+          (when had-mar (magit-auto-revert-mode 1)))))
     (org-roam-db-autosync-mode)
     :general
     (general-nmap "SPC o r" 'hydra-org-roam/body)

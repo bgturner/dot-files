@@ -46,3 +46,7 @@ pi = "0.85.1"
 # `rtk init -g --agent <name>`.
 rtk = "0.48.0"
 1password-cli = "2.39.0"
+
+[settings]
+idiomatic_version_file_enable_tools = ["node"]
+

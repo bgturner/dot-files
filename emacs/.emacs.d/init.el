@@ -177,8 +177,6 @@ like the ones used by Jest."
 
   (provide 'defaults))
 
-(use-package use-package-hydra)
-
 (use-package ui
   :straight nil
   :defer t
@@ -1413,27 +1411,6 @@ is possible if the heading has a property of DATE_TREE."
 	(interactive)
 	(flyspell-goto-next-error)
 	(ispell-word))
-  :general
-  (general-nmap "SPC w s" 'hydra-flyspell/body)
-  :hydra
-  (hydra-flyspell ()
-		  "
-_m_ Enable Flyspell Mode
-_b_ Check spelling in buffer
-_c_ Check next highlighted word
-_n_ Goto Next error
-_p_ Goto Prev error
-_a_ Auto-correct
-"
-		  ("m" flyspell-mode)
-		  ("b" flyspell-buffer)
-		  ("c" flyspell-check-next-highlighted-word)
-		  ("n" flyspell-goto-next-error)
-		  ("n" evil-next-flyspell-error)
-		  ("p" evil-prev-flyspell-error)
-		  ("a" flyspell-auto-correct-word)
-		  )
-    
   :config
     (when (executable-find "hunspell")
 	(setq-default ispell-program-name "hunspell")

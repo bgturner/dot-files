@@ -12,6 +12,7 @@ set -euo pipefail
 # mise and stow: on a personal machine Ansible's common/linux/mac roles
 # install these; there's no Ansible on the work Mac, so they're installed
 # directly here instead.
+cd "$(dirname "$0")"
 export PATH="$HOME/.local/bin:$PATH"
 [ ! -x "$HOME/.local/bin/mise" ] && curl -fsSL https://mise.run | sh
 
@@ -42,6 +43,15 @@ CASKS=(
     visual-studio-code
 )
 brew install --cask "${CASKS[@]}"
+
+# Stow: symlink every dotfile package into $HOME. Same step bootstrap.sh
+# runs for personal machines; must land before `mise install` below, since
+# the mise package is what puts config.toml at ~/.config/mise/. The work
+# Mac is always Darwin, so the VS Code target is hardcoded (bootstrap.sh
+# branches on uname for the Linux path).
+echo "==> Symlinking dotfiles via Stow"
+stow -d . -t "$HOME" zsh bash git tmux emacs vim mise ghostty starship sqlite
+stow -d . -t "$HOME/Library/Application Support/Code/User" vscode
 
 # Most CLI dev tools (rust, direnv, fzf, bun, starship, plus fd, gh, git-lfs,
 # jq, pandoc, ripgrep, sqlite, tmux, kubectl, helm/helmfile, cmake,

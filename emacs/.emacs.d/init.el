@@ -1273,22 +1273,7 @@ is possible if the heading has a property of DATE_TREE."
               (when had-mar (magit-auto-revert-mode -1))
               (apply fn args))
           (when had-mar (magit-auto-revert-mode 1)))))
-    (org-roam-db-autosync-mode)
-    :general
-    (general-nmap "SPC o r" 'hydra-org-roam/body)
-    :hydra
-    (hydra-org-roam ()
-		            "
-  _n_ : Next Daily
-  _p_ : Prev Daily
-  _g_ : Goto Daily
-  _c_ : Capture Daily
-"
-		            ("n" org-roam-dailies-goto-next-note)
-		            ("p" org-roam-dailies-goto-previous-note)
-		            ("c" org-roam-dailies-capture-date)
-		            ("g" org-roam-dailies-goto-date)
-		            ))
+    (org-roam-db-autosync-mode))
   
   (use-package org-roam-ui
     :straight

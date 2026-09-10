@@ -7,11 +7,11 @@ sonarqube-cli = "latest"
 # Language runtimes — replaces pyenv, nvm, fnm, and the rustup curl installer
 node = "26.8.1"
 python = "3.14.7"
-rust = "1.98.0"
+rust = "1.98.1"
 
 # CLI tools previously installed by hand or via a separate installer
 fzf = "0.74.3"
-bun = "1.4.0"
+bun = "1.4.2"
 direnv = "2.37.1"
 starship = "1.26.0"
 
@@ -19,30 +19,30 @@ starship = "1.26.0"
 # every personal machine gets the same version regardless of what apt/brew
 # happen to ship. Anything with real OS integration (gpg, syncthing, zsh,
 # system libraries like graphviz/librsvg/libtool) stays OS-managed instead.
-gh = "2.98.0"
+gh = "2.100.0"
 # aqua's fd build has no darwin/amd64 release (Intel Mac) — force the cargo
 # backend so this installs identically on every personal machine.
 "cargo:fd-find" = "10.5.0"
 jq = "1.8.2"
 ripgrep = "15.2.0"
-pandoc = "3.10.2"
+pandoc = "3.11"
 tmux = "3.7c"
 ffmpeg = "9.0.1"
 cmake = "4.4.3"
 difftastic = "0.70.0"
-git-lfs = "3.7.1"
+git-lfs = "3.8.0"
 helm = "4.2.4"
 helmfile = "1.7.4"
-imagemagick = "7.1.2_30"
+imagemagick = "7.1.2_31"
 kubectl = "1.37.0"
 sqlite = "3.53.4"
-terraform = "1.16.0"
+terraform = "1.16.1"
 heroku = "11.10.0"
-claude-code = "2.1.247"
+claude-code = "2.1.263"
 # pi coding agent (pi.dev, by Earendil) — aqua binary, npm package as fallback
-pi = "0.84.3"
+pi = "0.85.1"
 # rtk — CLI proxy that compresses bash output before the agent reads it
 # (rtk-ai/rtk, Apache-2.0, single Rust binary). Wire into an agent with
 # `rtk init -g --agent <name>`.
-rtk = "0.46.0"
+rtk = "0.48.0"
 1password-cli = "2.39.0"

@@ -57,6 +57,12 @@ if command -v mise >/dev/null 2>&1; then
     eval "$(mise activate zsh)"
 fi
 
+# bun global link dir — `bun link` symlinks here; mise manages the bun
+# binary itself but not this directory, so it needs adding separately
+if [ -d "$HOME/.bun/bin" ] ; then
+    PATH="$HOME/.bun/bin:$PATH"
+fi
+
 # FZF
 if (( $+commands[fzf] )); then
   source <(fzf --zsh)

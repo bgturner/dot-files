@@ -1,0 +1,39 @@
+---
+# Mirrors bootstrap.sh's Stow + mise install steps for remote Linux hosts,
+# where there's no one at the keyboard to run bootstrap.sh by hand.
+# Deliberately scoped to [linux] only (see playbook.yml) — the personal Mac
+# already runs bootstrap.sh directly against its own working copy, and
+# auto-pulling that repo here could stomp on in-progress local work.
+
+- name: Clone dot-files repo if not already present
+  ansible.builtin.git:
+    repo: https://github.com/bgturner/dot-files.git
+    dest: "{{ ansible_facts.env.HOME }}/.dot-files"
+    version: main
+    update: no
+
+- name: Stow dotfiles, backing up any pre-existing real files that would conflict
+  ansible.builtin.shell: |
+    set -e
+    cd "{{ ansible_facts.env.HOME }}/.dot-files"
+    PACKAGES="zsh bash git tmux emacs vim mise ghostty starship sqlite"
+    stow -n -v -d . -t "$HOME" $PACKAGES 2>&1 \
+      | sed -n 's/.*existing target \(.*\) since neither.*/\1/p' \
+      | while read -r rel; do
+          f="$HOME/$rel"
+          if [ -e "$f" ] && [ ! -L "$f" ]; then
+            mv "$f" "$f.pre-stow"
+          fi
+        done
+    stow -v -d . -t "$HOME" $PACKAGES
+  args:
+    executable: /bin/bash
+  register: stow_result
+  changed_when: "'LINK: ' in stow_result.stderr"
+
+- name: Install mise-managed tool versions
+  ansible.builtin.command: "{{ ansible_facts.env.HOME }}/.local/bin/mise install"
+  args:
+    chdir: "{{ ansible_facts.env.HOME }}/.dot-files"
+  register: mise_install_result
+  changed_when: "'installed 0 tools' not in mise_install_result.stderr"

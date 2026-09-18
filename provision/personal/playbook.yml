@@ -13,6 +13,13 @@
   roles:
     - linux
 
+- name: Stow dotfiles and sync mise tool versions on personal Linux machines
+  hosts: linux
+  become: no
+
+  roles:
+    - dotfiles
+
 - name: Provision personal Mac
   hosts: mac
   become: no

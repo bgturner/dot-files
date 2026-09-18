@@ -37,9 +37,6 @@
     state: present
     name:
       - gimp
-      - gimp-lensfun
-      - gimp-plugin-registry
-      - gimp-save-for-web
       - gpick
       - inkscape
 

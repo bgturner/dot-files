@@ -31,5 +31,5 @@ Ansible playbook to provision personal machines: the personal Mac, Ubuntu, and D
   #+begin_src shell
     ansible-playbook -i inventory playbook.yml --syntax-check
     ansible-playbook -i inventory playbook.yml --limit mac
-    ansible-playbook --ssh-common-args "-F $HOME/.ssh/config" -i inventory --ask-become-pass playbook.yml --limit linux
+    ansible-playbook -i inventory --ask-become-pass playbook.yml --limit linux
   #+end_src

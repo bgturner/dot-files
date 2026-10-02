@@ -1,0 +1,4 @@
+---
+# Branch to clone on fresh hosts. Override per run to test a feature branch:
+#   ansible-playbook ... -e dotfiles_version=mise-bootstrapper
+dotfiles_version: master

@@ -34,3 +34,17 @@ Ansible playbook to provision personal machines: the personal Mac, Ubuntu, and D
     ansible-playbook -i inventory playbook.yml --limit mac
     ansible-playbook -i inventory --ask-become-pass playbook.yml --limit linux
   #+end_src
+
+** Testing a dotfiles branch on a fresh host
+
+  The =dotfiles= role clones the repo over HTTPS (no SSH key or GitHub
+  registration needed on a brand-new machine) and checks out =master= by
+  default. To provision against a feature branch instead, override
+  =dotfiles_version=:
+
+  #+begin_src shell
+    ansible-playbook -i inventory --ask-become-pass playbook.yml --limit xps -e dotfiles_version=mise-bootstrapper
+  #+end_src
+
+  The clone is skipped when =~/.dot-files= already exists, so delete a
+  stale clone on the host first if it's on the wrong branch.

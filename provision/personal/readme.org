@@ -48,3 +48,8 @@ Ansible playbook to provision personal machines: the personal Mac, Ubuntu, and D
 
   The clone is skipped when =~/.dot-files= already exists, so delete a
   stale clone on the host first if it's on the wrong branch.
+
+  On later runs the role fast-forwards the existing clone (=git pull
+  --ff-only= on its current branch) so new dotfiles commits reach
+  already-provisioned hosts. It skips the pull, with a warning, when the
+  host's clone has uncommitted changes.

@@ -12,6 +12,28 @@
     version: "{{ dotfiles_version }}"
     update: no
 
+# Without this, an already-provisioned host never sees new dotfiles commits.
+# Only fast-forwards a clean tree on whatever branch is checked out, so local
+# edits or a diverged branch are never overwritten (the latter fails loudly).
+- name: Pull latest dotfiles if the working tree is clean
+  ansible.builtin.shell: |
+    set -e
+    cd "{{ ansible_facts.env.HOME }}/.dot-files"
+    if [ -n "$(git status --porcelain)" ]; then
+      echo "SKIPPED: local changes present"
+      exit 0
+    fi
+    git pull --ff-only
+  args:
+    executable: /bin/bash
+  register: dotfiles_pull
+  changed_when: "'Already up to date' not in dotfiles_pull.stdout and 'SKIPPED' not in dotfiles_pull.stdout"
+
+- name: Warn when the pull was skipped because of local changes
+  ansible.builtin.debug:
+    msg: "~/.dot-files has uncommitted changes; skipped pulling. Commit or stash them on the host, then re-run."
+  when: "'SKIPPED' in dotfiles_pull.stdout"
+
 - name: Stow dotfiles, backing up any pre-existing real files that would conflict
   ansible.builtin.shell: |
     set -e

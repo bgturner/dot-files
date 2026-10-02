@@ -21,5 +21,8 @@
     # System-wide dark style — GNOME Terminal and Wave follow it, so no
     # per-profile terminal color override is needed
     - { key: /org/gnome/desktop/interface/color-scheme, value: "'prefer-dark'" }
+    # Nerd Font (installed by linux_user) so starship's glyphs render; GNOME
+    # Terminal's default profile uses the system monospace font
+    - { key: /org/gnome/desktop/interface/monospace-font-name, value: "'JetBrainsMono Nerd Font 11'" }
   loop_control:
     label: "{{ item.key }}"

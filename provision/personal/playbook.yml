@@ -20,6 +20,13 @@
   roles:
     - dotfiles
 
+- name: Apply GNOME desktop preferences on personal Linux machines
+  hosts: linux
+  become: no
+
+  roles:
+    - gnome_desktop
+
 - name: Provision personal Mac
   hosts: mac
   become: no

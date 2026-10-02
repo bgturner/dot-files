@@ -27,6 +27,8 @@ jq = "1.8.2"
 ripgrep = "15.2.0"
 pandoc = "3.11"
 tmux = "3.7c"
+# default vfox backend fails on Intel Mac — aqua pulls neovim's own release builds
+"aqua:neovim/neovim" = "0.12.5"
 ffmpeg = "9.0.2"
 cmake = "4.4.3"
 difftastic = "0.70.0"

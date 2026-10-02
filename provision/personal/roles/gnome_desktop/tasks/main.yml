@@ -18,6 +18,8 @@
     - { key: /org/gnome/desktop/input-sources/xkb-options, value: "['caps:ctrl_modifier']" }
     # Window buttons on the left; the colon marks where the title sits
     - { key: /org/gnome/desktop/wm/preferences/button-layout, value: "'close:'" }
+    # Silence the system bell (terminal/shell beeps); keeps the visual bell off too
+    - { key: /org/gnome/desktop/wm/preferences/audible-bell, value: "false" }
     # System-wide dark style — GNOME Terminal and Wave follow it, so no
     # per-profile terminal color override is needed
     - { key: /org/gnome/desktop/interface/color-scheme, value: "'prefer-dark'" }

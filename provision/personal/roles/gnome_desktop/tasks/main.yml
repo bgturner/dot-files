@@ -1,0 +1,25 @@
+---
+# The subset of gconf-settings.sh worth automating. Written to the user's
+# dconf db (not system defaults) so it behaves like running gsettings by hand;
+# the dconf module spins up its own D-Bus session when run over SSH.
+
+- name: Ensure psutil is available for the dconf module
+  ansible.builtin.apt:
+    name: python3-psutil
+    state: present
+  become: yes
+
+- name: Apply GNOME desktop preferences
+  community.general.dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+  loop:
+    # Caps Lock acts as an additional Ctrl
+    - { key: /org/gnome/desktop/input-sources/xkb-options, value: "['caps:ctrl_modifier']" }
+    # Window buttons on the left; the colon marks where the title sits
+    - { key: /org/gnome/desktop/wm/preferences/button-layout, value: "'close:'" }
+    # System-wide dark style — GNOME Terminal and Wave follow it, so no
+    # per-profile terminal color override is needed
+    - { key: /org/gnome/desktop/interface/color-scheme, value: "'prefer-dark'" }
+  loop_control:
+    label: "{{ item.key }}"

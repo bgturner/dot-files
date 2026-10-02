@@ -23,6 +23,7 @@ Ansible playbook to provision personal machines: the personal Mac, Ubuntu, and D
   - =common= — installs mise (cross-platform tool-version manager), the one thing every personal machine needs regardless of OS.
   - =linux= — apt packages, Nerd Fonts, Krew. Runs only against =[linux]= hosts.
   - =mac= — Homebrew taps/formulae/casks (folded in from the old =bootstrap-mac.sh=). Runs only against =[mac]= hosts.
+  - =gnome_desktop= — the GNOME preferences worth keeping from the old =gconf-settings.sh=: Caps Lock as an extra Ctrl, window buttons on the left, and the system-wide dark style (GNOME Terminal and Wave follow it). Runs against all =[linux]= hosts as the login user.
 
   Rust, direnv, fzf, bun, and Starship are mise-managed everywhere and intentionally absent from both the =linux= and =mac= roles — mise is the single source of truth for those, not apt or brew.
 

@@ -72,3 +72,7 @@ fi
 
 
 command -v mise >/dev/null 2>&1 && eval "$(mise activate bash)"
+
+# Neovim (mise-managed) stands in for vim; init.vim sources ~/.vim/vimrc.
+# Must come after mise activation so nvim is on PATH.
+command -v nvim >/dev/null 2>&1 && alias vim=nvim

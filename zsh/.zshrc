@@ -73,6 +73,11 @@ if (( $+commands[direnv] )); then
     eval "$(direnv hook zsh)"
 fi
 
+# Neovim (mise-managed) stands in for vim; init.vim sources ~/.vim/vimrc
+if (( $+commands[nvim] )); then
+    alias vim=nvim
+fi
+
 # Starship prompt
 if command -v starship >/dev/null 2>&1; then
     eval "$(starship init zsh)"

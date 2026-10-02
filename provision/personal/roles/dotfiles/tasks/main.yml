@@ -9,7 +9,7 @@
   ansible.builtin.git:
     repo: https://github.com/bgturner/dot-files.git
     dest: "{{ ansible_facts.env.HOME }}/.dot-files"
-    version: main
+    version: "{{ dotfiles_version }}"
     update: no
 
 - name: Stow dotfiles, backing up any pre-existing real files that would conflict

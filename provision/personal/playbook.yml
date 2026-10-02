@@ -13,12 +13,13 @@
   roles:
     - linux
 
-- name: Stow dotfiles and sync mise tool versions on personal Linux machines
+- name: Stow dotfiles, sync mise tools, and set up per-user installs on personal Linux machines
   hosts: linux
   become: no
 
   roles:
     - dotfiles
+    - linux_user
 
 - name: Apply GNOME desktop preferences on personal Linux machines
   hosts: linux

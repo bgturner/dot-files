@@ -684,7 +684,9 @@ like the ones used by Jest."
   ;; Magit
   (use-package magit
     :defer t
-    :init (setq magit-refresh-status-buffer nil)
+    :init
+    (setq magit-refresh-status-buffer nil)
+    (require 'hi-lock)
     ;; :bind (("C-x g" . magit-status))
     (use-package evil-magit
       :defer t

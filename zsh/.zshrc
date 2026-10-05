@@ -1,5 +1,11 @@
 source "$HOME/.bash_aliases"
 
+# Where and how much history to keep. macOS's /etc/zshrc sets these, but
+# Debian's doesn't, so without them history lives only in memory there.
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=50000
+SAVEHIST=50000
+
 # Appends every command to the history file once it is executed
 setopt inc_append_history
 

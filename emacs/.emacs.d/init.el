@@ -1113,8 +1113,58 @@ that I can re-add any projects that I'm actively working on. See:
 
   
   ;; Agenda Settings
-  (setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$")
-		org-agenda-todo-ignore-scheduled 'all
+  ;;
+  ;; All of ~/org, plus only the ~/kb notes that currently hold an open
+  ;; task. The kb has 1000+ org files; loading them all would bog down the
+  ;; agenda, but the ones with tasks are a few dozen. Recomputed before
+  ;; every agenda build so a kb note joins when it gains a TODO and drops
+  ;; out once its tasks are closed. Refile targets follow the same list.
+  (defun bt/kb-files-with-open-tasks ()
+    "Return ~/kb org files containing an open TODO-family heading.
+Skips 4_Archive/: archiving a project is how it leaves the agenda."
+    (let* ((kb (expand-file-name "~/kb/"))
+           (re "^\\*+ (TODO|NEXT|WAIT|REVIEW|SOMEDAY)\\b")
+           (cmd (if (executable-find "rg")
+                    (format "rg -l --glob '*.org' --glob '!**/4_Archive/**' -e %s %s"
+                            (shell-quote-argument re) (shell-quote-argument kb))
+                  ;; GUI Emacs may not see mise's PATH; system grep always exists
+                  (format "grep -rlE --include='*.org' --exclude-dir=4_Archive %s %s"
+                          (shell-quote-argument re) (shell-quote-argument kb)))))
+      (when (file-directory-p kb)
+        (split-string (shell-command-to-string cmd) "\n" t))))
+
+  (defun bt/refresh-org-agenda-files (&rest _)
+    "Set `org-agenda-files' to all of ~/org plus kb notes with open tasks."
+    (interactive)
+    (setq org-agenda-files
+          (append (directory-files-recursively "~/org/" "\\.org$")
+                  (bt/kb-files-with-open-tasks))))
+
+  (bt/refresh-org-agenda-files)
+  (advice-add 'org-agenda :before #'bt/refresh-org-agenda-files)
+
+  ;; "u" — unification review: every open task, scheduled or not, grouped
+  ;; by file. The regular TODO list hides scheduled items (see
+  ;; org-agenda-todo-ignore-scheduled below), which hides most of the inbox.
+  ;; Act on entries in place: t state, , priority, : tags, C-c C-w refile,
+  ;; $ archive.
+  (setq org-agenda-custom-commands
+        '(("u" "All open tasks (review)"
+           alltodo ""
+           ((org-agenda-todo-ignore-scheduled nil)
+            (org-agenda-todo-ignore-deadlines nil)
+            (org-agenda-sorting-strategy '(category-keep priority-down))
+            (org-agenda-prefix-format '((todo . " %i %-20:c")))))
+          ;; "p" — same set, priority first across all files (no-priority
+          ;; items count as the default, C).
+          ("p" "All open tasks by priority"
+           alltodo ""
+           ((org-agenda-todo-ignore-scheduled nil)
+            (org-agenda-todo-ignore-deadlines nil)
+            (org-agenda-sorting-strategy '(priority-down category-keep))
+            (org-agenda-prefix-format '((todo . " %i %-20:c")))))))
+
+  (setq org-agenda-todo-ignore-scheduled 'all
 		org-agenda-entry-text-maxlines 10
 		org-agenda-clockreport-parameter-plist '(:link t :maxlevel 4 :fileskip0 t :tags nil :filetitle t) ;; Clocktable in agenda view
 		org-agenda-skip-additional-timestamps-same-entry t

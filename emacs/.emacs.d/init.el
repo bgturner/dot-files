@@ -1098,7 +1098,7 @@ that I can re-add any projects that I'm actively working on. See:
 	    org-export-with-author nil
 	    org-export-with-email nil
 	    org-export-with-date nil
-	    org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "|" "DONE(d!)" "CANCELED(c@)"))
+	    org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "REVIEW(r)" "SOMEDAY(s)" "|" "DONE(d!)" "DROPPED(x@)" "CANCELED(c@)"))
         org-columns-default-format "%60ITEM(Task) %TODO %6Effort(Estim){:}  %6CLOCKSUM(Clock){:} %TIMESTAMP %SCHEDULED(Scheduled) %DEADLINE(Deadline)"
         org-global-properties '(("Effort_ALL" . "0 0:15 0:30 1:00 2:00 4:00 8:00")))
 

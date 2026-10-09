@@ -1137,7 +1137,9 @@ Skips 4_Archive/: archiving a project is how it leaves the agenda."
     "Set `org-agenda-files' to all of ~/org plus kb notes with open tasks."
     (interactive)
     (setq org-agenda-files
-          (append (directory-files-recursively "~/org/" "\\.org$")
+          ;; Skip dotfiles: Emacs lock files (.#inbox.org) are dangling
+          ;; symlinks that would otherwise land in the agenda list.
+          (append (directory-files-recursively "~/org/" "\\`[^.].*\\.org\\'")
                   (bt/kb-files-with-open-tasks))))
 
   (bt/refresh-org-agenda-files)

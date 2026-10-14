@@ -5,49 +5,49 @@
 sonarqube-cli = "latest"
 
 # Language runtimes — replaces pyenv, nvm, fnm, and the rustup curl installer
-node = "26.10.0"
-python = "3.14.7"
-rust = "1.98.1"
+node = "26.11.1"
+python = "3.14.8"
+rust = "1.99.0"
 
 # CLI tools previously installed by hand or via a separate installer
 fzf = "0.74.4"
 bun = "1.4.2"
-direnv = "2.37.1"
+direnv = "2.38.1"
 starship = "1.26.0"
 
 # CLI tools previously installed per-OS via Ansible/brew — moved here so
 # every personal machine gets the same version regardless of what apt/brew
 # happen to ship. Anything with real OS integration (gpg, syncthing, zsh,
 # system libraries like graphviz/librsvg/libtool) stays OS-managed instead.
-gh = "2.101.0"
+gh = "2.102.0"
 # aqua's fd build has no darwin/amd64 release (Intel Mac) — force the cargo
 # backend so this installs identically on every personal machine.
 "cargo:fd-find" = "10.5.0"
 jq = "1.8.2"
 ripgrep = "15.2.0"
-pandoc = "3.11"
+pandoc = "3.12"
 tmux = "3.7c"
 # default vfox backend fails on Intel Mac — aqua pulls neovim's own release builds
 "aqua:neovim/neovim" = "0.12.5"
 ffmpeg = "9.0.2"
-cmake = "4.4.3"
+cmake = "4.4.4"
 difftastic = "0.70.0"
 git-lfs = "3.8.0"
 helm = "4.3.0"
-helmfile = "1.8.0"
+helmfile = "1.8.1"
 imagemagick = "7.1.2_31"
 kubectl = "1.37.1"
 sqlite = "3.53.4"
-terraform = "1.16.4"
-heroku = "11.10.1"
-claude-code = "2.1.285"
+terraform = "1.16.5"
+heroku = "11.11.0"
+claude-code = "2.1.294"
 # pi coding agent (pi.dev, by Earendil) — aqua binary, npm package as fallback
-pi = "0.99.1"
+pi = "1.1.0"
 # rtk — CLI proxy that compresses bash output before the agent reads it
 # (rtk-ai/rtk, Apache-2.0, single Rust binary). Wire into an agent with
 # `rtk init -g --agent <name>`.
-rtk = "0.50.0"
-1password-cli = "2.39.0"
+rtk = "0.51.0"
+1password-cli = "2.40.0"
 vale = "latest"
 
 [settings]

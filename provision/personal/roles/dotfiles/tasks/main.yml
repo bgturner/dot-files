@@ -38,7 +38,7 @@
   ansible.builtin.shell: |
     set -e
     cd "{{ ansible_facts.env.HOME }}/.dot-files"
-    PACKAGES="zsh bash git tmux emacs vim mise ghostty starship sqlite"
+    PACKAGES="zsh bash git tmux emacs vim mise ghostty starship sqlite yt-dlp"
     stow -n -v -d . -t "$HOME" $PACKAGES 2>&1 \
       | sed -n 's/.*existing target \(.*\) since neither.*/\1/p' \
       | while read -r rel; do

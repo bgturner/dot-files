@@ -1,0 +1,3 @@
+# YouTube needs a JS runtime for its signature challenges; yt-dlp only
+# enables deno by default, so point it at the mise-managed node.
+--js-runtimes node

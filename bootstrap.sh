@@ -21,7 +21,7 @@ echo "==> Provisioning via Ansible (provision/personal)"
 )
 
 echo "==> Symlinking dotfiles via Stow"
-stow -d . -t "$HOME" zsh bash git tmux emacs vim mise ghostty starship sqlite
+stow -d . -t "$HOME" zsh bash git tmux emacs vim mise ghostty starship sqlite yt-dlp
 
 case "$(uname)" in
   Darwin)

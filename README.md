@@ -23,6 +23,7 @@ The work Mac is enterprise-locked-down, so it's provisioned by a plain script (`
 | Personal Mac | mise + Ansible (`mac` role) + Stow | `bootstrap.sh` |
 | Personal Ubuntu | mise + Ansible (`linux` role) + Stow | `bootstrap.sh` |
 | Personal Debian | mise + Ansible (`linux` role) + Stow | `bootstrap.sh` |
+| Work QA Debian (`s76`) | mise (base only) + Ansible (base + `electron_dev` + `vm_host`) + Stow, run remotely from the iMac | `provision/personal/readme.org` § Provisioning a fresh Debian host |
 | Work Mac | mise + Stow (no Ansible) | `bootstrap-mac.sh` |
 
 ## Bootstrapping a personal machine
@@ -60,7 +61,8 @@ git/        .gitconfig (includes ~/.gitconfig.local for per-machine identity —
 tmux/       .tmux.conf
 emacs/      .emacs.d/
 vim/        .vim/ and .config/nvim/ — vanilla baseline, not actively used for dev
-mise/       .config/mise/config.toml — every mise-managed tool version
+mise/       .config/mise/config.toml — base mise tool versions (every machine)
+mise-extras/ .config/mise/conf.d/extras.toml — personal-only mise tools, stowed where wanted
 ghostty/    .config/ghostty/config
 starship/   .config/starship.toml
 sqlite/     .sqliterc

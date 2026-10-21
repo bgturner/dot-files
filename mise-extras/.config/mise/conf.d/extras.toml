@@ -1,0 +1,32 @@
+[tools]
+# Personal-machine extras, layered on top of ~/.config/mise/config.toml.
+# mise merges every ~/.config/mise/conf.d/*.toml into the global config, so
+# this file only takes effect where the mise-extras Stow package is stowed —
+# kept off work boxes that should run the base toolset only.
+
+# Ketch: Web search and scrape CLI tool
+# https://github.com/1broseidon/ketch
+"github:1broseidon/ketch" = "latest"
+sonarqube-cli = "latest"
+
+rust = "1.99.0"
+
+pandoc = "3.12"
+ffmpeg = "9.0.2"
+# yt-dlp — lets agents pull YouTube transcripts/metadata (uses ffmpeg above for merges)
+yt-dlp = "2026.08.19"
+cmake = "4.4.4"
+helm = "4.3.0"
+helmfile = "1.8.1"
+imagemagick = "7.1.2_31"
+kubectl = "1.37.1"
+terraform = "1.16.5"
+heroku = "11.11.0"
+# pi coding agent (pi.dev, by Earendil) — aqua binary, npm package as fallback
+pi = "1.1.0"
+# rtk — CLI proxy that compresses bash output before the agent reads it
+# (rtk-ai/rtk, Apache-2.0, single Rust binary). Wire into an agent with
+# `rtk init -g --agent <name>`.
+rtk = "0.51.0"
+1password-cli = "2.40.0"
+vale = "latest"

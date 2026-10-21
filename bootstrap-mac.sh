@@ -50,7 +50,7 @@ brew install --cask "${CASKS[@]}"
 # Mac is always Darwin, so the VS Code target is hardcoded (bootstrap.sh
 # branches on uname for the Linux path).
 echo "==> Symlinking dotfiles via Stow"
-stow -d . -t "$HOME" zsh bash git tmux emacs vim mise ghostty starship sqlite
+stow -d . -t "$HOME" zsh bash git tmux emacs vim mise mise-extras ghostty starship sqlite
 stow -d . -t "$HOME/Library/Application Support/Code/User" vscode
 
 # Most CLI dev tools (rust, direnv, fzf, bun, starship, plus fd, gh, git-lfs,

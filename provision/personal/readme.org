@@ -31,7 +31,7 @@ Ansible playbook to provision personal machines: the personal Mac, Ubuntu, and D
 * What each role does
 
   - =common= — installs mise (cross-platform tool-version manager), the one thing every personal machine needs regardless of OS.
-  - =linux= — base apt packages (build tools, git, Emacs, stow, zsh). Runs against all =[linux]= hosts.
+  - =linux= — base apt packages (build tools, git, Emacs, stow, zsh) and Google Chrome. Runs against all =[linux]= hosts.
   - =linux_user= — per-user base setup: zsh as login shell, Nerd Fonts. Runs against all =[linux]= hosts.
   - =dotfiles= — clones this repo, stows =dotfiles_stow_packages_base= plus any =dotfiles_stow_packages_extra= a group adds, then runs =mise install=. Runs against all =[linux]= hosts.
   - =personal_extras= — personal apps and Krew. Runs only against =[personal_extras]=.

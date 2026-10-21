@@ -1,0 +1,107 @@
+---
+# KVM/libvirt host for spinning up QA guests in virt-manager. Sets up the
+# host only: packages, group access, the default NAT network, and a pool
+# for installer ISOs. Guests are created by hand (virt-manager, or
+# virt-install — see readme.org) since each QA round wants different ones.
+#
+# The play runs as the login user so ansible_facts.user_id is that user;
+# system tasks escalate individually.
+
+- name: Install KVM, libvirt, and virt-manager
+  apt:
+    state: present
+    name:
+      - qemu-system-x86
+      - qemu-utils
+      - libvirt-daemon-system
+      - libvirt-daemon-config-network # defines the "default" NAT network
+      - libvirt-clients
+      - virt-manager
+      - virt-install
+      - ovmf # UEFI firmware for guests
+      - swtpm # software TPM (Windows 11 guests require one)
+      - swtpm-tools
+      - virtiofsd # share a host directory into a guest
+  become: yes
+
+- name: Give the login user access to system VMs and /dev/kvm (takes effect at next login)
+  ansible.builtin.user:
+    name: "{{ ansible_facts.user_id }}"
+    groups: [libvirt, kvm]
+    append: yes
+  become: yes
+
+- name: Ensure libvirtd is enabled and running
+  ansible.builtin.systemd:
+    name: libvirtd
+    enabled: yes
+    state: started
+  become: yes
+
+# virsh has no declarative mode, so check state and act only on what's off.
+- name: Ensure the default NAT network (virbr0, 192.168.122.0/24) is active and autostarts
+  ansible.builtin.shell: |
+    set -e
+    info="$(virsh -c qemu:///system net-info default)"
+    if ! echo "$info" | grep -q '^Autostart:.*yes'; then
+      virsh -c qemu:///system net-autostart default
+      echo CHANGED
+    fi
+    if ! echo "$info" | grep -q '^Active:.*yes'; then
+      virsh -c qemu:///system net-start default
+      echo CHANGED
+    fi
+  args:
+    executable: /bin/bash
+  register: vm_default_net
+  changed_when: "'CHANGED' in vm_default_net.stdout"
+  become: yes
+
+# Group-writable (setgid libvirt) so the user can drop ISOs in without sudo,
+# and outside $HOME so qemu can read them without virt-manager's ACL prompt.
+- name: Create the ISO directory
+  ansible.builtin.file:
+    path: /var/lib/libvirt/isos
+    state: directory
+    owner: root
+    group: libvirt
+    mode: "2775"
+  become: yes
+
+- name: Ensure the "isos" storage pool exists, is active, and autostarts
+  ansible.builtin.shell: |
+    set -e
+    v="virsh -c qemu:///system"
+    if ! $v pool-info isos >/dev/null 2>&1; then
+      $v pool-define-as isos dir --target /var/lib/libvirt/isos
+      echo CHANGED
+    fi
+    info="$($v pool-info isos)"
+    if ! echo "$info" | grep -q '^Autostart:.*yes'; then
+      $v pool-autostart isos
+      echo CHANGED
+    fi
+    if ! echo "$info" | grep -q '^State:.*running'; then
+      $v pool-start isos
+      echo CHANGED
+    fi
+  args:
+    executable: /bin/bash
+  register: vm_iso_pool
+  changed_when: "'CHANGED' in vm_iso_pool.stdout"
+  become: yes
+
+- name: Ensure ~/.config/libvirt exists
+  ansible.builtin.file:
+    path: "{{ ansible_facts.env.HOME }}/.config/libvirt"
+    state: directory
+    mode: "0755"
+
+# Without this, plain `virsh`/`virt-install` talk to the per-user session
+# daemon and don't see the system VMs virt-manager creates.
+- name: Point the user's libvirt clients at the system daemon by default
+  ansible.builtin.copy:
+    dest: "{{ ansible_facts.env.HOME }}/.config/libvirt/libvirt.conf"
+    content: |
+      uri_default = "qemu:///system"
+    mode: "0644"

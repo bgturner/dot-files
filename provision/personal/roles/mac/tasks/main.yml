@@ -41,3 +41,12 @@
       - syncthing
       - visual-studio-code
     state: present
+
+# Separate from the cask list above for --adopt: Chrome is often already in
+# /Applications from a manual download, and brew refuses to install over an
+# existing app unless told to adopt it. Chrome keeps updating itself.
+- name: Install Google Chrome (adopting an existing manual install)
+  community.general.homebrew_cask:
+    name: google-chrome
+    state: present
+    install_options: adopt

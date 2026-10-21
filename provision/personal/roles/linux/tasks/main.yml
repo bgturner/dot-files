@@ -29,3 +29,19 @@
       # rust/direnv/fzf/bun/starship) are mise-managed (.config/mise/config.toml)
       # instead — same version on every personal machine, not whatever apt
       # happens to ship.
+
+# Chrome's .deb registers Google's apt repo and signing key in its postinst,
+# so after the first install it updates with the dist-upgrade above. Only
+# install when missing; adding our own repo file would conflict with the one
+# Chrome manages. Google ships no arm64 Linux build, hence the arch guard.
+- name: Check for Google Chrome
+  ansible.builtin.stat:
+    path: /usr/bin/google-chrome-stable
+  register: google_chrome
+
+- name: Install Google Chrome
+  apt:
+    deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  when:
+    - not google_chrome.stat.exists
+    - ansible_facts.architecture == 'x86_64'

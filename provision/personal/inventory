@@ -6,11 +6,27 @@ iMac ansible_connection=local
 # e.g. ubuntu-desktop ansible_host=192.168.1.50 ansible_user=ben
 
 [debian]
-# fill in with ansible_host/ansible_user once this machine is reachable
+# s76: work QA laptop (System76). Reached via the `s76` alias in ~/.ssh/config.
+s76
 
 [linux:children]
 ubuntu
 debian
+
+# --- Feature groups: hosts opt in to each one -------------------------------
+
+# Personal apps/tools (restic, syncthing, graphics, multimedia, Krew) and the
+# extra Stow packages in group_vars/personal_extras.yml (mise-extras etc.).
+# Work machines stay out of this group.
+[personal_extras]
+
+# OS prerequisites for Electron/JS work (node itself comes from mise)
+[electron_dev]
+s76
+
+# KVM/libvirt + virt-manager for QA virtual machines
+[vm_host]
+s76
 
 [personal:children]
 mac

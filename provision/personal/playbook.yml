@@ -28,6 +28,27 @@
   roles:
     - gnome_desktop
 
+- name: Install personal-only apps and tools (kept off work boxes)
+  hosts: personal_extras
+  become: no
+
+  roles:
+    - personal_extras
+
+- name: Set up Electron/JS development prerequisites
+  hosts: electron_dev
+  become: yes
+
+  roles:
+    - electron_dev
+
+- name: Set up a KVM/libvirt host for QA virtual machines
+  hosts: vm_host
+  become: no
+
+  roles:
+    - vm_host
+
 - name: Provision personal Mac
   hosts: mac
   become: no

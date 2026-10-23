@@ -14,7 +14,7 @@ set autoindent
 " Yank/delete/put go through the system clipboard. Guarded because Vim
 " builds without +clipboard reject the option, and Neovim reports no
 " clipboard until it finds a provider (pbcopy on macOS, wl-copy/xclip on
-" Linux — the linux role installs wl-clipboard).
+" Linux, e.g. the wl-clipboard package).
 if has('clipboard')
   set clipboard=unnamedplus
 endif

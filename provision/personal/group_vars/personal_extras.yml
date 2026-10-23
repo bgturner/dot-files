@@ -1,8 +1,0 @@
----
-# Stow packages for tools that only personal machines install
-# (mise-extras = the personal mise toolset; ghostty and yt-dlp configs
-# follow those tools).
-dotfiles_stow_packages_extra:
-  - mise-extras
-  - ghostty
-  - yt-dlp

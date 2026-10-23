@@ -10,3 +10,11 @@ set expandtab
 set shiftwidth=2
 set tabstop=2
 set autoindent
+
+" Yank/delete/put go through the system clipboard. Guarded because Vim
+" builds without +clipboard reject the option, and Neovim reports no
+" clipboard until it finds a provider (pbcopy on macOS, wl-copy/xclip on
+" Linux — the linux role installs wl-clipboard).
+if has('clipboard')
+  set clipboard=unnamedplus
+endif

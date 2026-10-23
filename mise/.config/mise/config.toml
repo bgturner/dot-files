@@ -18,9 +18,11 @@ starship = "1.26.0"
 # happen to ship. Anything with real OS integration (gpg, syncthing, zsh,
 # system libraries like graphviz/librsvg/libtool) stays OS-managed instead.
 gh = "2.102.0"
-# aqua's fd build has no darwin/amd64 release (Intel Mac) — force the cargo
-# backend so this installs identically on every personal machine.
-"cargo:fd-find" = "10.5.0"
+# aqua's fd build has no darwin/amd64 release (Intel Mac), so macOS builds it
+# with cargo (rust comes from mise-extras, which both Macs stow). Linux takes
+# aqua's prebuilt binary so base-only hosts don't need a Rust toolchain.
+"cargo:fd-find" = { version = "10.5.0", os = ["macos"] }
+"aqua:sharkdp/fd" = { version = "10.5.0", os = ["linux"] }
 jq = "1.8.2"
 ripgrep = "15.2.0"
 tmux = "3.7c"
